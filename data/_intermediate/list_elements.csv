@@ -1,0 +1,120 @@
+code,name_x,atomic_number,atomic_mass_x,crm_2014,crm_2017,crm_2020,crm_2023,atomic_mass_y,name_y,density,abundance (mg/kg),price (USD/kg),price_year,price_source,price_comment
+Ac,actinium,89,227.0,False,False,False,False,,,,,,,,
+Ag,silver,47,107.8682,False,False,False,False,47.0,Silver,10.501,0.075 (2.0775×1015 kg),521.0,2019,Preismonitor[20][g],99.5% pure. Spot price. At London Metal Exchange warehouse.
+Al,aluminum,13,26.981538,False,False,False,False,13.0,Aluminium,2.698,82300 (2.28×1021 kg),1.79,2019,Preismonitor[20][g],"High-grade primary aluminium, at London Metal Exchange warehouse."
+Am,americium,95,243.0,False,False,False,False,,,,,,,,
+Ar,argon,18,39.948,False,False,False,False,18.0,Argon,0.0017837,3.5 (9.695×1016 kg),0.931,2019,UNLV[31],"Liquid argon supply contract for University of Nevada, Las Vegas."
+As,arsenic,33,74.9216,False,False,False,True,33.0,Arsenic,5.776,1.8 (4.986×1016 kg),1.0,2020,SMM[40][d],Min. 99.5% pure.
+At,astatine,85,210.0,False,False,False,False,,,,,,,,
+Au,gold,79,196.96655,False,False,False,False,79.0,Gold,19.282,0.004 (1.108×1014 kg),44800.0,2019,Preismonitor[20][g],99.9% pure. Morning London gold fix.
+B,boron,5,10.811,False,False,False,True,5.0,Boron,2.34,10 (2.77×1017 kg),3.68,2019,CEIC Data[18][f],"In the form of boric acid, price per boron contained. Min. 99% pure."
+Ba,barium,56,137.327,False,False,False,False,,,,,,,,
+Be,beryllium,4,9.012182,True,True,True,True,4.0,Beryllium,1.85,2.8 (7.756×1016 kg),857.0,2020,ISE 2020[17][e],Min. 99% pure.
+Bh,bohrium,107,264.0,False,False,False,False,,,,,,,,
+Bi,bismuth,83,208.98038,False,True,True,True,83.0,Bismuth,9.807,0.009 (2.493×1014 kg),6.36,2019,Preismonitor[20][g],"Refined bismuth, min. 99.99% pure."
+Bk,berkelium,97,247.0,False,False,False,False,,,,,,,,
+Br,bromine,35,79.904,False,False,False,False,35.0,Bromine,3.122,2.4 (6.648×1016 kg),4.39,2019,CEIC Data[18][f],
+C,carbon,6,12.0107,False,False,False,False,6.0,Carbon,2.267,200 (5.54×1018 kg),0.122,2018,EIA Coal[19],"In the form of anthracite, price per carbon contained, assuming 90% carbon content. There is a wide variation of price of carbon depending on its form. Lower ranks of coal can be less expensive, for example sub-bituminous coal can cost around US$0.038/kg carbon.[19] Graphite flakes can cost around US$0.9/kg carbon.[20] Price of synthetic industrial diamond for grinding and polishing can range from 1200 to 13300 USD/kg, while cost per weight of large synthetic diamonds for industrial applications can be on the order of million dollars per kilogram.[21]"
+Ca,calcium,20,40.078,False,False,False,False,20.0,Calcium,1.54,41500 (1.15×1021 kg),2.2,2020,SMM[33][d],Blocks of 98.5% pure calcium obtained by reduction process.
+Cd,cadmium,48,112.411,False,False,False,False,48.0,Cadmium,8.69,0.159 (4.4043×1015 kg),2.73,2019,Preismonitor[20][g],"Ingot, min. 99.99% pure."
+Ce,cerium,58,140.116,True,True,True,True,,,,,,,,
+Cf,californium,98,251.0,False,False,False,False,,,,,,,,
+Cl,chlorine,17,35.453,False,False,False,False,17.0,Chlorine,0.003214,145 (4.075×1018 kg),0.082,2013,CnAgri[29],"As chlorine is manufactured together with sodium hydroxide in chloralkali process, relative demand for one product changes the price for the other. When demand for sodium hydroxide is relatively high, chlorine price can fall to arbitrarily low levels, even to zero.[30]"
+Cm,curium,96,247.0,False,False,False,False,,,,,,,,
+Cn,copernicium,112,285.0,False,False,False,False,,,,,,,,
+Co,cobalt,27,58.9332,True,True,True,True,27.0,Cobalt,8.86,25 (6.925×1017 kg),32.8,2019,Preismonitor[20][g],Spot price. Min. 99.8% pure. At London Metal Exchange warehouse.
+Cr,chromium,24,51.9961,True,False,False,False,24.0,Chromium,7.15,102 (2.825×1018 kg),9.4,2019,Preismonitor[20][g],Min. 99.2% pure.
+Cs,cesium,55,132.90545,False,False,False,False,,,,,,,,
+Cu,copper,29,63.546,False,False,False,True,29.0,Copper,8.96,60 (1.662×1018 kg),6.0,2019,Preismonitor[20][g],Spot price. Grade A.[38] At London Metal Exchange warehouse.
+Db,dubnium,105,262.0,False,False,False,False,,,,,,,,
+Ds,darmstadtium,110,281.0,False,False,False,False,,,,,,,,
+Dy,dysprosium,66,162.5,True,True,True,False,66.0,Dysprosium,8.55,5.2 (1.4404×1017 kg),307.0,2019,Preismonitor[20][g],"Min. 99% pure, Free on Board China."
+Er,erbium,68,167.259,True,True,True,False,68.0,Erbium,9.066,3.5 (9.695×1016 kg),26.4,2020,ISE 2020[34][h],Min. 99.5% pure.
+Es,einsteinium,99,252.0,False,False,False,False,,,,,,,,
+Eu,europium,63,151.964,True,True,True,True,63.0,Europium,5.243,2 (5.54×1016 kg),31.4,2020,ISE 2020[34][h],Min. 99.999% pure.
+F,fluorine,9,18.9984032,False,False,False,False,9.0,Fluorine,0.001696,585 (1.62×1019 kg),2.0,2017,Echemi[25],"In the form of anhydrous hydrofluoric acid, price per fluorine contained. Range of prices on Chinese market, week of 1–7 December 2017."
+Fe,iron,26,55.845,False,False,False,False,26.0,Iron,7.874,56300 (1.565×1021 kg),0.424,2020,SMM[37][d],"L8-10 pig iron. At Tangshan, China."
+Fl,flerovium,114,289.0,False,False,False,False,,,,,,,,
+Fm,fermium,100,257.0,False,False,False,False,,,,,,,,
+Fr,francium,87,223.0,False,False,False,False,,,,,,,,
+Ga,gallium,31,69.723,True,True,True,True,31.0,Gallium,5.907,19 (5.263×1017 kg),148.0,2019,Preismonitor[20][g],Min. 99.99% pure. Free on Board China.
+Gd,gadolinium,64,157.25,True,True,True,False,64.0,Gadolinium,7.895,6.2 (1.7174×1017 kg),28.6,2020,ISE 2020[34][h],Min. 99.5% pure.
+Ge,germanium,32,72.64,True,True,True,True,32.0,Germanium,5.323,1.5 (4.155×1016 kg),950.0,2020,SMM[39][d],Ingot. 50 Ω/cm.
+H,hydrogen,1,1.00794,False,False,False,False,1.0,Hydrogen,8.988e-05,1400 (3.878×1019 kg),1.39,2012,DOE Hydrogen[8],"Prices of hydrogen produced by distributed steam methane reforming, as predicted by H2A Production Model from United States Department of Energy,[9] assuming price of natural gas of US$3/MMBtu (US$10/MWh; US$0.10/m3). Does not include cost of storage and distribution."
+He,helium,2,4.002602,False,True,False,True,2.0,Helium,0.0001785,0.008 (2.216×1014 kg),24.0,2018,USGS MCS[14],"Crude helium sold to non-government users in United States in 2018. In the same year, stockpiles of US government helium were sold on auctions for average price of US$0.00989/L.[15]"
+Hf,hafnium,72,178.49,False,True,True,True,72.0,Hafnium,13.31,3 (8.31×1016 kg),900.0,2017,USGS MCS[14],Unwrought hafnium.
+Hg,mercury,80,200.59,False,False,False,False,80.0,Mercury,13.5336,0.085 (2.3545×1015 kg),30.2,2017,USGS MCS[14],Average European Union price of 99.99% pure mercury.
+Ho,holmium,67,164.93032,True,True,True,False,67.0,Holmium,8.795,1.3 (3.601×1016 kg),57.1,2020,ISE 2020[34][h],Min. 99.5% pure.
+Hs,hassium,108,277.0,False,False,False,False,,,,,,,,
+I,iodine,53,126.90447,False,False,False,False,53.0,Iodine,4.93,0.45 (1.2465×1016 kg),35.0,2019,Industrial Minerals[48],Min 99.5% pure. Spot market price on 2 August 2019.
+In,indium,49,114.818,True,True,True,True,49.0,Indium,7.31,0.25 (6.925×1015 kg),167.0,2019,Preismonitor[20][g],Min. 99.99% pure.
+Ir,iridium,77,192.217,True,True,True,True,77.0,Iridium,22.56,0.001 (2.77×1013 kg),55000.0,2020,SMM[58][d],99.95% pure.
+K,potassium,19,39.0983,False,False,False,False,19.0,Potassium,0.862,20900 (5.789×1020 kg),12.0,2020,SMM[32][d],Min 98.5% pure industrial grade potassium.
+Kr,krypton,36,83.798,False,False,False,False,36.0,Krypton,0.003733,1×10−4 (2.77×1012 kg),290.0,1999,Ullmann[26],Approximate European price for buying small quantities.
+La,lanthanum,57,138.9055,True,True,True,True,,,,,,,,
+Li,lithium,3,6.941,False,False,True,True,3.0,Lithium,0.534,20 (5.54×1017 kg),85.0,2020,SMM[16][d],Min. 99% pure.
+Lr,lawrencium,103,262.0,False,False,False,False,,,,,,,,
+Lu,lutetium,71,174.967,True,True,True,False,71.0,Lutetium,9.84,0.8 (2.216×1016 kg),643.0,2020,ISE 2020[34][h],Min. 99.99% pure.
+Lv,livermorium,116,293.0,False,False,False,False,,,,,,,,
+Mc,moscovium,115,289.0,False,False,False,False,,,,,,,,
+Md,mendelevium,101,258.0,False,False,False,False,,,,,,,,
+Mg,magnesium,12,24.305,True,True,True,True,12.0,Magnesium,1.738,23300 (6.454×1020 kg),2.32,2019,Preismonitor[20][g],Min 99.9% pure.
+Mn,manganese,25,54.938049,False,False,False,True,25.0,Manganese,7.44,950 (2.632×1019 kg),1.82,2019,Preismonitor[20][g],"Electrolytic manganese, min. 99.7% pure."
+Mo,molybdenum,42,95.94,False,False,False,False,42.0,Molybdenum,10.22,1.2 (3.324×1016 kg),40.1,2019,Preismonitor[20][g],Min. 99.95% pure.
+Mt,meitnerium,109,268.0,False,False,False,False,,,,,,,,
+N,nitrogen,7,14.0067,False,False,False,False,7.0,Nitrogen,0.0012506,19 (5.263×1017 kg),0.14,2001,Hypertextbook[24],As liquid nitrogen.
+Na,sodium,11,22.98977,False,False,False,False,11.0,Sodium,0.971,23600 (6.537×1020 kg),2.8,2020,SMM[27][d],Min 99.7% pure industrial grade sodium.
+Nb,niobium,41,92.90638,True,True,True,True,41.0,Niobium,8.57,20 (5.54×1017 kg),75.0,2020,SMM[43][d],Min. 99.9% pure.
+Nd,neodymium,60,144.24,True,True,True,True,60.0,Neodymium,7.007,41.5 (1.14955×1018 kg),57.5,2019,Preismonitor[20][g],"Min. 99% pure, Free on Board China."
+Ne,neon,10,20.1797,False,False,False,False,10.0,Neon,0.0008999,0.005 (1.385×1014 kg),240.0,1999,Ullmann[26],Approximate European price for buying small quantities.
+Nh,nihonium,113,286.0,False,False,False,False,,,,,,,,
+Ni,nickel,28,58.6934,False,False,False,True,28.0,Nickel,8.912,84 (2.327×1018 kg),13.9,2019,Preismonitor[20][g],Primary nickel. Spot price. Min. 99.8% pure. At London Metal Exchange warehouse.
+No,nobelium,102,259.0,False,False,False,False,,,,,,,,
+Np,neptunium,93,237.0,False,False,False,False,93.0,Neptunium,20.45,≤ 3×10−12[i] (8.31×104 kg),660000.0,2003[j],Pomona[66],Periodic Table published by Pomona College Chemistry Department lists neptunium-237 as available from Oak Ridge National Laboratory at 660 USD/g plus packing costs.
+O,oxygen,8,15.9994,False,False,False,False,8.0,Oxygen,0.001429,461000 (1.277×1022 kg),0.154,2001,Hypertextbook[24],As liquid oxygen.
+Og,oganesson,118,294.0,False,False,False,False,,,,,,,,
+Os,osmium,76,190.23,True,True,True,True,76.0,Osmium,22.61,0.002 (5.54×1013 kg),12000.0,2016,Fastmarkets[m],
+P,phosphorus,15,30.973761,False,True,True,True,15.0,Phosphorus,1.82,1050 (2.909×1019 kg),2.69,2019,CEIC Data[18][f],Min. 99.9% pure yellow phosphorus.
+Pa,protactinium,91,231.03588,False,False,False,False,,,,,,,,
+Pb,lead,82,207.2,False,False,False,False,82.0,Lead,11.342,14 (3.878×1017 kg),2.0,2019,Preismonitor[20][g],Min. 99.97% pure. Spot price. At London Metal Exchange warehouse.
+Pd,palladium,46,106.42,True,True,True,True,46.0,Palladium,12.02,0.015 (4.155×1014 kg),49500.0,2019,Preismonitor[20][g],99.95% pure. London bullion market afternoon fix. In warehouse.
+Pm,promethium,61,145.0,True,True,True,True,,,,,,,,
+Po,polonium,84,209.0,False,False,False,False,,,,,,,,
+Pr,praseodymium,59,140.90765,True,True,True,True,59.0,Praseodymium,6.773,9.2 (2.5484×1017 kg),103.0,2019,Preismonitor[20][g],"Min. 99% pure, Free on Board China."
+Pt,platinum,78,195.078,True,True,True,True,78.0,Platinum,21.46,0.005 (1.385×1014 kg),27800.0,2019,Preismonitor[20][g],99.95% pure. London bullion market morning fix. In warehouse.
+Pu,plutonium,94,244.0,False,False,False,False,,,,,,,,
+Ra,radium,88,226.0,False,False,False,False,,,,,,,,
+Rb,rubidium,37,85.4678,False,False,False,False,37.0,Rubidium,1.532,90 (2.493×1018 kg),15500.0,2018,USGS MCS[14],100 g ampoules of 99.75% pure rubidium metal.
+Re,rhenium,75,186.207,False,False,False,False,75.0,Rhenium,21.02,7×10−4 (1.939×1013 kg),3500.0,2020,SMM[55][d],99.99% pure.
+Rf,rutherfordium,104,261.0,False,False,False,False,,,,,,,,
+Rg,roentgenium,111,272.0,False,False,False,False,,,,,,,,
+Rh,rhodium,45,102.9055,True,True,True,True,45.0,Rhodium,12.41,0.001 (2.77×1013 kg),147000.0,2019,Preismonitor[20][g],99.95% pure.
+Rn,radon,86,222.0,False,False,False,False,,,,,,,,
+Ru,ruthenium,44,101.07,True,True,True,True,44.0,Ruthenium,12.37,0.001 (2.77×1013 kg),10000.0,2020,SMM[47][d],99.95% pure.
+S,sulfur,16,32.065,False,False,False,False,16.0,Sulfur,2.067,350 (9.695×1018 kg),0.0926,2019,CEIC Data[18][f],
+Sb,antimony,51,121.76,True,True,True,True,51.0,Antimony,6.685,0.2 (5.54×1015 kg),5.79,2019,Preismonitor[20][g],"Ingot, min. 99.65% pure."
+Sc,scandium,21,44.95591,False,True,True,True,21.0,Scandium,2.989,22 (6.094×1017 kg),3460.0,2020,ISE 2020[34][h],Min. 99.99% pure.
+Se,selenium,34,78.96,False,False,False,False,34.0,Selenium,4.809,0.05 (1.385×1015 kg),21.4,2019,Preismonitor[20][g],"Selenium powder, min. 99.9% pure."
+Sg,seaborgium,106,266.0,False,False,False,False,,,,,,,,
+Si,silicon,14,28.0855,True,True,True,True,14.0,Silicon,2.3296,282000 (7.811×1021 kg),1.7,2019,Preismonitor[20][g],"Min. 99.1% pure, max. 0.4% iron, 0.4% aluminium, 0.1% calcium.[28] 10–100 mm."
+Sm,samarium,62,150.36,True,True,True,True,62.0,Samarium,7.52,7.05 (1.95285×1017 kg),13.9,2019,Preismonitor[20][g],"Min. 99% pure, Free on Board China."
+Sn,tin,50,118.71,False,False,False,False,50.0,Tin,7.287,2.3 (6.371×1016 kg),18.7,2019,Preismonitor[20][g],Min. 99.85% pure. Spot price. At London Metal Exchange warehouse.
+Sr,strontium,38,87.62,False,False,True,True,,,,,,,,
+Ta,tantalum,73,180.9479,False,True,True,True,73.0,Tantalum,16.654,2 (5.54×1016 kg),300.0,2019,ISE 2019[41],Min. 99.95% pure. Ex Works China.
+Tb,terbium,65,158.92534,True,True,True,False,65.0,Terbium,8.229,1.2 (3.324×1016 kg),658.0,2019,Preismonitor[20][g],"Min. 99% pure, Free on Board China."
+Tc,technetium,43,98.0,False,False,False,False,43.0,Technetium,11.5,~ 3×10−9[i] (8.31×107 kg),100000.0,2004[j],CRC Handbook[k],
+Te,tellurium,52,127.6,False,False,False,False,52.0,Tellurium,6.232,0.001 (2.77×1013 kg),63.5,2019,Preismonitor[20][g],Min. 99.99% pure. Europe.
+Th,thorium,90,232.0381,False,False,False,False,90.0,Thorium,11.72,9.6 (2.6592×1017 kg),287.0,2010,USGS MYB 2012[63],"As 99.9% pure thorium oxide, price per thorium contained. Free on Board port of entry, duty paid."
+Ti,titanium,22,47.867,False,False,True,True,22.0,Titanium,4.54,5650 (1.565×1020 kg),11.0,2020,SMM[35][d],Min. 99.6% pure titanium sponge.
+Tl,thallium,81,204.3833,False,False,False,False,81.0,Thallium,11.85,0.85 (2.3545×1016 kg),4200.0,2017,USGS MCS[14],
+Tm,thulium,69,168.93421,True,True,True,False,69.0,Thulium,9.321,0.52 (1.4404×1016 kg),3000.0,2003,IMAR[54][l],"Price quotes from Canadian producer, for 1 kg order. 99.5–99.99% purity, Free on Board Vancouver, Canada."
+Ts,tennessine,117,294.0,False,False,False,False,,,,,,,,
+U,uranium,92,238.02891,False,False,False,False,92.0,Uranium,18.95,2.7 (7.479×1016 kg),101.0,2018,EIA Uranium Marketing[65],"Mainly as triuranium octoxide, price per uranium contained."
+V,vanadium,23,50.9415,False,False,False,False,23.0,Vanadium,6.11,120 (3.324×1018 kg),360.0,2020,SMM[36][d],Min. 99.5% pure.
+W,tungsten,74,183.84,False,False,False,False,74.0,Tungsten,19.25,1.3 (3.601×1016 kg),35.3,2019,Preismonitor[20][g],"Powder, particle size 2–10 µm, 99.7% pure. Free on Board China."
+Xe,xenon,54,131.293,False,False,False,False,,,,,,,,
+Y,yttrium,39,88.90585,True,True,True,False,39.0,Yttrium,4.469,33 (9.141×1017 kg),31.0,2019,Preismonitor[20][g],"Min. 99% pure, Free on Board China."
+Yb,ytterbium,70,173.04,True,True,True,False,70.0,Ytterbium,6.965,3.2 (8.864×1016 kg),17.1,2020,ISE 2020[34][h],Min. 99.99% pure.
+Zn,zinc,30,65.409,False,False,False,False,30.0,Zinc,7.134,70 (1.939×1018 kg),2.55,2019,Preismonitor[20][g],Min. 99.995% pure special high grade zinc metal. Spot price. At London Metal Exchange warehouse.
+Zr,zirconium,40,91.224,False,False,False,False,40.0,Zirconium,6.506,165 (4.571×1018 kg),360.0,2020,SMM[42][d],"Zirconium sponge, min. 99% pure."
+n,neutron,0,1.00866491597,False,False,False,False,,,,,,,,

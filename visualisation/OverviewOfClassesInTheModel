@@ -1,0 +1,52 @@
+digraph {
+	graph [bgcolor=white concentrate=true fontcolor=black fontname="Cabin-Medium" fontpath="../utils/Cabin_Medium.ttf" fontsize=30 fontweight=bold label="Structure of the SRM recovery system model" labelloc=t nodesep=0.6 pad=0.4 penwidth=2 rankdir=LR]
+	Energy [color=gold fontcolor=black shape=ellipse style=filled]
+	subgraph cluster_0 {
+		color=black fontname="Cabin-Medium" fontpath="../utils/Cabin_Medium.ttf" fontsize=20 label=<Substances> margin=2 padding=4 rankdir=TB style=rounded
+		Substance [color="#2a58adc3" fontcolor=white fontsize=18 height=1.0 shape=ellipse style=filled width=2.0]
+		Element [color=lightblue fontcolor=black shape=ellipse style=filled]
+		Compound [color=lightblue fontcolor=black shape=ellipse style=filled]
+		Material [color=lightblue fontcolor=black shape=ellipse style=filled]
+		Component [color=lightblue fontcolor=black shape=ellipse style=filled]
+		Product [color=lightblue fontcolor=black shape=ellipse style=filled]
+	}
+	subgraph cluster_1 {
+		color=black fontname="Cabin-Medium" fontpath="../utils/Cabin_Medium.ttf" fontsize=20 label=<Processes and Flows> margin=2 padding=4 style=rounded
+		Flow [color=lightgreen fontcolor=black shape=circle style=filled]
+		Process [color=lightgreen fontcolor=black shape=box style=filled]
+	}
+	subgraph cluster_2 {
+		color=black fontname="Cabin-Medium" fontpath="../utils/Cabin_Medium.ttf" fontsize=20 label=<Scenarios and Parameters> margin=10 padding=4 rankdir=TB style=rounded
+		Scenario [color=orange fontcolor=black shape=hexagon style=filled]
+		Parameter [color=orange fontcolor=black shape=hexagon style=filled]
+	}
+	subgraph cluster_3 {
+		color=black fontsize=20 label=<Impact Assessment Model> margin=10 style=rounded
+		"LCA layer" [color="#8b13a3" fontcolor=white height=1 shape=octagon style=filled]
+	}
+	Scenario -> "LCA layer" [color=orange]
+	Flow -> "LCA layer" [color=green]
+	Element -> Substance [color=blue]
+	Compound -> Substance [color=blue]
+	Material -> Substance [color=blue]
+	Component -> Substance [color=blue]
+	Product -> Substance [color=blue]
+	Element -> Compound [color=blue]
+	Element -> Material [color=blue]
+	Element -> Component [color=blue]
+	Element -> Product [color=blue]
+	Compound -> Material [color=blue]
+	Compound -> Component [color=blue]
+	Compound -> Product [color=blue]
+	Material -> Component [color=blue]
+	Material -> Product [color=blue]
+	Component -> Product [color=blue]
+	Flow -> Process [color=green]
+	Process -> Flow [color=green]
+	Substance -> Flow [color=blue]
+	Scenario -> Parameter [color=orange]
+	Parameter -> Process [color=orange]
+	Parameter -> Substance [color=orange]
+	Parameter -> Flow [color=orange]
+	Energy -> Flow [color=gold]
+}
