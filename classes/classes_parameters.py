@@ -55,7 +55,7 @@ class Parameter:
     to_series()
         Convert the parameter to a Pandas Series.
     """
-    def __init__(self, name, internal=True):
+    def __init__(self, name, value=None, unit=None, description=None,data_sources=None,lower_bound=None,upper_bound=None,uncertainty=None, internal=True):
         """
         Parameters
         ----------
@@ -69,13 +69,13 @@ class Parameter:
             Whether the parameter is internal or external, by default True
         """
         self.name = name
-        self.value = None 
-        self.unit = None
-        self.description = None
+        self.value = value 
+        self.unit = unit
+        self.description = description
         self.data_sources = []
-        self.lower_bound = None
-        self.upper_bound = None
-        self.uncertainty = None
+        self.lower_bound = lower_bound
+        self.upper_bound = upper_bound
+        self.uncertainty = uncertainty
         self.internal = internal
 
     def __repr__(self):
