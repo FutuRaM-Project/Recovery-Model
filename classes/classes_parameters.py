@@ -88,6 +88,9 @@ class Parameter:
             The string representation of the parameter.
         """
         return f"{self.name}: {self.value} {self.unit}"
+    
+    def add_to_model(self, model):
+        model.add_parameter(self)
 
     def set_description(self, description):
         """
@@ -256,6 +259,7 @@ for parameter in EXTERNAL_PARAMETERS:
     parameter.set_external()
 
 
+
 # Define a class for scenarios
 class Scenario:
     """
@@ -301,6 +305,10 @@ class Scenario:
         self.name = name
         self.description = None
         self.parameters = {param.name: param for param in EXTERNAL_PARAMETERS}
+        
+    def add_to_model(self, model):
+        model.add_scenario(self)    
+
 
     def set_parameter(self, parameter_name, value):
         """

@@ -19,6 +19,9 @@ class Process:
         self.inputs = []
         self.outputs = []
         self.parameters = []
+
+    def add_to_model(self, model):
+        model.add_process(self)
     
     def add_input(self, flow):
         """

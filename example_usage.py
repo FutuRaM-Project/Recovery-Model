@@ -69,7 +69,7 @@ car.add_to_model(model)
 
 car.expand_composition()
 
-car.create_treemap()
+# car.create_treemap()
 
 products = [car]
 
@@ -80,7 +80,7 @@ print(js)
 
 
 car.expand_composition()
-car.create_treemap()
+# car.create_treemap()
 # look at the model
 model.to_dict()
 
@@ -136,42 +136,66 @@ create_process_diagram(shred)
 #%% Make a process to recycle the steel
 
 # Create a process with description and tags
-recycle_steel = Process("Steel recycling", "This is a unit process that represents the recycling of steel", ["chemical", "recycling"])
+recycle_steel = Process("Steel recycling", "This is a unit process that represents the recycling of steel", ["physical", "recycling", "pyrometallurgy"])
+ocean_dumping = Process("Ocean dumping", "This is a unit process that represents the dumping of plastic in the ocean", ["physical", "dumping", "ocean"])
 
 # Create flows
-flow_1 = Flow("Flow 1")
-flow_2 = Flow("Flow 2")
+flow_CarShredded_metal = Flow("steel_from_shredder", to=recycle_steel, from_=shred, amount=1, unit="kg")
+flow_CarShredded_metal.composition = {"Fe": 0.9, "C": 0.1}
+
+
+flow_CarShredded_plastic = Flow("plastic_from_shredder", to=ocean_dumping, from_=shred, amount=1, unit="kg")
+flow_CarShredded_plastic.composition = plastic.composition
+
+flow_recycled_steel = Flow("recycled_steel", to='X', from_=recycle_steel, amount=0.9, unit="kg")
+flow_recycled_steel.composition = steel_mild.composition
+
+
+ocean_dumping.add_input(flow_CarShredded_plastic)
+create_process_diagram(ocean_dumping)
+
 
 # Create parameters with definition, uncertainty, and data sources
-parameter_1 = Parameter("Parameter 1", "This parameter represents the conversion efficiency of the process.")
-parameter_1.uncertainty = "±5%"
+parameter_1 = Parameter("Parameter 1", description="This parameter represents the conversion efficiency of the process.")
+parameter_1.uncertainty = 0.05
 parameter_1.add_data_source("Research paper")
 parameter_1.add_data_source("Internal experimental data")
 
-parameter_2 = Parameter("Parameter 2", "This parameter represents the energy consumption of the process.")
-parameter_2.uncertainty = "±10%"
+parameter_2 = Parameter("Parameter 2", description="This parameter represents the energy consumption of the process.")
+parameter_2.uncertainty = 0.1
 parameter_2.add_data_source("Energy audit report")
 
 # Link objects
-process_1.add_input(flow_1)
-process_1.add_output(flow_2)
-process_1.add_parameter(parameter_1)
-process_1.add_parameter(parameter_2)
+recycle_steel.add_input(flow_CarShredded_metal)
+recycle_steel.add_output(flow_recycled_steel)
+recycle_steel.add_parameter(parameter_1)
+recycle_steel.add_parameter(parameter_2)
+recycle_steel.to_dict()
+
+for flow in recycle_steel.inputs:
+    print(flow.name)
+    print(flow.composition)
+for flow in recycle_steel.outputs:
+    print(flow.name)
+    print(flow.composition)
 
 # Access object attributes
-print(process_1.name)  # Output: Process 1
-print(process_1.description)  # Output: This is a unit process that converts raw material to finished product.
-print(process_1.tags)  # Output: ['chemical', 'reaction']
+print(recycle_steel.name)  # Output: Process 1
+print(recycle_steel.description)  # Output: This is a unit process that converts raw material to finished product.
+print(recycle_steel.tags)  # Output: ['chemical', 'reaction']
 
 # Access linked objects
-print(process_1.inputs)  # Output: [flow_1]
-print(process_1.outputs)  # Output: [flow_2]
-print(process_1.parameters)  # Output: [parameter_1, parameter_2]
+print(recycle_steel.inputs)  # Output: [flow_1]
+print(recycle_steel.outputs)  # Output: [flow_2]
+print(recycle_steel.parameters)  # Output: [parameter_1, parameter_2]
 
 # Access parameter attributes
 print(parameter_1.name)  # Output: Parameter 1
-print(parameter_1.definition)  # Output: This parameter represents the conversion efficiency of the process.
+print(parameter_1.description)  # Output: This parameter represents the conversion efficiency of the process.
 
+for obj in [recycle_steel, ocean_dumping, flow_CarShredded_metal, flow_CarShredded_plastic, flow_recycled_steel, parameter_1, parameter_2]:
+    print(obj.name)
+    obj.add_to_model(model)
 
 # Example usage:
 

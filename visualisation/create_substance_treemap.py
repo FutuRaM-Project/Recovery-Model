@@ -1,6 +1,7 @@
 import plotly.graph_objects as go
 from plotly.io import write_html
 from math import floor
+import os
 
 #! THIS ONE NEEDS WORK: THE NESTED DICTIONARIES SHOULD BE INSIDE OF THE OUTSIDE DICTIONARY IN THE BOXES. It would be good to have an option to choose the level of nesting to display. 
 
@@ -36,6 +37,9 @@ def prepare_treemap_data(data, parent_key='', level=0):
 
 def create_substance_treemap(data, name, level=0):
     # Define the filenames
+    if not os.path.exists('../figures'):
+        os.makedirs('../figures')
+
     svg_filename = f'..figures/{name}_treemap.svg'
     html_filename = f'..figures/{name}_treemap.html'
 

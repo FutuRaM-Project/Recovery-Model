@@ -59,6 +59,9 @@ class Flow:
         if not isinstance(amount, (int, float)):
             raise TypeError("Amount must be a number.")
         self.amount = amount
+
+    def add_to_model(self, model):
+        model.add_flow(self)
     
     def set_parameter(self, parameter_name, value):
         """
