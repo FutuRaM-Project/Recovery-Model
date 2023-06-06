@@ -324,9 +324,11 @@ acts_FM = acts_all[acts_all.prod_category.isin(FM_cats)]
 acts_FM = acts_FM[['name', 'reference product',  "ISIC_name", "ISIC", "CPC_name", "CPC","prod_category", "prod_sub_category", "code", 'activity type']]
 acts_FM.rename(columns={"code": "code_EI"}, inplace=True)
 
-substances_FM = acts_FM[acts_FM["activity type"] == "market activity"]
-processes_FM = acts_FM[acts_FM["activity type"] == "ordinary transforming activity"]
+""" substances_FM = acts_FM[acts_FM["activity type"] == "market activity"]
+processes_FM = acts_FM[acts_FM["activity type"] == "ordinary transforming activity"] """
 
+import os
+if not os.path.exists('data'): os.makedirs('data')
 acts_FM.to_csv('data/activities_from_ei_con319.csv', index=False)
 substances_FM.to_csv('data/substances_from_ei_con319.csv', index=False)
 processes_FM.to_csv('data/processes_from_ei_con319.csv', index=False)
@@ -399,10 +401,10 @@ for i, j in acts_all.iterrows():
 
 acts_all = acts_all.drop("classifications", axis=1)
 
-acts_all = acts_all[
+""" acts_all = acts_all[
     (acts_all['location'].apply(lambda x: True if any(i in x for i in ['GLO', 'RoW']) else False))
     & (acts_all['unit'] == 'kilogram')
-    ]
+    ] """
 # Filter by CPC codes
 acts_all["prod_category"] = ""
 acts_all["prod_sub_category"] = ""
