@@ -6,23 +6,24 @@ class Process:
         name (str): The name of the process.
         description (str): A description of the process.
         tags (list): A list of tags associated with the process.
-        WS (list): A list of waste streams associated with the process.
+        waste_stream (list): A list of waste streams associated with the process.
         inputs (list): A list of input flows to the process.
         outputs (list): A list of output flows from the process.
         parameters (list): A list of parameters associated with the process.
     """
+
     def __init__(self, name, description="", tags=None):
         self.name = name
         self.description = description
         self.tags = tags if tags is not None else []
-        self.WS = []
+        self.waste_stream = []
         self.inputs = []
         self.outputs = []
         self.parameters = []
 
     def add_to_model(self, model):
         model.add_process(self)
-    
+
     def add_input(self, flow):
         """
         Adds an input flow to the process.
@@ -31,7 +32,7 @@ class Process:
             flow (Flow): The input flow to add.
         """
         self.inputs.append(flow)
-    
+
     def add_output(self, flow):
         """
         Adds an output flow to the process.
@@ -40,7 +41,7 @@ class Process:
             flow (Flow): The output flow to add.
         """
         self.outputs.append(flow)
-    
+
     def remove_input(self, flow):
         """
         Removes an input flow from the process.
@@ -49,7 +50,7 @@ class Process:
             flow (Flow): The input flow to remove.
         """
         self.inputs.remove(flow)
-    
+
     def remove_output(self, flow):
         """
         Removes an output flow from the process.
@@ -58,19 +59,19 @@ class Process:
             flow (Flow): The output flow to remove.
         """
         self.outputs.remove(flow)
-    
+
     def clear_inputs(self):
         """
         Clears all input flows from the process.
         """
         self.inputs = []
-    
+
     def clear_outputs(self):
         """
         Clears all output flows from the process.
         """
         self.outputs = []
-    
+
     def get_total_input_flow(self):
         """
         Calculates the total input flow to the process.
@@ -80,7 +81,7 @@ class Process:
         """
         total_input_flow = sum(flow.amount for flow in self.inputs)
         return total_input_flow
-    
+
     def get_total_output_flow(self):
         """
         Calculates the total output flow from the process.
@@ -90,7 +91,7 @@ class Process:
         """
         total_output_flow = sum(flow.amount for flow in self.outputs)
         return total_output_flow
-    
+
     def add_transform_flow(self, flow, function):
         """
         Transforms an input flow and adds the resulting output flow to the process.
@@ -103,7 +104,7 @@ class Process:
         out = flow.copy()
         out = function(flow)
         self.add_output(flow)
-    
+
     def has_input(self, flow):
         """
         Checks if an input flow is associated with the process.
@@ -115,7 +116,7 @@ class Process:
             True if the input flow is associated with the process, False otherwise.
         """
         return flow in self.inputs
-    
+
     def has_output(self, flow):
         """
         Checks if an output flow is associated with the process.
@@ -127,7 +128,7 @@ class Process:
             True if the output flow is associated with the process, False otherwise.
         """
         return flow in self.outputs
-    
+
     def has_tag(self, tag):
         """
         Checks if a tag is associated with the process.
@@ -139,7 +140,7 @@ class Process:
             True if the tag is associated with the process, False otherwise.
         """
         return tag in self.tags
-    
+
     def add_parameter(self, parameter):
         """
         Adds a parameter to the process.
@@ -148,7 +149,7 @@ class Process:
             parameter: The parameter to add.
         """
         self.parameters.append(parameter)
-    
+
     def remove_parameter(self, parameter):
         """
         Removes a parameter from the process.
@@ -169,8 +170,8 @@ class Process:
             "name": self.name,
             "description": self.description,
             "tags": self.tags,
-            "WS": self.WS,
+            "waste_stream": self.waste_stream,
             "inputs": self.inputs,
             "outputs": self.outputs,
-            "parameters": self.parameters
+            "parameters": self.parameters,
         }

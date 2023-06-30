@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class Flow:
     """
     A class representing a flow of material or energy between two points.
@@ -14,6 +15,7 @@ class Flow:
         composition (dict): A dictionary representing the composition of the flow.
         unit (str): The unit of measurement for the flow.
     """
+
     def __init__(self, name, to, from_, amount, unit):
         self.name = name
         self.parameters = {}
@@ -24,7 +26,7 @@ class Flow:
         self.composition = None
         self.unit = unit
 
-    #TODO: Add a method to check if the composition consists of valid substances
+    # TODO: Add a method to check if the composition consists of valid substances
     def set_composition(self, composition):
         """
         Sets the composition of the flow.
@@ -45,7 +47,7 @@ class Flow:
         if sum(composition.values()) != 1:
             raise ValueError("Composition values must add up to 1.")
         self.composition = composition
-        
+
     def set_amount(self, amount):
         """
         Sets the amount of material or energy in the flow.
@@ -61,8 +63,13 @@ class Flow:
         self.amount = amount
 
     def add_to_model(self, model):
+        """_summary_
+
+        Args:
+            model (_type_): _description_
+        """
         model.add_flow(self)
-    
+
     def set_parameter(self, parameter_name, value):
         """
         Sets a parameter associated with the flow.
@@ -194,15 +201,14 @@ class Flow:
             A dictionary representing the flow.
         """
         flow_dict = {
-            'Name': self.name,
-            'Tags': self.tags,
-            'To': self.to,
-            'From': self.from_,
-            'Amount': self.amount,
-            'Unit': self.unit,
-            'Composition': self.composition,
-            'Parameters': self.parameters,
-
+            "Name": self.name,
+            "Tags": self.tags,
+            "To": self.to,
+            "From": self.from_,
+            "Amount": self.amount,
+            "Unit": self.unit,
+            "Composition": self.composition,
+            "Parameters": self.parameters,
         }
         return flow_dict
 
@@ -216,7 +222,7 @@ class Flow:
         flow_dict = self.to_dict()
         series = pd.Series(flow_dict)
         return series
-    
+
     def add_to_model(self, model):
         """
         Adds the flow to a given model.
@@ -227,8 +233,7 @@ class Flow:
         model.add_flow(self)
 
 
-    
-    '''
+"""
 
     # Example usage:
 
@@ -237,7 +242,7 @@ class Flow:
 
     # Set composition
     flow_1.set_composition({"Substance_1": 0.4, "Substance_2": 0.6})
-    
+
     # Set amount
     flow_1.set_amount(200)
 
@@ -249,7 +254,7 @@ class Flow:
 
     flow_1.to_dict()
 
-# Output:
+    # Output:
         # {'Name': 'Flow_1',
         #  'Tags': ['Tag_1'],
         #  'To': 'Process_1',
@@ -259,4 +264,4 @@ class Flow:
         #  'Composition': {'Substance_1': 0.5, 'Substance_2': 0.5},
         #  'Parameters': {'Parameter_1': 1}}
 
-    '''
+"""
