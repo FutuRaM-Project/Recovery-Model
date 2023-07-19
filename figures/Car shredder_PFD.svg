@@ -27,7 +27,7 @@
 <title>Car shredder&#45;&gt;metal from shredded car</title>
 <path fill="none" stroke="black" d="M365.99,-88.24C398.76,-93.19 441.41,-99.64 479.71,-105.43"/>
 <polygon fill="black" stroke="black" points="479.46,-108.93 489.87,-106.97 480.5,-102.01 479.46,-108.93"/>
-<text text-anchor="middle" x="408.48" y="-100.8" font-family="Times,serif" font-size="14.00">0.9 kg</text>
+<text text-anchor="middle" x="408.48" y="-100.8" font-family="Times,serif" font-size="14.00">900 kg</text>
 </g>
 <!-- shredded car plastic -->
 <g id="node4" class="node">

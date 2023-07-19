@@ -14,15 +14,15 @@ class Flow:
         composition (dict): A dictionary representing the composition of the flow.
         unit (str): The unit of measurement for the flow.
     """
-    def __init__(self, name, to, from_, amount, unit):
-        self.name = name
+    def __init__(self, process_from, process_to, composition):
+        self.name = None
         self.parameters = {}
         self.tags = []
-        self.to = to
-        self.from_ = from_
-        self.amount = amount
-        self.composition = None
-        self.unit = unit
+        self.process_from = process_from
+        self.process_to = process_to
+        self.amount = None
+        self.composition = composition
+        self.unit = None
 
     #TODO: Add a method to check if the composition consists of valid substances
     def set_composition(self, composition):
@@ -150,23 +150,23 @@ class Flow:
         """
         return self.tags
 
-    def set_to(self, to):
+    def set_to(self, process_to):
         """
         Sets the destination of the flow.
 
         Args:
             to (str): The destination of the flow.
         """
-        self.to = to
+        self.process_to = process_to
 
-    def set_from(self, from_):
+    def set_from(self, process_from):
         """
         Sets the source of the flow.
 
         Args:
             from_ (str): The source of the flow.
         """
-        self.from_ = from_
+        self.process_from_ = process_from
 
     def get_to(self):
         """
@@ -175,7 +175,7 @@ class Flow:
         Returns:
             The destination of the flow.
         """
-        return self.to
+        return self.process_to
 
     def get_from(self):
         """
@@ -184,7 +184,7 @@ class Flow:
         Returns:
             The source of the flow.
         """
-        return self.from_
+        return self.process_from
 
     def to_dict(self):
         """
@@ -196,8 +196,8 @@ class Flow:
         flow_dict = {
             'Name': self.name,
             'Tags': self.tags,
-            'To': self.to,
-            'From': self.from_,
+            'To': self.process_to,
+            'From': self.process_from,
             'Amount': self.amount,
             'Unit': self.unit,
             'Composition': self.composition,

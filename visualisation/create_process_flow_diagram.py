@@ -34,15 +34,15 @@ def create_process_flow_diagram(model, process_filters=None, flow_filters=None, 
             if flow_tag_filters and not input_flow.has_tags(flow_tag_filters):
                 continue
 
-            substances = input_flow.substances
-            for substance in substances:
-                substance_name = substance.name
-                composition = substance.composition
-                components = ', '.join(component.name for component in composition.get('components', []))
-                elements = ', '.join(element.symbol for element in composition.get('elements', []))
-                graph.node(substance_name, shape='ellipse', color='lightblue', fontcolor='black', style='filled',
-                           label=f"{substance_name}\nComponents: {components}\nElements: {elements}")
-                graph.edge(substance_name, process_name, color='blue')
+            # substances = input_flow.substances
+            # for substance in substances:
+            #     substance_name = substance.name
+            #     composition = substance.composition
+            #     components = ', '.join(component.name for component in composition.get('components', []))
+            #     elements = ', '.join(element.symbol for element in composition.get('elements', []))
+            #     graph.node(substance_name, shape='ellipse', color='lightblue', fontcolor='black', style='filled',
+            #                label=f"{substance_name}\nComponents: {components}\nElements: {elements}")
+            #     graph.edge(substance_name, process_name, color='blue')
 
         for output_flow in process.outputs:
             if flow_filters and output_flow.name not in flow_filters:
@@ -50,15 +50,15 @@ def create_process_flow_diagram(model, process_filters=None, flow_filters=None, 
             if flow_tag_filters and not output_flow.has_tags(flow_tag_filters):
                 continue
 
-            substances = output_flow.substances
-            for substance in substances:
-                substance_name = substance.name
-                composition = substance.composition
-                components = ', '.join(component.name for component in composition.get('components', []))
-                elements = ', '.join(element.symbol for element in composition.get('elements', []))
-                graph.node(substance_name, shape='ellipse', color='lightblue', fontcolor='black', style='filled',
-                           label=f"{substance_name}\nComponents: {components}\nElements: {elements}")
-                graph.edge(process_name, substance_name, color='blue')
+            # substances = output_flow.substances
+            # for substance in substances:
+            #     substance_name = substance.name
+            #     composition = substance.composition
+            #     components = ', '.join(component.name for component in composition.get('components', []))
+            #     elements = ', '.join(element.symbol for element in composition.get('elements', []))
+            #     graph.node(substance_name, shape='ellipse', color='lightblue', fontcolor='black', style='filled',
+            #                label=f"{substance_name}\nComponents: {components}\nElements: {elements}")
+            #     graph.edge(process_name, substance_name, color='blue')
 
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     filename_prefix = f"process_flow_diagram_{timestamp}{filename_suffix}"

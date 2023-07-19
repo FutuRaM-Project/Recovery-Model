@@ -11,14 +11,38 @@ class Process:
         outputs (list): A list of output flows from the process.
         parameters (list): A list of parameters associated with the process.
     """
-    def __init__(self, name, description="", tags=None):
+    def __init__(self, name):
         self.name = name
-        self.description = description
-        self.tags = tags if tags is not None else []
-        self.WS = []
+        self.uuid = None
+        self.description = None
+        self.tags = []
+        self.transformation_level = None
+        self.WS = None
+        self.consumption_energy = None
+        self.consumption_water = None
+        self.cost_operation = None
+        self.cost_capital = None
+        self.transfer_coefficients = []
         self.inputs = []
         self.outputs = []
         self.parameters = []
+    
+    def add_transfer_coefficient(self, flow_input, flow_output, transfer_coefficient, uncertainty):
+        """
+        Adds a transfer coefficient to the process.
+
+        Args:
+            input (str): The input flow.
+            output (str): The output flow.
+            transfer_coefficient (float): The transfer coefficient.
+            uncertainty (float): The uncertainty of the transfer coefficient.
+        """
+        self.transfer_coefficients.append({
+            "input": flow_input,
+            "output": flow_output,
+            "transfer_coefficient": transfer_coefficient,
+            "uncertainty": uncertainty
+        })
 
     def add_to_model(self, model):
         model.add_process(self)

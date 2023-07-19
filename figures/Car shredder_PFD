@@ -4,7 +4,7 @@ digraph {
 	"metal from shredded car"
 	"shredded car plastic"
 	"car for shredding" -> "Car shredder" [label="1 car"]
-	"Car shredder" -> "metal from shredded car" [label="0.9 kg"]
+	"Car shredder" -> "metal from shredded car" [label="900 kg"]
 	"Car shredder" -> "shredded car plastic" [label="100 kg"]
 	nodesep=0.6 rankdir=LR
 	title="Car shredder Process Flow Diagram"

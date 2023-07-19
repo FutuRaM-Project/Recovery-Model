@@ -61,14 +61,14 @@ components = [wheel, body]
 for component in components: component.add_to_model(model)
 
 # create a product from a list of components
-car = Product("Fiat Ape", {wheel: 0.1, body: 0.9})
+car = Product("Piaggio Ape", {wheel: 0.1, body: 0.9})
 car.tags += ["car", "vehicle", "transportation", "ELV", ]
 # look at the car
 car.to_dict()
 car.add_to_model(model)
 
 car.expand_composition()
-
+car.composition 
 # car.create_treemap()
 
 products = [car]
@@ -100,7 +100,7 @@ flow_CarShredded_metal = Flow("metal from shredded car", to='X', from_=shred, am
 flow_CarShredded_metal.tags += ["metal", "ELV", 'ferrous']
 #! need to make a way to add and remove materials from a flow
 flow_CarShredded_metal.composition = steel_ti.composition # + steel_mild.composition
-flow_CarShredded_metal.amount = 0.9 # should be: amount of metal in the car * transfer coefficient
+flow_CarShredded_metal.amount = 900 # should be: amount of metal in the car * transfer coefficient
 
 flow_CarShredded_metal.to_dict()
 
