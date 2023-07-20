@@ -1,5 +1,6 @@
-.
 ~
-.*
+*.archive*
+*.secret*
 ~*
-__*
+*~
+__pycache__*
