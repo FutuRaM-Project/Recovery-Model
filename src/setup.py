@@ -10,6 +10,6 @@ setup(name='futuram',
       author='FutuRaM',
       author_email='s.c.mcdowall@cml.leidenuniv.nl',
       license='MIT',
-      packages=['src.futuram'],
+      packages=['futuram'],
       install_requires=requirements,
       zip_safe=False)

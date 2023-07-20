@@ -1,0 +1,8 @@
+setup.py
+futuram/__init__.py
+futuram.egg-info/PKG-INFO
+futuram.egg-info/SOURCES.txt
+futuram.egg-info/dependency_links.txt
+futuram.egg-info/not-zip-safe
+futuram.egg-info/requires.txt
+futuram.egg-info/top_level.txt
