@@ -4,7 +4,7 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(name='futuram',
-      version='0.1',
+      version='0.01',
       description='SRM recovery model for the FutuRaM project',
       url='https://github.com/FutuRaM-Project/IntegratedModel',
       author='FutuRaM',
