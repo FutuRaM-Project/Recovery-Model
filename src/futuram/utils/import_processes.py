@@ -1,5 +1,5 @@
 import openpyxl
-from classes.classes_processes import Process
+from ..classes.processes import Process
 
 def import_processes_xlsx(filename, model):
     # set the path to the file

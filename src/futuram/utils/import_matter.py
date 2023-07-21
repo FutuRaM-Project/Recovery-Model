@@ -1,13 +1,8 @@
-import sys
-
-# Add the path to the classes folder to the system path
-sys.path.insert(0, '..')
-
 
 import openpyxl
-from classes.classes_matter import Element, Compound, Material, Component, Product
+from ..classes.matter import Element, Compound, Material, Component, Product
 
-def import_processes_xlsx(filename, model):
+def import_matter_csv(filename, model):
     # set the path to the file
     path = filename
     workbook = openpyxl.load_workbook(path, data_only=True)

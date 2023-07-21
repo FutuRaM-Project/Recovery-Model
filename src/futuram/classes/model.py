@@ -4,6 +4,7 @@
 # from utils.create_process_tree_diagram import create_process_tree_diagram
 
 import pandas as pd
+import json
 
 class Model:
     def __init__(self, name):

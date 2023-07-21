@@ -1,8 +1,8 @@
 import openpyxl
 
-from .classes.flows import Flow
-from .classes.processes import Process
-from .classes.model import Model
+from ..classes.flows import Flow
+from ..classes.processes import Process
+from ..classes.model import Model
 
 def import_flows_xlsx(filename, model):
     # set the path to the file

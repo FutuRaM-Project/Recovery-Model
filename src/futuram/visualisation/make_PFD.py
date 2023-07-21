@@ -1,6 +1,6 @@
 from graphviz import Digraph
 
-def create_process_diagram(process):
+def make_PFD(process):
     # Create a new Digraph instance
     graph = Digraph()
 

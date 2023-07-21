@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import periodictable
 
-# from visualisation.create_matter_treemap import create_matter_treemap
+from ..visualisation.create_matter_treemap import create_matter_treemap
 
 class Matter:
     """
