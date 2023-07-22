@@ -18,6 +18,7 @@ class Model:
         self.materials = {}
         self.components = {}
         self.products = {}
+        self.matter_list = {}
 
     def add_parameter(self, parameter):
         if type(parameter).__name__ == 'Parameter':
@@ -42,6 +43,20 @@ class Model:
             self.flows[flow.name] = flow
         else:
             raise TypeError("Only objects of type Flow can be added to flows.")
+    
+    def add_matter(self, matter):
+        if type(matter).__name__ == 'Element':
+            self.elements[matter.name] = matter
+        elif type(matter).__name__ == 'Compound':
+            self.compounds[matter.name] = matter
+        elif type(matter).__name__ == 'Material':
+            self.materials[matter.name] = matter
+        elif type(matter).__name__ == 'Component':
+            self.components[matter.name] = matter
+        elif type(matter).__name__ == 'Product':
+            self.products[matter.name] = matter
+        else:
+            raise TypeError("Only objects of type Element, Compound, Material, Component or Product can be added to matter.")
 
     def add_element(self, element):
         if type(element).__name__ == 'Element':
@@ -120,7 +135,7 @@ class Model:
         flow_names.sort()
         print(flow_names)
 
-    def list_matters(self):
+    def list_matter(self):
         matter_names = list(self.elements.keys()) + list(self.compounds.keys()) + list(self.materials.keys()) + list(self.components.keys()) + list(self.products.keys())
         matter_names.sort()
         print(matter_names)

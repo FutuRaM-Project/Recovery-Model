@@ -1,49 +1,101 @@
 
-import openpyxl
-from ..classes.matter import Element, Compound, Material, Component, Product
+import os
+import csv
+from decimal import Decimal
 
-def import_matter_csv(filename, model):
-    # set the path to the file
-    path = filename
-    workbook = openpyxl.load_workbook(path, data_only=True)
-    # Select the worksheet
-    worksheet = workbook.worksheets[0]
-    # Get the headers
-    headers = [cell.value for cell in worksheet[1]]
-    # Convert each row (process) to a dictionary
-    data = []
-    for row in worksheet.iter_rows(min_row=2, values_only=True):
-        row_data = {}
-        for i, value in enumerate(row):
-            if worksheet.cell(row=1, column=i+1).data_type == 's':
-                row_data[headers[i]] = str(value)
-            elif worksheet.cell(row=1, column=i+1).data_type == 'n':
-                row_data[headers[i]] = float(value)
-            elif worksheet.cell(row=1, column=i+1).data_type == 'd':
-                row_data[headers[i]] = value.date()
-            elif worksheet.cell(row=1, column=i+1).data_type == 'b':
-                row_data[headers[i]] = bool(value)
-            elif worksheet.cell(row=1, column=i+1).data_type == 'f':
-                row_data[headers[i]] = worksheet.cell(row=row[0].row, column=row[0].column)._value
-            else:
-                row_data[headers[i]] = None
-        data.append(row_data)
+from futuram.classes.matter import Element, Compound, Material, Component, Product
+from futuram.classes.model import Model
 
-    for matter in data:
+matter_types = {'element': 'elm', 'compound' : 'cmp', "material" : 'mat', 'component' : 'cpt', 'product' : 'prd'}
+
+
+def import_matter_bulk(dir_data, model):
+    """
+    Import all composition csvs from the data directory.
+    Csvs should be in a subdirectory called 'compositions-split'
+    csvs should have the following naming convention:
+    <WS>_<parent_product>_<matter name>-<matter_type>.csv
+    where matter types are one of:
+    ['elm', 'cmp', 'mat', 'cpt', 'prd']
+    """
+    # find directories with compositions
+    dir_compositions = [os.path.join(dir_data, x) for x in os.listdir(dir_data) if 'compositions-split' in x][0]
+
+    # get the list of files in the data directory and extract the matter type store in a tuple
+    for k, v in matter_types.items():
+        files = [(os.path.join(dir_compositions, x), v) for x in os.listdir(dir_compositions) if v in x.split('-')[1]]
         
-        new_process = Process(process['name'])
-        new_process.uuid = process['uuid']
-        new_process.description = process['description']
-        new_process.tags = process['tags']
-        new_process.WS = process['WS']
-        new_process.transformation_level = process['transformation_level']
-        new_process.consumption_energy = process['consumption_energy']
-        new_process.consumption_water = process['consumption_water']
-        new_process.cost_operation = process['cost_operation']
+        # loop over the tuples and import the matter
+        for file, matter_type in files:
+            # import the matter to the model
+            import_matter_csv(model, file)
+            
+            matter_name = os.path.basename(file).split('-')[0]
+            print(f'Imported {matter_name} as {matter_type} to model {model.name}')
+    
 
-        new_process.add_to_model(model)
-        print("Process added to model: " + new_process.name)
+def import_matter_csv(model, filename):
+    """
+    Import a csv file containing matter data.
+    The csv should have the structure of the following example:
 
-    return data
+    filename = ELV_ICE_ferrous-mat.csv
+    "
+    fraction,matter,mass,mass_fraction,uncertainty
+    Pb,element,18.2,0.65,0.1
+    H2SO4,compound,7,0.25,0.1
+    plastic,material,2.8,0.1,0.1
+    "
+    the columns of the csv will end up in the composition dictionary with the name of the fraction as the key to a dictionary of the other columns.
+
+    the matter_type is determined by the end of the filename, e.g. 'ferrous-mat.csv' will be imported as a material.
+
+    To split an xlsx file with multiple sheets into multiple csvs, use: 
+    "utils.split_xlsx_to_csvs.xlsx_to_csvs(filename)"
+    The sheet names should be the same structure as the filename above.
+    """
+
+    # get the matter name from the filename
+
+    name = os.path.basename(filename).split('-')[0]
+
+    # make a map of matter types to classes
+    matter_type_map = {'elm': Element, 'cmp': Compound, 'mat': Material, 'cpt': Component, 'prd': Product}
+    
+    # get the matter type from the filename
+    matter_type = matter_type_map.get(filename.split('-')[-1].split('.')[0], None)
+
+    # get the composition data from the csv
+    comp_dict = {}
+    with open(filename, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['fraction'] != '':
+                fraction = row['fraction']
+                mass_fraction = float(row['mass_fraction'])
+                matter_kind = row['matter']
+                uncertainty = float(row['uncertainty'])
+                comp_dict[fraction] = {'matter_kind': matter_kind, 'mass_fraction': mass_fraction, 'uncertainty': uncertainty}
+
+    # check if mass fractions add up to 1
+    # convert the mass fractions to Decimal objects
+    mass_fractions = [Decimal(str(comp_dict[fraction]['mass_fraction'])) for fraction in comp_dict]
+
+    # calculate the sum of the mass fractions
+    mass_fractions_sum = sum(mass_fractions)
+
+    # check if the sum is equal to 1
+    if mass_fractions_sum != Decimal('1'):
+        # calculate the mass fraction for the 'undefined' fraction
+        undefined_mass_fraction = Decimal('1') - mass_fractions_sum
+
+        # add the 'undefined' fraction to the composition dictionary
+        comp_dict['undefined'] = {'matter_kind': 'unknown', 'mass_fraction': undefined_mass_fraction, 'uncertainty': Decimal('0')}
+
+    # finally, add instantiate the matter object and add it to the model
+    matter = Product(name, comp_dict)    
+    # matter.add_to_model(model)
+    model.add_matter(matter)
+
 
 

@@ -10,9 +10,20 @@ class Matter:
     Attributes:
         - name (str): The name of the matter.
         - EC (str): The EC number of the matter.
-        - composition (dict): The composition of the matter.
+        - composition (dict)(dict): The composition of the matter.
         - attributes_physchem (dict): A dictionary of physical/chemical attributes of the matter.
         - attributes_economic (dict): A dictionary of economic attributes of the matter.
+
+        The nested composition dictionary should be of the following structure:
+    {
+        name: {matter_type : string 
+                 mass_fraction : float between 0 and 1
+                 uncertainty : float between 0 and 1},
+        name: {matter_type : string
+                    mass_fraction : float between 0 and 1
+                    uncertainty : float between 0 and 1},
+
+    }
     """
     def __init__(self, name):
         self.name = name
@@ -36,17 +47,22 @@ class Matter:
             'Market Trends': None,
         }
 
-    def to_dict(self):
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name})"
+    
+    def add_to_model(self, model):
+        model.add_matter(self)
+
+    def as_dict(self):
         matter_dict = {
-            'Name': self.name,
-            "Tags": self.tags,
-            'Physical/Chemical Attributes': self.attributes_physchem,
-            'Economic Attributes': self.attributes_economic
+        "Name" : self.name,
+        "Tags": self.tags,
+        'Physical/chemical attributes': self.attributes_physchem,
+        'Economic attributes': self.attributes_economic,
         }
         return matter_dict
-    
-    def get_composition(self):
-        return self.composition
+
+
     
     def expand_composition(self):
         """
@@ -155,9 +171,9 @@ class Compound(Matter):
     Attributes:
         - formula: The chemical formula of the compound.
     """
-    def __init__(self, name, formula):
+    def __init__(self, name, composition):
         super().__init__(name)
-        self.formula = formula
+        self.formula = composition
         self.molecular_weight = self.calculate_molecular_weight()
         self.molar_fractions = self.calculate_molar_fractions()
         self.composition = self.calculate_mass_fractions()
@@ -232,91 +248,33 @@ class Material(Matter):
     """
     A subclass that represents a material made up of multiple composition.
     Attributes:
-        - composition (dict): A dict of Component objects : fractions representing the composition of the material.
+        - composition (dict): A dict of Component objects
+        - matter_type (str): The type of matter, e.g. 'material'
     """
     def __init__(self, name, composition):
         super().__init__(name)
         self.composition = composition
-        self.check_composition()
-
-    def check_composition(self):
-        total = sum(self.composition.values())
-        if total != 1:
-            raise ValueError(f"Component fractions must add up to 1. Not: {total}")
-        return True
-
-    def to_dict(self):
-        material_dict = super().to_dict()
-        material_dict.update({
-            'Composition': self.composition
-        })
-        return material_dict
-
-    def to_series(self):
-        material_dict = self.to_dict()
-        series = pd.Series(material_dict)
-        return series
-    
-    def add_to_model(self, model):
-        model.add_material(self)
+        self.matter_type = 'material'        
 
 class Component(Matter):
     """
     A subclass that represents a component of a material.
     Attributes:
         - matter (matter): A matter object representing the matter of the component.
-        - fraction (float): The fraction of the matter in the material.
+
     """
     def __init__(self, name, composition):
         super().__init__(name)
         self.composition = composition
-        self.check_composition()
-
-# make sure that the composition is valid, i.e. that the fractions sum to 1
-    def check_composition(self):
-        total = 0
-        for fraction in self.composition.values():
-            total += fraction
-        if total != 1:
-            raise ValueError(f"Component fractions must add up to 1. Not: {total}")
-        return True
-
-    def to_dict(self):
-        component_dict = super().to_dict()
-        component_dict.update({
-            'Composition': self.composition
-        })
-        return component_dict
-
-    def to_series(self):
-        component_dict = self.to_dict()
-        series = pd.Series(component_dict)
-        return series
-    
-    def add_to_model(self, model):
-        model.add_component(self)
+        self.matter_type = 'component'
 
 class Product(Matter):
     """
-    A subclass that represents a product made up of multiple composition.
+    A subclass that represents a product.
     Attributes:
-        - composition (list): A list of Component objects representing the composition of the product.
+        - composition (): A dictionary of matter objects representing the composition of the product.
     """
     def __init__(self, name, composition):
         super().__init__(name)
         self.composition = composition
-
-    def to_dict(self):
-        product_dict = super().to_dict()
-        product_dict.update({
-            'Composition': [component.to_dict() for component in self.composition]
-        })
-        return product_dict
-
-    def to_series(self):
-        product_dict = self.to_dict()
-        series = pd.Series(product_dict)
-        return series
-    
-    def add_to_model(self, model):
-        model.add_product(self)
+        self.matter_type = 'product'

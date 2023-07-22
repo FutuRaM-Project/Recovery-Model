@@ -1,8 +1,0 @@
-digraph {
-	"Ocean dumping" [shape=box]
-	plastic_from_shredder
-	plastic_from_shredder -> "Ocean dumping" [label="1 kg"]
-	nodesep=0.6 rankdir=LR
-	title="Ocean dumping Process Flow Diagram"
-	label="This is a unit process that represents the dumping of plastic in the ocean Process Flow Diagram"
-}
