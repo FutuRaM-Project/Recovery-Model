@@ -10,7 +10,7 @@ def xlsx_to_csvs(filename):
     # Get the sheet names
     sheet_names = workbook.sheetnames
     # Create a new directory for the CSV files
-    folder_name = f'{os.path.splitext(filename)[0]}_split'
+    folder_name = f'{os.path.splitext(filename)[0]}-split'
     os.makedirs(folder_name, exist_ok=True)
     # Loop through each sheet and create a CSV file
     for sheet_name in sheet_names:
@@ -39,3 +39,5 @@ def xlsx_to_csvs(filename):
     print(f'\nFiles were created in {folder_name}')
     print('\nSheets extracted:')
     for sheet_name in sheet_names: print(f'\t\t{sheet_name}')
+
+    return folder_name

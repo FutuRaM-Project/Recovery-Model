@@ -1,8 +1,5 @@
 fraction,matter,mass,mass_fraction,uncertainty
-Pt,element,3.5,0.05,0.1
-Pd,element,3.5,0.05,0.1
-Rh,element,0.7,0.01,0.1
-Ce,element,14,0.2,0.1
+ree,material,21.7,0.31,0.1
 ferrous,material,41.3,0.59,0.1
-rest,material,7,0.1,1.1
+rest,material,7,0.1,0.1
 ,,,

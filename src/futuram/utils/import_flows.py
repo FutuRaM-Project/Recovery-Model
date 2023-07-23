@@ -34,9 +34,7 @@ def import_flows_xlsx(filename, model):
     process_dict = {process.name: process for process in model.processes.values()}
 
     for flow in data:
-        new_flow = Flow(flow['process_from'], flow['process_to'], flow['composition'])
-        model.add_flow(new_flow)
-        new_flow.add_to_model(model)
+        new_flow = Flow(model, flow['process_from'], flow['process_to'], flow['composition'])
         
         if flow['process_from'] in process_dict:
             process = process_dict[flow['process_from']]

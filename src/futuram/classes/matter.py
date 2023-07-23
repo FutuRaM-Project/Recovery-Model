@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import periodictable
+import re
 
 from ..visualisation.create_matter_treemap import create_matter_treemap
 
@@ -53,7 +54,7 @@ class Matter:
     def add_to_model(self, model):
         model.add_matter(self)
 
-    def as_dict(self):
+    def to_dict(self):
         matter_dict = {
         "Name" : self.name,
         "Tags": self.tags,
@@ -140,13 +141,27 @@ class Element(Matter):
         - atomic_number (int): The atomic number of the element.
         - atomic_mass (float): The atomic mass of the element.
     """
-    def __init__(self, symbol):
+    def __init__(self, name, symbol):
         super().__init__(symbol)
+        symbol = self.get_symbol(symbol)
         element = periodictable.elements.symbol(symbol)
+        self.name = element.name
         self.symbol = element.symbol
         self.atomic_number = element.number
         self.atomic_mass = element._mass
         self.composition = {self: 1}
+
+    def get_symbol(self, symbol):
+        """
+        Checks if the composition is a dictionary or a string and converts it to a dictionary if necessary.
+        """
+        if isinstance(symbol, dict):
+            for k in symbol.keys():
+                    self.symbol = k 
+        else:
+            self.symbol = symbol
+
+        return self.symbol
 
     def to_dict(self):
         element_dict = super().to_dict()
@@ -171,13 +186,52 @@ class Compound(Matter):
     Attributes:
         - formula: The chemical formula of the compound.
     """
-    def __init__(self, name, composition):
+    def __init__(self, name, composition_molecular):
         super().__init__(name)
-        self.formula = composition
+        self.formula = self.get_formula(composition_molecular)
+        self.print_formula()
         self.molecular_weight = self.calculate_molecular_weight()
         self.molar_fractions = self.calculate_molar_fractions()
         self.composition = self.calculate_mass_fractions()
-        # self.attributes_physchem.update({ "Molecular Weight (g/mol)" : self.molecular_weight})
+
+
+    def print_formula(self):
+        print(self.formula)
+
+    def get_formula(self, composition_molecular):
+        """
+        Checks if the composition is a dictionary or a string and converts it to a dictionary if necessary.
+        """
+        for k, v in composition_molecular.items():
+            if isinstance(v, dict):
+                self.formula = self.formula_to_dict(k)
+            else:
+                self.formula = composition_molecular
+
+            
+        
+        return self.formula
+
+    def formula_to_dict(self, formula):
+            """
+            Converts a chemical formula string to a dictionary of element symbols and counts.
+            Args:
+                formula (str): The chemical formula string.
+
+            Returns:
+                dict: A dictionary of element symbols and counts.
+            """
+            pattern = r"([A-Z][a-z]*)(\d*)"
+            matches = re.findall(pattern, formula)
+            elements = {}
+            for symbol, count in matches:
+                count = int(count) if count else 1
+                if symbol in elements:
+                    elements[symbol] += count
+                else:
+                    elements[symbol] = count
+            return elements
+
 
     def calculate_molecular_weight(self):
         molecular_weight = 0
@@ -195,9 +249,8 @@ class Compound(Matter):
     def calculate_mass_fractions(self):
         composition = {}
         for symbol, count in self.formula.items():
-            composition[Element(symbol)] = periodictable.elements.symbol(symbol)._mass * count / self.molecular_weight
+            composition[Element(symbol, symbol)] = periodictable.elements.symbol(symbol)._mass * count / self.molecular_weight
         return composition
-
 
     def to_dict(self):
         compound_dict = super().to_dict()

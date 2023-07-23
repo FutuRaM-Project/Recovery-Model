@@ -1,6 +1,8 @@
 import json
 import pandas as pd
 
+from .processes import Process
+
 class Flow:
     """
     A class representing a flow of material or energy between two points.
@@ -15,8 +17,8 @@ class Flow:
         composition (dict): A dictionary representing the composition of the flow.
         unit (str): The unit of measurement for the flow.
     """
-    def __init__(self, process_from, process_to, composition):
-        self.name = None
+    def __init__(self, model, process_from, process_to, composition):
+        self.name = process_from + "_to_" + process_to
         self.parameters = {}
         self.tags = []
         self.process_from = process_from
@@ -24,8 +26,77 @@ class Flow:
         self.amount = None
         self.composition = composition
         self.unit = None
+        # self.add_composition_to_model(model)
 
-    #TODO: Add a method to check if the composition consists of valid matters
+##! THIS NEXT TWO FUNCTIONS SHOLD SET THE TO AND FROM PROCESSES TO BE THE OBJECTS IN THE MODEL, NOT JUST THE NAMES, ALSO ADD THE FLOW TO THE INPUTS AND OUTPUTS OF THE PROCESSES IF NOT PRESENT. but it is not working for some reason
+    def set_to(self, model, process_to):
+        """
+        Sets the destination of the flow to a process object if in the model
+        Adds the process if not in the model
+
+        Args:
+            to (str): The destination of the flow.
+        """
+        try :
+            process = model.processes[process_to]
+            self.process_to = process
+            if self not in process.inputs:
+                process.add_input(self)
+                print(f"Flow: {self.name} added to process: {process.name}")
+            else:
+                print(f"Flow {self.name} already in process: {process.name}")
+
+        except KeyError:
+            print(f"Process: {process_to} not found in model, adding to model")
+            process = Process(process_to)
+            process.add_input(self)
+            model.add_process(process)
+            print(f"Flow: {self.name} added to process: {process.name}")
+
+        _process_to = process
+        return _process_to
+
+    def set_from(self, model, process_from):
+        """
+        Sets the source of the flow to a process object if in the model
+        Adds the process if not in the model
+
+        Args:
+            from_ (str): The source of the flow.
+        """
+        try :
+            process = model.processes[process_from]
+            self.process_from = process
+            if self not in process.outputs:
+                process.add_output(self)
+                print(f"Flow: {self.name} added to process: {process.name}")
+            else:
+                print(f"Flow {self.name} already in process: {process.name}")
+
+        except KeyError:
+            print(f"Process: {process_from} not found in model, adding to model")
+            process = Process(process_from)
+            process.add_output(self)
+            model.add_process(process)
+            print(f"Flow: {self.name} added to process: {process.name}")
+        _process_from = process
+        return _process_from
+
+    def add_composition_to_model(self, model):
+        """
+        Adds the composition of the flow to the model's matter dictionary if not present.
+
+        Args:
+            model (Model): The model object to add the composition to.
+        """
+        for matter_name in self.composition:
+            try:
+                if matter_name not in model.matter:
+                    model.matter[matter_name] = Matter(matter_name, self.composition[matter_name])
+            except Exception as e:
+                print(e)
+
+    #TODO: Add a method to check if the composition consists of valid matter
     def set_composition(self, composition):
         """
         Sets the composition of the flow.

@@ -18,7 +18,7 @@ class Model:
         self.materials = {}
         self.components = {}
         self.products = {}
-        self.matter_list = {}
+        self.matter = self.get_matter()
 
     def add_parameter(self, parameter):
         if type(parameter).__name__ == 'Parameter':
@@ -118,52 +118,64 @@ class Model:
     def list_parameters(self):
         parameter_names = list(self.parameters.keys())
         parameter_names.sort()
-        print(parameter_names)
+        print(parameter_names, sep='\n')
 
     def list_scenarios(self):
         scenario_names = list(self.scenarios.keys())
         scenario_names.sort()
-        print(scenario_names)
+        print(scenario_names, sep='\n')
 
     def list_processes(self):
         process_names = list(self.processes.keys())
         process_names.sort()
-        print(process_names)
+        print(process_names, sep='\n')
 
     def list_flows(self):
         flow_names = list(self.flows.keys())
         flow_names.sort()
-        print(flow_names)
-
-    def list_matter(self):
-        matter_names = list(self.elements.keys()) + list(self.compounds.keys()) + list(self.materials.keys()) + list(self.components.keys()) + list(self.products.keys())
-        matter_names.sort()
-        print(matter_names)
+        print(flow_names, sep='\n')
 
     def list_elements(self):
         element_names = list(self.elements.keys())
         element_names.sort()
-        print(element_names)
+        print(element_names, sep='\n')
 
     def list_compounds(self):
         compound_names = list(self.compounds.keys())
         compound_names.sort()
-        print(compound_names)
+        print(compound_names, sep='\n')
 
     def list_materials(self):
         material_names = list(self.materials.keys())
         material_names.sort()
-        print(material_names)
+        print(material_names, sep='\n')
 
     def list_components(self):
         component_names = list(self.components.keys())
         component_names.sort()
-        print(component_names)
+        print(component_names, sep='\n')
 
     def list_products(self):
         product_names = list(self.products.keys())
         product_names.sort()
         print(product_names)
+
+    
+    def get_matter(self):
+        """ 
+        makes a dictionary of all matter in the model from the elements, compounds, materials, components and products
+        """
+        self.matter = {**self.elements, **self.compounds, **self.materials, **self.components, **self.products}
+        return self.matter
+    
+    def list_matter(self):
+        for m in [self.elements, self.compounds, self.materials, self.components, self.products]:
+            for matter_name, matter in m.items():
+                print(matter_name)
+                print(matter)
+                print()
+
+    
 
     def to_dataframe(self):
         """

@@ -3,13 +3,13 @@ import os
 import csv
 from decimal import Decimal
 
-from futuram.classes.matter import Element, Compound, Material, Component, Product
-from futuram.classes.model import Model
+from ..classes.matter import Element, Compound, Material, Component, Product
+from ..classes.model import Model
 
 matter_types = {'element': 'elm', 'compound' : 'cmp', "material" : 'mat', 'component' : 'cpt', 'product' : 'prd'}
 
 
-def import_matter_bulk(dir_data, model):
+def import_matter_bulk(dir_compositions, model):
     """
     Import all composition csvs from the data directory.
     Csvs should be in a subdirectory called 'compositions-split'
@@ -19,7 +19,7 @@ def import_matter_bulk(dir_data, model):
     ['elm', 'cmp', 'mat', 'cpt', 'prd']
     """
     # find directories with compositions
-    dir_compositions = [os.path.join(dir_data, x) for x in os.listdir(dir_data) if 'compositions-split' in x][0]
+    # dir_compositions = [os.path.join(dir_data, x) for x in os.listdir(dir_data) if 'compositions-split' in x][0]
 
     # get the list of files in the data directory and extract the matter type store in a tuple
     for k, v in matter_types.items():
@@ -93,9 +93,7 @@ def import_matter_csv(model, filename):
         comp_dict['undefined'] = {'matter_kind': 'unknown', 'mass_fraction': undefined_mass_fraction, 'uncertainty': Decimal('0')}
 
     # finally, add instantiate the matter object and add it to the model
-    matter = Product(name, comp_dict)    
+    matter = matter_type(name, comp_dict)
     # matter.add_to_model(model)
     model.add_matter(matter)
-
-
 
