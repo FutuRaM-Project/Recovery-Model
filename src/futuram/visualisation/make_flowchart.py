@@ -148,6 +148,9 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
     # Create a set to keep track of processed processes
     processed_processes = set()
 
+    # Create a set to keep track of the flows that have already been added
+    added_flows = set()
+
     # Iterate over all processes in the model
     for process in model.processes.values():
         # Check if the process matches the filter criteria
@@ -157,39 +160,80 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
                 (name is None or name in process.name) and \
                 (description is None or description in process.description):
 
-            # Add a node for the process
-            if 
-            graph.node(process.name,
-                       shape='box',
-                       style='filled',
-                       fillcolor='mediumorchid1',
-                       fontname='Cabin',
-                       fontsize='14',
-                       )
-            # Create a new subgraph for processes with "market" in the name
-            with graph.subgraph(name='cluster_market') as market:
-                market.attr(label='Market Processes', fontname='Cabin', fontsize='16')
-                market.attr(style='filled', color='lightblue')
-                market.node_attr.update(shape='box', style='filled', fillcolor='lightblue')
 
-                # Add nodes for processes with "market" in the name
-                for process in processes:
-                    if 'market' in process.name.lower():
-                        market.node(process.name, fontname='Cabin', fontsize='14')
+            # Set the cluster divisions
+            cluster_names = ['collection', 'shredding', 'smelter','market']
+            cluster_colormap = {'market':'lightblue', 'collection':'salmon1', 'shredding':'darkturquoise', 'smelter':'aqua'}
 
-            # Add edges for the inputs and outputs
-            for flow in process.inputs + process.outputs:
-                graph.edge(flow.process_from, flow.process_to,
-                           label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
-                           fontsize='6',
-                           fontname='Cabin',
-                           color='black',
-                           )
+            for cluster_name in cluster_names:
+                if cluster_name in process.name:
+                    with graph.subgraph(name=cluster_name) as cluster:
+                        cluster.attr(label=cluster_name.capitalize(), fontname='Cabin', fontsize='16')
 
-            # # Add the process to the set of processed processes
-            # processed_processes.add(process)
+                        # Add nodes for processes with cluster_name in the name
+                        if process not in processed_processes:
+                            cluster.node(process.name, 
+                                        fontname='Cabin',
+                                        fontsize='14',
+                                        shape='box',
+                                        style='filled',
+                                        fillcolor=cluster_colormap[cluster_name],
+                                        )
+                        
+                        # Add to the set of processed processes
+                            processed_processes.add(process)
 
-    # 
+                if cluster_name not in process.name:
+                    with graph.subgraph(name='other') as cluster:
+                        cluster.attr(label='Other', fontname='Cabin', fontsize='16')
+                    # Add nodes for the processes without cluster_name in the name
+                        graph.node(process.name,
+                                    fontname='Cabin',
+                                    fontsize='14',
+                                    shape='box',
+                                    style='filled',
+                                    color='black',
+                                    fillcolor='mediumorchid1',
+                                    )
+                        
+                        #     # Set the newrank attribute to True to separate the clusters
+                        # cluster.attr(rank='same',
+                        #              newrank='true',
+                        #              margin='25',)
+
+
+
+                    #Add edges for the inputs and outputs
+            for flow in process.inputs:
+                if flow not in added_flows:
+                    graph.edge(flow.process_from, flow.process_to,
+                            label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
+                            fontsize='6',
+                            fontname='Cabin',
+                            color='black',
+                            )
+                    added_flows.add(flow)
+
+    
+
+            # If the process is not in the set of processed processes, add it to the graph
+            
+            if process not in processed_processes:
+                print(process.name)
+                graph.node(process.name, fontname='Cabin', fontsize='14')
+
+            
+            # # Add edges for the inputs and outputs
+            # for flow in process.inputs + process.outputs:
+            #     if flow not in added_flows:
+            #         graph.edge(flow.process_from, flow.process_to,
+            #                 label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
+            #                 fontsize='6',
+            #                 fontname='Cabin',
+            #                 color='black',
+            #                 )
+            #         added_flows.add(flow)
+
     # Save the graphs in the figures folder
     dir_model_flowcharts = dir_flowcharts + "/models/"
 

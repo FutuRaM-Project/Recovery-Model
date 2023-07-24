@@ -1,124 +1,198 @@
 digraph {
 	fontname=Cabin fontsize=20 label="Flowchart for Model: test_system_ELV
 -----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
-	collection_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph collection {
+		fontname=Cabin fontsize=16 label=Collection
+		collection_ICE [fillcolor=salmon1 fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	collection_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	collection_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	collection_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
 	collection_ICE -> dismantling_ICE [label="Composition: ELV_ICE
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	collection_ICE -> dismantling_ICE [label="Composition: ELV_ICE
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE [fontname=Cabin fontsize=14]
+	shredding_engtrans [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph shredding {
+		fontname=Cabin fontsize=16 label=Shredding
+		shredding_engtrans [fillcolor=darkturquoise fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	shredding_engtrans [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	shredding_engtrans [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
 	dismantling_ICE -> shredding_engtrans [label="Composition: ICE_engtrans
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	hammermill_body [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	hammermill_body [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	hammermill_body [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
 	dismantling_ICE -> hammermill_body [label="Composition: ICE_body
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_tyre [label="Composition: ICE_tyres
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_elec [label="Composition: ICE_elec
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_batt [label="Composition: ICE_batt
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body [fontname=Cabin fontsize=14]
+	smelter_cc [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	smelter_cc [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph smelter {
+		fontname=Cabin fontsize=16 label=Smelter
+		smelter_cc [fillcolor=aqua fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	smelter_cc [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
 	dismantling_ICE -> smelter_cc [label="Composition: ICE_catconv
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> market_waste_oil [label="Composition: ICE_liquids
+	shredding_tyre [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph shredding {
+		fontname=Cabin fontsize=16 label=Shredding
+		shredding_tyre [fillcolor=darkturquoise fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	shredding_tyre [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	shredding_tyre [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE -> shredding_tyre [label="Composition: ICE_tyres
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_engtrans [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	dismantling_ICE -> shredding_engtrans [label="Composition: ICE_engtrans
+	shredding_elec [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph shredding {
+		fontname=Cabin fontsize=16 label=Shredding
+		shredding_elec [fillcolor=darkturquoise fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	shredding_elec [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	shredding_elec [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE -> shredding_elec [label="Composition: ICE_elec
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_batt [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph shredding {
+		fontname=Cabin fontsize=16 label=Shredding
+		shredding_batt [fillcolor=darkturquoise fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	shredding_batt [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	shredding_batt [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	dismantling_ICE -> shredding_batt [label="Composition: ICE_batt
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_nonferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	smelter_nonferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph smelter {
+		fontname=Cabin fontsize=16 label=Smelter
+		smelter_nonferrous [fillcolor=aqua fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	smelter_nonferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
 	shredding_engtrans -> smelter_nonferrous [label="Composition: nonferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> smelter_ferrous [label="Composition: ferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> market_waste_glass [label="Composition: glass
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> market_waste [label="Composition: waste_shredder
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	hammermill_body [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	dismantling_ICE -> hammermill_body [label="Composition: ICE_body
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
 	hammermill_body -> smelter_nonferrous [label="Composition: nonferrous
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	hammermill_body -> smelter_ferrous [label="Composition: ferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	hammermill_body -> market_waste [label="Composition: waste_shredder
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_cc [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	dismantling_ICE -> smelter_cc [label="Composition: ICE_catconv
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_cc -> market_ree [label="Composition: ree
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_cc -> market_waste_slag [label="Composition: slag_ree
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_tyre [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	dismantling_ICE -> shredding_tyre [label="Composition: ICE_tyres
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_tyre -> market_waste_rubber [label="Composition: rubber
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_tyre -> smelter_ferrous [label="Composition: ferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_elec [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	dismantling_ICE -> shredding_elec [label="Composition: ICE_elec
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
 	shredding_elec -> smelter_nonferrous [label="Composition: nonferrous
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_elec -> market_waste_plastic [label="Composition: plastic
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_batt [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	dismantling_ICE -> shredding_batt [label="Composition: ICE_batt
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_batt -> market_lead [label="Composition: Pb
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_batt -> market_waste_plastic [label="Composition: plastic
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_nonferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	shredding_engtrans -> smelter_nonferrous [label="Composition: nonferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	hammermill_body -> smelter_nonferrous [label="Composition: nonferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	shredding_elec -> smelter_nonferrous [label="Composition: nonferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_nonferrous -> market_nonferrous [label="Composition: nonferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_nonferrous -> market_waste_slag [label="Composition: slag_nfe
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_ferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_ferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	smelter_ferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph smelter {
+		fontname=Cabin fontsize=16 label=Smelter
+		smelter_ferrous [fillcolor=aqua fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	smelter_ferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
 	shredding_engtrans -> smelter_ferrous [label="Composition: ferrous
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
@@ -128,55 +202,199 @@ Unit: None" color=black fontname=Cabin fontsize=6]
 	shredding_tyre -> smelter_ferrous [label="Composition: ferrous
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_ferrous -> market_ferrous [label="Composition: ferrous
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	smelter_ferrous -> market_waste_slag [label="Composition: slag_fe
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste_rubber [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_waste_rubber [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_rubber [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_rubber [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_waste_rubber [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	shredding_tyre -> market_waste_rubber [label="Composition: rubber
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_ree [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_ree [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_ree [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_ree [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_ree [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	smelter_cc -> market_ree [label="Composition: ree
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_lead [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_lead [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_lead [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_lead [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_lead [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	shredding_batt -> market_lead [label="Composition: Pb
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_H2SO4 [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_H2SO4 [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_H2SO4 [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_H2SO4 [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_H2SO4 [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_nonferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_nonferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_nonferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_nonferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_nonferrous [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	smelter_nonferrous -> market_nonferrous [label="Composition: nonferrous
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_ferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_ferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_ferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_ferrous [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_ferrous [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	smelter_ferrous -> market_ferrous [label="Composition: ferrous
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_waste [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_waste [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	shredding_engtrans -> market_waste [label="Composition: waste_shredder
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
 	hammermill_body -> market_waste [label="Composition: waste_shredder
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste_glass [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_waste_glass [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_glass [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_glass [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_waste_glass [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	shredding_engtrans -> market_waste_glass [label="Composition: glass
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste_plastic [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_waste_plastic [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_plastic [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_plastic [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_waste_plastic [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	shredding_elec -> market_waste_plastic [label="Composition: plastic
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
 	shredding_batt -> market_waste_plastic [label="Composition: plastic
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_waste_slag [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_slag [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_slag [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_waste_slag [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	smelter_cc -> market_waste_slag [label="Composition: slag_ree
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
@@ -186,7 +404,22 @@ Unit: None" color=black fontname=Cabin fontsize=6]
 	smelter_ferrous -> market_waste_slag [label="Composition: slag_fe
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste_oil [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	market_waste_oil [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_oil [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	market_waste_oil [color=black fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	subgraph other {
+		fontname=Cabin fontsize=16 label=Other
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market
+		market_waste_oil [fillcolor=lightblue fontname=Cabin fontsize=14 shape=box style=filled]
+	}
 	dismantling_ICE -> market_waste_oil [label="Composition: ICE_liquids
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
