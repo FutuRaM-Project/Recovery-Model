@@ -1,6 +1,24 @@
 import openpyxl
 
+#! as with the other import functions, we should probably be doing this with csvs instead of xlsx files.
+
 def import_transfercoefficients_xlsx(filename, model):
+    """
+    Import a xlsx file containing transfer coefficient data and add them to the model
+    Args:
+        filename (str): The path to the xlsx file.
+        model (Model): The model object to add the transfer coefficients to.
+    
+    The xlsx file should have the following columns:
+        process (str): The name of the process.
+        flow_input (str): The name of the input flow.
+        flow_output (str): The name of the output flow.
+        transfer_coefficient (float): The transfer coefficient.
+        uncertainty (float): The uncertainty of the transfer coefficient.
+
+    """
+    print(f'\n\n{"*" * 90}\n  Importing transfer coefficients to model \"{model.name}\" from {filename}\n{"*" * 90}')
+
     # set the path to the file
     path = filename
     workbook = openpyxl.load_workbook(path, data_only=True)
@@ -34,10 +52,10 @@ def import_transfercoefficients_xlsx(filename, model):
         if process_name in process_dict:
             process = process_dict[process_name]
             process.add_transfer_coefficient(tc['flow_input'], tc['flow_output'], tc['transfer_coefficient'], tc['uncertainty'])
-            # print("Added transfer coefficients to: " + process_name)
+            print(f"\t* {process_name} \t\t({tc['flow_input']} --{tc['transfer_coefficient']}--> {tc['flow_output']})")
         else:
-            print("Process not found: " + process_name)
+            print(f" ****** Process not found: {process_name} ******")
 
-    return data
+    # return data
 
 

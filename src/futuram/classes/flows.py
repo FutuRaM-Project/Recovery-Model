@@ -3,6 +3,7 @@ import pandas as pd
 
 from .processes import Process
 
+#TODO: Add a method to check if the flow exists in the model already
 class Flow:
     """
     A class representing a flow of material or energy between two points.

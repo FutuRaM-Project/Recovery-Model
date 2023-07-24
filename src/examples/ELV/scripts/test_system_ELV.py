@@ -1,74 +1,143 @@
-#%%
+#%% Import the main package for the FutuRaM recovery model (other packages are imported by the main package)
 import futuram as f
 
-
-#%% Take the composition data and split it into individual csvs for each matter
-
+# Set the path to the data directory
 dir_data = '../data/'
 
-# Create the model
+#%% CREATE THE MODEL OBJECT
+#TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.
+
+# Create the empty model object
 model = f.Model('test_system_ELV')
+print(f"\n\n{'=' * 50}\n\tCreated model: {model.name}\n{'=' * 50}\n")
 
-#%%  Add processes
+#%% IMPORT MATTER OBJECTS
 
+# Take the composition datasheet (xlsx) and split its sheets into individual csvs for each type of matter
+dir_compositions = f.xlsx_to_csvs(f'{dir_data}ELV_ICE_compositions.xlsx')
+
+# Import the matter from the csvs (one fuction scans a directory, and employs the other function in the module to import each csv idividually)
+f.utils.import_matter_bulk(dir_compositions, model)
+
+## TEST:
+## Uncomment to check they are there if you want
+#
+## FOR ALL MATTER SUBCLASSES:
+print(f'\n{"-"*60}\n\t There are {len(model.list_matter())} matter objects in the model: {model.name}\n{"-"*60}\n ')
+print(*model.list_matter(), sep='\n')
+#
+#
+## FOR INDIVIDUAL MATTER SUBCLASSES:
+print('\nThe elements in the model are:')
+print(*model.elements, sep='\n')
+print('\nThe compounds in the model are:')
+print(*model.compounds, sep='\n')
+print('\nThe materials in the model are:')
+print(*model.materials, sep='\n')
+print('\nThe components in the model are:')
+print(*model.components, sep='\n')
+print('\nThe products in the model are:')
+print(*model.products, sep='\n')
+
+#%%  IMPORT PROCESS OBJECTS
+
+# Add processes from the xlsx file to the model
 process_xlsx = dir_data + 'ELV_ICE_processes.xlsx'
 f.utils.import_processes_xlsx(process_xlsx, model)
 
-# the above function returns a dictionary of the processes
-# process_data = import_processes_xlsx(process_xlsx, model)
+## TEST:
+## Uncomment to check they are there if you want
+#
+print(f'\n{"-"*60}\n\t There are {len(model.processes)} process objects in the model: {model.name}\n{"-"*60}\n ')
+print(*list(model.processes), sep='\n')
 
-# check they are there
-print('\nThe processes in the model are:')
-list(model.processes)
-# %% Import transfer coefficients
+# Inspect a random process
+random_process = model.processes[f.random.choice(list(model.processes.keys()))]
+print(f'\n{"-"*60}\n\t  Details of random process: {random_process.name}\n{"-"*60}\n ')
 
-transfercoefficients_xlsx = dir_data + 'ELV_ICE_TCs.xlsx'
-f.utils.import_transfercoefficients_xlsx(transfercoefficients_xlsx, model)
+table = [[k, v] for k, v in random_process.to_dict().items()]
+print(f.tabulate.tabulate(table, headers=['Attribute', 'Value'], tablefmt='fancy_grid'))
 
-# check they are there for one process
-smelter_cc = model.processes['smelter_cc']
-list(smelter_cc.transfer_coefficients)
-
-# %% Import flows
+# %% IMPORT FLOWS
 
 flows_xlsx = dir_data + 'ELV_ICE_flows.xlsx'
 f.import_flows_xlsx(flows_xlsx, model)
 
-# check that they are there
-print('\nThe flows in the model are:')
-list(smelter_cc.inputs)[0].to_dict()
-list(smelter_cc.outputs)[0].to_dict()
+## TEST:
+#TODO: embed the table outputs in the classes themselves, so that we can just call the method on the object
+## Uncomment to check that they are there if you want
+#
+# FOR ONE PROCESS:
+random_process = model.processes[f.random.choice(list(model.processes.keys()))]
+print(f'\n{"-"*60}\n\t  Flows of random process: {random_process.name}\n{"-"*60}\n ')
+
+print(f'Inputs to process {random_process.name}')
+table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in random_process.inputs]
+print(f.tabulate.tabulate(table, tablefmt='fancy_grid', headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+
+print(f'\nOutputs from process {random_process.name}')
+table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in random_process.outputs]
+print(f.tabulate.tabulate(table, tablefmt='fancy_grid',  headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+
+# FOR THE WHOLE MODEL:
+print(f'\n{"="*60}\n\t  There are {len(model.processes.values())} flows in model {model.name}: {random_process.name}\n{"="*60}\n ')
+for count, process in enumerate(model.processes.values()):
+    print(f'\n{"-"*60}\n\t {count+1}/{len(model.processes.values())}. Flows of process: {process.name}\n{"-"*60}\n ')
+
+    print(f'Inputs to process {process.name}')
+    table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.inputs]
+    print(f.tabulate.tabulate(table, tablefmt='fancy_grid', headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+
+    print(f'\nOutputs from process {process.name}')
+    table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.outputs]
+    print(f.tabulate.tabulate(table, tablefmt='fancy_grid',  headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+
+# %% IMPORT TRANSFER COEFFICIENTS
+
+transfercoefficients_xlsx = dir_data + 'ELV_ICE_TCs.xlsx'
+f.utils.import_transfercoefficients_xlsx(transfercoefficients_xlsx, model)
+
+## TEST:
+## Uncomment to check they are there for one random process if you want
+# (btw. markets have no transfer coefficients)
+random_process = model.processes[f.random.choice(list(model.processes.keys()))]
+print(f'\n\n{"-"*60}\n   Transfer coefficients for random process: {random_process.name}\n{"-"*60}')
+table = [[d['input'], d['output'], d['transfer_coefficient'], d['uncertainty']] for d in random_process.transfer_coefficients]
+if len(table) > 0:
+    print(f.tabulate.tabulate(table, headers=list(random_process.transfer_coefficients[0].keys()), tablefmt='fancy_grid'))
+else:
+    print(f'No transfer coefficients for process {random_process.name}')
+
+# %% CALCULATE THE QUANTITIES OF FLOWS IN THE MODEL
 
 
-for process in model.processes.values():
-    print(process.name)
-    for flow in process.inputs:
-        print(flow.to_dict())
-        model.add_flow(flow)
-    for flow in process.outputs:
-        model.add_flow(flow)
-        print(flow.to_dict())
+# %% VISUALISE THE MODEL
 
+#%% INDIVIDUAL PROCESSES
 
-# %% Import matter
-import futuram as f
+# Create isolated flowcharts for each process in the model, showing only the process and its direct inputs and outputs
 
-dir_compositions = f.xlsx_to_csvs(dir_data + 'ELV_ICE_compositions.xlsx')
-f.utils.import_matter_bulk(dir_compositions, model)
+print(f'\n{"="*80}\n Making isolated flow charts for the {len(model.processes.values())} processes in model \'{model.name}\'\n{"="*80}\n')
+for count, proc in enumerate(model.processes.values()):
+    print(f'{count+1}/{len(model.processes.values())}.')
+    f.make_flowchart(proc)
 
-model.products
-model.components
-model.materials
-model.compounds
-model.elements
+#%% WHOLE MODEL
 
-model.get_matter()
-model.matter
-model.to_dict()
+# Create a flowchart for the whole model, showing all processes and their inputs and outputs
+f.make_flowchart(model)
 
-dir_compositions = [os.path.join(dir_data, x) for x in os.listdir(dir_data) if 'compositions-split' in x][0]
+#%% FILTERED FLOWCHARTS
 
+# Create flowcharts for the whole model based on filters (eg: [WS=='ELV'], or ['market' in process.tags] etc.)
 
-# %% make a process flow diagram
+#TODO: still need to implement this, just an adaption of the above flowchart function
 
-model.flows
+#%% MATTER FLOWCHARTS
+
+# Create flowcharts for the whole model based on matter (eg: [matter.name=='steel'], or ['iron' in matter.tags] etc.)
+
+#TODO: still need to write this
+
+# %% THE END
+

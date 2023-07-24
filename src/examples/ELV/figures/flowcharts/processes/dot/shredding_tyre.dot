@@ -1,0 +1,74 @@
+digraph {
+	graph [bb="0,0,500,167",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: shredding_tyre
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="250,141",
+		lwidth=4.60,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	shredding_tyre	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="241,57",
+		shape=box,
+		style=filled,
+		width=1.4722];
+	market_waste_rubber	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="445,97",
+		shape=box,
+		style=filled,
+		width=1.5278];
+	shredding_tyre -> market_waste_rubber	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: rubber
+Amount: None 
+Unit: None",
+		lp="342,91.5",
+		pos="e,389.69,86.245 294.02,67.301 320.15,72.476 352.06,78.793 379.71,84.269"];
+	smelter_ferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="445,18",
+		shape=box,
+		style=filled,
+		width=1.1667];
+	shredding_tyre -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ferrous
+Amount: None 
+Unit: None",
+		lp="342,33.5",
+		pos="e,402.8,15.569 274.16,38.894 286.81,32.675 301.7,26.422 316,23 340.78,17.072 369.01,15.448 392.64,15.463"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,57",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> shredding_tyre	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_tyres
+Amount: None 
+Unit: None",
+		lp="136.5,67.5",
+		pos="e,187.87,57 85.173,57 112.1,57 147.62,57 177.85,57"];
+}

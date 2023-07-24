@@ -1,0 +1,90 @@
+digraph {
+	graph [bb="0,0,532,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: hammermill_body
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="266,220",
+		lwidth=5.01,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	hammermill_body	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="250.5,97",
+		shape=box,
+		style=filled,
+		width=1.7361];
+	smelter_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="482,176",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	hammermill_body -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: nonferrous
+Amount: None 
+Unit: None",
+		lp="372.5,162.5",
+		pos="e,431.84,160.35 299.08,115.02 310.79,119.36 323.32,123.91 335,128 363.6,138.01 395.55,148.58 422.26,157.25"];
+	smelter_ferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="482,97",
+		shape=box,
+		style=filled,
+		width=1.1667];
+	hammermill_body -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ferrous
+Amount: None 
+Unit: None",
+		lp="372.5,107.5",
+		pos="e,439.98,97 313,97 349.46,97 395.13,97 429.65,97"];
+	market_waste	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="482,18",
+		shape=box,
+		style=filled,
+		width=1.0694];
+	hammermill_body -> market_waste	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: waste_shredder
+Amount: None 
+Unit: None",
+		lp="372.5,76.5",
+		pos="e,443.36,29.943 299.08,78.983 310.79,74.645 323.32,70.085 335,66 367.78,54.531 404.97,42.317 433.61,33.08"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,97",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> hammermill_body	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_body
+Amount: None 
+Unit: None",
+		lp="136.5,107.5",
+		pos="e,187.94,97 85.187,97 111.7,97 146.73,97 177.64,97"];
+}

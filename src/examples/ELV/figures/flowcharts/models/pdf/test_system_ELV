@@ -1,0 +1,193 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart for Model: test_system_ELV
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	collection_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	collection_ICE -> dismantling_ICE [label="Composition: ELV_ICE
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	collection_ICE -> dismantling_ICE [label="Composition: ELV_ICE
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> shredding_engtrans [label="Composition: ICE_engtrans
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> hammermill_body [label="Composition: ICE_body
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> shredding_tyre [label="Composition: ICE_tyres
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> shredding_elec [label="Composition: ICE_elec
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> shredding_batt [label="Composition: ICE_batt
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> smelter_cc [label="Composition: ICE_catconv
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> market_waste_oil [label="Composition: ICE_liquids
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_engtrans [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_engtrans [label="Composition: ICE_engtrans
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_engtrans -> smelter_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_engtrans -> smelter_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_engtrans -> market_waste_glass [label="Composition: glass
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_engtrans -> market_waste [label="Composition: waste_shredder
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> hammermill_body [label="Composition: ICE_body
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body -> smelter_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body -> smelter_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body -> market_waste [label="Composition: waste_shredder
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_cc [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> smelter_cc [label="Composition: ICE_catconv
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_cc -> market_ree [label="Composition: ree
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_cc -> market_waste_slag [label="Composition: slag_ree
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_tyre [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_tyre [label="Composition: ICE_tyres
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_tyre -> market_waste_rubber [label="Composition: rubber
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_tyre -> smelter_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_elec [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_elec [label="Composition: ICE_elec
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_elec -> smelter_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_elec -> market_waste_plastic [label="Composition: plastic
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_batt [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_batt [label="Composition: ICE_batt
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_batt -> market_lead [label="Composition: Pb
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_batt -> market_waste_plastic [label="Composition: plastic
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_nonferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_engtrans -> smelter_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body -> smelter_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_elec -> smelter_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_nonferrous -> market_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_nonferrous -> market_waste_slag [label="Composition: slag_nfe
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_ferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_engtrans -> smelter_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body -> smelter_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_tyre -> smelter_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_ferrous -> market_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_ferrous -> market_waste_slag [label="Composition: slag_fe
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste_rubber [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_tyre -> market_waste_rubber [label="Composition: rubber
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_ree [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_cc -> market_ree [label="Composition: ree
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_lead [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_batt -> market_lead [label="Composition: Pb
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_H2SO4 [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_nonferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_nonferrous -> market_nonferrous [label="Composition: nonferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_ferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_ferrous -> market_ferrous [label="Composition: ferrous
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_engtrans -> market_waste [label="Composition: waste_shredder
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	hammermill_body -> market_waste [label="Composition: waste_shredder
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste_glass [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_engtrans -> market_waste_glass [label="Composition: glass
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste_plastic [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_elec -> market_waste_plastic [label="Composition: plastic
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	shredding_batt -> market_waste_plastic [label="Composition: plastic
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_cc -> market_waste_slag [label="Composition: slag_ree
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_nonferrous -> market_waste_slag [label="Composition: slag_nfe
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	smelter_ferrous -> market_waste_slag [label="Composition: slag_fe
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste_oil [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> market_waste_oil [label="Composition: ICE_liquids
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+}

@@ -1,0 +1,42 @@
+digraph {
+	graph [bb="0,0,391,91",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_waste_glass
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="195.5,65",
+		lwidth=5.21,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_waste_glass	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="291,18",
+		shape=box,
+		style=filled,
+		width=1.9028];
+	shredding_engtrans	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="81.5,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> market_waste_glass	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: glass
+Amount: None 
+Unit: None",
+		lp="177,28.5",
+		pos="e,222.34,18 131.67,18 155.69,18 185.16,18 212.14,18"];
+}

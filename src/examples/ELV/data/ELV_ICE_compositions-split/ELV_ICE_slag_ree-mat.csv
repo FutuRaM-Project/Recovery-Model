@@ -1,0 +1,5 @@
+fraction,matter,mass,mass_fraction,uncertainty
+ree,material,21.7,0.31,0.1
+ferrous,material,41.3,0.59,0.1
+rest,material,7,0.1,0.1
+,,,

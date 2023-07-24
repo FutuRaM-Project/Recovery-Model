@@ -1,0 +1,5 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart (isolated) for: market_glass
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	font=Cabin
+}

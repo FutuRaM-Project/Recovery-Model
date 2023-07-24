@@ -1,9 +1,11 @@
+
+
+import re
 import json
 import pandas as pd
 import periodictable
-import re
 
-from ..visualisation.create_matter_treemap import create_matter_treemap
+from futuram.visualisation.make_matter_treemap import make_matter_treemap
 
 class Matter:
     """
@@ -131,7 +133,7 @@ class Matter:
     def create_treemap(self):
         data = self.composition_expanded
         name = self.name
-        create_matter_treemap(data, name)
+        make_matter_treemap(data, name)
 
 class Element(Matter):
     """

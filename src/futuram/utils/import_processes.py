@@ -1,7 +1,16 @@
+
+#! there is probably no reason to be dealing with xlsx files directly in the model, but this is likely how the data will arrive. We could also convert the xlsx files to csvs and import them that way. 
+
 import openpyxl
 from ..classes.processes import Process
 
 def import_processes_xlsx(filename, model):
+    """
+    Import a xlsx file containing process data and create process objects for each row
+    """
+    print(f'\n\n{"-" * 60}\n   Importing processes to model \"{model.name}\" from {filename}\n{"-" * 60}\n')
+
+
     # set the path to the file
     path = filename
     workbook = openpyxl.load_workbook(path, data_only=True)
@@ -28,6 +37,7 @@ def import_processes_xlsx(filename, model):
                 row_data[headers[i]] = None
         data.append(row_data)
 
+    print(f"** Importing {len(data)} processes **\n")
     for process in data:
         new_process = Process(process['name'])
         new_process.uuid = process['uuid']
@@ -40,8 +50,7 @@ def import_processes_xlsx(filename, model):
         new_process.cost_operation = process['cost_operation']
 
         new_process.add_to_model(model)
-        # print("Process added to model: " + new_process.name)
+        print(f"\t{new_process.name}")
 
-    return data
 
 

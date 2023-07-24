@@ -1,0 +1,42 @@
+digraph {
+	graph [bb="0,0,341,91",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: collection_ICE
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="170.5,65",
+		lwidth=4.51,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	dismantling_ICE	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="270.5,18",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	collection_ICE	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="78,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	collection_ICE -> dismantling_ICE	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE
+Amount: None 
+Unit: None",
+		lp="178,28.5",
+		pos="e,227.71,18 128.06,18 155.43,18 189.51,18 217.37,18"];
+}

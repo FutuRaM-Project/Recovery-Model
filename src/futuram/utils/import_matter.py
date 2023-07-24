@@ -1,4 +1,3 @@
-
 import os
 import csv
 from decimal import Decimal
@@ -18,6 +17,7 @@ def import_matter_bulk(dir_compositions, model):
     where matter types are one of:
     ['elm', 'cmp', 'mat', 'cpt', 'prd']
     """
+    print(f'\n\n{"-" * 30}\n\t Importing matter to {model.name} from {dir_compositions}\n{"-" * 30}')
     # find directories with compositions
     # dir_compositions = [os.path.join(dir_data, x) for x in os.listdir(dir_data) if 'compositions-split' in x][0]
 

@@ -1,0 +1,106 @@
+digraph {
+	graph [bb="0,0,505,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: smelter_ferrous
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="252.5,220",
+		lwidth=4.71,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	smelter_ferrous	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="252,97",
+		shape=box,
+		style=filled,
+		width=1.5556];
+	market_ferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="455.5,137",
+		shape=box,
+		style=filled,
+		width=1.125];
+	smelter_ferrous -> market_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ferrous
+Amount: None 
+Unit: None",
+		lp="357,132.5",
+		pos="e,414.84,129.13 308.06,107.93 338.29,113.93 375.48,121.31 404.82,127.14"];
+	market_waste_slag	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="455.5,58",
+		shape=box,
+		style=filled,
+		width=1.375];
+	smelter_ferrous -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: slag_fe
+Amount: None 
+Unit: None",
+		lp="357,73.5",
+		pos="e,405.75,55.762 286.54,78.907 299.71,72.69 315.2,66.435 330,63 351.1,58.105 374.73,56.274 395.7,55.859"];
+	shredding_engtrans	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,176",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ferrous
+Amount: None 
+Unit: None",
+		lp="148,157.5",
+		pos="e,206.24,115.11 97.48,158 120.52,149.04 148.75,138.01 174,128 181.43,125.06 189.25,121.93 196.95,118.84"];
+	hammermill_body	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,97",
+		shape=box,
+		style=filled,
+		width=1.3194];
+	hammermill_body -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ferrous
+Amount: None 
+Unit: None",
+		lp="148,107.5",
+		pos="e,195.75,97 97.639,97 123.75,97 156.73,97 185.4,97"];
+	shredding_tyre	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,18",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	shredding_tyre -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ferrous
+Amount: None 
+Unit: None",
+		lp="148,76.5",
+		pos="e,206.24,78.888 90.095,33.134 114.29,42.53 145.98,54.892 174,66 181.43,68.945 189.25,72.068 196.95,75.155"];
+}

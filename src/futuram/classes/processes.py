@@ -1,3 +1,5 @@
+# from ..visualisation import make_flowchart
+
 class Process:
     """
     A class representing a process that transforms input flows into output flows.
@@ -198,3 +200,12 @@ class Process:
             "outputs": self.outputs,
             "parameters": self.parameters
         }
+    
+    def make_flowchart(self):
+        """
+        Creates an isolated process flow diagram for the process, showing only the direct inputs and outputs.
+        This is only reversing the syntax really, it uses the function from the visualisation module.
+        """
+        make_flowchart(self)
+
+        

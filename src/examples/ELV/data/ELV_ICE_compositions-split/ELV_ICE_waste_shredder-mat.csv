@@ -1,0 +1,5 @@
+fraction,matter,mass,mass_fraction,uncertainty
+plastic,material,60.9,0.6,0.1
+ferrous,material,20.3,0.2,0.1
+nonferrous,material,20.3,0.2,0.1
+,,,

@@ -1,0 +1,154 @@
+digraph {
+	graph [bb="0,0,501,562",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: dismantling_ICE
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="250.5,536",
+		lwidth=4.75,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	dismantling_ICE	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="232,255",
+		shape=box,
+		style=filled,
+		width=1.5556];
+	shredding_engtrans	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,492",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	dismantling_ICE -> shredding_engtrans	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_engtrans
+Amount: None 
+Unit: None",
+		lp="344.5,470.5",
+		pos="e,403.4,473.89 237.99,273.04 247.47,304.53 270.73,370.17 310,412 333.32,436.85 366.13,456.15 394.11,469.57"];
+	hammermill_body	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,413",
+		shape=box,
+		style=filled,
+		width=1.3194];
+	dismantling_ICE -> hammermill_body	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_body
+Amount: None 
+Unit: None",
+		lp="344.5,391.5",
+		pos="e,404.99,394.93 246.13,273.24 260.3,291.98 284.31,321.15 310,341 336.02,361.1 368.51,378.21 395.63,390.7"];
+	shredding_tyre	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,334",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	dismantling_ICE -> shredding_tyre	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_tyres
+Amount: None 
+Unit: None",
+		lp="344.5,320.5",
+		pos="e,410.88,321.2 276.82,273.1 287.63,277.44 299.2,281.98 310,286 340.13,297.22 374.25,308.94 401.27,317.99"];
+	shredding_elec	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,255",
+		shape=box,
+		style=filled,
+		width=1.125];
+	dismantling_ICE -> shredding_elec	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_elec
+Amount: None 
+Unit: None",
+		lp="344.5,265.5",
+		pos="e,410.43,255 288.04,255 322.63,255 366.89,255 400.4,255"];
+	shredding_batt	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,176",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	dismantling_ICE -> shredding_batt	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_batt
+Amount: None 
+Unit: None",
+		lp="344.5,234.5",
+		pos="e,410.88,188.8 276.82,236.9 287.63,232.56 299.2,228.02 310,224 340.13,212.78 374.25,201.06 401.27,192.01"];
+	smelter_cc	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,97",
+		shape=box,
+		style=filled,
+		width=0.88889];
+	dismantling_ICE -> smelter_cc	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_catconv
+Amount: None 
+Unit: None",
+		lp="344.5,179.5",
+		pos="e,418.9,109.09 246.13,236.76 260.3,218.02 284.31,188.85 310,169 340.61,145.36 380.15,125.85 409.4,113.14"];
+	market_waste_oil	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="451,18",
+		shape=box,
+		style=filled,
+		width=1.2778];
+	dismantling_ICE -> market_waste_oil	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_liquids
+Amount: None 
+Unit: None",
+		lp="344.5,108.5",
+		pos="e,404.71,35.516 237.99,236.96 247.47,205.47 270.73,139.83 310,98 333.67,72.787 367.1,53.278 395.35,39.84"];
+	collection_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="38,255",
+		shape=box,
+		style=filled,
+		width=1.0556];
+	collection_ICE -> dismantling_ICE	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE
+Amount: None 
+Unit: None",
+		lp="126,265.5",
+		pos="e,175.92,255 76.02,255 101.36,255 135.66,255 165.55,255"];
+}

@@ -1,0 +1,90 @@
+digraph {
+	graph [bb="0,0,500,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: shredding_batt
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="250,220",
+		lwidth=4.61,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	shredding_batt	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="240,97",
+		shape=box,
+		style=filled,
+		width=1.4722];
+	market_lead	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="445.5,176",
+		shape=box,
+		style=filled,
+		width=0.95833];
+	shredding_batt -> market_lead	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: Pb
+Amount: None 
+Unit: None",
+		lp="342,158.5",
+		pos="e,410.81,163.95 283.14,115.01 293.52,119.35 304.63,123.91 315,128 343.55,139.27 375.93,151.27 401.17,160.45"];
+	market_H2SO4	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="445.5,97",
+		shape=box,
+		style=filled,
+		width=1.1528];
+	shredding_batt -> market_H2SO4	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: H2SO4
+Amount: None 
+Unit: None",
+		lp="342,107.5",
+		pos="e,403.73,97 293.14,97 324.04,97 363.01,97 393.67,97"];
+	market_waste_plastic	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="445.5,18",
+		shape=box,
+		style=filled,
+		width=1.5139];
+	shredding_batt -> market_waste_plastic	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: plastic
+Amount: None 
+Unit: None",
+		lp="342,76.5",
+		pos="e,394.19,36.092 283.14,78.99 293.52,74.651 304.63,70.09 315,66 337.63,57.069 362.67,47.675 384.65,39.59"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,97",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> shredding_batt	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ICE_batt
+Amount: None 
+Unit: None",
+		lp="136,107.5",
+		pos="e,186.67,97 85.44,97 111.94,97 146.66,97 176.38,97"];
+}

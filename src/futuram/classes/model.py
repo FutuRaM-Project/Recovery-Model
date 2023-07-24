@@ -166,15 +166,21 @@ class Model:
         makes a dictionary of all matter in the model from the elements, compounds, materials, components and products
         """
         self.matter = {**self.elements, **self.compounds, **self.materials, **self.components, **self.products}
-        return self.matter
     
     def list_matter(self):
-        for m in [self.elements, self.compounds, self.materials, self.components, self.products]:
-            for matter_name, matter in m.items():
-                print(matter_name)
-                print(matter)
-                print()
-
+        """
+        
+        """
+        self.get_matter()
+        matter_names = list(self.matter.keys())
+        matter_names.sort()
+        
+        # for m in [self.elements, self.compounds, self.materials, self.components, self.products]:
+        #     for matter_name, matter in m.items():
+        #         print(matter_name)
+        #         print(matter)
+        #         print()
+        return matter_names
     
 
     def to_dataframe(self):

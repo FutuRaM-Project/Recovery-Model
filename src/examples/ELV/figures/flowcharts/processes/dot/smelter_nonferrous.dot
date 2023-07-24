@@ -1,0 +1,106 @@
+digraph {
+	graph [bb="0,0,543,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: smelter_nonferrous
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="271.5,220",
+		lwidth=5.18,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	smelter_nonferrous	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="272,97",
+		shape=box,
+		style=filled,
+		width=1.8611];
+	market_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="493.5,137",
+		shape=box,
+		style=filled,
+		width=1.3472];
+	smelter_nonferrous -> market_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: nonferrous
+Amount: None 
+Unit: None",
+		lp="391.5,134.5",
+		pos="e,444.95,128.34 339.15,109.06 369.64,114.61 405.49,121.14 434.86,126.5"];
+	market_waste_slag	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="493.5,58",
+		shape=box,
+		style=filled,
+		width=1.375];
+	smelter_nonferrous -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: slag_nfe
+Amount: None 
+Unit: None",
+		lp="391.5,73.5",
+		pos="e,443.95,56.047 311.59,78.913 326.67,72.696 344.32,66.44 361,63 384.48,58.159 410.8,56.446 433.7,56.111"];
+	shredding_engtrans	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,176",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: nonferrous
+Amount: None 
+Unit: None",
+		lp="152.5,160.5",
+		pos="e,220.53,115.12 100.1,158.37 132.86,146.61 176.14,131.06 210.95,118.56"];
+	hammermill_body	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,97",
+		shape=box,
+		style=filled,
+		width=1.3194];
+	hammermill_body -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: nonferrous
+Amount: None 
+Unit: None",
+		lp="152.5,107.5",
+		pos="e,204.8,97 97.656,97 125.77,97 162.25,97 194.49,97"];
+	shredding_elec	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,18",
+		shape=box,
+		style=filled,
+		width=1.125];
+	shredding_elec -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: nonferrous
+Amount: None 
+Unit: None",
+		lp="152.5,74.5",
+		pos="e,220.51,78.87 90.586,32.215 124.11,44.255 172.7,61.702 211.01,75.458"];
+}

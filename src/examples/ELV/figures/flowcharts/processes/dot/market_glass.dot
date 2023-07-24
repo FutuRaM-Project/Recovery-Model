@@ -1,0 +1,18 @@
+digraph {
+	graph [bb="0,0,330,52",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_glass
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="165,26",
+		lwidth=4.36,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+}
