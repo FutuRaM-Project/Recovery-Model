@@ -7,6 +7,7 @@ from ..classes.model import Model
 dir_figures = "../figures/"
 dir_flowcharts = dir_figures + "flowcharts"
 
+#TODO: make one for matter also ---> flowchart for each object and also maybe the graph that Adrien was talking about
 def make_flowchart(object):
     """
     Creates a flowchart for a model or a process object.
@@ -20,7 +21,6 @@ def make_flowchart(object):
         make_flowchart_process(object)
     elif isinstance(object, Model):
         make_flowchart_model(object)
-        print(f"Model flowchart created for: {object.name}")
     # elif issubclass(type(object), Matter):
     #     make_flowchart_matter(object)
     #     print(f"Matter flowchart created for: {object.name}")
@@ -135,8 +135,10 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
     # Set the graph attributes
     graph.attr(
         rankdir='LR',
-        nodesep='0.6',
-        ranksep='0.6',
+        nodesep='0.3',
+        ranksep='0.3',
+        # splines='polyline',
+        engine='neato',
         fontname="Cabin",
         fontsize='20',
         labelloc='tc',
@@ -146,12 +148,13 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
         
 
     # Create a set to keep track of processed processes
-    processed_processes = set()
+    added_processes = set()
 
     # Create a set to keep track of the flows that have already been added
     added_flows = set()
 
     # Iterate over all processes in the model
+    selected_processes = []
     for process in model.processes.values():
         # Check if the process matches the filter criteria
         if (tags is None or set(tags).issubset(process.tags)) and \
@@ -159,42 +162,69 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
                 (level is None or process.transformation_level == level) and \
                 (name is None or name in process.name) and \
                 (description is None or description in process.description):
+            
+            selected_processes.append(process)
 
 
-            # Set the cluster divisions
-            cluster_names = ['collection', 'shredding', 'smelter','market']
-            cluster_colormap = {'market':'lightblue', 'collection':'salmon1', 'shredding':'darkturquoise', 'smelter':'aqua'}
+    # Set the cluster divisions
+    cluster_names = ['other', 'collection', 'dismantling', 'shredding','hammermill', 'smelter','market']
+    cluster_colormap = {
+                        'other':'lightgrey',
+                        'market':'lightblue1', 
+                        'collection':'salmon1',
+                        'dismantling':'plum1', 
+                        'shredding':'springgreen1',
+                        'hammermill':'springgreen2', 
+                        'smelter':'indianred1'
+                        }
+    
+    cluster_rank = {
+                    'other':'none',
+                    'collection':'1',
+                    'dismantling': '2',
+                    'shredding':'3',
+                    'hammermill':'3',
+                    'smelter':'4',
+                    'market':'5',
+                    }
 
-            for cluster_name in cluster_names:
-                if cluster_name in process.name:
-                    with graph.subgraph(name=cluster_name) as cluster:
-                        cluster.attr(label=cluster_name.capitalize(), fontname='Cabin', fontsize='16')
+    # Sort the processes into clusters based on the cluster_names
+    processes_in_clusters = {}
+    for process in selected_processes:
+        for cluster_name in cluster_names:
+            if cluster_name in process.name.lower():
+                processes_in_clusters.setdefault(cluster_name, []).append(process)
+            # else:
+            #     processes_in_clusters.setdefault('other', []).append(process)
 
-                        # Add nodes for processes with cluster_name in the name
-                        if process not in processed_processes:
-                            cluster.node(process.name, 
-                                        fontname='Cabin',
-                                        fontsize='14',
-                                        shape='box',
-                                        style='filled',
-                                        fillcolor=cluster_colormap[cluster_name],
-                                        )
-                        
-                        # Add to the set of processed processes
-                            processed_processes.add(process)
+    
+    # Add the clusters to the graph and add the processes to the clusters
+    for cluster_name, cluster_processes in processes_in_clusters.items():
+            
+            with graph.subgraph(name=cluster_name) as cluster:
+                cluster.attr(label=cluster_name.capitalize(),
+                             rankdir='LR',
+                             fontname='Cabin',
+                             fontsize='16',
+                             labelloc='t',
+                             margin='25',
+                             style='rounded,filled',
+                             rank=cluster_rank[cluster_name],
+                             )
 
-                if cluster_name not in process.name:
-                    with graph.subgraph(name='other') as cluster:
-                        cluster.attr(label='Other', fontname='Cabin', fontsize='16')
-                    # Add nodes for the processes without cluster_name in the name
-                        graph.node(process.name,
+                # Add nodes for processes with cluster_name in the name
+                for process in cluster_processes:
+                        cluster.node(process.name, 
                                     fontname='Cabin',
                                     fontsize='14',
                                     shape='box',
                                     style='filled',
-                                    color='black',
-                                    fillcolor='mediumorchid1',
+                                    fillcolor=cluster_colormap[cluster_name],
                                     )
+                    
+                    # Add to the set of processed processes
+                        added_processes.add(process)
+
                         
                         #     # Set the newrank attribute to True to separate the clusters
                         # cluster.attr(rank='same',
@@ -204,23 +234,26 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
 
 
                     #Add edges for the inputs and outputs
-            for flow in process.inputs:
-                if flow not in added_flows:
-                    graph.edge(flow.process_from, flow.process_to,
-                            label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
-                            fontsize='6',
-                            fontname='Cabin',
-                            color='black',
-                            )
-                    added_flows.add(flow)
+    for process in selected_processes:
+        for flow in process.inputs:
+            if flow not in added_flows:
+                graph.edge(flow.process_from, flow.process_to,
+                        label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
+                        fontsize='6',
+                        fontname='Cabin',
+                        color='black',
+                        arrowhead='vee',
+                        arrowsize='0.5',
+                        )
+                added_flows.add(flow)
 
     
 
             # If the process is not in the set of processed processes, add it to the graph
             
-            if process not in processed_processes:
-                print(process.name)
-                graph.node(process.name, fontname='Cabin', fontsize='14')
+            # if process not in added_processes:
+            #     print(process.name)
+            #     graph.node(process.name, fontname='Cabin', fontsize='14')
 
             
             # # Add edges for the inputs and outputs
@@ -250,4 +283,4 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
         graph.render(file_path, format=_format)
 
     print(f"Model flowchart created in figures folder for {model.name}")
-    print(f"View .pdf @ {os.path.abspath(file_path)}.pdf")
+    print(f"\tView .pdf @ {os.path.abspath(file_path)}.pdf")
