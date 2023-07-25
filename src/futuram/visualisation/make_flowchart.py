@@ -243,7 +243,7 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
                         fontname='Cabin',
                         color='black',
                         arrowhead='vee',
-                        arrowsize='0.5',
+                        arrowsize='0.4',
                         )
                 added_flows.add(flow)
 
