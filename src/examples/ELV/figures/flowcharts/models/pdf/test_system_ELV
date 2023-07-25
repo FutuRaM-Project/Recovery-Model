@@ -1,6 +1,6 @@
 digraph {
-	engine=neato fontname=Cabin fontsize=20 label="Flowchart for Model: test_system_ELV
------------" labeljust=c labelloc=tc nodesep=0.3 rankdir=LR ranksep=0.3
+	engine=neato fontname=Cabin fontsize=24 label="Flowchart for Model: test_system_ELV
+-----------" labeljust=c labelloc=tc nodesep=0.2 rankdir=LR ranksep=0.3
 	subgraph collection {
 		fontname=Cabin fontsize=16 label=Collection labelloc=t margin=25 rank=1 rankdir=LR style="rounded,filled"
 		collection_ICE [fillcolor=salmon1 fontname=Cabin fontsize=14 shape=box style=filled]
@@ -8,6 +8,21 @@ digraph {
 	subgraph dismantling {
 		fontname=Cabin fontsize=16 label=Dismantling labelloc=t margin=25 rank=2 rankdir=LR style="rounded,filled"
 		dismantling_ICE [fillcolor=plum1 fontname=Cabin fontsize=14 shape=box style=filled]
+	}
+	subgraph market {
+		fontname=Cabin fontsize=16 label=Market labelloc=t margin=25 rank=5 rankdir=LR style="rounded,filled"
+		market_reuse_ELVcomponents [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_waste_rubber [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_ree [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_lead [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_H2SO4 [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_nonferrous [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_ferrous [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_waste [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_waste_glass [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_waste_plastic [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_waste_slag [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
+		market_waste_oil [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
 	}
 	subgraph shredding {
 		fontname=Cabin fontsize=16 label=Shredding labelloc=t margin=25 rank=3 rankdir=LR style="rounded,filled"
@@ -26,21 +41,10 @@ digraph {
 		smelter_nonferrous [fillcolor=indianred1 fontname=Cabin fontsize=14 shape=box style=filled]
 		smelter_ferrous [fillcolor=indianred1 fontname=Cabin fontsize=14 shape=box style=filled]
 	}
-	subgraph market {
-		fontname=Cabin fontsize=16 label=Market labelloc=t margin=25 rank=5 rankdir=LR style="rounded,filled"
-		market_waste_rubber [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_ree [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_lead [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_H2SO4 [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_nonferrous [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_ferrous [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_waste [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_waste_glass [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_waste_plastic [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_waste_slag [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-		market_waste_oil [fillcolor=lightblue1 fontname=Cabin fontsize=14 shape=box style=filled]
-	}
 	collection_ICE -> dismantling_ICE [label="Composition: ELV_ICE
+Amount: None 
+Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
+	dismantling_ICE -> market_reuse_ELVcomponents [label="Composition: ELV_ICE
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
 	dismantling_ICE -> shredding_engtrans [label="Composition: ICE_engtrans

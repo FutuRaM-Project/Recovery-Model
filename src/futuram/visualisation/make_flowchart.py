@@ -135,12 +135,12 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
     # Set the graph attributes
     graph.attr(
         rankdir='LR',
-        nodesep='0.3',
+        nodesep='0.2',
         ranksep='0.3',
         # splines='polyline',
         engine='neato',
         fontname="Cabin",
-        fontsize='20',
+        fontsize='24',
         labelloc='tc',
         labeljust='c',
         label=f"Flowchart for Model: {model.name}\n-----------",
