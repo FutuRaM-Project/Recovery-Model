@@ -14,53 +14,53 @@
 <!-- market_waste_slag -->
 <g id="node1" class="node">
 <title>market_waste_slag</title>
-<polygon fill="#e066ff" stroke="black" points="357.5,-115 226.5,-115 226.5,-79 357.5,-79 357.5,-115"/>
-<text text-anchor="middle" x="292" y="-93.3" font-family="Cabin" font-size="14.00">market_waste_slag</text>
+<polygon fill="#e066ff" stroke="black" points="370,-115 239,-115 239,-79 370,-79 370,-115"/>
+<text text-anchor="middle" x="304.5" y="-93.3" font-family="Cabin" font-size="14.00">market_waste_slag</text>
 </g>
 <!-- smelter_cc -->
 <g id="node2" class="node">
 <title>smelter_cc</title>
-<polygon fill="darkturquoise" stroke="black" points="107.5,-194 43.5,-194 43.5,-158 107.5,-158 107.5,-194"/>
-<text text-anchor="middle" x="75.5" y="-173.5" font-family="Cabin" font-size="10.00">smelter_cc</text>
+<polygon fill="darkturquoise" stroke="black" points="95,-194 31,-194 31,-158 95,-158 95,-194"/>
+<text text-anchor="middle" x="63" y="-173.5" font-family="Cabin" font-size="10.00">smelter_cc</text>
 </g>
 <!-- smelter_cc&#45;&gt;market_waste_slag -->
 <g id="edge1" class="edge">
 <title>smelter_cc&#45;&gt;market_waste_slag</title>
-<path fill="none" stroke="black" d="M107.69,-164.51C140.28,-152.51 192.19,-133.39 232.46,-118.56"/>
-<polygon fill="black" stroke="black" points="233.73,-121.82 241.9,-115.08 231.31,-115.25 233.73,-121.82"/>
-<text text-anchor="middle" x="176" y="-164.2" font-family="Cabin" font-size="6.00">Composition: slag_ree</text>
-<text text-anchor="middle" x="176" y="-157.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="176" y="-150.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<path fill="none" stroke="black" d="M95.18,-166.62C126.18,-157.2 175.04,-142.09 217,-128 225.98,-124.98 235.45,-121.7 244.69,-118.43"/>
+<polygon fill="black" stroke="black" points="245.97,-121.69 254.22,-115.05 243.62,-115.1 245.97,-121.69"/>
+<text text-anchor="middle" x="176" y="-169.2" font-family="Cabin" font-size="6.00">Composition: ALL_slag_ree</text>
+<text text-anchor="middle" x="176" y="-162.2" font-family="Cabin" font-size="6.00">Amount: None </text>
+<text text-anchor="middle" x="176" y="-155.2" font-family="Cabin" font-size="6.00">Unit: None</text>
 </g>
-<!-- smelter_nonferrous -->
+<!-- smelter_ferrous -->
 <g id="node3" class="node">
-<title>smelter_nonferrous</title>
-<polygon fill="darkturquoise" stroke="black" points="125.5,-115 25.5,-115 25.5,-79 125.5,-79 125.5,-115"/>
-<text text-anchor="middle" x="75.5" y="-94.5" font-family="Cabin" font-size="10.00">smelter_nonferrous</text>
+<title>smelter_ferrous</title>
+<polygon fill="darkturquoise" stroke="black" points="105,-115 21,-115 21,-79 105,-79 105,-115"/>
+<text text-anchor="middle" x="63" y="-94.5" font-family="Cabin" font-size="10.00">smelter_ferrous</text>
 </g>
-<!-- smelter_nonferrous&#45;&gt;market_waste_slag -->
+<!-- smelter_ferrous&#45;&gt;market_waste_slag -->
 <g id="edge2" class="edge">
-<title>smelter_nonferrous&#45;&gt;market_waste_slag</title>
-<path fill="none" stroke="black" d="M125.71,-97C152.49,-97 186.18,-97 216.15,-97"/>
-<polygon fill="black" stroke="black" points="216.15,-100.5 226.15,-97 216.15,-93.5 216.15,-100.5"/>
-<text text-anchor="middle" x="176" y="-113.2" font-family="Cabin" font-size="6.00">Composition: slag_nfe</text>
+<title>smelter_ferrous&#45;&gt;market_waste_slag</title>
+<path fill="none" stroke="black" d="M105.17,-97C139.08,-97 188.03,-97 228.82,-97"/>
+<polygon fill="black" stroke="black" points="229,-100.5 239,-97 229,-93.5 229,-100.5"/>
+<text text-anchor="middle" x="176" y="-113.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_fe</text>
 <text text-anchor="middle" x="176" y="-106.2" font-family="Cabin" font-size="6.00">Amount: None </text>
 <text text-anchor="middle" x="176" y="-99.2" font-family="Cabin" font-size="6.00">Unit: None</text>
 </g>
-<!-- smelter_ferrous -->
+<!-- smelter_nonferrous -->
 <g id="node4" class="node">
-<title>smelter_ferrous</title>
-<polygon fill="darkturquoise" stroke="black" points="117.5,-36 33.5,-36 33.5,0 117.5,0 117.5,-36"/>
-<text text-anchor="middle" x="75.5" y="-15.5" font-family="Cabin" font-size="10.00">smelter_ferrous</text>
+<title>smelter_nonferrous</title>
+<polygon fill="darkturquoise" stroke="black" points="113,-36 13,-36 13,0 113,0 113,-36"/>
+<text text-anchor="middle" x="63" y="-15.5" font-family="Cabin" font-size="10.00">smelter_nonferrous</text>
 </g>
-<!-- smelter_ferrous&#45;&gt;market_waste_slag -->
+<!-- smelter_nonferrous&#45;&gt;market_waste_slag -->
 <g id="edge3" class="edge">
-<title>smelter_ferrous&#45;&gt;market_waste_slag</title>
-<path fill="none" stroke="black" d="M117.6,-33.14C150.1,-45.11 195.89,-61.97 232.25,-75.36"/>
-<polygon fill="black" stroke="black" points="231.16,-78.69 241.76,-78.86 233.58,-72.12 231.16,-78.69"/>
-<text text-anchor="middle" x="176" y="-80.2" font-family="Cabin" font-size="6.00">Composition: slag_fe</text>
-<text text-anchor="middle" x="176" y="-73.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="176" y="-66.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<title>smelter_nonferrous&#45;&gt;market_waste_slag</title>
+<path fill="none" stroke="black" d="M113.08,-32.85C143.18,-42.09 182.43,-54.39 217,-66 225.98,-69.02 235.45,-72.3 244.69,-75.57"/>
+<polygon fill="black" stroke="black" points="243.62,-78.9 254.22,-78.95 245.97,-72.31 243.62,-78.9"/>
+<text text-anchor="middle" x="176" y="-82.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_nfe</text>
+<text text-anchor="middle" x="176" y="-75.2" font-family="Cabin" font-size="6.00">Amount: None </text>
+<text text-anchor="middle" x="176" y="-68.2" font-family="Cabin" font-size="6.00">Unit: None</text>
 </g>
 </g>
 </svg>

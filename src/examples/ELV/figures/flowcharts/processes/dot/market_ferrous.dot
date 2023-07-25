@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="265,18",
+		pos="271.5,18",
 		shape=box,
 		style=filled,
 		width=1.5];
@@ -27,16 +27,16 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="73,18",
+		pos="66.5,18",
 		shape=box,
 		style=filled,
 		width=1.1667];
 	smelter_ferrous -> market_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ferrous
+		label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None",
 		lp="163,28.5",
-		pos="e,210.92,18 115.23,18 140.21,18 172.59,18 200.76,18"];
+		pos="e,217.14,18 108.58,18 136.81,18 174.83,18 206.94,18"];
 }

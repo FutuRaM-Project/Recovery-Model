@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="291,18",
+		pos="298,18",
 		shape=box,
 		style=filled,
 		width=1.9028];
@@ -27,16 +27,16 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="81.5,18",
+		pos="74.5,18",
 		shape=box,
 		style=filled,
 		width=1.3889];
 	shredding_engtrans -> market_waste_glass	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: glass
+		label="Composition: ALL_glass
 Amount: None 
 Unit: None",
 		lp="177,28.5",
-		pos="e,222.34,18 131.67,18 155.69,18 185.16,18 212.14,18"];
+		pos="e,229.5,18 124.66,18 152.49,18 187.93,18 219.43,18"];
 }

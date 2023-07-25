@@ -2,7 +2,7 @@
 # import create_process_flow_diagram
 # from utils.create_sankey_diagram import create_sankey_diagram
 # from utils.create_process_tree_diagram import create_process_tree_diagram
-
+import random
 import pandas as pd
 import json
 
@@ -19,6 +19,42 @@ class Model:
         self.components = {}
         self.products = {}
         self.matter = self.get_matter()
+
+    def random_process(self):
+        """
+        Get a random process from the model.
+
+        Returns:
+            Process: The random process.
+        """
+        random_process = random.choice(list(self.processes.values()))
+
+        return random_process
+    
+    def random_flow(self):
+        """
+        Get a random flow from the model.
+
+        Returns:
+            Flow: The random flow.
+        """
+        random_process = self.random_process()
+
+        flows = random_process.inputs + random_process.outputs
+        random_flow = random.choice(flows)
+
+        return random_flow
+    
+    def random_matter(self):
+        """
+        Get a random matter object from the model.
+
+        Returns:
+            Element, Compound, Material, Component or Product: The random matter object.
+        """
+        random_matter = random.choice(list(self.matter.values()))
+
+        return random_matter
 
     def add_parameter(self, parameter):
         if type(parameter).__name__ == 'Parameter':

@@ -93,7 +93,10 @@ def import_matter_csv(model, filename):
         comp_dict['undefined'] = {'matter_kind': 'unknown', 'mass_fraction': undefined_mass_fraction, 'uncertainty': Decimal('0')}
 
     # finally, add instantiate the matter object and add it to the model
-    matter = matter_type(name, comp_dict)
+    if matter_type == Element:
+        matter = matter_type(name)
+    else:
+        matter = matter_type(name, comp_dict)
     # matter.add_to_model(model)
     model.add_matter(matter)
 

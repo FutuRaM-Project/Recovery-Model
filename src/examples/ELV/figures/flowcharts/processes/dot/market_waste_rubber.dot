@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="291.5,18",
+		pos="298,18",
 		shape=box,
 		style=filled,
 		width=2.0556];
@@ -27,16 +27,16 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="81.5,18",
+		pos="75,18",
 		shape=box,
 		style=filled,
 		width=1.1111];
 	shredding_tyre -> market_waste_rubber	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: rubber
+		label="Composition: ALL_rubber
 Amount: None 
 Unit: None",
 		lp="169.5,28.5",
-		pos="e,217.45,18 121.62,18 145.73,18 177.58,18 207.12,18"];
+		pos="e,223.56,18 115,18 142.18,18 179.47,18 213.22,18"];
 }

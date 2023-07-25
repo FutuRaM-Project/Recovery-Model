@@ -24,10 +24,10 @@ class Process:
         self.consumption_water = None
         self.cost_operation = None
         self.cost_capital = None
-        self.transfer_coefficients = []
-        self.inputs = []
-        self.outputs = []
-        self.parameters = []
+        self.transfer_coefficients = {}
+        self.inputs = {}
+        self.outputs = {}
+        self.parameters = {}
     
     def add_transfer_coefficient(self, flow_input, flow_output, transfer_coefficient, uncertainty):
         """
@@ -39,12 +39,12 @@ class Process:
             transfer_coefficient (float): The transfer coefficient.
             uncertainty (float): The uncertainty of the transfer coefficient.
         """
-        self.transfer_coefficients.append({
+        self.transfer_coefficients[flow_output] = {
             "input": flow_input,
             "output": flow_output,
             "transfer_coefficient": transfer_coefficient,
             "uncertainty": uncertainty
-        })
+        }
 
     def add_to_model(self, model):
         model.add_process(self)
@@ -56,7 +56,8 @@ class Process:
         Args:
             flow (Flow): The input flow to add.
         """
-        self.inputs.append(flow)
+        self.inputs[flow.name] = flow
+
     
     def add_output(self, flow):
         """
@@ -65,7 +66,7 @@ class Process:
         Args:
             flow (Flow): The output flow to add.
         """
-        self.outputs.append(flow)
+        self.outputs[flow.name] = flow
     
     def remove_input(self, flow):
         """
@@ -74,7 +75,7 @@ class Process:
         Args:
             flow (Flow): The input flow to remove.
         """
-        self.inputs.remove(flow)
+        self.inputs.pop(flow)
     
     def remove_output(self, flow):
         """
@@ -83,19 +84,19 @@ class Process:
         Args:
             flow (Flow): The output flow to remove.
         """
-        self.outputs.remove(flow)
+        self.outputs.pop(flow)
     
     def clear_inputs(self):
         """
         Clears all input flows from the process.
         """
-        self.inputs = []
+        self.inputs = {}
     
     def clear_outputs(self):
         """
         Clears all output flows from the process.
         """
-        self.outputs = []
+        self.outputs = {}
     
     def get_total_input_flow(self):
         """
@@ -104,7 +105,7 @@ class Process:
         Returns:
             The total input flow to the process.
         """
-        total_input_flow = sum(flow.amount for flow in self.inputs)
+        total_input_flow = sum(flow.amount for flow in self.inputs.values())
         return total_input_flow
     
     def get_total_output_flow(self):
@@ -114,7 +115,7 @@ class Process:
         Returns:
             The total output flow from the process.
         """
-        total_output_flow = sum(flow.amount for flow in self.outputs)
+        total_output_flow = sum(flow.amount for flow in self.outputs.values())
         return total_output_flow
     
     def add_transform_flow(self, flow, function):
@@ -173,7 +174,7 @@ class Process:
         Args:
             parameter: The parameter to add.
         """
-        self.parameters.append(parameter)
+        self.parameters[parameter.name] = parameter
     
     def remove_parameter(self, parameter):
         """
@@ -182,7 +183,7 @@ class Process:
         Args:
             parameter: The parameter to remove.
         """
-        self.parameters.remove(parameter)
+        self.parameters.pop(parameter)
 
     def to_dict(self):
         """
@@ -194,11 +195,18 @@ class Process:
         return {
             "name": self.name,
             "description": self.description,
-            "tags": self.tags,
             "WS": self.WS,
-            "inputs": self.inputs,
-            "outputs": self.outputs,
-            "parameters": self.parameters
+            "transformation_level": self.transformation_level,
+            "tags": self.tags,
+            "inputs": [f'{x.name}:{x.amount}{x.unit}' for x in self.inputs.values()],
+            "outputs": [f'{x.name}:{x.amount}{x.unit}' for x in self.outputs.values()],
+            "parameters": self.parameters,
+            "consumption_energy": self.consumption_energy,
+            "consumption_water": self.consumption_water,
+            "cost_operation": self.cost_operation,
+            "cost_capital": self.cost_capital,
+            "transfer_coefficients": [f'{x["input"]}--{x["transfer_coefficient"]}-->{x["output"]}' for x in self.transfer_coefficients.values()]
+
         }
     
     def make_flowchart(self):

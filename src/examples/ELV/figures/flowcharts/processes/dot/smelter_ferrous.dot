@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,505,246",
+	graph [bb="0,0,543,246",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="252.5,220",
+		lp="271.5,220",
 		lwidth=4.71,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="252,97",
+		pos="265,97",
 		shape=box,
 		style=filled,
 		width=1.5556];
@@ -27,80 +27,80 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="455.5,137",
+		pos="493.5,137",
 		shape=box,
 		style=filled,
 		width=1.125];
 	smelter_ferrous -> market_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ferrous
+		label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None",
-		lp="357,132.5",
-		pos="e,414.84,129.13 308.06,107.93 338.29,113.93 375.48,121.31 404.82,127.14"];
+		lp="382.5,134.5",
+		pos="e,452.83,129.99 321.12,106.73 358.18,113.28 406.65,121.84 442.58,128.18"];
 	market_waste_slag	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="455.5,58",
+		pos="493.5,58",
 		shape=box,
 		style=filled,
 		width=1.375];
 	smelter_ferrous -> market_waste_slag	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: slag_fe
+		label="Composition: ELV_ICE_slag_fe
 Amount: None 
 Unit: None",
-		lp="357,73.5",
-		pos="e,405.75,55.762 286.54,78.907 299.71,72.69 315.2,66.435 330,63 351.1,58.105 374.73,56.274 395.7,55.859"];
-	shredding_engtrans	[fillcolor=darkturquoise,
+		lp="382.5,73.5",
+		pos="e,443.76,54.984 299.53,78.855 312.7,72.631 328.18,66.385 343,63 372.3,56.307 405.65,54.643 433.41,54.829"];
+	shredding_tyre	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
 		pos="50,176",
 		shape=box,
 		style=filled,
-		width=1.3889];
-	shredding_engtrans -> smelter_ferrous	[color=black,
+		width=1.1111];
+	shredding_tyre -> smelter_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ferrous
+		label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None",
-		lp="148,157.5",
-		pos="e,206.24,115.11 97.48,158 120.52,149.04 148.75,138.01 174,128 181.43,125.06 189.25,121.93 196.95,118.84"];
-	hammermill_body	[fillcolor=darkturquoise,
+		lp="154.5,160.5",
+		pos="e,220.15,115.04 90.148,162.69 117.41,153.29 154.56,140.25 187,128 194.67,125.1 202.73,121.97 210.63,118.83"];
+	shredding_engtrans	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
 		pos="50,97",
 		shape=box,
 		style=filled,
-		width=1.3194];
-	hammermill_body -> smelter_ferrous	[color=black,
+		width=1.3889];
+	shredding_engtrans -> smelter_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ferrous
+		label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None",
-		lp="148,107.5",
-		pos="e,195.75,97 97.639,97 123.75,97 156.73,97 185.4,97"];
-	shredding_tyre	[fillcolor=darkturquoise,
+		lp="154.5,107.5",
+		pos="e,208.74,97 100.13,97 129.4,97 166.91,97 198.65,97"];
+	hammermill_body	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
 		pos="50,18",
 		shape=box,
 		style=filled,
-		width=1.1111];
-	shredding_tyre -> smelter_ferrous	[color=black,
+		width=1.3194];
+	hammermill_body -> smelter_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ferrous
+		label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None",
-		lp="148,76.5",
-		pos="e,206.24,78.888 90.095,33.134 114.29,42.53 145.98,54.892 174,66 181.43,68.945 189.25,72.068 196.95,75.155"];
+		lp="154.5,76.5",
+		pos="e,220.15,78.964 97.76,33.941 124.08,43.054 157.49,54.856 187,66 194.67,68.895 202.73,72.034 210.63,75.165"];
 }

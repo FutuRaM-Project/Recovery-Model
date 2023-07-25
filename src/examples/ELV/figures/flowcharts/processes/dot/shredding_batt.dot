@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,500,246",
+	graph [bb="0,0,523,246",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="250,220",
+		lp="261.5,220",
 		lwidth=4.61,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,31 +19,31 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="240,97",
+		pos="252,97",
 		shape=box,
 		style=filled,
 		width=1.4722];
-	market_lead	[fillcolor=lightsalmon1,
+	market_waste_plastic	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="445.5,176",
+		pos="468.5,176",
 		shape=box,
 		style=filled,
-		width=0.95833];
-	shredding_batt -> market_lead	[color=black,
+		width=1.5139];
+	shredding_batt -> market_waste_plastic	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: Pb
+		label="Composition: ALL_plastic
 Amount: None 
 Unit: None",
-		lp="342,158.5",
-		pos="e,410.81,163.95 283.14,115.01 293.52,119.35 304.63,123.91 315,128 343.55,139.27 375.93,151.27 401.17,160.45"];
+		lp="359.5,159.5",
+		pos="e,413.82,158.61 294.68,115.04 305.17,119.42 316.45,123.99 327,128 351.99,137.49 379.79,147.17 404.03,155.33"];
 	market_H2SO4	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="445.5,97",
+		pos="468.5,97",
 		shape=box,
 		style=filled,
 		width=1.1528];
@@ -53,24 +53,24 @@ Unit: None",
 		label="Composition: H2SO4
 Amount: None 
 Unit: None",
-		lp="342,107.5",
-		pos="e,403.73,97 293.14,97 324.04,97 363.01,97 393.67,97"];
-	market_waste_plastic	[fillcolor=lightsalmon1,
+		lp="359.5,107.5",
+		pos="e,426.89,97 305.2,97 339.14,97 383.17,97 416.8,97"];
+	market_lead	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="445.5,18",
+		pos="468.5,18",
 		shape=box,
 		style=filled,
-		width=1.5139];
-	shredding_batt -> market_waste_plastic	[color=black,
+		width=0.95833];
+	shredding_batt -> market_lead	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: plastic
+		label="Composition: Pb
 Amount: None 
 Unit: None",
-		lp="342,76.5",
-		pos="e,394.19,36.092 283.14,78.99 293.52,74.651 304.63,70.09 315,66 337.63,57.069 362.67,47.675 384.65,39.59"];
+		lp="359.5,76.5",
+		pos="e,433.77,28.813 294.68,78.962 305.17,74.58 316.45,70.006 327,66 359.19,53.774 396.05,41.236 423.93,32.042"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -82,9 +82,9 @@ Unit: None",
 	dismantling_ICE -> shredding_batt	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ICE_batt
+		label="Composition: ELV_ICE_batt
 Amount: None 
 Unit: None",
-		lp="136,107.5",
-		pos="e,186.67,97 85.44,97 111.94,97 146.66,97 176.38,97"];
+		lp="142,107.5",
+		pos="e,198.76,97 85.491,97 115.11,97 155.29,97 188.64,97"];
 }

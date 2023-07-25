@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="281.5,18",
+		pos="288,18",
 		shape=box,
 		style=filled,
 		width=1.6944];
@@ -27,16 +27,16 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="71,18",
+		pos="64.5,18",
 		shape=box,
 		style=filled,
 		width=1.1806];
 	dismantling_ICE -> market_waste_oil	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ICE_liquids
+		label="Composition: ELV_ICE_liquids
 Amount: None 
 Unit: None",
 		lp="167,28.5",
-		pos="e,220.31,18 113.69,18 141.25,18 178.07,18 210.1,18"];
+		pos="e,226.71,18 107.16,18 137.84,18 180.31,18 216.26,18"];
 }

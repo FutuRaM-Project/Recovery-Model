@@ -14,21 +14,21 @@
 <!-- market_waste_glass -->
 <g id="node1" class="node">
 <title>market_waste_glass</title>
-<polygon fill="#e066ff" stroke="black" points="359.5,-36 222.5,-36 222.5,0 359.5,0 359.5,-36"/>
-<text text-anchor="middle" x="291" y="-14.3" font-family="Cabin" font-size="14.00">market_waste_glass</text>
+<polygon fill="#e066ff" stroke="black" points="366.5,-36 229.5,-36 229.5,0 366.5,0 366.5,-36"/>
+<text text-anchor="middle" x="298" y="-14.3" font-family="Cabin" font-size="14.00">market_waste_glass</text>
 </g>
 <!-- shredding_engtrans -->
 <g id="node2" class="node">
 <title>shredding_engtrans</title>
-<polygon fill="darkturquoise" stroke="black" points="131.5,-36 31.5,-36 31.5,0 131.5,0 131.5,-36"/>
-<text text-anchor="middle" x="81.5" y="-15.5" font-family="Cabin" font-size="10.00">shredding_engtrans</text>
+<polygon fill="darkturquoise" stroke="black" points="124.5,-36 24.5,-36 24.5,0 124.5,0 124.5,-36"/>
+<text text-anchor="middle" x="74.5" y="-15.5" font-family="Cabin" font-size="10.00">shredding_engtrans</text>
 </g>
 <!-- shredding_engtrans&#45;&gt;market_waste_glass -->
 <g id="edge1" class="edge">
 <title>shredding_engtrans&#45;&gt;market_waste_glass</title>
-<path fill="none" stroke="black" d="M131.67,-18C155.69,-18 185.16,-18 212.14,-18"/>
-<polygon fill="black" stroke="black" points="212.34,-21.5 222.34,-18 212.34,-14.5 212.34,-21.5"/>
-<text text-anchor="middle" x="177" y="-34.2" font-family="Cabin" font-size="6.00">Composition: glass</text>
+<path fill="none" stroke="black" d="M124.66,-18C152.49,-18 187.93,-18 219.43,-18"/>
+<polygon fill="black" stroke="black" points="219.5,-21.5 229.5,-18 219.5,-14.5 219.5,-21.5"/>
+<text text-anchor="middle" x="177" y="-34.2" font-family="Cabin" font-size="6.00">Composition: ALL_glass</text>
 <text text-anchor="middle" x="177" y="-27.2" font-family="Cabin" font-size="6.00">Amount: None </text>
 <text text-anchor="middle" x="177" y="-20.2" font-family="Cabin" font-size="6.00">Unit: None</text>
 </g>

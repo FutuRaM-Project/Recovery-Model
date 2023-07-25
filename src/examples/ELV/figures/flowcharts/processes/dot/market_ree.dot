@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="234,18",
+		pos="246,18",
 		shape=box,
 		style=filled,
 		width=1.1944];
@@ -27,16 +27,16 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="72,18",
+		pos="60,18",
 		shape=box,
 		style=filled,
 		width=0.88889];
 	smelter_cc -> market_ree	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ree
+		label="Composition: ELV_ICE_ree
 Amount: None 
 Unit: None",
 		lp="147.5,28.5",
-		pos="e,190.95,18 104.23,18 125.97,18 155.48,18 180.77,18"];
+		pos="e,202.91,18 92.213,18 119.69,18 160.26,18 192.69,18"];
 }

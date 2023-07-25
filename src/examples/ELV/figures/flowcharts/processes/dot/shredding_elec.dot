@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,508,167",
+	graph [bb="0,0,527,167",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="254,141",
+		lp="263.5,141",
 		lwidth=4.61,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,42 +19,42 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="240.5,57",
+		pos="252.5,57",
 		shape=box,
 		style=filled,
 		width=1.4861];
-	smelter_nonferrous	[fillcolor=lightsalmon1,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="453.5,97",
-		shape=box,
-		style=filled,
-		width=1.3889];
-	shredding_elec -> smelter_nonferrous	[color=black,
-		fontname=Cabin,
-		fontsize=6,
-		label="Composition: nonferrous
-Amount: None 
-Unit: None",
-		lp="346.5,91.5",
-		pos="e,403.36,87.685 294.2,66.991 324.38,72.712 362.33,79.905 393.5,85.815"];
 	market_waste_plastic	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="453.5,18",
+		pos="472.5,97",
 		shape=box,
 		style=filled,
 		width=1.5139];
 	shredding_elec -> market_waste_plastic	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: plastic
+		label="Composition: ALL_plastic
 Amount: None 
 Unit: None",
-		lp="346.5,33.5",
-		pos="e,398.7,15.167 273.89,38.876 286.62,32.655 301.61,26.405 316,23 339.32,17.482 365.49,15.541 388.64,15.213"];
+		lp="362,92.5",
+		pos="e,417.7,87.128 306.27,66.683 336.74,72.274 375.29,79.347 407.49,85.255"];
+	smelter_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="472.5,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_elec -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: None 
+Unit: None",
+		lp="362,33.5",
+		pos="e,422.38,14.996 285.88,38.863 298.61,32.64 313.61,26.392 328,23 355.2,16.588 386.1,14.833 412.24,14.886"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -66,9 +66,9 @@ Unit: None",
 	dismantling_ICE -> shredding_elec	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ICE_elec
+		label="Composition: ELV_ICE_elec
 Amount: None 
 Unit: None",
-		lp="136,67.5",
-		pos="e,186.78,57 85.067,57 111.6,57 146.52,57 176.43,57"];
+		lp="142,67.5",
+		pos="e,198.88,57 85.092,57 114.75,57 155.14,57 188.7,57"];
 }

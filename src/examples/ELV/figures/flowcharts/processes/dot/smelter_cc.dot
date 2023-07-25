@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,477,167",
+	graph [bb="0,0,504,167",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="238.5,141",
+		lp="252,141",
 		lwidth=4.12,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,42 +19,42 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="237,57",
+		pos="250,57",
 		shape=box,
 		style=filled,
 		width=1.1389];
-	market_ree	[fillcolor=lightsalmon1,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="427.5,97",
-		shape=box,
-		style=filled,
-		width=0.90278];
-	smelter_cc -> market_ree	[color=black,
-		fontname=Cabin,
-		fontsize=6,
-		label="Composition: ree
-Amount: None 
-Unit: None",
-		lp="328,91.5",
-		pos="e,394.85,90.285 278.44,65.581 309.87,72.251 353.31,81.469 385.01,88.195"];
 	market_waste_slag	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="427.5,18",
+		pos="454.5,97",
 		shape=box,
 		style=filled,
 		width=1.375];
 	smelter_cc -> market_waste_slag	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: slag_ree
+		label="Composition: ALL_slag_ree
 Amount: None 
 Unit: None",
-		lp="328,33.5",
-		pos="e,377.94,14.753 264.6,38.884 275.16,32.663 287.7,26.412 300,23 321.67,16.991 346.22,14.986 367.89,14.744"];
+		lp="348,92.5",
+		pos="e,404.64,87.348 291.01,64.903 320.57,70.742 361.29,78.785 394.57,85.359"];
+	market_ree	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="454.5,18",
+		shape=box,
+		style=filled,
+		width=0.90278];
+	smelter_cc -> market_ree	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_ree
+Amount: None 
+Unit: None",
+		lp="348,33.5",
+		pos="e,421.9,15.015 277.6,38.858 288.15,32.635 300.69,26.388 313,23 345.24,14.126 383.21,13.318 411.54,14.484"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -66,9 +66,9 @@ Unit: None",
 	dismantling_ICE -> smelter_cc	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ICE_catconv
+		label="Composition: ELV_ICE_catconv
 Amount: None 
 Unit: None",
-		lp="140.5,67.5",
-		pos="e,195.96,57 85.27,57 114.78,57 154.47,57 185.71,57"];
+		lp="147,67.5",
+		pos="e,208.87,57 85.086,57 117.82,57 163.58,57 198.43,57"];
 }

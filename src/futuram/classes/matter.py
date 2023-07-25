@@ -143,12 +143,13 @@ class Element(Matter):
         - atomic_number (int): The atomic number of the element.
         - atomic_mass (float): The atomic mass of the element.
     """
-    def __init__(self, name, symbol):
+    def __init__(self, symbol):
         super().__init__(symbol)
         symbol = self.get_symbol(symbol)
         element = periodictable.elements.symbol(symbol)
-        self.name = element.name
+        self.name = element.symbol
         self.symbol = element.symbol
+        self.name_full = element.name
         self.atomic_number = element.number
         self.atomic_mass = element._mass
         self.composition = {self: 1}
@@ -168,6 +169,7 @@ class Element(Matter):
     def to_dict(self):
         element_dict = super().to_dict()
         element_dict.update({
+            'Name': self.name_full,
             'Symbol': self.symbol,
             'Atomic Number': self.atomic_number,
             'Atomic Mass': self.atomic_mass,
@@ -251,7 +253,7 @@ class Compound(Matter):
     def calculate_mass_fractions(self):
         composition = {}
         for symbol, count in self.formula.items():
-            composition[Element(symbol, symbol)] = periodictable.elements.symbol(symbol)._mass * count / self.molecular_weight
+            composition[symbol] = periodictable.elements.symbol(symbol)._mass * count / self.molecular_weight
         return composition
 
     def to_dict(self):

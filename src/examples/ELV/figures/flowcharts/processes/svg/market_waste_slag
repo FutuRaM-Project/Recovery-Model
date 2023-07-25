@@ -4,19 +4,19 @@ digraph {
 	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
 	smelter_cc [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	smelter_cc -> market_waste_slag [label="Composition: slag_ree
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
-	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
-	smelter_nonferrous [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
-	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	smelter_nonferrous -> market_waste_slag [label="Composition: slag_nfe
+	smelter_cc -> market_waste_slag [label="Composition: ALL_slag_ree
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
 	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
 	smelter_ferrous [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
-	smelter_ferrous -> market_waste_slag [label="Composition: slag_fe
+	smelter_ferrous -> market_waste_slag [label="Composition: ELV_ICE_slag_fe
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	smelter_nonferrous [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_nonferrous -> market_waste_slag [label="Composition: ELV_ICE_slag_nfe
 Amount: None 
 Unit: None" color=black fontname=Cabin fontsize=6]
 	font=Cabin

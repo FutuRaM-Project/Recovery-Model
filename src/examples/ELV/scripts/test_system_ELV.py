@@ -72,11 +72,11 @@ random_process = model.processes[f.random.choice(list(model.processes.keys()))]
 print(f'\n{"-"*60}\n\t  Flows of random process: {random_process.name}\n{"-"*60}\n ')
 
 print(f'Inputs to process {random_process.name}')
-table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in random_process.inputs]
+table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in random_process.inputs.values()]
 print(f.tabulate.tabulate(table, tablefmt='fancy_grid', headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
 
 print(f'\nOutputs from process {random_process.name}')
-table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in random_process.outputs]
+table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in random_process.outputs.values()]
 print(f.tabulate.tabulate(table, tablefmt='fancy_grid',  headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
 
 # FOR THE WHOLE MODEL:
@@ -85,11 +85,11 @@ for count, process in enumerate(model.processes.values()):
     print(f'\n{"-"*60}\n\t {count+1}/{len(model.processes.values())}. Flows of process: {process.name}\n{"-"*60}\n ')
 
     print(f'Inputs to process {process.name}')
-    table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.inputs]
+    table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.inputs.values()]
     print(f.tabulate.tabulate(table, tablefmt='fancy_grid', headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
 
     print(f'\nOutputs from process {process.name}')
-    table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.outputs]
+    table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.outputs.values()]
     print(f.tabulate.tabulate(table, tablefmt='fancy_grid',  headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
 
 # %% IMPORT TRANSFER COEFFICIENTS
@@ -102,9 +102,9 @@ f.utils.import_transfercoefficients_xlsx(transfercoefficients_xlsx, model)
 # (btw. markets have no transfer coefficients)
 random_process = model.processes[f.random.choice(list(model.processes.keys()))]
 print(f'\n\n{"-"*60}\n   Transfer coefficients for random process: {random_process.name}\n{"-"*60}')
-table = [[d['input'], d['output'], d['transfer_coefficient'], d['uncertainty']] for d in random_process.transfer_coefficients]
+table = [[d['input'], d['output'], d['transfer_coefficient'], d['uncertainty']] for d in random_process.transfer_coefficients.values()]
 if len(table) > 0:
-    print(f.tabulate.tabulate(table, headers=list(random_process.transfer_coefficients[0].keys()), tablefmt='fancy_grid'))
+    print(f.tabulate.tabulate(table, headers=list(list(random_process.transfer_coefficients.values())[0].keys()), tablefmt='fancy_grid'))
 else:
     print(f'No transfer coefficients for process {random_process.name}')
 
@@ -140,4 +140,59 @@ f.make_flowchart(model)
 #TODO: still need to write this
 
 # %% THE END
+
+
+#%% VALIDATE THE MODEL
+f.validate_model(model)
+ 
+
+#%%
+
+
+process = model.random_process()
+
+
+for process in model.processes.values():
+    if process.outputs: 
+        print(process.name)
+        for flow in process.outputs.values():
+            print(flow.name)
+            print(flow.composition)
+
+            process.transfer_coefficients.get(flow, None)
+
+            [model.matter[x.composition].composition.keys() for x in process.inputs]
+        
+
+            print (f'Matched: {flow.composition}')
+
+    downstream_process = model.processes[flow.process_to]
+    downstream_processes.append(downstream_process)
+
+    recalculate_amount = flow.amount * flow.transfer_coefficient
+
+
+x = process.inputs[0]
+x.composition
+model.matter[x.composition].composition
+
+
+if 
+inputobj = model.matter[dm.inputs[0].composition]
+
+for fraction in model.matter[dm.inputs[0].composition].composition:
+    # fraction_obj = model.matter[fraction]
+    print(fraction)
+
+
+
+
+
+# for frac, amount
+
+dm.transfer_coefficients[0]
+
+dm.outputs
+
+
 

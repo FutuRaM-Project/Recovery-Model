@@ -47,46 +47,46 @@ Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
 	dismantling_ICE -> market_reuse_ELVcomponents [label="Composition: ELV_ICE
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_engtrans [label="Composition: ICE_engtrans
+	dismantling_ICE -> shredding_engtrans [label="Composition: ELV_ICE_engtrans
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> hammermill_body [label="Composition: ICE_body
+	dismantling_ICE -> hammermill_body [label="Composition: ELV_ICE_body
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> smelter_cc [label="Composition: ICE_catconv
+	dismantling_ICE -> smelter_cc [label="Composition: ELV_ICE_catconv
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_tyre [label="Composition: ICE_tyres
+	dismantling_ICE -> shredding_tyre [label="Composition: ELV_ICE_tyres
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_elec [label="Composition: ICE_elec
+	dismantling_ICE -> shredding_elec [label="Composition: ELV_ICE_elec
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> shredding_batt [label="Composition: ICE_batt
+	dismantling_ICE -> shredding_batt [label="Composition: ELV_ICE_batt
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> smelter_nonferrous [label="Composition: nonferrous
+	shredding_engtrans -> smelter_nonferrous [label="Composition: ELV_ICE_nfe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	hammermill_body -> smelter_nonferrous [label="Composition: nonferrous
+	hammermill_body -> smelter_nonferrous [label="Composition: ELV_ICE_nfe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_elec -> smelter_nonferrous [label="Composition: nonferrous
+	shredding_elec -> smelter_nonferrous [label="Composition: ELV_ICE_nfe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> smelter_ferrous [label="Composition: ferrous
+	shredding_tyre -> smelter_ferrous [label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	hammermill_body -> smelter_ferrous [label="Composition: ferrous
+	shredding_engtrans -> smelter_ferrous [label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_tyre -> smelter_ferrous [label="Composition: ferrous
+	hammermill_body -> smelter_ferrous [label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_tyre -> market_waste_rubber [label="Composition: rubber
+	shredding_tyre -> market_waste_rubber [label="Composition: ALL_rubber
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	smelter_cc -> market_ree [label="Composition: ree
+	smelter_cc -> market_ree [label="Composition: ELV_ICE_ree
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
 	shredding_batt -> market_lead [label="Composition: Pb
@@ -95,37 +95,37 @@ Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
 	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	smelter_nonferrous -> market_nonferrous [label="Composition: nonferrous
+	smelter_nonferrous -> market_nonferrous [label="Composition: ELV_ICE_nfe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	smelter_ferrous -> market_ferrous [label="Composition: ferrous
+	smelter_ferrous -> market_ferrous [label="Composition: ELV_ICE_fe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> market_waste [label="Composition: waste_shredder
+	shredding_engtrans -> market_waste [label="Composition: ELV_ICE_waste_shredder
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	hammermill_body -> market_waste [label="Composition: waste_shredder
+	hammermill_body -> market_waste [label="Composition: ELV_ICE_waste_shredder
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_engtrans -> market_waste_glass [label="Composition: glass
+	shredding_engtrans -> market_waste_glass [label="Composition: ALL_glass
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_elec -> market_waste_plastic [label="Composition: plastic
+	shredding_elec -> market_waste_plastic [label="Composition: ALL_plastic
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	shredding_batt -> market_waste_plastic [label="Composition: plastic
+	shredding_batt -> market_waste_plastic [label="Composition: ALL_plastic
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	smelter_cc -> market_waste_slag [label="Composition: slag_ree
+	smelter_cc -> market_waste_slag [label="Composition: ALL_slag_ree
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	smelter_nonferrous -> market_waste_slag [label="Composition: slag_nfe
+	smelter_ferrous -> market_waste_slag [label="Composition: ELV_ICE_slag_fe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	smelter_ferrous -> market_waste_slag [label="Composition: slag_fe
+	smelter_nonferrous -> market_waste_slag [label="Composition: ELV_ICE_slag_nfe
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
-	dismantling_ICE -> market_waste_oil [label="Composition: ICE_liquids
+	dismantling_ICE -> market_waste_oil [label="Composition: ELV_ICE_liquids
 Amount: None 
 Unit: None" arrowhead=vee arrowsize=0.4 color=black fontname=Cabin fontsize=6]
 }

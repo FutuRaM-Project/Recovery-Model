@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,555,325",
+	graph [bb="0,0,593,325",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="277.5,299",
+		lp="296.5,299",
 		lwidth=5.15,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,74 +19,74 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="265,136",
+		pos="278,136",
 		shape=box,
 		style=filled,
 		width=1.8611];
-	smelter_nonferrous	[fillcolor=lightsalmon1,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="503,255",
-		shape=box,
-		style=filled,
-		width=1.3889];
-	shredding_engtrans -> smelter_nonferrous	[color=black,
-		fontname=Cabin,
-		fontsize=6,
-		label="Composition: nonferrous
-Amount: None 
-Unit: None",
-		lp="391.5,236.5",
-		pos="e,452.94,237.5 290.63,154.08 307.85,166.26 331.68,182.19 354,194 382.56,209.12 415.72,223.09 443.39,233.84"];
-	smelter_ferrous	[fillcolor=lightsalmon1,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="503,176",
-		shape=box,
-		style=filled,
-		width=1.1667];
-	shredding_engtrans -> smelter_ferrous	[color=black,
-		fontname=Cabin,
-		fontsize=6,
-		label="Composition: ferrous
-Amount: None 
-Unit: None",
-		lp="391.5,173.5",
-		pos="e,460.82,169.02 332.05,147.2 369.66,153.57 416.06,161.43 450.87,167.33"];
 	market_waste_glass	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="503,97",
+		pos="541,255",
 		shape=box,
 		style=filled,
 		width=1.4444];
 	shredding_engtrans -> market_waste_glass	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: glass
+		label="Composition: ALL_glass
 Amount: None 
 Unit: None",
-		lp="391.5,112.5",
-		pos="e,450.82,94.55 304.58,117.88 319.66,111.65 337.31,105.4 354,102 382.14,96.259 413.91,94.576 440.78,94.504"];
+		lp="417,243.5",
+		pos="e,488.64,240.98 302.27,154.02 319.45,166.71 343.79,183.43 367,195 402.74,212.81 445.05,227.58 478.89,238.02"];
+	smelter_ferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="541,176",
+		shape=box,
+		style=filled,
+		width=1.1667];
+	shredding_engtrans -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: None 
+Unit: None",
+		lp="417,174.5",
+		pos="e,498.75,169.68 345.2,146.15 389.75,152.97 447.63,161.84 488.69,168.14"];
+	smelter_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="541,97",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: None 
+Unit: None",
+		lp="417,112.5",
+		pos="e,490.65,94.021 317.57,117.83 332.65,111.61 350.3,105.36 367,102 404.24,94.498 446.89,93.186 480.52,93.78"];
 	market_waste	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="503,18",
+		pos="541,18",
 		shape=box,
 		style=filled,
 		width=1.0694];
 	shredding_engtrans -> market_waste	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: waste_shredder
+		label="Composition: ELV_ICE_waste_shredder
 Amount: None 
 Unit: None",
-		lp="391.5,74.5",
-		pos="e,464.24,25.508 283.7,117.99 300.48,101.83 327.05,78.495 354,64 385.61,46.993 424.47,35.219 454.44,27.842"];
+		lp="417,73.5",
+		pos="e,502.19,22.96 296.18,117.75 312.79,101.14 339.44,77.12 367,63 406.59,42.714 456.09,31.037 491.98,24.688"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -98,9 +98,9 @@ Unit: None",
 	dismantling_ICE -> shredding_engtrans	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ICE_engtrans
+		label="Composition: ELV_ICE_engtrans
 Amount: None 
 Unit: None",
-		lp="141.5,146.5",
-		pos="e,197.73,136 85.234,136 114.1,136 153.34,136 187.71,136"];
+		lp="148,146.5",
+		pos="e,210.9,136 85.245,136 117.28,136 162.37,136 200.78,136"];
 }

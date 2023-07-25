@@ -1,8 +1,9 @@
 import json
 import pandas as pd
 
-from .processes import Process
+from .matter import Matter
 
+ 
 #TODO: Add a method to check if the flow exists in the model already
 class Flow:
     """
@@ -28,6 +29,7 @@ class Flow:
         self.composition = composition
         self.unit = None
         # self.add_composition_to_model(model)
+
 
 ##! THIS NEXT TWO FUNCTIONS SHOLD SET THE TO AND FROM PROCESSES TO BE THE OBJECTS IN THE MODEL, NOT JUST THE NAMES, ALSO ADD THE FLOW TO THE INPUTS AND OUTPUTS OF THE PROCESSES IF NOT PRESENT. but it is not working for some reason
     def set_to(self, model, process_to):
@@ -69,6 +71,7 @@ class Flow:
             process = model.processes[process_from]
             self.process_from = process
             if self not in process.outputs:
+                self.validate_flow(self, model)
                 process.add_output(self)
                 print(f"Flow: {self.name} added to process: {process.name}")
             else:

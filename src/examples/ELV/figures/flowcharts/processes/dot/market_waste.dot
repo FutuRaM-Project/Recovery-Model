@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,339,167",
+	graph [bb="0,0,345,167",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="169.5,141",
+		lp="172.5,141",
 		lwidth=4.49,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="279,57",
+		pos="294.5,57",
 		shape=box,
 		style=filled,
 		width=1.4028];
@@ -27,32 +27,32 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="59.5,97",
+		pos="50,97",
 		shape=box,
 		style=filled,
 		width=1.3889];
 	shredding_engtrans -> market_waste	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: waste_shredder
+		label="Composition: ELV_ICE_waste_shredder
 Amount: None 
 Unit: None",
-		lp="169,92.5",
-		pos="e,228.34,66.132 109.58,87.973 141.85,82.038 184.28,74.236 218.48,67.947"];
+		lp="172,95.5",
+		pos="e,243.67,65.22 100.07,88.905 138.69,82.536 192.65,73.635 233.77,66.852"];
 	hammermill_body	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="59.5,18",
+		pos="50,18",
 		shape=box,
 		style=filled,
 		width=1.3194];
 	hammermill_body -> market_waste	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: waste_shredder
+		label="Composition: ELV_ICE_waste_shredder
 Amount: None 
 Unit: None",
-		lp="169,33.5",
-		pos="e,247,38.855 107.19,14.803 136.17,13.991 173.97,15.073 206.5,23 217.02,25.565 227.85,29.773 237.78,34.37"];
+		lp="172,33.5",
+		pos="e,262.86,38.998 97.771,14.228 132.53,12.656 180.86,13.081 222,23 232.63,25.563 243.56,29.818 253.58,34.465"];
 }

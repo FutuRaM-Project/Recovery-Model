@@ -49,8 +49,8 @@ def import_transfercoefficients_xlsx(filename, model):
 
     for tc in data:
         process_name = tc['process']
-        if process_name in process_dict:
-            process = process_dict[process_name]
+        if process_name in model.processes:
+            process = model.processes[process_name]
             process.add_transfer_coefficient(tc['flow_input'], tc['flow_output'], tc['transfer_coefficient'], tc['uncertainty'])
             print(f"\t* {process_name} \t\t({tc['flow_input']} --{tc['transfer_coefficient']}--> {tc['flow_output']})")
         else:

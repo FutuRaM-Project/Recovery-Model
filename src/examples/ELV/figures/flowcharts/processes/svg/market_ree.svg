@@ -14,21 +14,21 @@
 <!-- market_ree -->
 <g id="node1" class="node">
 <title>market_ree</title>
-<polygon fill="#e066ff" stroke="black" points="277,-36 191,-36 191,0 277,0 277,-36"/>
-<text text-anchor="middle" x="234" y="-14.3" font-family="Cabin" font-size="14.00">market_ree</text>
+<polygon fill="#e066ff" stroke="black" points="289,-36 203,-36 203,0 289,0 289,-36"/>
+<text text-anchor="middle" x="246" y="-14.3" font-family="Cabin" font-size="14.00">market_ree</text>
 </g>
 <!-- smelter_cc -->
 <g id="node2" class="node">
 <title>smelter_cc</title>
-<polygon fill="darkturquoise" stroke="black" points="104,-36 40,-36 40,0 104,0 104,-36"/>
-<text text-anchor="middle" x="72" y="-15.5" font-family="Cabin" font-size="10.00">smelter_cc</text>
+<polygon fill="darkturquoise" stroke="black" points="92,-36 28,-36 28,0 92,0 92,-36"/>
+<text text-anchor="middle" x="60" y="-15.5" font-family="Cabin" font-size="10.00">smelter_cc</text>
 </g>
 <!-- smelter_cc&#45;&gt;market_ree -->
 <g id="edge1" class="edge">
 <title>smelter_cc&#45;&gt;market_ree</title>
-<path fill="none" stroke="black" d="M104.23,-18C125.97,-18 155.48,-18 180.77,-18"/>
-<polygon fill="black" stroke="black" points="180.95,-21.5 190.95,-18 180.95,-14.5 180.95,-21.5"/>
-<text text-anchor="middle" x="147.5" y="-34.2" font-family="Cabin" font-size="6.00">Composition: ree</text>
+<path fill="none" stroke="black" d="M92.21,-18C119.69,-18 160.26,-18 192.69,-18"/>
+<polygon fill="black" stroke="black" points="192.91,-21.5 202.91,-18 192.91,-14.5 192.91,-21.5"/>
+<text text-anchor="middle" x="147.5" y="-34.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_ree</text>
 <text text-anchor="middle" x="147.5" y="-27.2" font-family="Cabin" font-size="6.00">Amount: None </text>
 <text text-anchor="middle" x="147.5" y="-20.2" font-family="Cabin" font-size="6.00">Unit: None</text>
 </g>

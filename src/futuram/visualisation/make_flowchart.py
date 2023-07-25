@@ -56,7 +56,7 @@ def make_flowchart_process(process):
     
 
     
-    for flow in process.inputs + process.outputs:
+    for flow in list(process.inputs.values()) + list(process.outputs.values()):
     
     # Add nodes for the inputs and outputs
         graph.node(flow.process_to,
@@ -235,7 +235,7 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
 
                     #Add edges for the inputs and outputs
     for process in selected_processes:
-        for flow in process.inputs:
+        for flow in process.inputs.values():
             if flow not in added_flows:
                 graph.edge(flow.process_from, flow.process_to,
                         label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
