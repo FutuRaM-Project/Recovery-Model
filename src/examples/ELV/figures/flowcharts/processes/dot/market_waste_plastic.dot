@@ -35,9 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0 
-Unit: kg",
-		lp="169.5,95.5",
+Amount: 0 kg",
+		lp="169.5,92",
 		pos="e,223.66,70.123 115.18,89.803 142.6,84.828 180.07,78.03 213.79,71.913"];
 	shredding_batt	[fillcolor=darkturquoise,
 		fontname=Cabin,
@@ -51,8 +50,7 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0 
-Unit: kg",
-		lp="169.5,33.5",
-		pos="e,254.67,38.941 114.61,16.47 139.79,16.238 173.1,17.343 202,23 216.25,25.79 231.23,30.389 244.94,35.316"];
+Amount: 0 kg",
+		lp="169.5,37",
+		pos="e,239.49,38.939 114.52,19.831 139.66,21.47 172.96,24.5 202,30 211,31.705 220.39,33.892 229.6,36.28"];
 }

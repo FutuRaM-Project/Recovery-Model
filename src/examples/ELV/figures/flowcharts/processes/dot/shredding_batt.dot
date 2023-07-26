@@ -35,10 +35,9 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0 
-Unit: kg",
-		lp="359.5,159.5",
-		pos="e,413.82,158.61 294.68,115.04 305.17,119.42 316.45,123.99 327,128 351.99,137.49 379.79,147.17 404.03,155.33"];
+Amount: 0 kg",
+		lp="359.5,155",
+		pos="e,418.4,157.92 301.94,115.03 333.68,126.71 375.2,142.01 408.72,154.35"];
 	market_H2SO4	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
@@ -51,9 +50,8 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: H2SO4
-Amount: 0 
-Unit: kg",
-		lp="359.5,107.5",
+Amount: 0 kg",
+		lp="359.5,104",
 		pos="e,426.89,97 305.2,97 339.14,97 383.17,97 416.8,97"];
 	market_lead	[fillcolor=lightsalmon1,
 		fontname=Cabin,
@@ -67,10 +65,9 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: Pb
-Amount: 0 
-Unit: kg",
-		lp="359.5,76.5",
-		pos="e,433.77,28.813 294.68,78.962 305.17,74.58 316.45,70.006 327,66 359.19,53.774 396.05,41.236 423.93,32.042"];
+Amount: 0 kg",
+		lp="359.5,77",
+		pos="e,433.79,30.417 301.94,78.975 338.79,65.405 388.82,46.977 424.22,33.942"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -83,8 +80,7 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_batt
-Amount: 0 
-Unit: kg",
-		lp="142,107.5",
+Amount: 0 kg",
+		lp="142,104",
 		pos="e,198.76,97 85.491,97 115.11,97 155.29,97 188.64,97"];
 }

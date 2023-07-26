@@ -26,11 +26,10 @@
 <!-- dismantling_ICE&#45;&gt;market_reuse_ELVcomponents -->
 <g id="edge2" class="edge">
 <title>dismantling_ICE&#45;&gt;market_reuse_ELVcomponents</title>
-<path fill="none" stroke="black" d="M235.35,-312.03C241.2,-350.06 259.74,-439.27 310,-492 335.63,-518.89 372.06,-537.26 405.25,-549.47"/>
-<polygon fill="black" stroke="black" points="404.38,-552.87 414.97,-552.91 406.71,-546.28 404.38,-552.87"/>
-<text text-anchor="middle" x="351" y="-558.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
-<text text-anchor="middle" x="351" y="-551.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-544.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M236.54,-312.07C244.24,-347.27 265.53,-425.89 310,-475 340.89,-509.12 386.82,-533.5 424.22,-549.15"/>
+<polygon fill="black" stroke="black" points="422.94,-552.41 433.53,-552.94 425.59,-545.93 422.94,-552.41"/>
+<text text-anchor="middle" x="351" y="-541.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
+<text text-anchor="middle" x="351" y="-534.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- shredding_batt -->
 <g id="node4" class="node">
@@ -41,11 +40,10 @@
 <!-- dismantling_ICE&#45;&gt;shredding_batt -->
 <g id="edge3" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_batt</title>
-<path fill="none" stroke="black" d="M240.57,-312.23C252.09,-338.01 276.32,-385.21 310,-414 347.47,-446.02 400.14,-466.93 438.37,-478.96"/>
-<polygon fill="black" stroke="black" points="437.66,-482.4 448.25,-481.97 439.7,-475.71 437.66,-482.4"/>
-<text text-anchor="middle" x="351" y="-477.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_batt</text>
-<text text-anchor="middle" x="351" y="-470.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-463.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M242.29,-312.1C254.97,-335.37 279.62,-375.87 310,-402 348.4,-435.02 401.01,-459.74 438.98,-474.83"/>
+<polygon fill="black" stroke="black" points="437.71,-478.09 448.3,-478.46 440.25,-471.57 437.71,-478.09"/>
+<text text-anchor="middle" x="351" y="-460.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_batt</text>
+<text text-anchor="middle" x="351" y="-453.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- hammermill_body -->
 <g id="node5" class="node">
@@ -56,11 +54,10 @@
 <!-- dismantling_ICE&#45;&gt;hammermill_body -->
 <g id="edge4" class="edge">
 <title>dismantling_ICE&#45;&gt;hammermill_body</title>
-<path fill="none" stroke="black" d="M254.85,-312.08C269.72,-323.75 290.22,-338.62 310,-349 348.71,-369.31 395.3,-385.84 431.03,-397.01"/>
-<polygon fill="black" stroke="black" points="430.22,-400.42 440.81,-400.01 432.28,-393.73 430.22,-400.42"/>
-<text text-anchor="middle" x="351" y="-399.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_body</text>
-<text text-anchor="middle" x="351" y="-392.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-385.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M259.41,-312.08C273.97,-321.63 292.58,-333.17 310,-342 349.38,-361.95 395.75,-380.33 431.21,-393.39"/>
+<polygon fill="black" stroke="black" points="430.32,-396.79 440.92,-396.93 432.72,-390.22 430.32,-396.79"/>
+<text text-anchor="middle" x="351" y="-387.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_body</text>
+<text text-anchor="middle" x="351" y="-380.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- smelter_cc -->
 <g id="node6" class="node">
@@ -73,9 +70,8 @@
 <title>dismantling_ICE&#45;&gt;smelter_cc</title>
 <path fill="none" stroke="black" d="M288.22,-302.68C335.76,-310.15 403.3,-320.77 446.26,-327.52"/>
 <polygon fill="black" stroke="black" points="445.93,-331.01 456.36,-329.11 447.02,-324.09 445.93,-331.01"/>
-<text text-anchor="middle" x="351" y="-334.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_catconv</text>
-<text text-anchor="middle" x="351" y="-327.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-320.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<text text-anchor="middle" x="351" y="-327.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_catconv</text>
+<text text-anchor="middle" x="351" y="-320.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- shredding_elec -->
 <g id="node7" class="node">
@@ -86,11 +82,10 @@
 <!-- dismantling_ICE&#45;&gt;shredding_elec -->
 <g id="edge6" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_elec</title>
-<path fill="none" stroke="black" d="M266.14,-275.99C279.39,-269.71 295.03,-263.38 310,-260 352.29,-250.46 401.67,-249.89 437.6,-251.32"/>
-<polygon fill="black" stroke="black" points="437.68,-254.82 447.83,-251.79 438,-247.83 437.68,-254.82"/>
+<path fill="none" stroke="black" d="M278.03,-275.94C288.38,-272.42 299.45,-269.16 310,-267 352.55,-258.27 401.91,-255.51 437.76,-254.8"/>
+<polygon fill="black" stroke="black" points="438.02,-258.29 447.96,-254.64 437.91,-251.29 438.02,-258.29"/>
 <text text-anchor="middle" x="351" y="-276.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_elec</text>
-<text text-anchor="middle" x="351" y="-269.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-262.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<text text-anchor="middle" x="351" y="-269.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- shredding_engtrans -->
 <g id="node8" class="node">
@@ -101,11 +96,10 @@
 <!-- dismantling_ICE&#45;&gt;shredding_engtrans -->
 <g id="edge7" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_engtrans</title>
-<path fill="none" stroke="black" d="M246.94,-275.99C261.03,-259.02 284.35,-234.15 310,-220 346.43,-199.9 392.08,-188.84 427.97,-182.85"/>
-<polygon fill="black" stroke="black" points="428.96,-186.23 438.29,-181.21 427.86,-179.32 428.96,-186.23"/>
-<text text-anchor="middle" x="351" y="-236.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_engtrans</text>
-<text text-anchor="middle" x="351" y="-229.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-222.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M252.26,-275.9C267.09,-262.77 288.6,-245.38 310,-234 347.41,-214.1 392.89,-199.4 428.45,-189.78"/>
+<polygon fill="black" stroke="black" points="429.43,-193.14 438.2,-187.2 427.64,-186.37 429.43,-193.14"/>
+<text text-anchor="middle" x="351" y="-243.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_engtrans</text>
+<text text-anchor="middle" x="351" y="-236.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- market_waste_oil -->
 <g id="node9" class="node">
@@ -116,11 +110,10 @@
 <!-- dismantling_ICE&#45;&gt;market_waste_oil -->
 <g id="edge8" class="edge">
 <title>dismantling_ICE&#45;&gt;market_waste_oil</title>
-<path fill="none" stroke="black" d="M238.85,-275.67C248.9,-247.01 272.09,-191.62 310,-160 345.04,-130.78 394.61,-114.69 432.47,-106.11"/>
-<polygon fill="black" stroke="black" points="433.28,-109.51 442.32,-103.98 431.8,-102.67 433.28,-109.51"/>
-<text text-anchor="middle" x="351" y="-176.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_liquids</text>
-<text text-anchor="middle" x="351" y="-169.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-162.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M241.17,-275.61C253.1,-250.59 277.46,-205.77 310,-178 345.83,-147.42 395.12,-126.16 432.66,-113.12"/>
+<polygon fill="black" stroke="black" points="434.08,-116.34 442.43,-109.82 431.84,-109.71 434.08,-116.34"/>
+<text text-anchor="middle" x="351" y="-187.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_liquids</text>
+<text text-anchor="middle" x="351" y="-180.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- shredding_tyre -->
 <g id="node10" class="node">
@@ -131,11 +124,10 @@
 <!-- dismantling_ICE&#45;&gt;shredding_tyre -->
 <g id="edge9" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_tyre</title>
-<path fill="none" stroke="black" d="M234.79,-275.87C239.62,-236.28 256.44,-141.35 310,-87 344.58,-51.91 399.06,-34.29 438.54,-25.69"/>
-<polygon fill="black" stroke="black" points="439.4,-29.09 448.49,-23.65 437.99,-22.23 439.4,-29.09"/>
-<text text-anchor="middle" x="351" y="-103.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_tyres</text>
-<text text-anchor="middle" x="351" y="-96.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="351" y="-89.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M236,-275.92C242.89,-239.5 263.02,-156.47 310,-106 344.89,-68.52 399.23,-44.87 438.6,-31.64"/>
+<polygon fill="black" stroke="black" points="439.84,-34.92 448.27,-28.5 437.68,-28.26 439.84,-34.92"/>
+<text text-anchor="middle" x="351" y="-115.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_tyres</text>
+<text text-anchor="middle" x="351" y="-108.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- collection_ICE -->
 <g id="node2" class="node">
@@ -148,9 +140,8 @@
 <title>collection_ICE&#45;&gt;dismantling_ICE</title>
 <path fill="none" stroke="black" d="M76.02,-294C101.36,-294 135.66,-294 165.55,-294"/>
 <polygon fill="black" stroke="black" points="165.92,-297.5 175.92,-294 165.92,-290.5 165.92,-297.5"/>
-<text text-anchor="middle" x="126" y="-310.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
-<text text-anchor="middle" x="126" y="-303.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="126" y="-296.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<text text-anchor="middle" x="126" y="-303.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
+<text text-anchor="middle" x="126" y="-296.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 </g>
 </svg>

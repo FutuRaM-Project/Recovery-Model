@@ -35,9 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_rubber
-Amount: 0 
-Unit: kg",
-		lp="361.5,91.5",
+Amount: 0 kg",
+		lp="361.5,88",
 		pos="e,415.81,86.918 307.05,66.683 336.76,72.212 374.27,79.189 405.8,85.056"];
 	smelter_ferrous	[fillcolor=lightsalmon1,
 		fontname=Cabin,
@@ -51,10 +50,9 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_fe
-Amount: 0 
-Unit: kg",
-		lp="361.5,33.5",
-		pos="e,428.71,15.231 287.15,38.867 299.8,32.644 314.69,26.396 329,23 358.16,16.077 391.66,14.63 418.69,15.006"];
+Amount: 0 kg",
+		lp="361.5,37",
+		pos="e,428.85,18.638 298.65,38.912 308.49,35.445 318.98,32.212 329,30 358.36,23.516 391.86,20.489 418.85,19.096"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -67,8 +65,7 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_tyres
-Amount: 0 
-Unit: kg",
-		lp="143,67.5",
+Amount: 0 kg",
+		lp="143,64",
 		pos="e,200.65,57 85.141,57 115.2,57 156.32,57 190.34,57"];
 }

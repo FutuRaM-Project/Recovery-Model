@@ -35,10 +35,9 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_fe
-Amount: 0 
-Unit: kg",
-		lp="398,166.5",
-		pos="e,477.95,165.49 311.08,115.06 323.04,119.49 335.94,124.08 348,128 388.03,141.03 434,153.81 468.19,162.9"];
+Amount: 0 kg",
+		lp="398,159",
+		pos="e,477.83,163.22 322.57,115.03 366.44,128.64 426.07,147.15 468.08,160.19"];
 	smelter_nonferrous	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
@@ -51,9 +50,8 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 
-Unit: kg",
-		lp="398,107.5",
+Amount: 0 kg",
+		lp="398,104",
 		pos="e,469.87,97 326.11,97 366.71,97 419.58,97 459.7,97"];
 	market_waste	[fillcolor=lightsalmon1,
 		fontname=Cabin,
@@ -67,10 +65,9 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_waste_shredder
-Amount: 0 
-Unit: kg",
-		lp="398,76.5",
-		pos="e,481.37,27.613 311.08,78.942 323.04,74.514 335.94,69.923 348,66 389.37,52.541 437.07,39.339 471.56,30.198"];
+Amount: 0 kg",
+		lp="398,77",
+		pos="e,481.3,29.704 322.57,78.975 367.66,64.978 429.4,45.812 471.55,32.728"];
 	dismantling_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -83,8 +80,7 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_body
-Amount: 0 
-Unit: kg",
-		lp="143,107.5",
+Amount: 0 kg",
+		lp="143,104",
 		pos="e,200.65,97 85.208,97 114.91,97 155.6,97 190.5,97"];
 }

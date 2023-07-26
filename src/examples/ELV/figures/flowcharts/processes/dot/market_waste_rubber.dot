@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,407,91",
+	graph [bb="0,0,407,88",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="203.5,65",
+		lp="203.5,62",
 		lwidth=5.43,
 		nodesep=0.6,
 		rankdir=LR,
@@ -35,8 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_rubber
-Amount: 0 
-Unit: kg",
-		lp="169.5,28.5",
+Amount: 0 kg",
+		lp="169.5,25",
 		pos="e,223.56,18 115,18 142.18,18 179.47,18 213.22,18"];
 }

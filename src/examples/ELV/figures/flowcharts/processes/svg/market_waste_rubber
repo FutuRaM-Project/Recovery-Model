@@ -5,7 +5,6 @@ digraph {
 	shredding_tyre [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	market_waste_rubber [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
 	shredding_tyre -> market_waste_rubber [label="Composition: ALL_rubber
-Amount: 0 
-Unit: kg" color=black fontname=Cabin fontsize=6]
+Amount: 0 kg" color=black fontname=Cabin fontsize=6]
 	font=Cabin
 }

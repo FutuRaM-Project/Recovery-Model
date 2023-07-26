@@ -28,9 +28,8 @@
 <title>smelter_nonferrous&#45;&gt;market_nonferrous</title>
 <path fill="none" stroke="black" d="M346.04,-107.98C382.61,-114.07 427.65,-121.56 462.81,-127.4"/>
 <polygon fill="black" stroke="black" points="462.47,-130.9 472.91,-129.09 463.62,-123.99 462.47,-130.9"/>
-<text text-anchor="middle" x="409" y="-141.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="409" y="-134.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="409" y="-127.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<text text-anchor="middle" x="409" y="-134.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
+<text text-anchor="middle" x="409" y="-127.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- market_waste_slag -->
 <g id="node6" class="node">
@@ -41,11 +40,10 @@
 <!-- smelter_nonferrous&#45;&gt;market_waste_slag -->
 <g id="edge5" class="edge">
 <title>smelter_nonferrous&#45;&gt;market_waste_slag</title>
-<path fill="none" stroke="black" d="M318.58,-78.87C333.66,-72.64 351.31,-66.4 368,-63 398.52,-56.79 433.17,-55.23 461.72,-55.36"/>
-<polygon fill="black" stroke="black" points="461.9,-58.86 471.94,-55.48 461.98,-51.86 461.9,-58.86"/>
+<path fill="none" stroke="black" d="M332.11,-78.96C343.8,-75.49 356.23,-72.24 368,-70 398.55,-64.18 433.07,-61.18 461.53,-59.63"/>
+<polygon fill="black" stroke="black" points="461.91,-63.11 471.72,-59.12 461.56,-56.12 461.91,-63.11"/>
 <text text-anchor="middle" x="409" y="-79.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_nfe</text>
-<text text-anchor="middle" x="409" y="-72.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="409" y="-65.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<text text-anchor="middle" x="409" y="-72.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- shredding_engtrans -->
 <g id="node2" class="node">
@@ -56,11 +54,10 @@
 <!-- shredding_engtrans&#45;&gt;smelter_nonferrous -->
 <g id="edge1" class="edge">
 <title>shredding_engtrans&#45;&gt;smelter_nonferrous</title>
-<path fill="none" stroke="black" d="M100.24,-159.08C126.83,-149.92 160.23,-138.38 190,-128 198.85,-124.91 208.2,-121.64 217.37,-118.41"/>
-<polygon fill="black" stroke="black" points="218.56,-121.71 226.83,-115.09 216.24,-115.1 218.56,-121.71"/>
-<text text-anchor="middle" x="156" y="-166.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="156" y="-159.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="156" y="-152.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M100.26,-158.86C134.37,-146.99 180.03,-131.1 216.53,-118.39"/>
+<polygon fill="black" stroke="black" points="217.79,-121.66 226.08,-115.07 215.48,-115.05 217.79,-121.66"/>
+<text text-anchor="middle" x="156" y="-159.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
+<text text-anchor="middle" x="156" y="-152.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- hammermill_body -->
 <g id="node3" class="node">
@@ -73,9 +70,8 @@
 <title>hammermill_body&#45;&gt;smelter_nonferrous</title>
 <path fill="none" stroke="black" d="M97.76,-97C127.76,-97 167.42,-97 201.89,-97"/>
 <polygon fill="black" stroke="black" points="201.94,-100.5 211.94,-97 201.94,-93.5 201.94,-100.5"/>
-<text text-anchor="middle" x="156" y="-113.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="156" y="-106.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="156" y="-99.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<text text-anchor="middle" x="156" y="-106.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
+<text text-anchor="middle" x="156" y="-99.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 <!-- shredding_elec -->
 <g id="node4" class="node">
@@ -86,11 +82,10 @@
 <!-- shredding_elec&#45;&gt;smelter_nonferrous -->
 <g id="edge3" class="edge">
 <title>shredding_elec&#45;&gt;smelter_nonferrous</title>
-<path fill="none" stroke="black" d="M90.57,-31.59C118.39,-41.17 156.49,-54.31 190,-66 198.85,-69.09 208.2,-72.36 217.37,-75.59"/>
-<polygon fill="black" stroke="black" points="216.24,-78.9 226.83,-78.91 218.56,-72.29 216.24,-78.9"/>
-<text text-anchor="middle" x="156" y="-82.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="156" y="-75.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
-<text text-anchor="middle" x="156" y="-68.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
+<path fill="none" stroke="black" d="M90.54,-31.76C125.28,-43.85 176.38,-61.63 216.46,-75.58"/>
+<polygon fill="black" stroke="black" points="215.54,-78.97 226.14,-78.95 217.84,-72.36 215.54,-78.97"/>
+<text text-anchor="middle" x="156" y="-73.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
+<text text-anchor="middle" x="156" y="-66.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
 </g>
 </svg>

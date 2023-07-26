@@ -152,7 +152,7 @@ f.validate_model(model)
 process = model.processes['dismantling_ICE']
 
 # set input
-waste_input = dismantling_ICE.inputs['collection_ICE_to_dismantling_ICE']
+waste_input = process.inputs['collection_ICE_to_dismantling_ICE']
 waste_input.amount = 1000
 waste_input.unit = 'kg'
 waste_input.to_dict()

@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,353,91",
+	graph [bb="0,0,353,88",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="176.5,65",
+		lp="176.5,62",
 		lwidth=4.68,
 		nodesep=0.6,
 		rankdir=LR,
@@ -35,8 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: H2SO4
-Amount: 0 
-Unit: kg",
-		lp="161.5,28.5",
+Amount: 0 kg",
+		lp="161.5,25",
 		pos="e,210.24,18 112.61,18 137.8,18 171.14,18 200.17,18"];
 }

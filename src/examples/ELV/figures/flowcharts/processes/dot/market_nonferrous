@@ -5,7 +5,6 @@ digraph {
 	smelter_nonferrous [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	market_nonferrous [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
 	smelter_nonferrous -> market_nonferrous [label="Composition: ELV_ICE_nfe
-Amount: 0 
-Unit: kg" color=black fontname=Cabin fontsize=6]
+Amount: 0 kg" color=black fontname=Cabin fontsize=6]
 	font=Cabin
 }

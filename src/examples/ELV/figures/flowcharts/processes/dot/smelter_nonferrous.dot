@@ -35,9 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 
-Unit: kg",
-		lp="409,135.5",
+Amount: 0 kg",
+		lp="409,132",
 		pos="e,472.91,129.09 346.04,107.98 382.61,114.07 427.65,121.56 462.81,127.4"];
 	market_waste_slag	[fillcolor=lightsalmon1,
 		fontname=Cabin,
@@ -51,10 +50,9 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_slag_nfe
-Amount: 0 
-Unit: kg",
-		lp="409,73.5",
-		pos="e,471.94,55.476 318.58,78.867 333.66,72.644 351.31,66.396 368,63 398.52,56.791 433.17,55.23 461.72,55.358"];
+Amount: 0 kg",
+		lp="409,77",
+		pos="e,471.72,59.12 332.11,78.956 343.8,75.487 356.23,72.241 368,70 398.55,64.183 433.07,61.177 461.53,59.628"];
 	shredding_engtrans	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -67,10 +65,9 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 
-Unit: kg",
-		lp="156,160.5",
-		pos="e,226.83,115.09 100.24,159.08 126.83,149.92 160.23,138.38 190,128 198.85,124.91 208.2,121.64 217.37,118.41"];
+Amount: 0 kg",
+		lp="156,157",
+		pos="e,226.08,115.07 100.26,158.86 134.37,146.99 180.03,131.1 216.53,118.39"];
 	hammermill_body	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -83,9 +80,8 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 
-Unit: kg",
-		lp="156,107.5",
+Amount: 0 kg",
+		lp="156,104",
 		pos="e,211.94,97 97.759,97 127.76,97 167.42,97 201.89,97"];
 	shredding_elec	[fillcolor=darkturquoise,
 		fontname=Cabin,
@@ -99,8 +95,7 @@ Unit: kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 
-Unit: kg",
-		lp="156,76.5",
-		pos="e,226.83,78.915 90.566,31.59 118.39,41.166 156.49,54.313 190,66 198.85,69.088 208.2,72.365 217.37,75.587"];
+Amount: 0 kg",
+		lp="156,71",
+		pos="e,226.14,78.95 90.54,31.761 125.28,43.849 176.38,61.635 216.46,75.583"];
 }

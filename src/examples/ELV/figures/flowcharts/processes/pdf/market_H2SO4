@@ -5,7 +5,6 @@ digraph {
 	shredding_batt [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	market_H2SO4 [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
 	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
-Amount: 0 
-Unit: kg" color=black fontname=Cabin fontsize=6]
+Amount: 0 kg" color=black fontname=Cabin fontsize=6]
 	font=Cabin
 }

@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,341,91",
+	graph [bb="0,0,341,88",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="170.5,65",
+		lp="170.5,62",
 		lwidth=4.51,
 		nodesep=0.6,
 		rankdir=LR,
@@ -35,8 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE
-Amount: 0 
-Unit: kg",
-		lp="178,28.5",
+Amount: 0 kg",
+		lp="178,25",
 		pos="e,227.71,18 128.06,18 155.43,18 189.51,18 217.37,18"];
 }

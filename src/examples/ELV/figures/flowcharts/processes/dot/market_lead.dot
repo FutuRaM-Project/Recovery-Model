@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,326,91",
+	graph [bb="0,0,326,88",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="163,65",
+		lp="163,62",
 		lwidth=4.31,
 		nodesep=0.6,
 		rankdir=LR,
@@ -35,8 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: Pb
-Amount: 0 
-Unit: kg",
-		lp="157.5,28.5",
+Amount: 0 kg",
+		lp="157.5,25",
 		pos="e,200.22,18 114.81,18 137.15,18 165.46,18 189.97,18"];
 }
