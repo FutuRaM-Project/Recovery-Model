@@ -18,7 +18,29 @@ class Model:
         self.materials = {}
         self.components = {}
         self.products = {}
-        self.matter = self.get_matter()
+        self.matter = None
+        self.inputs = None
+        self.outputs = None
+
+    def get_inputs(self):
+        inputs = {}
+        for process in self.processes.values():
+            if not process.inputs.values():
+                inputs[process.name] = {}
+                for flow in process.outputs.values():
+                    inputs[process.name][flow.composition] = flow.amount
+        self.inputs = inputs
+        return self.inputs
+    
+    def get_outputs(self):
+        outputs = {}
+        for process in self.processes.values():
+            if not process.outputs.values():
+                outputs[process.name] = {}
+                for flow in process.inputs.values():
+                    outputs[process.name][flow.composition] = flow.amount
+        self.outputs = outputs
+        return self.outputs
 
     def random_process(self):
         """
@@ -201,8 +223,10 @@ class Model:
         """ 
         makes a dictionary of all matter in the model from the elements, compounds, materials, components and products
         """
-        self.matter = {**self.elements, **self.compounds, **self.materials, **self.components, **self.products}
-    
+        matter = {**self.elements, **self.compounds, **self.materials, **self.components, **self.products}
+        self.matter = matter
+        return self.matter
+
     def list_matter(self):
         """
         

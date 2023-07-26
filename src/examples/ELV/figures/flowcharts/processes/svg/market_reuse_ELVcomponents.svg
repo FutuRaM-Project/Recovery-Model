@@ -29,8 +29,8 @@
 <path fill="none" stroke="black" d="M134.52,-18C159.34,-18 192.16,-18 224.03,-18"/>
 <polygon fill="black" stroke="black" points="224.33,-21.5 234.33,-18 224.33,-14.5 224.33,-21.5"/>
 <text text-anchor="middle" x="184.5" y="-34.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
-<text text-anchor="middle" x="184.5" y="-27.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="184.5" y="-20.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="184.5" y="-27.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="184.5" y="-20.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 </g>
 </svg>

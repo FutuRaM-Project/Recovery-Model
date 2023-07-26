@@ -29,8 +29,8 @@
 <path fill="none" stroke="black" d="M114.81,-18C137.15,-18 165.46,-18 189.97,-18"/>
 <polygon fill="black" stroke="black" points="190.22,-21.5 200.22,-18 190.22,-14.5 190.22,-21.5"/>
 <text text-anchor="middle" x="157.5" y="-34.2" font-family="Cabin" font-size="6.00">Composition: Pb</text>
-<text text-anchor="middle" x="157.5" y="-27.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="157.5" y="-20.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="157.5" y="-27.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="157.5" y="-20.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 </g>
 </svg>

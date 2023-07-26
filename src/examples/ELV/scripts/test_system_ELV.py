@@ -146,53 +146,36 @@ f.make_flowchart(model)
 f.validate_model(model)
  
 
-#%%
+#%% TESTING FOR MAKING THE FUNCTION TO CHANGE THE FLOW AMOUNTS
+
+# initial processes
+process = model.processes['dismantling_ICE']
+
+# set input
+waste_input = dismantling_ICE.inputs['collection_ICE_to_dismantling_ICE']
+waste_input.amount = 1000
+waste_input.unit = 'kg'
+waste_input.to_dict()
 
 
-process = model.random_process()
+fractions_out = [flow.to_dict() for flow in process.outputs.values()]
 
+fractions_in = [model.matter[flow.composition].composition for flow in process.inputs.values()]
 
-for process in model.processes.values():
-    if process.outputs: 
-        print(process.name)
-        for flow in process.outputs.values():
-            print(flow.name)
-            print(flow.composition)
+for flow in process.inputs.values():
+    amount = flow.amount
+    flow_composition_in = model.matter[flow.composition].composition
+    for fraction in flow_composition_in.values():
+        fraction['amount'] = amount * fraction['mass_fraction']
+    flow.fractions = flow_composition_in
 
-            process.transfer_coefficients.get(flow, None)
-
-            [model.matter[x.composition].composition.keys() for x in process.inputs]
+for flow_out in process.outputs.values():
+    for flow_in in process.inputs.values():
         
-
-            print (f'Matched: {flow.composition}')
-
-    downstream_process = model.processes[flow.process_to]
-    downstream_processes.append(downstream_process)
-
-    recalculate_amount = flow.amount * flow.transfer_coefficient
-
-
-x = process.inputs[0]
-x.composition
-model.matter[x.composition].composition
-
-
-if 
-inputobj = model.matter[dm.inputs[0].composition]
-
-for fraction in model.matter[dm.inputs[0].composition].composition:
-    # fraction_obj = model.matter[fraction]
-    print(fraction)
-
-
-
-
-
-# for frac, amount
-
-dm.transfer_coefficients[0]
-
-dm.outputs
-
-
-
+        try:
+            flow_out.amount = flow_in.fractions[flow_out.composition]['amount']*float(process.transfer_coefficients[flow_out.composition]['transfer_coefficient'])
+            print(flow_out.amount)
+        except KeyError as e:
+             print(e)
+             pass
+    

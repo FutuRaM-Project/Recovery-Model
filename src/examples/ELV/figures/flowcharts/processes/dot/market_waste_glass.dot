@@ -35,8 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_glass
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="177,28.5",
 		pos="e,229.5,18 124.66,18 152.49,18 187.93,18 219.43,18"];
 }

@@ -25,11 +25,40 @@ class Flow:
         self.tags = []
         self.process_from = process_from
         self.process_to = process_to
-        self.amount = None
+        self.amount = 0
         self.composition = composition
-        self.unit = None
+        self.unit = 'kg'
         # self.add_composition_to_model(model)
 
+
+    def calculate_amount(self, model):
+        """
+        Calculates the amount of material or energy in the flow.
+
+        Args:
+            model (Model): The model object to use for the calculation.
+        """
+        process = self.process_from
+        fractions_out = [flow.to_dict() for flow in process.outputs.values()]
+
+        fractions_in = [model.matter[flow.composition].composition for flow in process.inputs.values()]
+
+        for flow in process.inputs.values():
+            amount = flow.amount
+            flow_composition_in = model.matter[flow.composition].composition
+            for fraction in flow_composition_in.values():
+                fraction['amount'] = amount * fraction['mass_fraction']
+            flow.fractions = flow_composition_in
+
+        for flow_out in process.outputs.values():
+            for flow_in in process.inputs.values():
+                
+                try:
+                    flow_out.amount = flow_in.fractions[flow_out.composition]['amount']*float(process.transfer_coefficients[flow_out.composition]['transfer_coefficient'])
+                    print(flow_out.amount)
+                except KeyError as e:
+                    print(e)
+                    pass
 
 ##! THIS NEXT TWO FUNCTIONS SHOLD SET THE TO AND FROM PROCESSES TO BE THE OBJECTS IN THE MODEL, NOT JUST THE NAMES, ALSO ADD THE FLOW TO THE INPUTS AND OUTPUTS OF THE PROCESSES IF NOT PRESENT. but it is not working for some reason
     def set_to(self, model, process_to):

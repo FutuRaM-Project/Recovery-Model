@@ -35,8 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_waste_shredder
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="172,95.5",
 		pos="e,243.67,65.22 100.07,88.905 138.69,82.536 192.65,73.635 233.77,66.852"];
 	hammermill_body	[fillcolor=darkturquoise,
@@ -51,8 +51,8 @@ Unit: None",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_waste_shredder
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="172,33.5",
 		pos="e,262.86,38.998 97.771,14.228 132.53,12.656 180.86,13.081 222,23 232.63,25.563 243.56,29.818 253.58,34.465"];
 }

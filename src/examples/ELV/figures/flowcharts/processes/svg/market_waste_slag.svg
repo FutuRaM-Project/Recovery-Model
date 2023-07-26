@@ -29,8 +29,8 @@
 <path fill="none" stroke="black" d="M95.18,-166.62C126.18,-157.2 175.04,-142.09 217,-128 225.98,-124.98 235.45,-121.7 244.69,-118.43"/>
 <polygon fill="black" stroke="black" points="245.97,-121.69 254.22,-115.05 243.62,-115.1 245.97,-121.69"/>
 <text text-anchor="middle" x="176" y="-169.2" font-family="Cabin" font-size="6.00">Composition: ALL_slag_ree</text>
-<text text-anchor="middle" x="176" y="-162.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="176" y="-155.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="176" y="-162.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="176" y="-155.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 <!-- smelter_ferrous -->
 <g id="node3" class="node">
@@ -44,8 +44,8 @@
 <path fill="none" stroke="black" d="M105.17,-97C139.08,-97 188.03,-97 228.82,-97"/>
 <polygon fill="black" stroke="black" points="229,-100.5 239,-97 229,-93.5 229,-100.5"/>
 <text text-anchor="middle" x="176" y="-113.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_fe</text>
-<text text-anchor="middle" x="176" y="-106.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="176" y="-99.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="176" y="-106.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="176" y="-99.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 <!-- smelter_nonferrous -->
 <g id="node4" class="node">
@@ -59,8 +59,8 @@
 <path fill="none" stroke="black" d="M113.08,-32.85C143.18,-42.09 182.43,-54.39 217,-66 225.98,-69.02 235.45,-72.3 244.69,-75.57"/>
 <polygon fill="black" stroke="black" points="243.62,-78.9 254.22,-78.95 245.97,-72.31 243.62,-78.9"/>
 <text text-anchor="middle" x="176" y="-82.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_nfe</text>
-<text text-anchor="middle" x="176" y="-75.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="176" y="-68.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="176" y="-75.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="176" y="-68.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 </g>
 </svg>

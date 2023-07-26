@@ -18,15 +18,15 @@ def validate_flows(model):
     """
     Validates the flows in the model object to ensure that the matter in the flow's composition and the to and from processes are in the model
     """
-    print(f'\n\n{"-"*60}\n\t Validating flows in model: "{model.name}"\n{"-"*60}')
+    print(f'\n{"-"*60}\n\t Validating flows in model: "{model.name}"\n{"-"*60}')
     exception_count = []
     for process, process_object in model.processes.items():
-        for flow_process in process_object.inputs:
+        for flow_process in process_object.inputs.values():
             try:
                 model.processes[flow_process.process_to]
             except KeyError:
                 exception_count.append(flow_process.process_to)
-        for flow_process in process_object.outputs:
+        for flow_process in process_object.outputs.values():
             try:
                 model.processes[flow_process.process_from]
             except KeyError:
@@ -49,14 +49,15 @@ def validate_matter(model):
     Validates the matter referred to in the flow objects composition to ensure that the matter is in the model
     """
     print(f'\n{"-"*60}\n\t Validating matter in model: "{model.name}"\n{"-"*60}')
+    model.get_matter()
     exception_count = []
     for process, process_object in model.processes.items():
-        for flow_process in process_object.inputs:
+        for flow_process in process_object.inputs.values():
             try:
                 model.matter[flow_process.composition]
             except KeyError:
                 exception_count.append(flow_process.composition)
-        for flow_process in process_object.outputs:
+        for flow_process in process_object.outputs.values():
             try:
                 model.matter[flow_process.composition]
             except KeyError:

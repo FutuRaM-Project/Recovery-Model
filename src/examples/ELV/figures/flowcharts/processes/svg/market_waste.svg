@@ -29,8 +29,8 @@
 <path fill="none" stroke="black" d="M100.07,-88.91C138.69,-82.54 192.65,-73.63 233.77,-66.85"/>
 <polygon fill="black" stroke="black" points="234.37,-70.3 243.67,-65.22 233.23,-63.39 234.37,-70.3"/>
 <text text-anchor="middle" x="172" y="-101.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_waste_shredder</text>
-<text text-anchor="middle" x="172" y="-94.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="172" y="-87.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="172" y="-94.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="172" y="-87.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 <!-- hammermill_body -->
 <g id="node3" class="node">
@@ -44,8 +44,8 @@
 <path fill="none" stroke="black" d="M97.77,-14.23C132.53,-12.66 180.86,-13.08 222,-23 232.63,-25.56 243.56,-29.82 253.58,-34.46"/>
 <polygon fill="black" stroke="black" points="252.34,-37.75 262.86,-39 255.41,-31.46 252.34,-37.75"/>
 <text text-anchor="middle" x="172" y="-39.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_waste_shredder</text>
-<text text-anchor="middle" x="172" y="-32.2" font-family="Cabin" font-size="6.00">Amount: None </text>
-<text text-anchor="middle" x="172" y="-25.2" font-family="Cabin" font-size="6.00">Unit: None</text>
+<text text-anchor="middle" x="172" y="-32.2" font-family="Cabin" font-size="6.00">Amount: 0 </text>
+<text text-anchor="middle" x="172" y="-25.2" font-family="Cabin" font-size="6.00">Unit: kg</text>
 </g>
 </g>
 </svg>

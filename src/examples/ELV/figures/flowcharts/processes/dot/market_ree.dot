@@ -35,8 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_ree
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="147.5,28.5",
 		pos="e,202.91,18 92.213,18 119.69,18 160.26,18 192.69,18"];
 }

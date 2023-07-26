@@ -35,8 +35,8 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="362,92.5",
 		pos="e,417.7,87.128 306.27,66.683 336.74,72.274 375.29,79.347 407.49,85.255"];
 	smelter_nonferrous	[fillcolor=lightsalmon1,
@@ -51,8 +51,8 @@ Unit: None",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="362,33.5",
 		pos="e,422.38,14.996 285.88,38.863 298.61,32.64 313.61,26.392 328,23 355.2,16.588 386.1,14.833 412.24,14.886"];
 	dismantling_ICE	[fillcolor=darkturquoise,
@@ -67,8 +67,8 @@ Unit: None",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_elec
-Amount: None 
-Unit: None",
+Amount: 0 
+Unit: kg",
 		lp="142,67.5",
 		pos="e,198.88,57 85.092,57 114.75,57 155.14,57 188.7,57"];
 }

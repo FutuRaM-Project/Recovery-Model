@@ -5,7 +5,7 @@ digraph {
 	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	market_reuse_ELVcomponents [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
 	dismantling_ICE -> market_reuse_ELVcomponents [label="Composition: ELV_ICE
-Amount: None 
-Unit: None" color=black fontname=Cabin fontsize=6]
+Amount: 0 
+Unit: kg" color=black fontname=Cabin fontsize=6]
 	font=Cabin
 }

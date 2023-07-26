@@ -86,7 +86,7 @@ def make_flowchart_process(process):
 
     # Add edges for the inputs and outputs
         graph.edge(flow.process_from, flow.process_to,
-                   label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
+                   label=f"Composition: {flow.composition}\nAmount: {flow.amount} {flow.unit}",
                     fontsize='6',
                     fontname='Cabin',
                     color='black',
@@ -137,7 +137,7 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
         rankdir='LR',
         nodesep='0.2',
         ranksep='0.3',
-        # splines='polyline',
+        splines='polyline',
         engine='neato',
         fontname="Cabin",
         fontsize='24',
@@ -170,12 +170,12 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
     cluster_names = ['other', 'collection', 'dismantling', 'shredding','hammermill', 'smelter','market']
     cluster_colormap = {
                         'other':'lightgrey',
-                        'market':'lightblue1', 
+                        'market':'lightpink', 
                         'collection':'salmon1',
                         'dismantling':'plum1', 
-                        'shredding':'springgreen1',
-                        'hammermill':'springgreen2', 
-                        'smelter':'indianred1'
+                        'shredding':'darkolivegreen1',
+                        'hammermill':'darkolivegreen2', 
+                        'smelter':'mediumturquoise'
                         }
     
     cluster_rank = {
@@ -220,17 +220,11 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
                                     shape='box',
                                     style='filled',
                                     fillcolor=cluster_colormap[cluster_name],
+                                    tooltip = str(process.to_dict())
                                     )
                     
                     # Add to the set of processed processes
                         added_processes.add(process)
-
-                        
-                        #     # Set the newrank attribute to True to separate the clusters
-                        # cluster.attr(rank='same',
-                        #              newrank='true',
-                        #              margin='25',)
-
 
 
                     #Add edges for the inputs and outputs
@@ -238,34 +232,38 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
         for flow in process.inputs.values():
             if flow not in added_flows:
                 graph.edge(flow.process_from, flow.process_to,
-                        label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
+                        label=f"Composition: {flow.composition}\nAmount: {flow.amount}  {flow.unit}",
                         fontsize='6',
                         fontname='Cabin',
                         color='black',
                         arrowhead='vee',
                         arrowsize='0.4',
+                        tooltip = str(flow.to_dict())
                         )
                 added_flows.add(flow)
 
-    
+    # annotate the nodes at the end of the process chain
+    for process in selected_processes:
+        if not process.outputs:
+            amount = process.get_total_input_flow()
+            if amount is None: amount = 'x'
 
-            # If the process is not in the set of processed processes, add it to the graph
-            
-            # if process not in added_processes:
-            #     print(process.name)
-            #     graph.node(process.name, fontname='Cabin', fontsize='14')
+    # make an invisible node to attach the annotation to
+            graph.node(process.name + "_output",
+                          style='invis',
+                          )
 
-            
-            # # Add edges for the inputs and outputs
-            # for flow in process.inputs + process.outputs:
-            #     if flow not in added_flows:
-            #         graph.edge(flow.process_from, flow.process_to,
-            #                 label=f"Composition: {flow.composition}\nAmount: {flow.amount} \nUnit: {flow.unit}",
-            #                 fontsize='6',
-            #                 fontname='Cabin',
-            #                 color='black',
-            #                 )
-            #         added_flows.add(flow)
+            graph.edge(process.name, process.name + "_output", 
+                       label=f"Leaving system boundary: {amount} {list(process.inputs.values())[0].unit}",
+                        fontsize='8',
+                        fontname='Cabin',
+                        color='darkred',
+                        fontcolor='darkred',
+                        arrowhead='rbox',
+                        style='dashed',
+                        len='0.25',
+                        tooltip = 'This is the amount of material leaving the system boundary.'                     
+                       )
 
     # Save the graphs in the figures folder
     dir_model_flowcharts = dir_flowcharts + "/models/"
@@ -273,14 +271,24 @@ def make_flowchart_model(model, tags=None, WS=None, level=None, name=None, descr
     if not os.path.exists(dir_model_flowcharts):
         os.makedirs(dir_model_flowcharts)
 
-    for _format in ["png", "dot", "svg", "pdf"]:
+    for _format in ["png", "dot", "svg", "pdf", "html"]:
         dir_model_flowcharts_format = dir_model_flowcharts + _format
 
         if not os.path.exists(dir_model_flowcharts_format):
             os.makedirs(dir_model_flowcharts_format)
 
         file_path = dir_model_flowcharts_format + '/' + model.name
-        graph.render(file_path, format=_format)
+        
+        if _format == 'html':
+            with open(file_path+'.html', 'w') as f:
+                graph.render(file_path, format='svg')
+                f.write('<html><body>\n')
+                f.write(f'<img src="{model.name}.svg" title={model.name}>\n')
+                f.write('</body></html>\n')
+
+        else:
+            graph.render(file_path, format=_format)
+        
 
     print(f"Model flowchart created in figures folder for {model.name}")
-    print(f"\tView .pdf @ {os.path.abspath(file_path)}.pdf")
+    print(f"\tView @ {os.path.abspath(file_path)}.html")
