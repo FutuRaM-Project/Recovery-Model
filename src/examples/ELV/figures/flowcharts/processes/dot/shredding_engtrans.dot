@@ -50,7 +50,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_fe
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="417,171",
 		pos="e,498.75,169.68 345.2,146.15 389.75,152.97 447.63,161.84 488.69,168.14"];
 	smelter_nonferrous	[fillcolor=lightsalmon1,
@@ -65,7 +65,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="417,116",
 		pos="e,490.78,97.433 331.09,117.87 342.78,114.41 355.22,111.19 367,109 404.42,102.06 447.07,99.044 480.66,97.773"];
 	market_waste	[fillcolor=lightsalmon1,
@@ -95,7 +95,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_engtrans
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="148,143",
 		pos="e,210.9,136 85.245,136 117.28,136 162.37,136 200.78,136"];
 }

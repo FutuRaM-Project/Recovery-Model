@@ -51,8 +51,8 @@ def import_transfercoefficients_xlsx(filename, model):
         process_name = tc['process']
         if process_name in model.processes:
             process = model.processes[process_name]
-            process.add_transfer_coefficient(tc['flow_input'], tc['flow_output'], tc['transfer_coefficient'], tc['uncertainty'])
-            print(f"\t* {process_name} \t\t({tc['flow_input']} --{tc['transfer_coefficient']}--> {tc['flow_output']})")
+            process.add_transfer_coefficient(tc['flow_input'], tc['flow_output'], float(tc['transfer_coefficient']), float(tc['uncertainty']))
+            print(f"\t* {process.name} \t\t({tc['flow_input']} --{round(float(tc['transfer_coefficient']),2)}--> {tc['flow_output']})")
         else:
             print(f" ****** Process not found: {process_name} ******")
 

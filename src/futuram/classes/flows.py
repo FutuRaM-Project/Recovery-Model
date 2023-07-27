@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-
+from tabulate import tabulate
 from .matter import Matter
 
  
@@ -28,6 +28,7 @@ class Flow:
         self.amount = 0
         self.composition = composition
         self.unit = 'kg'
+        self.model = model
         # self.add_composition_to_model(model)
 
 
@@ -38,7 +39,7 @@ class Flow:
         Args:
             model (Model): The model object to use for the calculation.
         """
-        process = self.process_from
+        process = self.model.processes[self.process_from]
         fractions_out = [flow.to_dict() for flow in process.outputs.values()]
 
         fractions_in = [model.matter[flow.composition].composition for flow in process.inputs.values()]
@@ -47,18 +48,17 @@ class Flow:
             amount = flow.amount
             flow_composition_in = model.matter[flow.composition].composition
             for fraction in flow_composition_in.values():
-                fraction['amount'] = amount * fraction['mass_fraction']
+                fraction['amount'] = float(amount) * float(fraction['mass_fraction'])
             flow.fractions = flow_composition_in
 
         for flow_out in process.outputs.values():
             for flow_in in process.inputs.values():
                 
                 try:
-                    flow_out.amount = flow_in.fractions[flow_out.composition]['amount']*float(process.transfer_coefficients[flow_out.composition]['transfer_coefficient'])
+                    flow_out.set_amount(flow_in.fractions[flow_out.composition]['amount']*float(process.transfer_coefficients[flow_out.composition]['transfer_coefficient']))
                     print(flow_out.amount)
-                except KeyError as e:
-                    print(e)
-                    pass
+                except KeyError as error:
+                    print(error)
 
 ##! THIS NEXT TWO FUNCTIONS SHOLD SET THE TO AND FROM PROCESSES TO BE THE OBJECTS IN THE MODEL, NOT JUST THE NAMES, ALSO ADD THE FLOW TO THE INPUTS AND OUTPUTS OF THE PROCESSES IF NOT PRESENT. but it is not working for some reason
     def set_to(self, model, process_to):
@@ -164,6 +164,10 @@ class Flow:
         if not isinstance(amount, (int, float)):
             raise TypeError("Amount must be a number.")
         self.amount = amount
+        print(f"Flow: {self.name} amount set to: {self.amount} {self.unit}")
+
+        for flow in self.model.processes[self.process_to].outputs.values():
+            flow.calculate_amount(self.model)
 
     def add_to_model(self, model):
         model.add_flow(self)

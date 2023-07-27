@@ -152,7 +152,7 @@ class Element(Matter):
         self.name_full = element.name
         self.atomic_number = element.number
         self.atomic_mass = element._mass
-        self.composition = {self: 1}
+        self.composition = {self.name: 1}
 
     def get_symbol(self, symbol):
         """
@@ -193,7 +193,6 @@ class Compound(Matter):
     def __init__(self, name, composition_molecular):
         super().__init__(name)
         self.formula = self.get_formula(composition_molecular)
-        self.print_formula()
         self.molecular_weight = self.calculate_molecular_weight()
         self.molar_fractions = self.calculate_molar_fractions()
         self.composition = self.calculate_mass_fractions()

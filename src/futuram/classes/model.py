@@ -5,6 +5,10 @@
 import random
 import pandas as pd
 import json
+from prettytable import PrettyTable
+
+#TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.
+
 
 class Model:
     def __init__(self, name):
@@ -12,15 +16,110 @@ class Model:
         self.parameters = {}
         self.scenarios = {}
         self.processes = {}
-        self.flows = {}
+        self.flows = self.get_flows()
         self.elements = {}
         self.compounds = {}
         self.materials = {}
         self.components = {}
         self.products = {}
-        self.matter = None
-        self.inputs = None
-        self.outputs = None
+        self.matter = self.get_matter()
+        self.inputs = self.get_inputs()
+        self.outputs = self.get_outputs()
+        self.transfer_coefficients = self.get_transfer_coefficients()
+
+        print(f"\n{'=' * 50}\n\tCreated model: {self.name}\n{'=' * 50}\n")
+
+    def make_process_flowcharts(self):
+        """
+        Create isolated flowcharts for each process in the model, showing only the process and its direct inputs and outputs
+        """
+        print(f'\n{"="*80}\n Making isolated flow charts for the {len(self.processes.values())} processes in model \'{self.name}\'\n{"="*80}\n')
+        for count, proc in enumerate(self.processes.values()):
+            print(f'{count+1}/{len(self.processes.values())}.')
+            proc.make_flowchart()
+
+
+    def get_transfer_coefficients(self):
+        """
+        Returns a dictionary of all transfer coefficients in the model, with keys in the format "ProcessName - TCName"
+        """
+        transfer_coefficients = {}
+        for process in self.processes.values():
+            tcs = process.transfer_coefficients
+            # Update keys with process name
+            tcs = {f'{process.name} - {k}': v for k, v in tcs.items()}
+            transfer_coefficients.update(tcs)
+        self.transfer_coefficients = transfer_coefficients
+        return self.transfer_coefficients
+
+
+    def print_transfer_coefficients(self):
+        """
+        Prints all of the transfer coefficients of the model in a nice table
+        """
+        self.get_transfer_coefficients()
+        table = PrettyTable()
+        table.title = f'There are {len(self.transfer_coefficients.values())} transfer coefficients in model "{self.name}"'
+        table.field_names = [' Input', 'Output', 'Transfer coefficient', 'Uncertainty']
+        for tc in self.transfer_coefficients.values():
+            tc_value = f'{tc["transfer_coefficient"]:.2f}'
+            table.add_row([tc['output'], tc['input'], tc_value, tc['uncertainty']])
+
+        table.align = 'l'
+        print(table)
+
+    def print_flows_by_process(self):
+        print(f'\n{"="*60}\n\t  There are {len(self.processes.values())} flows in model {self.name}\n{"="*60}\n')
+        for count, process in enumerate(self.processes.values()):
+            print(f'\n{"-"*60}\n\t {count+1}/{len(self.processes.values())}. Flows of process: {process.name}\n{"-"*60}\n')
+
+            print(f'Inputs to process {process.name}')
+            table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.inputs.values()]
+            print(tabulate(table, tablefmt='fancy_grid', headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+
+            print(f'\nOutputs from process {process.name}')
+            table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in process.outputs.values()]
+            print(tabulate(table, tablefmt='fancy_grid',  headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+        
+
+    def print_matter(self):
+        """
+        prints the matter objects in the model
+        """
+        print(f'\n{"-"*60}\n\t There are {len(self.list_matter())} matter objects in the model: {self.name}\n{"-"*60}\n ')
+        print(*self.list_matter(), sep='\n')
+
+    def print_matter_subclasses(self):
+        """
+        prints the matter subclasses in the model
+        """
+        table = PrettyTable()
+        table.title = f'There are {len(self.matter)} matter objects in model "{self.name}"'
+        table.field_names = ['Category', 'Component', "Component composition (name, mass fraction))"]
+
+        for category in ['Products', 'Components', 'Materials', 'Compounds', 'Elements']:
+            components = getattr(self, category.lower())
+            for component in components:
+                if category not in ['Elements', 'Compounds']:
+                    component_composition = [(k, v["mass_fraction"]) for k, v in list(components[component].composition.items())]
+                    component_composition = ', '.join([f'{k}: {v}' for k, v in component_composition])
+                else:
+                    component_composition = "N/A"
+                table.add_row([category, component,component_composition])
+        table.align = 'l'
+        print(table)
+
+
+
+    def get_flows(self):
+        flows = {}
+        for process in self.processes.values():
+            flows.update(process.inputs)
+            flows.update(process.outputs)
+           
+        self.flows = flows
+        return self.flows
+
 
     def get_inputs(self):
         inputs = {}
@@ -183,15 +282,39 @@ class Model:
         scenario_names.sort()
         print(scenario_names, sep='\n')
 
-    def list_processes(self):
-        process_names = list(self.processes.keys())
-        process_names.sort()
-        print(process_names, sep='\n')
+    def print_processes(self):
+        table = PrettyTable()
+        table.title = f'Processes in "{self.name}"'
 
-    def list_flows(self):
-        flow_names = list(self.flows.keys())
-        flow_names.sort()
-        print(flow_names, sep='\n')
+        for process in self.processes.values():
+            process_dict = process.to_dict()
+            for key, value in process_dict.items():
+                if isinstance(value, dict):
+                    process_dict[key] = f'dict {len(value)}'
+                elif isinstance(value, list):
+                    process_dict[key] = f'list {len(value)}'
+            table.add_row(process.to_dict().values())
+        
+        table.field_names = process.to_dict().keys()
+        table.align = 'l'
+        print(table)
+
+    def print_flows(self):
+        table = PrettyTable()
+        table.title = f'Flows in "{self.name}"'
+        self.get_flows()
+        for flow in self.flows.values():
+            flow_dict = flow.to_dict()
+            for key, value in flow_dict.items():
+                if isinstance(value, dict):
+                    flow_dict[key] = f'dict {len(value)}'
+                elif isinstance(value, list):
+                    flow_dict[key] = f'list {len(value)}'
+            table.add_row(flow_dict.values())
+            
+        table.field_names = flow.to_dict().keys()
+        table.align = 'l'
+        print(table)
 
     def list_elements(self):
         element_names = list(self.elements.keys())

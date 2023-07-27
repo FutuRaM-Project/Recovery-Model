@@ -17,33 +17,33 @@
 <polygon fill="#e066ff" stroke="black" points="370,-75 224,-75 224,-39 370,-39 370,-75"/>
 <text text-anchor="middle" x="297" y="-53.3" font-family="Cabin" font-size="14.00">market_waste_plastic</text>
 </g>
-<!-- shredding_elec -->
-<g id="node2" class="node">
-<title>shredding_elec</title>
-<polygon fill="darkturquoise" stroke="black" points="115,-115 34,-115 34,-79 115,-79 115,-115"/>
-<text text-anchor="middle" x="74.5" y="-94.5" font-family="Cabin" font-size="10.00">shredding_elec</text>
-</g>
-<!-- shredding_elec&#45;&gt;market_waste_plastic -->
-<g id="edge1" class="edge">
-<title>shredding_elec&#45;&gt;market_waste_plastic</title>
-<path fill="none" stroke="black" d="M115.18,-89.8C142.6,-84.83 180.07,-78.03 213.79,-71.91"/>
-<polygon fill="black" stroke="black" points="214.44,-75.35 223.66,-70.12 213.19,-68.46 214.44,-75.35"/>
-<text text-anchor="middle" x="169.5" y="-94.2" font-family="Cabin" font-size="6.00">Composition: ALL_plastic</text>
-<text text-anchor="middle" x="169.5" y="-87.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
-</g>
 <!-- shredding_batt -->
-<g id="node3" class="node">
+<g id="node2" class="node">
 <title>shredding_batt</title>
-<polygon fill="darkturquoise" stroke="black" points="114.5,-36 34.5,-36 34.5,0 114.5,0 114.5,-36"/>
-<text text-anchor="middle" x="74.5" y="-15.5" font-family="Cabin" font-size="10.00">shredding_batt</text>
+<polygon fill="darkturquoise" stroke="black" points="114.5,-115 34.5,-115 34.5,-79 114.5,-79 114.5,-115"/>
+<text text-anchor="middle" x="74.5" y="-94.5" font-family="Cabin" font-size="10.00">shredding_batt</text>
 </g>
 <!-- shredding_batt&#45;&gt;market_waste_plastic -->
-<g id="edge2" class="edge">
+<g id="edge1" class="edge">
 <title>shredding_batt&#45;&gt;market_waste_plastic</title>
-<path fill="none" stroke="black" d="M114.52,-19.83C139.66,-21.47 172.96,-24.5 202,-30 211,-31.71 220.39,-33.89 229.6,-36.28"/>
+<path fill="none" stroke="black" d="M114.67,-89.89C142.15,-84.91 179.91,-78.06 213.86,-71.9"/>
+<polygon fill="black" stroke="black" points="214.57,-75.33 223.78,-70.1 213.32,-68.44 214.57,-75.33"/>
+<text text-anchor="middle" x="169.5" y="-94.2" font-family="Cabin" font-size="6.00">Composition: ALL_plastic</text>
+<text text-anchor="middle" x="169.5" y="-87.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+</g>
+<!-- shredding_elec -->
+<g id="node3" class="node">
+<title>shredding_elec</title>
+<polygon fill="darkturquoise" stroke="black" points="115,-36 34,-36 34,0 115,0 115,-36"/>
+<text text-anchor="middle" x="74.5" y="-15.5" font-family="Cabin" font-size="10.00">shredding_elec</text>
+</g>
+<!-- shredding_elec&#45;&gt;market_waste_plastic -->
+<g id="edge2" class="edge">
+<title>shredding_elec&#45;&gt;market_waste_plastic</title>
+<path fill="none" stroke="black" d="M115.08,-19.87C140.15,-21.52 173.17,-24.54 202,-30 211,-31.71 220.39,-33.89 229.6,-36.28"/>
 <polygon fill="black" stroke="black" points="228.93,-39.72 239.49,-38.94 230.74,-32.96 228.93,-39.72"/>
 <text text-anchor="middle" x="169.5" y="-39.2" font-family="Cabin" font-size="6.00">Composition: ALL_plastic</text>
-<text text-anchor="middle" x="169.5" y="-32.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="169.5" y="-32.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
 </g>
 </g>
 </svg>

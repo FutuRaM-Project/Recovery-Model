@@ -5,6 +5,14 @@ from ..classes.processes import Process
 from ..classes.model import Model
 
 def import_flows_xlsx(filename, model):
+    """
+    Import flows from an xlsx file.
+    The xlsx file should have the following structure:
+    process_from,process_to,composition
+
+    """
+    print(f'\n\n{"-" * 70}\n\t Importing flows to model "{model.name}" from {filename}\n{"-" * 70}')
+
     # set the path to the file
     path = filename
     workbook = openpyxl.load_workbook(path, data_only=True)
@@ -33,7 +41,10 @@ def import_flows_xlsx(filename, model):
 
     process_dict = {process.name: process for process in model.processes.values()}
 
+    count = 0
     for flow in data:
+        count += 1
+        print(f'Importing flow {count}/{len(data)}: {flow["process_from"]} -> {flow["process_to"]}')
         new_flow = Flow(model, flow['process_from'], flow['process_to'], flow['composition'])
         
         if flow['process_from'] in process_dict:
@@ -57,6 +68,6 @@ def import_flows_xlsx(filename, model):
             model.add_process(process)
             process.add_to_model(model)
 
-    return data
+        model.get_flows()
 
 

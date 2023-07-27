@@ -5,7 +5,7 @@ digraph {
 	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	smelter_cc [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
 	dismantling_ICE -> smelter_cc [label="Composition: ELV_ICE_catconv
-Amount: 0 kg" color=black fontname=Cabin fontsize=6]
+Amount: 0.0 kg" color=black fontname=Cabin fontsize=6]
 	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
 	smelter_cc [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	smelter_cc [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
@@ -15,6 +15,6 @@ Amount: 0 kg" color=black fontname=Cabin fontsize=6]
 	smelter_cc [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
 	smelter_cc [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
 	smelter_cc -> market_ree [label="Composition: ELV_ICE_ree
-Amount: 0 kg" color=black fontname=Cabin fontsize=6]
+Amount: 0.0 kg" color=black fontname=Cabin fontsize=6]
 	font=Cabin
 }

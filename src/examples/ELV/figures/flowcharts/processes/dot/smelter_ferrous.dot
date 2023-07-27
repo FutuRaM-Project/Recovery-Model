@@ -53,21 +53,21 @@ Amount: 0 kg",
 Amount: 0 kg",
 		lp="382.5,77",
 		pos="e,443.91,58.749 311.46,78.895 321.69,75.43 332.61,72.201 343,70 372.48,63.758 405.85,60.707 433.58,59.238"];
-	shredding_tyre	[fillcolor=darkturquoise,
+	hammermill_body	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
 		pos="50,176",
 		shape=box,
 		style=filled,
-		width=1.1111];
-	shredding_tyre -> smelter_ferrous	[color=black,
+		width=1.3194];
+	hammermill_body -> smelter_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_fe
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="154.5,155",
-		pos="e,215.46,115 90.067,161.51 122.48,149.49 169.05,132.22 205.85,118.57"];
+		pos="e,215.15,115.12 97.744,158.66 129.4,146.92 171.47,131.32 205.36,118.75"];
 	shredding_engtrans	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -80,22 +80,22 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_fe
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="154.5,104",
 		pos="e,208.74,97 100.13,97 129.4,97 166.91,97 198.65,97"];
-	hammermill_body	[fillcolor=darkturquoise,
+	shredding_tyre	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
 		pos="50,18",
 		shape=box,
 		style=filled,
-		width=1.3194];
-	hammermill_body -> smelter_ferrous	[color=black,
+		width=1.1111];
+	shredding_tyre -> smelter_ferrous	[color=black,
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_fe
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="154.5,73",
-		pos="e,215.15,78.88 97.744,35.337 129.4,47.077 171.47,62.68 205.36,75.252"];
+		pos="e,215.46,78.996 90.067,32.49 122.48,44.512 169.05,61.784 205.85,75.431"];
 }

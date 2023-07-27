@@ -29,7 +29,7 @@
 <path fill="none" stroke="black" d="M112.61,-18C137.8,-18 171.14,-18 200.17,-18"/>
 <polygon fill="black" stroke="black" points="200.24,-21.5 210.24,-18 200.24,-14.5 200.24,-21.5"/>
 <text text-anchor="middle" x="161.5" y="-27.2" font-family="Cabin" font-size="6.00">Composition: H2SO4</text>
-<text text-anchor="middle" x="161.5" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="161.5" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
 </g>
 </g>
 </svg>

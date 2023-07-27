@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,341,88",
+	graph [bb="0,0,482,88",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,34 +8,49 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="170.5,62",
+		lp="241,62",
 		lwidth=4.51,
 		nodesep=0.6,
 		rankdir=LR,
 		ranksep=0.6
 	];
 	node [label="\N"];
-	dismantling_ICE	[fillcolor=lightsalmon1,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="270.5,18",
-		shape=box,
-		style=filled,
-		width=1.1806];
 	collection_ICE	[fillcolor=mediumorchid1,
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="78,18",
+		pos="247,18",
 		shape=box,
 		style=filled,
 		width=1.3889];
+	dismantling_ICE	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="439.5,18",
+		shape=box,
+		style=filled,
+		width=1.1806];
 	collection_ICE -> dismantling_ICE	[color=black,
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE
 Amount: 0 kg",
-		lp="178,25",
-		pos="e,227.71,18 128.06,18 155.43,18 189.51,18 217.37,18"];
+		lp="347,25",
+		pos="e,396.71,18 297.06,18 324.43,18 358.51,18 386.37,18"];
+	PutOnMarket_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="46,18",
+		shape=box,
+		style=filled,
+		width=1.2778];
+	PutOnMarket_ICE -> collection_ICE	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: NEW_ICE
+Amount: 1000 kg",
+		lp="144.5,25",
+		pos="e,196.84,18 92.156,18 120.18,18 156.5,18 186.81,18"];
 }

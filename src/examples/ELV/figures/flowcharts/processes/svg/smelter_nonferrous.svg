@@ -45,47 +45,47 @@
 <text text-anchor="middle" x="409" y="-79.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_nfe</text>
 <text text-anchor="middle" x="409" y="-72.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
-<!-- shredding_engtrans -->
-<g id="node2" class="node">
-<title>shredding_engtrans</title>
-<polygon fill="darkturquoise" stroke="black" points="100,-194 0,-194 0,-158 100,-158 100,-194"/>
-<text text-anchor="middle" x="50" y="-173.5" font-family="Cabin" font-size="10.00">shredding_engtrans</text>
-</g>
-<!-- shredding_engtrans&#45;&gt;smelter_nonferrous -->
-<g id="edge1" class="edge">
-<title>shredding_engtrans&#45;&gt;smelter_nonferrous</title>
-<path fill="none" stroke="black" d="M100.26,-158.86C134.37,-146.99 180.03,-131.1 216.53,-118.39"/>
-<polygon fill="black" stroke="black" points="217.79,-121.66 226.08,-115.07 215.48,-115.05 217.79,-121.66"/>
-<text text-anchor="middle" x="156" y="-159.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="156" y="-152.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
-</g>
 <!-- hammermill_body -->
-<g id="node3" class="node">
+<g id="node2" class="node">
 <title>hammermill_body</title>
-<polygon fill="darkturquoise" stroke="black" points="97.5,-115 2.5,-115 2.5,-79 97.5,-79 97.5,-115"/>
-<text text-anchor="middle" x="50" y="-94.5" font-family="Cabin" font-size="10.00">hammermill_body</text>
+<polygon fill="darkturquoise" stroke="black" points="97.5,-194 2.5,-194 2.5,-158 97.5,-158 97.5,-194"/>
+<text text-anchor="middle" x="50" y="-173.5" font-family="Cabin" font-size="10.00">hammermill_body</text>
 </g>
 <!-- hammermill_body&#45;&gt;smelter_nonferrous -->
-<g id="edge2" class="edge">
+<g id="edge1" class="edge">
 <title>hammermill_body&#45;&gt;smelter_nonferrous</title>
-<path fill="none" stroke="black" d="M97.76,-97C127.76,-97 167.42,-97 201.89,-97"/>
-<polygon fill="black" stroke="black" points="201.94,-100.5 211.94,-97 201.94,-93.5 201.94,-100.5"/>
+<path fill="none" stroke="black" d="M97.76,-159.73C132.07,-147.79 179.01,-131.45 216.38,-118.45"/>
+<polygon fill="black" stroke="black" points="217.86,-121.64 226.15,-115.04 215.56,-115.03 217.86,-121.64"/>
+<text text-anchor="middle" x="156" y="-159.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
+<text text-anchor="middle" x="156" y="-152.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+</g>
+<!-- shredding_elec -->
+<g id="node3" class="node">
+<title>shredding_elec</title>
+<polygon fill="darkturquoise" stroke="black" points="90.5,-115 9.5,-115 9.5,-79 90.5,-79 90.5,-115"/>
+<text text-anchor="middle" x="50" y="-94.5" font-family="Cabin" font-size="10.00">shredding_elec</text>
+</g>
+<!-- shredding_elec&#45;&gt;smelter_nonferrous -->
+<g id="edge2" class="edge">
+<title>shredding_elec&#45;&gt;smelter_nonferrous</title>
+<path fill="none" stroke="black" d="M90.54,-97C121.08,-97 164.26,-97 201.49,-97"/>
+<polygon fill="black" stroke="black" points="201.82,-100.5 211.82,-97 201.82,-93.5 201.82,-100.5"/>
 <text text-anchor="middle" x="156" y="-106.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
 <text text-anchor="middle" x="156" y="-99.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
 </g>
-<!-- shredding_elec -->
+<!-- shredding_engtrans -->
 <g id="node4" class="node">
-<title>shredding_elec</title>
-<polygon fill="darkturquoise" stroke="black" points="90.5,-36 9.5,-36 9.5,0 90.5,0 90.5,-36"/>
-<text text-anchor="middle" x="50" y="-15.5" font-family="Cabin" font-size="10.00">shredding_elec</text>
+<title>shredding_engtrans</title>
+<polygon fill="darkturquoise" stroke="black" points="100,-36 0,-36 0,0 100,0 100,-36"/>
+<text text-anchor="middle" x="50" y="-15.5" font-family="Cabin" font-size="10.00">shredding_engtrans</text>
 </g>
-<!-- shredding_elec&#45;&gt;smelter_nonferrous -->
+<!-- shredding_engtrans&#45;&gt;smelter_nonferrous -->
 <g id="edge3" class="edge">
-<title>shredding_elec&#45;&gt;smelter_nonferrous</title>
-<path fill="none" stroke="black" d="M90.54,-31.76C125.28,-43.85 176.38,-61.63 216.46,-75.58"/>
-<polygon fill="black" stroke="black" points="215.54,-78.97 226.14,-78.95 217.84,-72.36 215.54,-78.97"/>
+<title>shredding_engtrans&#45;&gt;smelter_nonferrous</title>
+<path fill="none" stroke="black" d="M100.26,-35.14C134.37,-47.01 180.03,-62.9 216.53,-75.61"/>
+<polygon fill="black" stroke="black" points="215.48,-78.95 226.08,-78.93 217.79,-72.34 215.48,-78.95"/>
 <text text-anchor="middle" x="156" y="-73.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="156" y="-66.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="156" y="-66.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
 </g>
 </g>
 </svg>

@@ -11,6 +11,8 @@ matter_types = {'element': 'elm', 'compound' : 'cmp', "material" : 'mat', 'compo
 def import_matter_bulk(dir_compositions, model):
     """
     Import all composition csvs from the data directory.
+    one function scans a directory, and employs the other function in the module to import each csv idividually.
+    
     Csvs should be in a subdirectory called 'compositions-split'
     csvs should have the following naming convention:
     <WS>_<parent_product>_<matter name>-<matter_type>.csv
@@ -99,4 +101,6 @@ def import_matter_csv(model, filename):
         matter = matter_type(name, comp_dict)
     # matter.add_to_model(model)
     model.add_matter(matter)
+
+    model.get_matter()
 

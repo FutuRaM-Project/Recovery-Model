@@ -23,26 +23,11 @@ digraph {
 		shape=box,
 		style=filled,
 		width=1.4028];
-	shredding_engtrans	[fillcolor=darkturquoise,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="50,97",
-		shape=box,
-		style=filled,
-		width=1.3889];
-	shredding_engtrans -> market_waste	[color=black,
-		fontname=Cabin,
-		fontsize=6,
-		label="Composition: ELV_ICE_waste_shredder
-Amount: 0 kg",
-		lp="172,92",
-		pos="e,243.67,65.22 100.07,88.905 138.69,82.536 192.65,73.635 233.77,66.852"];
 	hammermill_body	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="50,18",
+		pos="50,97",
 		shape=box,
 		style=filled,
 		width=1.3194];
@@ -51,6 +36,21 @@ Amount: 0 kg",
 		fontsize=6,
 		label="Composition: ELV_ICE_waste_shredder
 Amount: 0 kg",
+		lp="172,92",
+		pos="e,243.97,65.17 97.756,89.288 136.54,82.891 191.92,73.756 233.88,66.834"];
+	shredding_engtrans	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> market_waste	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_waste_shredder
+Amount: 0 kg",
 		lp="172,37",
-		pos="e,251.77,38.925 97.604,17.636 132.28,18.238 180.57,20.929 222,30 228.62,31.449 235.44,33.395 242.12,35.58"];
+		pos="e,251.77,38.925 100.18,17.684 134.65,18.374 181.59,21.152 222,30 228.62,31.449 235.44,33.395 242.12,35.58"];
 }

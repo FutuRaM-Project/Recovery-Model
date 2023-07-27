@@ -35,7 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="359.5,155",
 		pos="e,418.4,157.92 301.94,115.03 333.68,126.71 375.2,142.01 408.72,154.35"];
 	market_H2SO4	[fillcolor=lightsalmon1,
@@ -50,7 +50,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: H2SO4
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="359.5,104",
 		pos="e,426.89,97 305.2,97 339.14,97 383.17,97 416.8,97"];
 	market_lead	[fillcolor=lightsalmon1,
@@ -65,7 +65,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: Pb
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="359.5,77",
 		pos="e,433.79,30.417 301.94,78.975 338.79,65.405 388.82,46.977 424.22,33.942"];
 	dismantling_ICE	[fillcolor=darkturquoise,
@@ -80,7 +80,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_batt
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="142,104",
 		pos="e,198.76,97 85.491,97 115.11,97 155.29,97 188.64,97"];
 }

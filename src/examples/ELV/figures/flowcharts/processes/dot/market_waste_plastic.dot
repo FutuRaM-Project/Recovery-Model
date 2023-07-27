@@ -23,26 +23,11 @@ digraph {
 		shape=box,
 		style=filled,
 		width=2.0278];
-	shredding_elec	[fillcolor=darkturquoise,
-		fontname=Cabin,
-		fontsize=10,
-		height=0.5,
-		pos="74.5,97",
-		shape=box,
-		style=filled,
-		width=1.125];
-	shredding_elec -> market_waste_plastic	[color=black,
-		fontname=Cabin,
-		fontsize=6,
-		label="Composition: ALL_plastic
-Amount: 0 kg",
-		lp="169.5,92",
-		pos="e,223.66,70.123 115.18,89.803 142.6,84.828 180.07,78.03 213.79,71.913"];
 	shredding_batt	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="74.5,18",
+		pos="74.5,97",
 		shape=box,
 		style=filled,
 		width=1.1111];
@@ -50,7 +35,22 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0 kg",
+Amount: 0.0 kg",
+		lp="169.5,92",
+		pos="e,223.78,70.101 114.67,89.895 142.15,84.909 179.91,78.06 213.86,71.902"];
+	shredding_elec	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="74.5,18",
+		shape=box,
+		style=filled,
+		width=1.125];
+	shredding_elec -> market_waste_plastic	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.0 kg",
 		lp="169.5,37",
-		pos="e,239.49,38.939 114.52,19.831 139.66,21.47 172.96,24.5 202,30 211,31.705 220.39,33.892 229.6,36.28"];
+		pos="e,239.49,38.939 115.08,19.868 140.15,21.515 173.17,24.541 202,30 211,31.705 220.39,33.892 229.6,36.28"];
 }

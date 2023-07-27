@@ -1,5 +1,8 @@
 # from ..visualisation import make_flowchart
 
+from tabulate import tabulate
+from prettytable import PrettyTable
+
 class Process:
     """
     A class representing a process that transforms input flows into output flows.
@@ -28,7 +31,53 @@ class Process:
         self.inputs = {}
         self.outputs = {}
         self.parameters = {}
-    
+
+    def print_transfer_coefficients(self):
+        """
+        Prints the transfer coefficients of the process in a nice table
+        """
+        if self.to_dict()['transformation_level'] == 'market':
+            print(f"{self.name}: Market processes don't have transfer coefficients.")
+            return
+        
+        print(f'\n{"-"*60}\n\t  Transfer coefficients of process: {self.name}\n{"-"*60}')
+
+        # Create combined table
+        combined_table = PrettyTable()
+        combined_table.field_names = ['Input', 'Output', 'Transfer coefficient', 'Uncertainty']
+        for tc in self.transfer_coefficients.values():
+            tc_value = f'{tc["transfer_coefficient"]:.2f}'
+            combined_table.add_row([tc['input'], tc['output'], tc_value, tc['uncertainty']])
+
+        # Print combined table
+        print(combined_table)
+
+
+    def print_flows(self):
+        """
+        Prints the input and output flows of the process in a nice table
+        """
+        print(f'\n{"-"*60}\n\t  Flows of process: {self.name}\n{"-"*60}')
+
+        # Create combined table
+        combined_table = PrettyTable()
+        combined_table.field_names = ['Type', 'Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']
+        for flow in self.inputs.values():
+            combined_table.add_row(['Input', flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags])
+        # Add empty row to separate inputs and outputs
+        if self.inputs and self.outputs:
+            combined_table.add_row(['', '', '', '', '', '', '', ''])
+        for flow in self.outputs.values():
+            combined_table.add_row(['Output', flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags])
+
+        # Print combined table
+        print(combined_table)
+
+    def print_table(self):
+        print(f'\n{"-"*60}\n\t  Details of process: {self.name}\n{"-"*60}\n')
+        table = [[k, v] for k, v in self.to_dict().items()]
+        print(tabulate(table, headers=['Attribute', 'Value'], tablefmt='fancy_grid'))
+        
     def add_transfer_coefficient(self, flow_input, flow_output, transfer_coefficient, uncertainty):
         """
         Adds a transfer coefficient to the process.
@@ -216,4 +265,25 @@ class Process:
         """
         make_flowchart(self)
 
+    def output_table(self):
+        """
+        Creates a table of the output flows of the process.
+
+        Returns:
+            A table of the output flows of the process.
+        """
+        print(f'Inputs to process {self.name}')
+        table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in self.inputs.values()]
+        print(tabulate(table, tablefmt='fancy_grid', headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
+
+    def input_table(self):
+        """
+        Creates a table of the input flows of the process.
+
+        Returns:
+            A table of the input flows of the process.
+        """
+        print(f'\nOutputs from process {self.name}')
+        table = [[flow.name, flow.process_from, flow.process_to, flow.composition, flow.amount, flow.unit, flow.tags] for flow in self.outputs.values()]
+        print(tabulate(table, tablefmt='fancy_grid',  headers=['Name', 'From', 'To', 'Composition', 'Amount', 'Unit', 'Tags']))
         

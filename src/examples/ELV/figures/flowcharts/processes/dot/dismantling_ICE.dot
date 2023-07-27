@@ -34,7 +34,7 @@ digraph {
 	dismantling_ICE -> market_reuse_ELVcomponents	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: ELV_ICE
+		label="Composition: ELV_ICE_parts
 Amount: 0 kg",
 		lp="351,539",
 		pos="e,433.53,552.94 236.54,312.07 244.24,347.27 265.53,425.89 310,475 340.89,509.12 386.82,533.5 424.22,549.15"];
@@ -50,7 +50,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_batt
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,458",
 		pos="e,448.3,478.46 242.29,312.1 254.97,335.37 279.62,375.87 310,402 348.4,435.02 401.01,459.74 438.98,474.83"];
 	hammermill_body	[fillcolor=lightsalmon1,
@@ -65,7 +65,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_body
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,385",
 		pos="e,440.92,396.93 259.41,312.08 273.97,321.63 292.58,333.17 310,342 349.38,361.95 395.75,380.33 431.21,393.39"];
 	smelter_cc	[fillcolor=lightsalmon1,
@@ -80,7 +80,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_catconv
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,325",
 		pos="e,456.36,329.11 288.22,302.68 335.76,310.15 403.3,320.77 446.26,327.52"];
 	shredding_elec	[fillcolor=lightsalmon1,
@@ -95,7 +95,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_elec
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,274",
 		pos="e,447.96,254.64 278.03,275.94 288.38,272.42 299.45,269.16 310,267 352.55,258.27 401.91,255.51 437.76,254.8"];
 	shredding_engtrans	[fillcolor=lightsalmon1,
@@ -110,7 +110,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_engtrans
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,241",
 		pos="e,438.2,187.2 252.26,275.9 267.09,262.77 288.6,245.38 310,234 347.41,214.1 392.89,199.4 428.45,189.78"];
 	market_waste_oil	[fillcolor=lightsalmon1,
@@ -125,7 +125,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_liquids
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,185",
 		pos="e,442.43,109.82 241.17,275.61 253.1,250.59 277.46,205.77 310,178 345.83,147.42 395.12,126.16 432.66,113.12"];
 	shredding_tyre	[fillcolor=lightsalmon1,
@@ -140,7 +140,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_tyres
-Amount: 0 kg",
+Amount: 0.0 kg",
 		lp="351,113",
 		pos="e,448.27,28.5 236,275.92 242.89,239.5 263.02,156.47 310,106 344.89,68.518 399.23,44.869 438.6,31.641"];
 	collection_ICE	[fillcolor=darkturquoise,
