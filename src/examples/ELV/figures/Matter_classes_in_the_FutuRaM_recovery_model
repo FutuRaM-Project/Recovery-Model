@@ -1,0 +1,39 @@
+digraph matter {
+	graph [fontname=Cabin fontsize=20 label="Matter classes in the FutuRaM recovery model" labelloc=t nodesep=0.5 rankdir=TB ranksep=0.5 splines=ortho]
+	subgraph cluster1 {
+		bgcolor="#b767f8ff" fontcolor="#000000" label=Product style=rounded
+		examples1 [label="- vehicle
+- laptop
+- house
+- heat pump" fillcolor="#ffff99ff" fontcolor="#000000" justify=left shape=note style=filled]
+		subgraph cluster2 {
+			bgcolor="#2ECC40" label=Component style=rounded
+			examples2 [label="- catalyst unit
+- circuit board
+- window
+- compressor" fillcolor="#ffff99ff" fontcolor="#000000" shape=note style=filled]
+			subgraph cluster3 {
+				bgcolor="#FFDC00" label=Material style=rounded
+				examples3 [label="- REE fraction
+- process mass
+- wood
+- non ferrous" fillcolor="#ffff99ff" fontcolor="#000000" shape=note style=filled]
+				subgraph cluster4 {
+					bgcolor="#FF851B" label=Compound style=rounded
+					examples4 [label="- REE oxides
+- TaO2
+- cellulose
+- Al2O3" fillcolor="#ffff99ff" fontcolor="#000000" shape=note style=filled]
+					subgraph cluster5 {
+						bgcolor="#FF4136" label=Element style=rounded
+						examples5 [label="- Ce
+- Ta
+- C
+- Al
+" fillcolor="#ffff99ff" fontcolor="#000000" shape=note style=filled]
+					}
+				}
+			}
+		}
+	}
+}

@@ -82,7 +82,8 @@ model.make_process_flowcharts()
 #% WHOLE MODEL
 
 # Create a flowchart for the whole model, showing all processes and their inputs and outputs
-f.make_flowchart(model)
+model.make_flowchart_model()
+model.make_process_network()
 
 #%% FILTERED FLOWCHARTS
 

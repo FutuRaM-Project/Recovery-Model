@@ -7,6 +7,8 @@ import pandas as pd
 import json
 from prettytable import PrettyTable
 
+from futuram.visualisation import make_flowchart_model, make_process_flowchart, make_network_processes
+
 #TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.
 
 
@@ -28,6 +30,19 @@ class Model:
         self.transfer_coefficients = self.get_transfer_coefficients()
 
         print(f"\n{'=' * 50}\n\tCreated model: {self.name}\n{'=' * 50}\n")
+
+    def make_flowchart_model(self):
+        '''
+        Create a flowchart for the whole model, showing all processes and their inputs and outputs
+        '''
+        make_flowchart_model(self)
+
+    def make_process_network(self):
+        '''
+        Create a network of the processes in the model.
+        Uses the networkx package to make a directed graph of the processes and flows in the model.
+        '''
+        make_network_processes(self)
 
     def make_process_flowcharts(self):
         """

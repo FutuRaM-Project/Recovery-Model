@@ -1,0 +1,15 @@
+digraph matter {
+	graph [fontname=Cabin fontsize=20 label="Matter classes in the FutuRaM recovery model" labelloc=t nodesep=0.5 rankdir=TB ranksep=0.5 splines=ortho]
+	subgraph cluster1 {
+		bgcolor="#b841ca" label=Product style=rounded
+		node1 [size=0 style=invis]
+		subgraph cluster2 {
+			bgcolor="#2ECC40" label=Component style=rounded
+			node2 [size=0 style=invis]
+			subgraph cluster3 {
+				bgcolor="#FFDC00" label=Material style=rounded
+				node3 [size=0 style=invis]
+			}
+		}
+	}
+}
