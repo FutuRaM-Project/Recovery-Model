@@ -13,6 +13,9 @@ Then, the amounts for the output flows from the next processes
 are calculated with the input flows to these, and the transfer coefficients.
 
 This is repeated until all flows have been calculated.
+Obviously, this only works if the model is a directed acyclic graph (DAG). Any loops in the model will cause an infinite loop in this script.
+
+Dum dum dum... Let's work out a way to express the multi level flows in a big matrix and solve it with linear algebra. That would be much faster.
 
 !# there is clearly still a bug or two in this script, but it's a start
 
@@ -84,19 +87,16 @@ def calculate_model_flows(model):
 # if the import isnt working just run the test model in and use same kernel
 # to get the model variable to feed the calculate_model_flows function
 
-#! not working now
-# if __name__ == '__main__':
-#     import subprocess
-#     subprocess.run(['python', '../../src/examples/ELV/scripts/TestModel_ELV.py'])
-#     model = example.model
-#     calculate_model_flows(model)
-#     model.get_flows()
-#     model.print_flows()
-#     model.make_flowchart_model()
+# ! not working now
+if __name__ == '__main__':
+    from ..examples.ELV.scripts.TestModel_ELV import model
+    calculate_model_flows(model)
+    model.get_flows()
+    model.print_flows()
+    model.make_flowchart_model()
+# # %% just run the test model in and use same kernel
 
-# %% just run the test model in and use same kernel
-
-calculate_model_flows(model)
-model.get_flows()
-model.print_flows()
-model.make_flowchart_model()
+# calculate_model_flows(model)
+# model.get_flows()
+# model.print_flows()
+# model.make_flowchart_model()
