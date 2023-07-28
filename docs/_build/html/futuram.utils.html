@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>futuram.utils package &mdash; FutuRaM - SRM recovery modelling  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FutuRaM - SRM recovery modelling
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">futuram.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-futuram.utils.get_random">futuram.utils.get_random module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.get_random.get_random_flow"><code class="docutils literal notranslate"><span class="pre">get_random_flow()</span></code></a></li>
+<li><a class="reference internal" href="#futuram.utils.get_random.get_random_matter"><code class="docutils literal notranslate"><span class="pre">get_random_matter()</span></code></a></li>
+<li><a class="reference internal" href="#futuram.utils.get_random.get_random_process"><code class="docutils literal notranslate"><span class="pre">get_random_process()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils.import_flows">futuram.utils.import_flows module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.import_flows.import_flows_xlsx"><code class="docutils literal notranslate"><span class="pre">import_flows_xlsx()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils.import_matter">futuram.utils.import_matter module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.import_matter.import_matter_bulk"><code class="docutils literal notranslate"><span class="pre">import_matter_bulk()</span></code></a></li>
+<li><a class="reference internal" href="#futuram.utils.import_matter.import_matter_csv"><code class="docutils literal notranslate"><span class="pre">import_matter_csv()</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">import_matter_bulk()</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">import_matter_csv()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils.import_processes">futuram.utils.import_processes module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.import_processes.import_processes_xlsx"><code class="docutils literal notranslate"><span class="pre">import_processes_xlsx()</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">import_processes_xlsx()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils.import_transfercoefficients">futuram.utils.import_transfercoefficients module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.import_transfercoefficients.import_transfercoefficients_xlsx"><code class="docutils literal notranslate"><span class="pre">import_transfercoefficients_xlsx()</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">import_transfercoefficients_xlsx()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils.split_xlsx_to_csvs">futuram.utils.split_xlsx_to_csvs module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.split_xlsx_to_csvs.xlsx_to_csvs"><code class="docutils literal notranslate"><span class="pre">xlsx_to_csvs()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils.validate_model">futuram.utils.validate_model module</a><ul>
+<li><a class="reference internal" href="#futuram.utils.validate_model.validate_flows"><code class="docutils literal notranslate"><span class="pre">validate_flows()</span></code></a></li>
+<li><a class="reference internal" href="#futuram.utils.validate_model.validate_matter"><code class="docutils literal notranslate"><span class="pre">validate_matter()</span></code></a></li>
+<li><a class="reference internal" href="#futuram.utils.validate_model.validate_model"><code class="docutils literal notranslate"><span class="pre">validate_model()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-futuram.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FutuRaM - SRM recovery modelling</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">futuram.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/futuram.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="futuram-utils-package">
+<h1>futuram.utils package<a class="headerlink" href="#futuram-utils-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-futuram.utils.get_random">
+<span id="futuram-utils-get-random-module"></span><h2>futuram.utils.get_random module<a class="headerlink" href="#module-futuram.utils.get_random" title="Permalink to this heading"></a></h2>
+<p>get_random.py</p>
+<p>This file contains functions to get random objects from a model.</p>
+<p>Functions:
+- get_random_process(model): Get a random process from the model.
+- get_random_flow(model): Get a random flow from the model.
+- get_random_matter(model): Get a random matter object from the model.</p>
+<p>Dependencies:
+- random
+- model.py
+- processes.py
+- matter.py
+- flows.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.get_random.get_random_flow">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.get_random.</span></span><span class="sig-name descname"><span class="pre">get_random_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.get_random.get_random_flow" title="Permalink to this definition"></a></dt>
+<dd><p>Get a random flow from the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> – The model to get the flow from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The random flow.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.get_random.get_random_matter">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.get_random.</span></span><span class="sig-name descname"><span class="pre">get_random_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.get_random.get_random_matter" title="Permalink to this definition"></a></dt>
+<dd><p>Get a random matter object from the model.
+:param model: The model to get the matter object from.
+:return: The random matter object.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.get_random.get_random_process">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.get_random.</span></span><span class="sig-name descname"><span class="pre">get_random_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.get_random.get_random_process" title="Permalink to this definition"></a></dt>
+<dd><p>Get a random process from the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> – The model to get the process from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The random process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-futuram.utils.import_flows">
+<span id="futuram-utils-import-flows-module"></span><h2>futuram.utils.import_flows module<a class="headerlink" href="#module-futuram.utils.import_flows" title="Permalink to this heading"></a></h2>
+<p>import_flows.py</p>
+<p>This module contains functions for importing flows to a model from a file.</p>
+<p>Functions:
+- import_flows_xlsx(filename, model):  Import flows from an xlsx file.</p>
+<p>Dependencies:
+- openpyxl
+- ../classes/model.py
+- ../classes/processes.py
+- ../classes/matter.py
+- ../classes/flows.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.import_flows.import_flows_xlsx">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_flows.</span></span><span class="sig-name descname"><span class="pre">import_flows_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_flows.import_flows_xlsx" title="Permalink to this definition"></a></dt>
+<dd><p>Import flows from an xlsx file.
+The xlsx file should have the following structure:
+process_from,process_to,composition</p>
+</dd></dl>
+
+</section>
+<section id="module-futuram.utils.import_matter">
+<span id="futuram-utils-import-matter-module"></span><h2>futuram.utils.import_matter module<a class="headerlink" href="#module-futuram.utils.import_matter" title="Permalink to this heading"></a></h2>
+<p>import_matter.py</p>
+<p>This module contains functions to import matter from
+csv files to a model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.utils.import_matter.import_matter_bulk">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_matter.</span></span><span class="sig-name descname"><span class="pre">import_matter_bulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_compositions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_matter.import_matter_bulk" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.utils.import_matter.import_matter_csv">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_matter.</span></span><span class="sig-name descname"><span class="pre">import_matter_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_matter.import_matter_csv" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_matter.</span></span><span class="sig-name descname"><span class="pre">import_matter_bulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_compositions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p>Import all composition csvs from the data directory.
+one function scans a directory, and employs the
+other function in the module to import each csv idividually.</p>
+<p>Csvs should be in a subdirectory called ‘compositions-split’
+csvs should have the following naming convention:
+&lt;WS&gt;_&lt;parent_product&gt;_&lt;matter name&gt;-&lt;matter_type&gt;.csv
+where matter types are one of:
+[‘elm’, ‘cmp’, ‘mat’, ‘cpt’, ‘prd’]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_matter.</span></span><span class="sig-name descname"><span class="pre">import_matter_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd><p>Import a csv file containing matter data.
+The csv should have the structure of the following example:</p>
+<p>filename = ELV_ICE_ferrous-mat.csv
+”
+fraction,matter,mass,mass_fraction,uncertainty
+Pb,element,18.2,0.65,0.1
+H2SO4,compound,7,0.25,0.1
+plastic,material,2.8,0.1,0.1
+”
+the columns of the csv will end up in the
+composition dictionary with the name of the
+fraction as the key to a dictionary of the other columns.</p>
+<p>the matter_type is determined by the end of the filename,
+e.g. ‘ferrous-mat.csv’ will be imported as a material.</p>
+<p>To split an xlsx file with multiple sheets into multiple csvs, use:
+“utils.split_xlsx_to_csvs.xlsx_to_csvs(filename)”
+The sheet names should be the same structure as the filename above.</p>
+</dd></dl>
+
+</section>
+<section id="module-futuram.utils.import_processes">
+<span id="futuram-utils-import-processes-module"></span><h2>futuram.utils.import_processes module<a class="headerlink" href="#module-futuram.utils.import_processes" title="Permalink to this heading"></a></h2>
+<p>import_processes.py</p>
+<p>This module contains functions to import processes from
+xlsx files to a model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.utils.import_processes.import_processes_xlsx">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_processes.</span></span><span class="sig-name descname"><span class="pre">import_processes_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_processes.import_processes_xlsx" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="simple">
+<dt>Dependencies:</dt><dd><p>openpyxl</p>
+</dd>
+</dl>
+<p>#! there is probably no reason to be dealing with xlsx files directly in the model, but this is likely how the data will arrive. We could also convert the xlsx files to csvs and import them that way.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_processes.</span></span><span class="sig-name descname"><span class="pre">import_processes_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd><p>Import a xlsx file containing process data and create process objects for each row</p>
+</dd></dl>
+
+</section>
+<section id="module-futuram.utils.import_transfercoefficients">
+<span id="futuram-utils-import-transfercoefficients-module"></span><h2>futuram.utils.import_transfercoefficients module<a class="headerlink" href="#module-futuram.utils.import_transfercoefficients" title="Permalink to this heading"></a></h2>
+<p>import_transfercoefficients.py</p>
+<p>This module contains functions to import transfer coefficients from
+xlsx files to a model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.utils.import_transfercoefficients.import_transfercoefficients_xlsx">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_transfercoefficients.</span></span><span class="sig-name descname"><span class="pre">import_transfercoefficients_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_transfercoefficients.import_transfercoefficients_xlsx" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="simple">
+<dt>Dependencies:</dt><dd><p>openpyxl</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.import_transfercoefficients.</span></span><span class="sig-name descname"><span class="pre">import_transfercoefficients_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd><p>Import a xlsx file containing transfer coefficient data and add them to the model
+:param filename: The path to the xlsx file.
+:type filename: str
+:param model: The model object to add the transfer coefficients to.
+:type model: Model</p>
+<dl class="simple">
+<dt>The xlsx file should have the following columns:</dt><dd><p>process (str): The name of the process.
+flow_input (str): The name of the input flow.
+flow_output (str): The name of the output flow.
+transfer_coefficient (float): The transfer coefficient.
+uncertainty (float): The uncertainty of the transfer coefficient.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-futuram.utils.split_xlsx_to_csvs">
+<span id="futuram-utils-split-xlsx-to-csvs-module"></span><h2>futuram.utils.split_xlsx_to_csvs module<a class="headerlink" href="#module-futuram.utils.split_xlsx_to_csvs" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.split_xlsx_to_csvs.xlsx_to_csvs">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.split_xlsx_to_csvs.</span></span><span class="sig-name descname"><span class="pre">xlsx_to_csvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.split_xlsx_to_csvs.xlsx_to_csvs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-futuram.utils.validate_model">
+<span id="futuram-utils-validate-model-module"></span><h2>futuram.utils.validate_model module<a class="headerlink" href="#module-futuram.utils.validate_model" title="Permalink to this heading"></a></h2>
+<p>validate_model.py</p>
+<p>This module contains functions for validating the model object.</p>
+<p>Functions:
+- validate_model(model):  Wrapper function that calls the other validation functions.
+- validate_flows(model): Validates the flows in the model object to ensure that the     matter in the flow’s composition and the to and from processes are in the model.
+- validate_matter(model): Validates the matter referred to in the flow objects composition      to ensure that the matter is in the model.</p>
+<p>Dependencies:
+- ../classes/model.py
+- ../classes/processes.py
+- ../classes/matter.py
+- ../classes/flows.py</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.validate_model.validate_flows">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.validate_model.</span></span><span class="sig-name descname"><span class="pre">validate_flows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.validate_model.validate_flows" title="Permalink to this definition"></a></dt>
+<dd><p>Validates the flows in the model object to ensure that the          matter in the flow’s composition and the to and from processes are in the model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>exception_count</strong> – The number of exceptions found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.validate_model.validate_matter">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.validate_model.</span></span><span class="sig-name descname"><span class="pre">validate_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.validate_model.validate_matter" title="Permalink to this definition"></a></dt>
+<dd><p>Validates the matter referred to in the flow objects          composition to ensure that the matter is in the model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>exception_count</strong> – The number of exceptions found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="futuram.utils.validate_model.validate_model">
+<span class="sig-prename descclassname"><span class="pre">futuram.utils.validate_model.</span></span><span class="sig-name descname"><span class="pre">validate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.validate_model.validate_model" title="Permalink to this definition"></a></dt>
+<dd><p>Validates the model object to ensure that all the matter and processes         referred to in the model are in the model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>validity</strong> – True if the model is valid, False if not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-futuram.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-futuram.utils" title="Permalink to this heading"></a></h2>
+<p>Subpackage: utils
+This subpackage contains modules with methods that are used by the futuram package.</p>
+<p>Modules:
+- import_flows.py: Import flows from an xlsx file.
+- import_processes.py: Import processes from an xlsx file.
+- import_matter.py: Import matter from a csv file.
+- import_transfercoefficients.py: Import transfer coefficients from an xlsx file.
+- split_xlsx_to_csvs.py: Split an xlsx file into csvs for each sheet.
+- get_random.py: Get random objects from a model.
+- validate_model.py: Validate a model.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
