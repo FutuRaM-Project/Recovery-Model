@@ -1,8 +1,11 @@
 Metadata-Version: 2.1
 Name: futuram
-Version: 0.1
+Version: 0.1.0
 Summary: SRM recovery model for the FutuRaM project
 Home-page: https://github.com/FutuRaM-Project/IntegratedModel
 Author: FutuRaM
 Author-email: s.c.mcdowall@cml.leidenuniv.nl
-License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENCE

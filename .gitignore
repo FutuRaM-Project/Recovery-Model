@@ -4,5 +4,7 @@
 ~*
 *~
 __pycache__*
-futuram.egg-info/
+#futuram.egg-info/
+.vscode/
+
 
