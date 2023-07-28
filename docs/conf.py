@@ -5,13 +5,10 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../src'))
-
-if ! pip show groundwork  > /dev/null; then
-    pip install groundwork
-fi
 
 project = 'FutuRaM - SRM recovery modelling'
 copyright = '2023, S.C.McDowall'
@@ -32,13 +29,5 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'groundwork'
 html_static_path = ['_static']
-
-git checkout gh-pages
-git checkout main docs/_build/
-
-git add .
-git commit -m update-docs
-
-git checkout main
 
 
