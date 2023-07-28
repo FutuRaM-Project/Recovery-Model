@@ -9,7 +9,7 @@
 
 ## Diagram of the system model
 
-![OverviewOfClassesInTheModel](OverviewOfClassesInTheModel.svg)
+![OverviewOfMatterClassesInTheModel](../docs/figures/Matter_classes_in_the_FutuRaM_recovery_model.png)
 
 To do:  
 * establish/connect templates for process and product data
@@ -17,4 +17,6 @@ To do:
 * fix the tree map code to get the nested dicts inside the outer ones
 
 * connect the parameters the rest of the model, 
-add subclasses to parameters for the different kinds 
+add subclasses to parameters for the different kinds
+
+* create efficient way to solve the model flows
