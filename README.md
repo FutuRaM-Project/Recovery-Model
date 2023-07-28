@@ -11,10 +11,10 @@
 * See classes for the different objects in the model
 
 ## Overview of the classes in system model
-![OverviewOfClassesInTheModel](../docs/figures/OverviewOfClassesInTheModel.svg)
+![OverviewOfClassesInTheModel](docs/figures/OverviewOfClassesInTheModel.svg)
 
 ## Overview of matter classes in the model
-![OverviewOfMatterClassesInTheModel](../docs/figures/Matter_classes_in_the_FutuRaM_recovery_model.png)
+![OverviewOfMatterClassesInTheModel](docs/figures/Matter_classes_in_the_FutuRaM_recovery_model.png)
 
 To do:  
 * establish/connect templates for process and product data
