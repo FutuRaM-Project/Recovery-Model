@@ -35,7 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_rubber
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="169.5,25",
 		pos="e,223.56,18 115,18 142.18,18 179.47,18 213.22,18"];
 }

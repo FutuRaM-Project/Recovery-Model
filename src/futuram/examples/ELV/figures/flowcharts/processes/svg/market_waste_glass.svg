@@ -29,7 +29,7 @@
 <path fill="none" stroke="black" d="M124.66,-18C152.49,-18 187.93,-18 219.43,-18"/>
 <polygon fill="black" stroke="black" points="219.5,-21.5 229.5,-18 219.5,-14.5 219.5,-21.5"/>
 <text text-anchor="middle" x="177" y="-27.2" font-family="Cabin" font-size="6.00">Composition: ALL_glass</text>
-<text text-anchor="middle" x="177" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="177" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 </g>
 </svg>

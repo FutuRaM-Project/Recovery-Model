@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,563,641",
+	graph [bb="0,0,567,641",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="281.5,615",
+		lp="283.5,615",
 		lwidth=4.75,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="232,294",
+		pos="236,294",
 		shape=box,
 		style=filled,
 		width=1.5556];
@@ -27,7 +27,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,571",
+		pos="492.5,571",
 		shape=box,
 		style=filled,
 		width=2.0694];
@@ -35,14 +35,14 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_parts
-Amount: 0 kg",
-		lp="351,539",
-		pos="e,433.53,552.94 236.54,312.07 244.24,347.27 265.53,425.89 310,475 340.89,509.12 386.82,533.5 424.22,549.15"];
+Amount: 0.00e+00 kg",
+		lp="355,539",
+		pos="e,437.53,552.94 240.54,312.07 248.24,347.27 269.53,425.89 314,475 344.89,509.12 390.82,533.5 428.22,549.15"];
 	shredding_batt	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,492",
+		pos="492.5,492",
 		shape=box,
 		style=filled,
 		width=1.1111];
@@ -50,14 +50,14 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_batt
-Amount: 0.0 kg",
-		lp="351,458",
-		pos="e,448.3,478.46 242.29,312.1 254.97,335.37 279.62,375.87 310,402 348.4,435.02 401.01,459.74 438.98,474.83"];
+Amount: 0.00e+00 kg",
+		lp="355,458",
+		pos="e,452.3,478.46 246.29,312.1 258.97,335.37 283.62,375.87 314,402 352.4,435.02 405.01,459.74 442.98,474.83"];
 	hammermill_body	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,413",
+		pos="492.5,413",
 		shape=box,
 		style=filled,
 		width=1.3194];
@@ -65,14 +65,14 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_body
-Amount: 0.0 kg",
-		lp="351,385",
-		pos="e,440.92,396.93 259.41,312.08 273.97,321.63 292.58,333.17 310,342 349.38,361.95 395.75,380.33 431.21,393.39"];
+Amount: 0.00e+00 kg",
+		lp="355,385",
+		pos="e,444.92,396.93 263.41,312.08 277.97,321.63 296.58,333.17 314,342 353.38,361.95 399.75,380.33 435.21,393.39"];
 	smelter_cc	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,334",
+		pos="492.5,334",
 		shape=box,
 		style=filled,
 		width=0.88889];
@@ -80,14 +80,14 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_catconv
-Amount: 0.0 kg",
-		lp="351,325",
-		pos="e,456.36,329.11 288.22,302.68 335.76,310.15 403.3,320.77 446.26,327.52"];
+Amount: 0.00e+00 kg",
+		lp="355,325",
+		pos="e,460.36,329.11 292.22,302.68 339.76,310.15 407.3,320.77 450.26,327.52"];
 	shredding_elec	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,255",
+		pos="492.5,255",
 		shape=box,
 		style=filled,
 		width=1.125];
@@ -95,14 +95,14 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_elec
-Amount: 0.0 kg",
-		lp="351,274",
-		pos="e,447.96,254.64 278.03,275.94 288.38,272.42 299.45,269.16 310,267 352.55,258.27 401.91,255.51 437.76,254.8"];
+Amount: 0.00e+00 kg",
+		lp="355,274",
+		pos="e,451.96,254.64 282.03,275.94 292.38,272.42 303.45,269.16 314,267 356.55,258.27 405.91,255.51 441.76,254.8"];
 	shredding_engtrans	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,176",
+		pos="492.5,176",
 		shape=box,
 		style=filled,
 		width=1.3889];
@@ -110,14 +110,14 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_engtrans
-Amount: 0.0 kg",
-		lp="351,241",
-		pos="e,438.2,187.2 252.26,275.9 267.09,262.77 288.6,245.38 310,234 347.41,214.1 392.89,199.4 428.45,189.78"];
+Amount: 0.00e+00 kg",
+		lp="355,241",
+		pos="e,442.2,187.2 256.26,275.9 271.09,262.77 292.6,245.38 314,234 351.41,214.1 396.89,199.4 432.45,189.78"];
 	market_waste_oil	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,97",
+		pos="492.5,97",
 		shape=box,
 		style=filled,
 		width=1.2778];
@@ -125,14 +125,14 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_liquids
-Amount: 0.0 kg",
-		lp="351,185",
-		pos="e,442.43,109.82 241.17,275.61 253.1,250.59 277.46,205.77 310,178 345.83,147.42 395.12,126.16 432.66,113.12"];
+Amount: 0.00e+00 kg",
+		lp="355,185",
+		pos="e,446.43,109.82 245.17,275.61 257.1,250.59 281.46,205.77 314,178 349.83,147.42 399.12,126.16 436.66,113.12"];
 	shredding_tyre	[fillcolor=lightsalmon1,
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="488.5,18",
+		pos="492.5,18",
 		shape=box,
 		style=filled,
 		width=1.1111];
@@ -140,9 +140,9 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_tyres
-Amount: 0.0 kg",
-		lp="351,113",
-		pos="e,448.27,28.5 236,275.92 242.89,239.5 263.02,156.47 310,106 344.89,68.518 399.23,44.869 438.6,31.641"];
+Amount: 0.00e+00 kg",
+		lp="355,113",
+		pos="e,452.27,28.5 240,275.92 246.89,239.5 267.02,156.47 314,106 348.89,68.518 403.23,44.869 442.6,31.641"];
 	collection_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -155,7 +155,7 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE
-Amount: 0 kg",
-		lp="126,301",
-		pos="e,175.92,294 76.02,294 101.36,294 135.66,294 165.55,294"];
+Amount: 0.00e+00 kg",
+		lp="128,301",
+		pos="e,179.64,294 76.327,294 102.57,294 138.39,294 169.35,294"];
 }

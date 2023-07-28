@@ -14,22 +14,22 @@
 <!-- collection_ICE -->
 <g id="node1" class="node">
 <title>collection_ICE</title>
-<polygon fill="#ffa07a" stroke="black" points="335,-36 259,-36 259,0 335,0 335,-36"/>
-<text text-anchor="middle" x="297" y="-15.5" font-family="Cabin" font-size="10.00">collection_ICE</text>
+<polygon fill="#ffa07a" stroke="black" points="337,-36 261,-36 261,0 337,0 337,-36"/>
+<text text-anchor="middle" x="299" y="-15.5" font-family="Cabin" font-size="10.00">collection_ICE</text>
 </g>
 <!-- PutOnMarket_ICE -->
 <g id="node2" class="node">
 <title>PutOnMarket_ICE</title>
-<polygon fill="#e066ff" stroke="black" points="159,-36 36,-36 36,0 159,0 159,-36"/>
-<text text-anchor="middle" x="97.5" y="-14.3" font-family="Cabin" font-size="14.00">PutOnMarket_ICE</text>
+<polygon fill="#e066ff" stroke="black" points="157,-36 34,-36 34,0 157,0 157,-36"/>
+<text text-anchor="middle" x="95.5" y="-14.3" font-family="Cabin" font-size="14.00">PutOnMarket_ICE</text>
 </g>
 <!-- PutOnMarket_ICE&#45;&gt;collection_ICE -->
 <g id="edge1" class="edge">
 <title>PutOnMarket_ICE&#45;&gt;collection_ICE</title>
-<path fill="none" stroke="black" d="M159.1,-18C187.83,-18 221.65,-18 248.49,-18"/>
-<polygon fill="black" stroke="black" points="248.78,-21.5 258.78,-18 248.78,-14.5 248.78,-21.5"/>
+<path fill="none" stroke="black" d="M157.23,-18C187.13,-18 222.65,-18 250.52,-18"/>
+<polygon fill="black" stroke="black" points="250.81,-21.5 260.81,-18 250.81,-14.5 250.81,-21.5"/>
 <text text-anchor="middle" x="209" y="-27.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
-<text text-anchor="middle" x="209" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 1000 kg</text>
+<text text-anchor="middle" x="209" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 </g>
 </svg>

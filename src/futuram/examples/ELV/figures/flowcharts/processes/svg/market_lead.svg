@@ -14,22 +14,22 @@
 <!-- market_lead -->
 <g id="node1" class="node">
 <title>market_lead</title>
-<polygon fill="#e066ff" stroke="black" points="291.5,-36 200.5,-36 200.5,0 291.5,0 291.5,-36"/>
-<text text-anchor="middle" x="246" y="-14.3" font-family="Cabin" font-size="14.00">market_lead</text>
+<polygon fill="#e066ff" stroke="black" points="300.5,-36 209.5,-36 209.5,0 300.5,0 300.5,-36"/>
+<text text-anchor="middle" x="255" y="-14.3" font-family="Cabin" font-size="14.00">market_lead</text>
 </g>
 <!-- shredding_batt -->
 <g id="node2" class="node">
 <title>shredding_batt</title>
-<polygon fill="darkturquoise" stroke="black" points="114.5,-36 34.5,-36 34.5,0 114.5,0 114.5,-36"/>
-<text text-anchor="middle" x="74.5" y="-15.5" font-family="Cabin" font-size="10.00">shredding_batt</text>
+<polygon fill="darkturquoise" stroke="black" points="105.5,-36 25.5,-36 25.5,0 105.5,0 105.5,-36"/>
+<text text-anchor="middle" x="65.5" y="-15.5" font-family="Cabin" font-size="10.00">shredding_batt</text>
 </g>
 <!-- shredding_batt&#45;&gt;market_lead -->
 <g id="edge1" class="edge">
 <title>shredding_batt&#45;&gt;market_lead</title>
-<path fill="none" stroke="black" d="M114.81,-18C137.15,-18 165.46,-18 189.97,-18"/>
-<polygon fill="black" stroke="black" points="190.22,-21.5 200.22,-18 190.22,-14.5 190.22,-21.5"/>
+<path fill="none" stroke="black" d="M105.81,-18C132.89,-18 169.26,-18 199.19,-18"/>
+<polygon fill="black" stroke="black" points="199.49,-21.5 209.49,-18 199.49,-14.5 199.49,-21.5"/>
 <text text-anchor="middle" x="157.5" y="-27.2" font-family="Cabin" font-size="6.00">Composition: Pb</text>
-<text text-anchor="middle" x="157.5" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="157.5" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 </g>
 </svg>

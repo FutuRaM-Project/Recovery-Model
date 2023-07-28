@@ -69,7 +69,6 @@ def calculate_next_processes(next_processes):
     
     return next_next_processes
 
-next_next_processes = calculate_next_processes(next_processes)
 #%%
 # loop over all processes in the model
 def calculate_model_flows(model):

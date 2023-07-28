@@ -93,18 +93,7 @@ f.utils.validate_model(model)
 
 # %% CALCULATE THE QUANTITIES OF FLOWS IN THE MODEL
 
-# set input
-waste_input = model.processes["collection_ICE"].inputs[
-    "PutOnMarket_ICE_to_collection_ICE"
-]
-waste_input.to_dict()
-waste_input.set_amount(1000)
-waste_input.to_dict()
-model.print_flows()
-
-for flow in model.get_flows().values():
-    flow.calculate_amount(model)
-# calculate to
+model.calculate_flows()
 
 # %% VISUALISE THE MODEL
 
@@ -137,33 +126,6 @@ model.make_network()
 # TODO: still need to write this
 
 # %% THE END
-print(f"\n\n{'='*90}\n\t {'FIN '*10} \n{'='*90}\n")
+print(f"\n\n{'='*60}\n\t {'FIN '*10} \n{'='*60}\n")
 
-# %% TESTING FOR MAKING THE FUNCTION TO CHANGE THE FLOW AMOUNTS
-
-
-# waste_input.amount = 1000
-# waste_input.unit = 'kg'
-# waste_input.to_dict()
-
-
-# fractions_out = [flow.to_dict() for flow in process.outputs.values()]
-
-# fractions_in = [model.matter[flow.composition].composition for flow in process.inputs.values()]
-
-# for flow in process.inputs.values():
-#     amount = flow.amount
-#     flow_composition_in = model.matter[flow.composition].composition
-#     for fraction in flow_composition_in.values():
-#         fraction['amount'] = amount * fraction['mass_fraction']
-#     flow.fractions = flow_composition_in
-
-# for flow_out in process.outputs.values():
-#     for flow_in in process.inputs.values():
-
-#         try:
-#             flow_out.amount = flow_in.fractions[flow_out.composition]['amount']*float(process.transfer_coefficients[flow_out.composition]['transfer_coefficient'])
-#             print(flow_out.amount)
-#         except KeyError as e:
-#              print(e)
-#              pass
+#%%

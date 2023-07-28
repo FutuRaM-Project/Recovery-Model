@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="246,18",
+		pos="255,18",
 		shape=box,
 		style=filled,
 		width=1.2639];
@@ -27,7 +27,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="74.5,18",
+		pos="65.5,18",
 		shape=box,
 		style=filled,
 		width=1.1111];
@@ -35,7 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: Pb
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="157.5,25",
-		pos="e,200.22,18 114.81,18 137.15,18 165.46,18 189.97,18"];
+		pos="e,209.49,18 105.81,18 132.89,18 169.26,18 199.19,18"];
 }

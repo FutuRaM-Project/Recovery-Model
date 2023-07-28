@@ -29,7 +29,7 @@
 <path fill="none" stroke="black" d="M126.03,-18C154.99,-18 195.06,-18 232.89,-18"/>
 <polygon fill="black" stroke="black" points="232.97,-21.5 242.97,-18 232.97,-14.5 232.97,-21.5"/>
 <text text-anchor="middle" x="184.5" y="-27.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_parts</text>
-<text text-anchor="middle" x="184.5" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="184.5" y="-20.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 </g>
 </svg>

@@ -29,7 +29,7 @@
 <path fill="none" stroke="black" d="M307.05,-66.68C336.76,-72.21 374.27,-79.19 405.8,-85.06"/>
 <polygon fill="black" stroke="black" points="405.34,-88.53 415.81,-86.92 406.62,-81.65 405.34,-88.53"/>
 <text text-anchor="middle" x="361.5" y="-90.2" font-family="Cabin" font-size="6.00">Composition: ALL_rubber</text>
-<text text-anchor="middle" x="361.5" y="-83.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="361.5" y="-83.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 <!-- smelter_ferrous -->
 <g id="node4" class="node">
@@ -43,7 +43,7 @@
 <path fill="none" stroke="black" d="M298.65,-38.91C308.49,-35.45 318.98,-32.21 329,-30 358.36,-23.52 391.86,-20.49 418.85,-19.1"/>
 <polygon fill="black" stroke="black" points="419.02,-22.59 428.85,-18.64 418.7,-15.6 419.02,-22.59"/>
 <text text-anchor="middle" x="361.5" y="-39.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="361.5" y="-32.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="361.5" y="-32.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 <!-- dismantling_ICE -->
 <g id="node2" class="node">
@@ -57,7 +57,7 @@
 <path fill="none" stroke="black" d="M85.14,-57C115.2,-57 156.32,-57 190.34,-57"/>
 <polygon fill="black" stroke="black" points="190.65,-60.5 200.65,-57 190.65,-53.5 190.65,-60.5"/>
 <text text-anchor="middle" x="143" y="-66.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_tyres</text>
-<text text-anchor="middle" x="143" y="-59.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="143" y="-59.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 </g>
 </svg>

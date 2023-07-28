@@ -107,7 +107,7 @@ def make_flowchart_process(process):
         graph.edge(
             flow.process_from,
             flow.process_to,
-            label=f"Composition: {flow.composition}\nAmount: {flow.amount} {flow.unit}",
+            label=f"Composition: {flow.composition}\nAmount: {flow.amount:.2e} {flow.unit}",
             fontsize="6",
             fontname="Cabin",
             color="black",
@@ -269,7 +269,7 @@ def make_flowchart_model(
                 graph.edge(
                     flow.process_from,
                     flow.process_to,
-                    label=f"Composition: {flow.composition}\nAmount: {flow.amount}  {flow.unit}",
+                    label=f"Composition: {flow.composition}\nAmount: {flow.amount:.2e}  {flow.unit}",
                     fontsize="6",
                     fontname="Cabin",
                     color="black",
@@ -295,7 +295,7 @@ def make_flowchart_model(
             graph.edge(
                 process.name,
                 process.name + "_output",
-                label=f"Leaving system boundary: {amount} {list(process.inputs.values())[0].unit}",
+                label=f"Leaving system boundary: {amount:.2e} {list(process.inputs.values())[0].unit}",
                 fontsize="8",
                 fontname="Cabin",
                 color="darkred",

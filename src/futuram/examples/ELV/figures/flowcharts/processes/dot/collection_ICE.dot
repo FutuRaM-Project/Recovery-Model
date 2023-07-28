@@ -1,5 +1,5 @@
 digraph {
-	graph [bb="0,0,477,88",
+	graph [bb="0,0,485,88",
 		font=Cabin,
 		fontname=Cabin,
 		fontsize=20,
@@ -8,7 +8,7 @@ digraph {
 		labeljust=c,
 		labelloc=tc,
 		lheight=0.61,
-		lp="238.5,62",
+		lp="242.5,62",
 		lwidth=4.51,
 		nodesep=0.6,
 		rankdir=LR,
@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="242,18",
+		pos="246,18",
 		shape=box,
 		style=filled,
 		width=1.3889];
@@ -27,7 +27,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="434.5,18",
+		pos="442.5,18",
 		shape=box,
 		style=filled,
 		width=1.1806];
@@ -35,9 +35,9 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE
-Amount: 0 kg",
-		lp="342,25",
-		pos="e,391.71,18 292.06,18 319.43,18 353.51,18 381.37,18"];
+Amount: 0.00e+00 kg",
+		lp="348,25",
+		pos="e,399.69,18 296.08,18 324.55,18 360.38,18 389.35,18"];
 	PutOnMarket_ICE	[fillcolor=darkturquoise,
 		fontname=Cabin,
 		fontsize=10,
@@ -50,7 +50,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE
-Amount: 1000 kg",
-		lp="142,25",
-		pos="e,191.72,18 92.484,18 119.02,18 152.79,18 181.43,18"];
+Amount: 0.00e+00 kg",
+		lp="144,25",
+		pos="e,195.98,18 92.425,18 120.1,18 155.77,18 185.67,18"];
 }

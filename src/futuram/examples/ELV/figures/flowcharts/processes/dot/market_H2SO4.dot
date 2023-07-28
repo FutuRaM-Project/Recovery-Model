@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="265.5,18",
+		pos="268.5,18",
 		shape=box,
 		style=filled,
 		width=1.5278];
@@ -27,7 +27,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="72.5,18",
+		pos="69.5,18",
 		shape=box,
 		style=filled,
 		width=1.1111];
@@ -35,7 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: H2SO4
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="161.5,25",
-		pos="e,210.24,18 112.61,18 137.8,18 171.14,18 200.17,18"];
+		pos="e,213.25,18 109.89,18 136.52,18 172.31,18 203.04,18"];
 }

@@ -29,7 +29,7 @@
 <path fill="none" stroke="black" d="M321.12,-106.73C358.18,-113.28 406.65,-121.84 442.58,-128.18"/>
 <polygon fill="black" stroke="black" points="442.37,-131.7 452.83,-129.99 443.59,-124.81 442.37,-131.7"/>
 <text text-anchor="middle" x="382.5" y="-133.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="382.5" y="-126.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="382.5" y="-126.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 <!-- market_waste_slag -->
 <g id="node6" class="node">
@@ -43,7 +43,7 @@
 <path fill="none" stroke="black" d="M311.46,-78.9C321.69,-75.43 332.61,-72.2 343,-70 372.48,-63.76 405.85,-60.71 433.58,-59.24"/>
 <polygon fill="black" stroke="black" points="434.08,-62.72 443.91,-58.75 433.75,-55.73 434.08,-62.72"/>
 <text text-anchor="middle" x="382.5" y="-79.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_slag_fe</text>
-<text text-anchor="middle" x="382.5" y="-72.2" font-family="Cabin" font-size="6.00">Amount: 0 kg</text>
+<text text-anchor="middle" x="382.5" y="-72.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 <!-- hammermill_body -->
 <g id="node2" class="node">
@@ -57,7 +57,7 @@
 <path fill="none" stroke="black" d="M97.74,-158.66C129.4,-146.92 171.47,-131.32 205.36,-118.75"/>
 <polygon fill="black" stroke="black" points="206.99,-121.88 215.15,-115.12 204.55,-115.32 206.99,-121.88"/>
 <text text-anchor="middle" x="154.5" y="-157.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="154.5" y="-150.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="154.5" y="-150.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 <!-- shredding_engtrans -->
 <g id="node3" class="node">
@@ -71,7 +71,7 @@
 <path fill="none" stroke="black" d="M100.13,-97C129.4,-97 166.91,-97 198.65,-97"/>
 <polygon fill="black" stroke="black" points="198.74,-100.5 208.74,-97 198.74,-93.5 198.74,-100.5"/>
 <text text-anchor="middle" x="154.5" y="-106.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="154.5" y="-99.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="154.5" y="-99.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 <!-- shredding_tyre -->
 <g id="node4" class="node">
@@ -85,7 +85,7 @@
 <path fill="none" stroke="black" d="M90.07,-32.49C122.48,-44.51 169.05,-61.78 205.85,-75.43"/>
 <polygon fill="black" stroke="black" points="204.87,-78.8 215.46,-79 207.3,-72.24 204.87,-78.8"/>
 <text text-anchor="middle" x="154.5" y="-75.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="154.5" y="-68.2" font-family="Cabin" font-size="6.00">Amount: 0.0 kg</text>
+<text text-anchor="middle" x="154.5" y="-68.2" font-family="Cabin" font-size="6.00">Amount: 0.00e+00 kg</text>
 </g>
 </g>
 </svg>

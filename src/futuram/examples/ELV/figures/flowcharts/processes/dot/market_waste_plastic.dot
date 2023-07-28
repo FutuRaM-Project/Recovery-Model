@@ -35,7 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="169.5,92",
 		pos="e,223.78,70.101 114.67,89.895 142.15,84.909 179.91,78.06 213.86,71.902"];
 	shredding_elec	[fillcolor=darkturquoise,
@@ -50,7 +50,7 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ALL_plastic
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="169.5,37",
 		pos="e,239.49,38.939 115.08,19.868 140.15,21.515 173.17,24.541 202,30 211,31.705 220.39,33.892 229.6,36.28"];
 }

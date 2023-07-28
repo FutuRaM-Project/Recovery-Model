@@ -35,7 +35,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 kg",
+Amount: 0.00e+00 kg",
 		lp="409,132",
 		pos="e,472.91,129.09 346.04,107.98 382.61,114.07 427.65,121.56 462.81,127.4"];
 	market_waste_slag	[fillcolor=lightsalmon1,
@@ -50,7 +50,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_slag_nfe
-Amount: 0 kg",
+Amount: 0.00e+00 kg",
 		lp="409,77",
 		pos="e,471.72,59.12 332.11,78.956 343.8,75.487 356.23,72.241 368,70 398.55,64.183 433.07,61.177 461.53,59.628"];
 	hammermill_body	[fillcolor=darkturquoise,
@@ -65,7 +65,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="156,157",
 		pos="e,226.15,115.04 97.759,159.73 132.07,147.79 179.01,131.45 216.38,118.45"];
 	shredding_elec	[fillcolor=darkturquoise,
@@ -80,7 +80,7 @@ Amount: 0.0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0 kg",
+Amount: 0.00e+00 kg",
 		lp="156,104",
 		pos="e,211.82,97 90.54,97 121.08,97 164.26,97 201.49,97"];
 	shredding_engtrans	[fillcolor=darkturquoise,
@@ -95,7 +95,7 @@ Amount: 0 kg",
 		fontname=Cabin,
 		fontsize=6,
 		label="Composition: ELV_ICE_nfe
-Amount: 0.0 kg",
+Amount: 0.00e+00 kg",
 		lp="156,71",
 		pos="e,226.08,78.931 100.26,35.142 134.37,47.014 180.03,62.905 216.53,75.607"];
 }
