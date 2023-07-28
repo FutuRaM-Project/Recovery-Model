@@ -19,7 +19,7 @@ digraph {
 		fontname=Cabin,
 		fontsize=10,
 		height=0.5,
-		pos="299.5,18",
+		pos="297,18",
 		shape=box,
 		style=filled,
 		width=1.0556];
@@ -27,15 +27,15 @@ digraph {
 		fontname=Cabin,
 		fontsize=14,
 		height=0.5,
-		pos="95,18",
+		pos="97.5,18",
 		shape=box,
 		style=filled,
 		width=1.7083];
 	PutOnMarket_ICE -> collection_ICE	[color=black,
 		fontname=Cabin,
 		fontsize=6,
-		label="Composition: NEW_ICE
+		label="Composition: ELV_ICE
 Amount: 1000 kg",
 		lp="209,25",
-		pos="e,261.32,18 156.76,18 186.92,18 222.83,18 250.95,18"];
+		pos="e,258.78,18 159.1,18 187.83,18 221.65,18 248.49,18"];
 }

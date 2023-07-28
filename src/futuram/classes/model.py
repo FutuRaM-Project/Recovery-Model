@@ -40,6 +40,7 @@ from prettytable import PrettyTable
 from tabulate import tabulate
 
 from ..visualisation import make_flowchart, make_network
+from ..utils.solve_flows import calculate_output_flows
 
 class Model:
     """
@@ -126,6 +127,15 @@ class Model:
         self.transfer_coefficients = self.get_transfer_coefficients()
 
         print(f"\n{'=' * 50}\n\tCreated model: {self.name}\n{'=' * 50}\n")
+
+    def calculate_flows(self):
+        '''
+        calculates the flows amounts iteratively in the model
+        using the transfer coefficients, the composition of the flows
+        and the input flows to the model
+        '''
+        calculate_output_flows(self)
+
 
     def make_flowchart_model(self):
         """
