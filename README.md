@@ -1,16 +1,26 @@
 # Futurama system model
 
 ## Installation
-1. Clone the repository 
-2. Run 
+
+1. Clone the repository to your local machine (or download the [zip file](https://github.com/FutuRaM-Project/IntegratedModel/archive/refs/heads/main.zip))
+2. Run
    > bash auto_install.sh to install everything (may require 'chmod +x auto_install.sh' first)
-   
+
    Or
 
-   >In the root directory of the repository, run `pip install -e ./src` to install the package in editable mode
+   >In the root directory of the repository, run `pip install ./src` to install the package
 
-* See src/examples/ELV to get an idea how it can work
-* See classes for the different objects in the model
+3. You can now import the package in python with `import futuram as f`
+   * See src/examples/ELV to get an idea how it can work
+   * See classes for the different objects in the model
+
+## Development
+
+You can install the package in editable mode by running `pip install -e ./src` in the root directory of the repository.
+This means that you can make changes to the code and test them live, without having to reinstall the package.
+
+If you make changes to the code, do it in your own branch and make a pull request to the main branch when you are done.
+
 
 ## Overview of the classes in system model
 ![OverviewOfClassesInTheModel](docs/figures/OverviewOfClassesInTheModel.svg)
