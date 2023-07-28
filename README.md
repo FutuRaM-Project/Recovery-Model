@@ -4,7 +4,9 @@
 1. Clone the repository 
 2. Run 
    > bash auto_install.sh to install everything (may require 'chmod +x auto_install.sh' first)
+   
    Or
+
    >In the root directory of the repository, run `pip install -e ./src` to install the package in editable mode
 
 * See src/examples/ELV to get an idea how it can work
