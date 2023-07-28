@@ -1,5 +1,5 @@
 # Futurama system model
-[Go to Documentation](docs/_build/index.html)
+[Go to Documentation](docs/_build/html/index.html)
 ## Installation
 
 1. Clone the repository to your local machine (or download the [zip file](https://github.com/FutuRaM-Project/IntegratedModel/archive/refs/heads/main.zip))
