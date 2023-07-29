@@ -23,8 +23,8 @@ Dum dum dum... Let's work out a way to express the multi level flows in a big ma
 #%%
 
 # loop over the outputs of a process and match the composition of the output flow the transfer coefficient
-def calculate_output_flows(process):
-    
+def calculate_output_flows(process, model):
+    model.get_flows()
     next_processes = []
     for flow_out in process.outputs.values():
         print(f'Flow in: {flow_out.name}')
@@ -61,11 +61,11 @@ def calculate_output_flows(process):
 
 #%%
 
-def calculate_next_processes(next_processes):
+def calculate_next_processes(next_processes, model):
     next_next_processes = []
     for process in next_processes:
         process = model.processes[process]
-        next_next_processes += calculate_output_flows(process)
+        next_next_processes += calculate_output_flows(process, model)
     
     return next_next_processes
 
@@ -76,9 +76,9 @@ def calculate_model_flows(model):
     next_processes = []
     for process in inputs.keys():
         process = model.processes[process]
-        next_processes += calculate_output_flows(process)
+        next_processes += calculate_output_flows(process, model)
     
-    next_next_processes = calculate_next_processes(next_processes)
+    next_next_processes = calculate_next_processes(next_processes, model)
 
     return next_next_processes
 
@@ -86,7 +86,7 @@ def calculate_model_flows(model):
 # if the import isnt working just run the test model in and use same kernel
 # to get the model variable to feed the calculate_model_flows function
 
-# ! not working now
+# # ! not working now
 if __name__ == '__main__':
     from ..examples.ELV.scripts.TestModel_ELV import model
     calculate_model_flows(model)

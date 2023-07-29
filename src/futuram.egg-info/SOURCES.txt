@@ -13,12 +13,15 @@ futuram/classes/matter.py
 futuram/classes/model.py
 futuram/classes/parameters.py
 futuram/classes/processes.py
+futuram/examples/__init__.py
+futuram/examples/example_usage_OLD.py
 futuram/utils/__init__.py
 futuram/utils/get_random.py
 futuram/utils/import_flows.py
 futuram/utils/import_matter.py
 futuram/utils/import_processes.py
 futuram/utils/import_transfercoefficients.py
+futuram/utils/solve_flows.py
 futuram/utils/split_xlsx_to_csvs.py
 futuram/utils/validate_model.py
 futuram/visualisation/__init__.py

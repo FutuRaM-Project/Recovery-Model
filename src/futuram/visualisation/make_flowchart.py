@@ -312,7 +312,7 @@ def make_flowchart_model(
     if not os.path.exists(dir_model_flowcharts):
         os.makedirs(dir_model_flowcharts)
 
-    for _format in ["png", "dot", "svg", "pdf", "html"]:
+    for _format in ["png", "dot", "svg", "html","pdf"]:
         dir_model_flowcharts_format = dir_model_flowcharts + _format
 
         if not os.path.exists(dir_model_flowcharts_format):
