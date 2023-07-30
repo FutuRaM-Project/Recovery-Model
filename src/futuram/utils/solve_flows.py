@@ -44,9 +44,7 @@ def calculate_output_flows(process, model):
                 fractions = model.matter[flow_in.composition].composition
                 
                 try:
-                    flow_out.amount = flow_out.amount + \
-                                    fractions[flow_out.composition]['mass_fraction'] * \
-                                        tc['transfer_coefficient']
+                    flow_out.amount = flow_out.amount + fractions[flow_out.composition]['mass_fraction']*tc['transfer_coefficient']
                     
                     print(f'Match for {flow_out.composition} --> {flow_out.amount}')
                 except KeyError:
@@ -73,6 +71,7 @@ def calculate_next_processes(next_processes, model):
 
 #%%
 # loop over all processes in the model
+#! it stops after the first process, so there is a bug somewhere
 def calculate_model_flows(model):
     inputs = model.get_inputs()
     next_processes = []
@@ -84,22 +83,24 @@ def calculate_model_flows(model):
 
     return next_next_processes
 
-#%% I couldn't get the function about to work properly, so I'm just going to do it manually for now
-# It works for most processes,but some don't work and I dont know why...
-for process in model.processes.values():
-    print(f'Process: {process.name}')
-    calculate_output_flows(process, model)
+
 
 #%% For testing the script, you can use any model
 # if the import isnt working just run the test model in and use same kernel
 # to get the model variable to feed the calculate_model_flows function
 
-# # ! not working now
 if __name__ == '__main__':
     import sys
     sys.path.append('..examples.ELV.scripts.TestModel_ELV')
     from TestModel_ELV import model
     calculate_model_flows(model)
+
+    # I couldn't get the function above to work properly, so I'm just going to do it manually for now
+    # It works for most processes,but some don't work and I dont know why...
+    for process in model.processes.values():
+        print(f'Process: {process.name}')
+        calculate_output_flows(process, model)
+
     model.get_flows()
     model.print_flows()
     model.make_flowchart_model()

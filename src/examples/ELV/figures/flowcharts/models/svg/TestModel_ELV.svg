@@ -14,7 +14,7 @@
 <!-- collection_ICE -->
 <g id="node1" class="node">
 <title>collection_ICE</title>
-<g id="a_node1"><a xlink:title="{&#39;name&#39;: &#39;collection_ICE&#39;, &#39;description&#39;: &#39;collection of an ice car&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;collection&#39;, &#39;inputs&#39;: [&#39;PutOnMarket_ICE_to_collection_ICE:1000000kg&#39;], &#39;outputs&#39;: [&#39;collection_ICE_to_dismantling_ICE:207532.443436939kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;1&#39;, &#39;consumption_water&#39;: &#39;1&#39;, &#39;cost_operation&#39;: &#39;0.1&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE&#45;&#45;0.207532443436939&#45;&#45;&gt;ELV_ICE&#39;]}">
+<g id="a_node1"><a xlink:title="{&#39;name&#39;: &#39;collection_ICE&#39;, &#39;description&#39;: &#39;collection of an ice car&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;collection&#39;, &#39;inputs&#39;: [&#39;PutOnMarket_ICE_to_collection_ICE:1000000kg&#39;], &#39;outputs&#39;: [&#39;collection_ICE_to_dismantling_ICE:1000000.0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;1&#39;, &#39;consumption_water&#39;: &#39;1&#39;, &#39;cost_operation&#39;: &#39;0.1&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE&#39;]}">
 <polygon fill="#ff8c69" stroke="black" points="303,-384 203,-384 203,-348 303,-348 303,-384"/>
 <text text-anchor="middle" x="253" y="-362.3" font-family="Cabin" font-size="14.00">collection_ICE</text>
 </a>
@@ -23,7 +23,7 @@
 <!-- dismantling_ICE -->
 <g id="node2" class="node">
 <title>dismantling_ICE</title>
-<g id="a_node2"><a xlink:title="{&#39;name&#39;: &#39;dismantling_ICE&#39;, &#39;description&#39;: &#39;manual dismantling of an ice car&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;component&#39;, &#39;tags&#39;: &#39;manual, mechanical&#39;, &#39;inputs&#39;: [&#39;collection_ICE_to_dismantling_ICE:207532.443436939kg&#39;], &#39;outputs&#39;: [&#39;dismantling_ICE_to_market_reuse_ELVcomponents:0kg&#39;, &#39;dismantling_ICE_to_shredding_batt:0.0975329676638525kg&#39;, &#39;dismantling_ICE_to_hammermill_body:1.7978614238149841kg&#39;, &#39;dismantling_ICE_to_smelter_cc:0.175727906417964kg&#39;, &#39;dismantling_ICE_to_shredding_elec:0.0130352751211588kg&#39;, &#39;dismantling_ICE_to_shredding_engtrans:0.932190375289965kg&#39;, &#39;dismantling_ICE_to_market_waste_oil:0.05852710103685091kg&#39;, &#39;dismantling_ICE_to_shredding_tyre:0.04747053900337041kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;4&#39;, &#39;consumption_water&#39;: &#39;2&#39;, &#39;cost_operation&#39;: &#39;0.8&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE&#45;&#45;0.649191589278656&#45;&#45;&gt;ELV_ICE_parts&#39;, &#39;ELV_ICE&#45;&#45;0.624980256183717&#45;&#45;&gt;ELV_ICE&#39;, &#39;ELV_ICE&#45;&#45;0.975329676638525&#45;&#45;&gt;ELV_ICE_batt&#39;, &#39;ELV_ICE&#45;&#45;0.653767790478176&#45;&#45;&gt;ELV_ICE_body&#39;, &#39;ELV_ICE&#45;&#45;0.702911625671856&#45;&#45;&gt;ELV_ICE_catconv&#39;, &#39;ELV_ICE&#45;&#45;0.130352751211588&#45;&#45;&gt;ELV_ICE_elec&#39;, &#39;ELV_ICE&#45;&#45;0.62146025019331&#45;&#45;&gt;ELV_ICE_engtrans&#39;, &#39;ELV_ICE&#45;&#45;0.585271010368509&#45;&#45;&gt;ELV_ICE_liquids&#39;, &#39;ELV_ICE&#45;&#45;0.237352695016852&#45;&#45;&gt;ELV_ICE_tyres&#39;]}">
+<g id="a_node2"><a xlink:title="{&#39;name&#39;: &#39;dismantling_ICE&#39;, &#39;description&#39;: &#39;manual dismantling of an ice car&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;component&#39;, &#39;tags&#39;: &#39;manual, mechanical&#39;, &#39;inputs&#39;: [&#39;collection_ICE_to_dismantling_ICE:1000000.0kg&#39;], &#39;outputs&#39;: [&#39;dismantling_ICE_to_market_reuse_ELVcomponents:0kg&#39;, &#39;dismantling_ICE_to_shredding_batt:0.02kg&#39;, &#39;dismantling_ICE_to_hammermill_body:0.55kg&#39;, &#39;dismantling_ICE_to_smelter_cc:0.05kg&#39;, &#39;dismantling_ICE_to_shredding_elec:0.02kg&#39;, &#39;dismantling_ICE_to_shredding_engtrans:0.3kg&#39;, &#39;dismantling_ICE_to_market_waste_oil:0.02kg&#39;, &#39;dismantling_ICE_to_shredding_tyre:0.04kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;4&#39;, &#39;consumption_water&#39;: &#39;2&#39;, &#39;cost_operation&#39;: &#39;0.8&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_parts&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_batt&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_body&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_catconv&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_elec&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_engtrans&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_liquids&#39;, &#39;ELV_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_tyres&#39;]}">
 <polygon fill="#ffbbff" stroke="black" points="495,-384 383,-384 383,-348 495,-348 495,-384"/>
 <text text-anchor="middle" x="439" y="-362.3" font-family="Cabin" font-size="14.00">dismantling_ICE</text>
 </a>
@@ -32,13 +32,13 @@
 <!-- collection_ICE&#45;&gt;dismantling_ICE -->
 <g id="edge2" class="edge">
 <title>collection_ICE&#45;&gt;dismantling_ICE</title>
-<g id="a_edge2"><a xlink:title="{&#39;Name&#39;: &#39;collection_ICE_to_dismantling_ICE&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;dismantling_ICE&#39;, &#39;From&#39;: &#39;collection_ICE&#39;, &#39;Amount&#39;: 207532.443436939, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge2"><a xlink:title="{&#39;Name&#39;: &#39;collection_ICE_to_dismantling_ICE&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;dismantling_ICE&#39;, &#39;From&#39;: &#39;collection_ICE&#39;, &#39;Amount&#39;: 1000000.0, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M303.31,-366C326.45,-366 354.23,-366 378.53,-366"/>
 <polygon fill="black" stroke="black" points="382.71,-366 378.71,-367.8 380.71,-366 378.71,-366 378.71,-366 378.71,-366 380.71,-366 378.71,-364.2 382.71,-366 382.71,-366"/>
 </a>
 </g>
 <text text-anchor="middle" x="343" y="-375.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE</text>
-<text text-anchor="middle" x="343" y="-368.2" font-family="Cabin" font-size="6.00">Amount: 2.08e+05 &#160;kg</text>
+<text text-anchor="middle" x="343" y="-368.2" font-family="Cabin" font-size="6.00">Amount: 1.00e+06 &#160;kg</text>
 </g>
 <!-- market_reuse_ELVcomponents -->
 <g id="node3" class="node">
@@ -63,7 +63,7 @@
 <!-- market_waste_oil -->
 <g id="node14" class="node">
 <title>market_waste_oil</title>
-<g id="a_node14"><a xlink:title="{&#39;name&#39;: &#39;market_waste_oil&#39;, &#39;description&#39;: &#39;market for waste oil&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_market_waste_oil:0.05852710103685091kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;3&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node14"><a xlink:title="{&#39;name&#39;: &#39;market_waste_oil&#39;, &#39;description&#39;: &#39;market for waste oil&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_market_waste_oil:0.02kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;3&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="761,-574 639,-574 639,-538 761,-538 761,-574"/>
 <text text-anchor="middle" x="700" y="-552.3" font-family="Cabin" font-size="14.00">market_waste_oil</text>
 </a>
@@ -72,18 +72,18 @@
 <!-- dismantling_ICE&#45;&gt;market_waste_oil -->
 <g id="edge30" class="edge">
 <title>dismantling_ICE&#45;&gt;market_waste_oil</title>
-<g id="a_edge30"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_market_waste_oil&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_oil&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.05852710103685091, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_liquids&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge30"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_market_waste_oil&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_oil&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.02, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_liquids&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M453.04,-384.37C472.27,-411.48 506,-459 506,-459 506,-459 599,-523 599,-523 599,-523 618.64,-529.48 640.5,-536.7"/>
 <polygon fill="black" stroke="black" points="644.32,-537.96 639.96,-538.41 642.42,-537.33 640.52,-536.7 640.52,-536.7 640.52,-536.7 642.42,-537.33 641.08,-534.99 644.32,-537.96 644.32,-537.96"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-525.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_liquids</text>
-<text text-anchor="middle" x="547" y="-518.2" font-family="Cabin" font-size="6.00">Amount: 5.85e&#45;02 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-518.2" font-family="Cabin" font-size="6.00">Amount: 2.00e&#45;02 &#160;kg</text>
 </g>
 <!-- shredding_engtrans -->
 <g id="node16" class="node">
 <title>shredding_engtrans</title>
-<g id="a_node16"><a xlink:title="{&#39;name&#39;: &#39;shredding_engtrans&#39;, &#39;description&#39;: &#39;shredding of car engine and transmission&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_engtrans:0.932190375289965kg&#39;], &#39;outputs&#39;: [&#39;shredding_engtrans_to_market_waste_glass:0kg&#39;, &#39;shredding_engtrans_to_smelter_ferrous:1.1324159365150668kg&#39;, &#39;shredding_engtrans_to_smelter_nonferrous:0.06175008100007741kg&#39;, &#39;shredding_engtrans_to_market_waste:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;10&#39;, &#39;consumption_water&#39;: &#39;4&#39;, &#39;cost_operation&#39;: &#39;4&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_body&#45;&#45;0.567606585410564&#45;&#45;&gt;ALL_glass&#39;, &#39;ELV_ICE_body&#45;&#45;0.251647985892237&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_body&#45;&#45;0.176428802857364&#45;&#45;&gt;ELV_ICE_nfe&#39;, &#39;ELV_ICE_body&#45;&#45;0.666864787859761&#45;&#45;&gt;ELV_ICE_waste_shredder&#39;]}">
+<g id="a_node16"><a xlink:title="{&#39;name&#39;: &#39;shredding_engtrans&#39;, &#39;description&#39;: &#39;shredding of car engine and transmission&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_engtrans:0.3kg&#39;], &#39;outputs&#39;: [&#39;shredding_engtrans_to_market_waste_glass:0kg&#39;, &#39;shredding_engtrans_to_smelter_ferrous:0.9kg&#39;, &#39;shredding_engtrans_to_smelter_nonferrous:0.07kg&#39;, &#39;shredding_engtrans_to_market_waste:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;10&#39;, &#39;consumption_water&#39;: &#39;4&#39;, &#39;cost_operation&#39;: &#39;4&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_body&#45;&#45;1.0&#45;&#45;&gt;ALL_glass&#39;, &#39;ELV_ICE_body&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_body&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_nfe&#39;, &#39;ELV_ICE_body&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_waste_shredder&#39;]}">
 <polygon fill="#caff70" stroke="black" points="767,-417 633,-417 633,-381 767,-381 767,-417"/>
 <text text-anchor="middle" x="700" y="-395.3" font-family="Cabin" font-size="14.00">shredding_engtrans</text>
 </a>
@@ -92,18 +92,18 @@
 <!-- dismantling_ICE&#45;&gt;shredding_engtrans -->
 <g id="edge4" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_engtrans</title>
-<g id="a_edge4"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_engtrans&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_engtrans&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.932190375289965, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_engtrans&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge4"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_engtrans&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_engtrans&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.3, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_engtrans&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M495.24,-373.04C534.25,-378.01 586.82,-384.71 628.8,-390.06"/>
 <polygon fill="black" stroke="black" points="632.83,-390.57 628.63,-391.85 630.84,-390.32 628.86,-390.06 628.86,-390.06 628.86,-390.06 630.84,-390.32 629.09,-388.28 632.83,-390.57 632.83,-390.57"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-394.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_engtrans</text>
-<text text-anchor="middle" x="547" y="-387.2" font-family="Cabin" font-size="6.00">Amount: 9.32e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-387.2" font-family="Cabin" font-size="6.00">Amount: 3.00e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_tyre -->
 <g id="node17" class="node">
 <title>shredding_tyre</title>
-<g id="a_node17"><a xlink:title="{&#39;name&#39;: &#39;shredding_tyre&#39;, &#39;description&#39;: &#39;shredding of tyres&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_tyre:0.04747053900337041kg&#39;], &#39;outputs&#39;: [&#39;shredding_tyre_to_market_waste_rubber:0.6882789626723962kg&#39;, &#39;shredding_tyre_to_smelter_ferrous:1.550807591477859kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;2&#39;, &#39;consumption_water&#39;: &#39;6&#39;, &#39;cost_operation&#39;: &#39;1.2&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_tyres&#45;&#45;0.917705283563195&#45;&#45;&gt;ALL_rubber&#39;, &#39;ELV_ICE_tyres&#45;&#45;0.563930033264676&#45;&#45;&gt;ELV_ICE_fe&#39;]}">
+<g id="a_node17"><a xlink:title="{&#39;name&#39;: &#39;shredding_tyre&#39;, &#39;description&#39;: &#39;shredding of tyres&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_tyre:0.04kg&#39;], &#39;outputs&#39;: [&#39;shredding_tyre_to_market_waste_rubber:0.15kg&#39;, &#39;shredding_tyre_to_smelter_ferrous:0.55kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;2&#39;, &#39;consumption_water&#39;: &#39;6&#39;, &#39;cost_operation&#39;: &#39;1.2&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_tyres&#45;&#45;1.0&#45;&#45;&gt;ALL_rubber&#39;, &#39;ELV_ICE_tyres&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_fe&#39;]}">
 <polygon fill="#caff70" stroke="black" points="753,-516 647,-516 647,-480 753,-480 753,-516"/>
 <text text-anchor="middle" x="700" y="-494.3" font-family="Cabin" font-size="14.00">shredding_tyre</text>
 </a>
@@ -112,18 +112,18 @@
 <!-- dismantling_ICE&#45;&gt;shredding_tyre -->
 <g id="edge7" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_tyre</title>
-<g id="a_edge7"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_tyre&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_tyre&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.04747053900337041, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_tyres&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge7"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_tyre&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_tyre&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.04, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_tyres&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M473.39,-384.21C489.76,-393.14 506,-402 506,-402 506,-402 602.51,-450 659.03,-478.12"/>
 <polygon fill="black" stroke="black" points="662.7,-479.94 658.32,-479.77 660.91,-479.05 659.12,-478.16 659.12,-478.16 659.12,-478.16 660.91,-479.05 659.92,-476.55 662.7,-479.94 662.7,-479.94"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-451.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_tyres</text>
-<text text-anchor="middle" x="547" y="-444.2" font-family="Cabin" font-size="6.00">Amount: 4.75e&#45;02 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-444.2" font-family="Cabin" font-size="6.00">Amount: 4.00e&#45;02 &#160;kg</text>
 </g>
 <!-- shredding_elec -->
 <g id="node18" class="node">
 <title>shredding_elec</title>
-<g id="a_node18"><a xlink:title="{&#39;name&#39;: &#39;shredding_elec&#39;, &#39;description&#39;: &#39;shredding of electrical components&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_elec:0.0130352751211588kg&#39;], &#39;outputs&#39;: [&#39;shredding_elec_to_market_waste_plastic:1.5116016049424812kg&#39;, &#39;shredding_elec_to_smelter_nonferrous:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;4&#39;, &#39;consumption_water&#39;: &#39;3&#39;, &#39;cost_operation&#39;: &#39;1.2&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_elec&#45;&#45;0.975226841898375&#45;&#45;&gt;ALL_plastic&#39;, &#39;ELV_ICE_elec&#45;&#45;0.895197364189645&#45;&#45;&gt;ELV_ICE_nfe&#39;]}">
+<g id="a_node18"><a xlink:title="{&#39;name&#39;: &#39;shredding_elec&#39;, &#39;description&#39;: &#39;shredding of electrical components&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_elec:0.02kg&#39;], &#39;outputs&#39;: [&#39;shredding_elec_to_market_waste_plastic:0.31kg&#39;, &#39;shredding_elec_to_smelter_nonferrous:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;4&#39;, &#39;consumption_water&#39;: &#39;3&#39;, &#39;cost_operation&#39;: &#39;1.2&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_elec&#45;&#45;1.0&#45;&#45;&gt;ALL_plastic&#39;, &#39;ELV_ICE_elec&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_nfe&#39;]}">
 <polygon fill="#caff70" stroke="black" points="753.5,-252 646.5,-252 646.5,-216 753.5,-216 753.5,-252"/>
 <text text-anchor="middle" x="700" y="-230.3" font-family="Cabin" font-size="14.00">shredding_elec</text>
 </a>
@@ -132,18 +132,18 @@
 <!-- dismantling_ICE&#45;&gt;shredding_elec -->
 <g id="edge8" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_elec</title>
-<g id="a_edge8"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_elec&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_elec&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.0130352751211588, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_elec&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge8"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_elec&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_elec&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.02, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_elec&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M469.91,-347.87C487.37,-337.29 506,-326 506,-326 506,-326 600.43,-280.99 657.19,-253.93"/>
 <polygon fill="black" stroke="black" points="660.87,-252.18 658.03,-255.52 659.06,-253.04 657.26,-253.9 657.26,-253.9 657.26,-253.9 659.06,-253.04 656.48,-252.27 660.87,-252.18 660.87,-252.18"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-335.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_elec</text>
-<text text-anchor="middle" x="547" y="-328.2" font-family="Cabin" font-size="6.00">Amount: 1.30e&#45;02 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-328.2" font-family="Cabin" font-size="6.00">Amount: 2.00e&#45;02 &#160;kg</text>
 </g>
 <!-- shredding_batt -->
 <g id="node19" class="node">
 <title>shredding_batt</title>
-<g id="a_node19"><a xlink:title="{&#39;name&#39;: &#39;shredding_batt&#39;, &#39;description&#39;: &#39;shredding of a lead acid battery&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_batt:0.0975329676638525kg&#39;], &#39;outputs&#39;: [&#39;shredding_batt_to_market_waste_plastic:0.15496943867153kg&#39;, &#39;shredding_batt_to_market_H2SO4:0.25398435121990753kg&#39;, &#39;shredding_batt_to_market_lead:1.9644418896744495kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;6&#39;, &#39;consumption_water&#39;: &#39;42&#39;, &#39;cost_operation&#39;: &#39;25.2&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_batt&#45;&#45;0.30993887734306&#45;&#45;&gt;ALL_plastic&#39;, &#39;ELV_ICE_batt&#45;&#45;0.203187480975926&#45;&#45;&gt;H2SO4&#39;, &#39;ELV_ICE_batt&#45;&#45;0.604443658361369&#45;&#45;&gt;Pb&#39;]}">
+<g id="a_node19"><a xlink:title="{&#39;name&#39;: &#39;shredding_batt&#39;, &#39;description&#39;: &#39;shredding of a lead acid battery&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;shredding&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_shredding_batt:0.02kg&#39;], &#39;outputs&#39;: [&#39;shredding_batt_to_market_waste_plastic:0.1kg&#39;, &#39;shredding_batt_to_market_H2SO4:0.25kg&#39;, &#39;shredding_batt_to_market_lead:0.65kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;6&#39;, &#39;consumption_water&#39;: &#39;42&#39;, &#39;cost_operation&#39;: &#39;25.2&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_batt&#45;&#45;1.0&#45;&#45;&gt;ALL_plastic&#39;, &#39;ELV_ICE_batt&#45;&#45;1.0&#45;&#45;&gt;H2SO4&#39;, &#39;ELV_ICE_batt&#45;&#45;1.0&#45;&#45;&gt;Pb&#39;]}">
 <polygon fill="#caff70" stroke="black" points="753,-108 647,-108 647,-72 753,-72 753,-108"/>
 <text text-anchor="middle" x="700" y="-86.3" font-family="Cabin" font-size="14.00">shredding_batt</text>
 </a>
@@ -152,18 +152,18 @@
 <!-- dismantling_ICE&#45;&gt;shredding_batt -->
 <g id="edge9" class="edge">
 <title>dismantling_ICE&#45;&gt;shredding_batt</title>
-<g id="a_edge9"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_batt&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_batt&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.0975329676638525, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_batt&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge9"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_shredding_batt&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;shredding_batt&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.02, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_batt&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M447.19,-347.92C464.29,-304.9 506,-200 506,-200 506,-200 607.79,-141.98 663.53,-110.22"/>
 <polygon fill="black" stroke="black" points="667.13,-108.16 664.55,-111.71 665.39,-109.15 663.65,-110.14 663.65,-110.14 663.65,-110.14 665.39,-109.15 662.76,-108.58 667.13,-108.16 667.13,-108.16"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-209.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_batt</text>
-<text text-anchor="middle" x="547" y="-202.2" font-family="Cabin" font-size="6.00">Amount: 9.75e&#45;02 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-202.2" font-family="Cabin" font-size="6.00">Amount: 2.00e&#45;02 &#160;kg</text>
 </g>
 <!-- hammermill_body -->
 <g id="node20" class="node">
 <title>hammermill_body</title>
-<g id="a_node20"><a xlink:title="{&#39;name&#39;: &#39;hammermill_body&#39;, &#39;description&#39;: &#39;hammermillilng of car body&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;mechanical&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_hammermill_body:1.7978614238149841kg&#39;], &#39;outputs&#39;: [&#39;hammermill_body_to_smelter_ferrous:1.3469080810579224kg&#39;, &#39;hammermill_body_to_smelter_nonferrous:0.2945641931842511kg&#39;, &#39;hammermill_body_to_market_waste:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;5&#39;, &#39;consumption_water&#39;: &#39;2&#39;, &#39;cost_operation&#39;: &#39;1&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_engtrans&#45;&#45;0.427589867002515&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_engtrans&#45;&#45;0.267785630167501&#45;&#45;&gt;ELV_ICE_nfe&#39;, &#39;ELV_ICE_engtrans&#45;&#45;0.0202374707868166&#45;&#45;&gt;ELV_ICE_waste_shredder&#39;]}">
+<g id="a_node20"><a xlink:title="{&#39;name&#39;: &#39;hammermill_body&#39;, &#39;description&#39;: &#39;hammermillilng of car body&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;material&#39;, &#39;tags&#39;: &#39;mechanical&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_hammermill_body:0.55kg&#39;], &#39;outputs&#39;: [&#39;hammermill_body_to_smelter_ferrous:0.63kg&#39;, &#39;hammermill_body_to_smelter_nonferrous:0.22kg&#39;, &#39;hammermill_body_to_market_waste:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;5&#39;, &#39;consumption_water&#39;: &#39;2&#39;, &#39;cost_operation&#39;: &#39;1&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_engtrans&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_engtrans&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_nfe&#39;, &#39;ELV_ICE_engtrans&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_waste_shredder&#39;]}">
 <polygon fill="#bcee68" stroke="black" points="762.5,-342 637.5,-342 637.5,-306 762.5,-306 762.5,-342"/>
 <text text-anchor="middle" x="700" y="-320.3" font-family="Cabin" font-size="14.00">hammermill_body</text>
 </a>
@@ -172,18 +172,18 @@
 <!-- dismantling_ICE&#45;&gt;hammermill_body -->
 <g id="edge5" class="edge">
 <title>dismantling_ICE&#45;&gt;hammermill_body</title>
-<g id="a_edge5"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_hammermill_body&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;hammermill_body&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 1.7978614238149841, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_body&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge5"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_hammermill_body&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;hammermill_body&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.55, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_body&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M495.24,-357.04C535.69,-350.48 590.72,-341.56 633.4,-334.64"/>
 <polygon fill="black" stroke="black" points="637.49,-333.97 633.83,-336.39 635.52,-334.29 633.54,-334.61 633.54,-334.61 633.54,-334.61 635.52,-334.29 633.26,-332.84 637.49,-333.97 637.49,-333.97"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-364.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_body</text>
-<text text-anchor="middle" x="547" y="-357.2" font-family="Cabin" font-size="6.00">Amount: 1.80e+00 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-357.2" font-family="Cabin" font-size="6.00">Amount: 5.50e&#45;01 &#160;kg</text>
 </g>
 <!-- smelter_cc -->
 <g id="node21" class="node">
 <title>smelter_cc</title>
-<g id="a_node21"><a xlink:title="{&#39;name&#39;: &#39;smelter_cc&#39;, &#39;description&#39;: &#39;smelting of catalytic converters&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;element&#39;, &#39;tags&#39;: &#39;smelter&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_smelter_cc:0.175727906417964kg&#39;], &#39;outputs&#39;: [&#39;smelter_cc_to_market_waste_slag:0kg&#39;, &#39;smelter_cc_to_market_ree:1.1436692407868152kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;50&#39;, &#39;consumption_water&#39;: &#39;20&#39;, &#39;cost_operation&#39;: &#39;10&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_catconv&#45;&#45;0.994698002424131&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_catconv&#45;&#45;0.737851123088268&#45;&#45;&gt;ELV_ICE_ree&#39;, &#39;ELV_ICE_catconv&#45;&#45;0.540601229266589&#45;&#45;&gt;ALL_slag_ree&#39;]}">
+<g id="a_node21"><a xlink:title="{&#39;name&#39;: &#39;smelter_cc&#39;, &#39;description&#39;: &#39;smelting of catalytic converters&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;element&#39;, &#39;tags&#39;: &#39;smelter&#39;, &#39;inputs&#39;: [&#39;dismantling_ICE_to_smelter_cc:0.05kg&#39;], &#39;outputs&#39;: [&#39;smelter_cc_to_market_waste_slag:0kg&#39;, &#39;smelter_cc_to_market_ree:0.31kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;50&#39;, &#39;consumption_water&#39;: &#39;20&#39;, &#39;cost_operation&#39;: &#39;10&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_catconv&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_catconv&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_ree&#39;, &#39;ELV_ICE_catconv&#45;&#45;1.0&#45;&#45;&gt;ALL_slag_ree&#39;]}">
 <polygon fill="mediumturquoise" stroke="black" points="741,-192 659,-192 659,-156 741,-156 741,-192"/>
 <text text-anchor="middle" x="700" y="-170.3" font-family="Cabin" font-size="14.00">smelter_cc</text>
 </a>
@@ -192,13 +192,13 @@
 <!-- dismantling_ICE&#45;&gt;smelter_cc -->
 <g id="edge6" class="edge">
 <title>dismantling_ICE&#45;&gt;smelter_cc</title>
-<g id="a_edge6"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_smelter_cc&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_cc&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.175727906417964, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_catconv&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge6"><a xlink:title="{&#39;Name&#39;: &#39;dismantling_ICE_to_smelter_cc&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_cc&#39;, &#39;From&#39;: &#39;dismantling_ICE&#39;, &#39;Amount&#39;: 0.05, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_catconv&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M452.73,-347.88C471.9,-320.56 506,-272 506,-272 506,-272 599,-209 599,-209 599,-209 628.14,-198.8 654.97,-189.41"/>
 <polygon fill="black" stroke="black" points="658.9,-188.03 655.72,-191.05 657.01,-188.69 655.13,-189.36 655.13,-189.36 655.13,-189.36 657.01,-188.69 654.53,-187.66 658.9,-188.03 658.9,-188.03"/>
 </a>
 </g>
 <text text-anchor="middle" x="547" y="-281.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_catconv</text>
-<text text-anchor="middle" x="547" y="-274.2" font-family="Cabin" font-size="6.00">Amount: 1.76e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="547" y="-274.2" font-family="Cabin" font-size="6.00">Amount: 5.00e&#45;02 &#160;kg</text>
 </g>
 <!-- market_reuse_ELVcomponents_output -->
 <!-- market_reuse_ELVcomponents&#45;&gt;market_reuse_ELVcomponents_output -->
@@ -215,7 +215,7 @@
 <!-- market_waste_rubber -->
 <g id="node4" class="node">
 <title>market_waste_rubber</title>
-<g id="a_node4"><a xlink:title="{&#39;name&#39;: &#39;market_waste_rubber&#39;, &#39;description&#39;: &#39;market for waste rubber&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_tyre_to_market_waste_rubber:0.6882789626723962kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;5&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node4"><a xlink:title="{&#39;name&#39;: &#39;market_waste_rubber&#39;, &#39;description&#39;: &#39;market for waste rubber&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_tyre_to_market_waste_rubber:0.15kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;5&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1218.83,-532 1070.83,-532 1070.83,-496 1218.83,-496 1218.83,-532"/>
 <text text-anchor="middle" x="1144.83" y="-510.3" font-family="Cabin" font-size="14.00">market_waste_rubber</text>
 </a>
@@ -231,12 +231,12 @@
 <polyline fill="none" stroke="darkred" points="1480.5,-514 1478.5,-514 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1410.67" y="-516.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 6.88e&#45;01 kg</text>
+<text text-anchor="middle" x="1410.67" y="-516.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 1.50e&#45;01 kg</text>
 </g>
 <!-- market_ree -->
 <g id="node5" class="node">
 <title>market_ree</title>
-<g id="a_node5"><a xlink:title="{&#39;name&#39;: &#39;market_ree&#39;, &#39;description&#39;: &#39;market for waste REE mix&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;smelter_cc_to_market_ree:1.1436692407868152kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;2000&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node5"><a xlink:title="{&#39;name&#39;: &#39;market_ree&#39;, &#39;description&#39;: &#39;market for waste REE mix&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;smelter_cc_to_market_ree:0.31kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;2000&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1187.83,-136 1101.83,-136 1101.83,-100 1187.83,-100 1187.83,-136"/>
 <text text-anchor="middle" x="1144.83" y="-114.3" font-family="Cabin" font-size="14.00">market_ree</text>
 </a>
@@ -252,12 +252,12 @@
 <polyline fill="none" stroke="darkred" points="1528.75,-118 1526.75,-118 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1410.67" y="-120.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 1.14e+00 kg</text>
+<text text-anchor="middle" x="1410.67" y="-120.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 3.10e&#45;01 kg</text>
 </g>
 <!-- market_lead -->
 <g id="node6" class="node">
 <title>market_lead</title>
-<g id="a_node6"><a xlink:title="{&#39;name&#39;: &#39;market_lead&#39;, &#39;description&#39;: &#39;market for waste lead&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_batt_to_market_lead:1.9644418896744495kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;20&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node6"><a xlink:title="{&#39;name&#39;: &#39;market_lead&#39;, &#39;description&#39;: &#39;market for waste lead&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_batt_to_market_lead:0.65kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;20&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1190.33,-86 1099.33,-86 1099.33,-50 1190.33,-50 1190.33,-86"/>
 <text text-anchor="middle" x="1144.83" y="-64.3" font-family="Cabin" font-size="14.00">market_lead</text>
 </a>
@@ -273,12 +273,12 @@
 <polyline fill="none" stroke="darkred" points="1524.7,-68 1522.7,-68 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1410.67" y="-70.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 1.96e+00 kg</text>
+<text text-anchor="middle" x="1410.67" y="-70.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 6.50e&#45;01 kg</text>
 </g>
 <!-- market_H2SO4 -->
 <g id="node7" class="node">
 <title>market_H2SO4</title>
-<g id="a_node7"><a xlink:title="{&#39;name&#39;: &#39;market_H2SO4&#39;, &#39;description&#39;: &#39;market for waste H2SO4&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_batt_to_market_H2SO4:0.25398435121990753kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;10&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node7"><a xlink:title="{&#39;name&#39;: &#39;market_H2SO4&#39;, &#39;description&#39;: &#39;market for waste H2SO4&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_batt_to_market_H2SO4:0.25kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;10&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1199.83,-36 1089.83,-36 1089.83,0 1199.83,0 1199.83,-36"/>
 <text text-anchor="middle" x="1144.83" y="-14.3" font-family="Cabin" font-size="14.00">market_H2SO4</text>
 </a>
@@ -294,12 +294,12 @@
 <polyline fill="none" stroke="darkred" points="1511.02,-18 1509.02,-18 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1410.67" y="-20.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 2.54e&#45;01 kg</text>
+<text text-anchor="middle" x="1410.67" y="-20.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 2.50e&#45;01 kg</text>
 </g>
 <!-- market_nonferrous -->
 <g id="node8" class="node">
 <title>market_nonferrous</title>
-<g id="a_node8"><a xlink:title="{&#39;name&#39;: &#39;market_nonferrous&#39;, &#39;description&#39;: &#39;market for waste non&#45;ferrous&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;smelter_nonferrous_to_market_nonferrous:0.013278579715597556kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;5&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node8"><a xlink:title="{&#39;name&#39;: &#39;market_nonferrous&#39;, &#39;description&#39;: &#39;market for waste non&#45;ferrous&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;smelter_nonferrous_to_market_nonferrous:0.07kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;5&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1701.05,-253 1570.05,-253 1570.05,-217 1701.05,-217 1701.05,-253"/>
 <text text-anchor="middle" x="1635.55" y="-231.3" font-family="Cabin" font-size="14.00">market_nonferrous</text>
 </a>
@@ -315,12 +315,12 @@
 <polyline fill="none" stroke="darkred" points="1930.43,-235 1928.43,-235 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1860.44" y="-237.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 1.33e&#45;02 kg</text>
+<text text-anchor="middle" x="1860.44" y="-237.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 7.00e&#45;02 kg</text>
 </g>
 <!-- market_ferrous -->
 <g id="node9" class="node">
 <title>market_ferrous</title>
-<g id="a_node9"><a xlink:title="{&#39;name&#39;: &#39;market_ferrous&#39;, &#39;description&#39;: &#39;market for waste ferrous&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;smelter_ferrous_to_market_ferrous:0.1020905053696399kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;4&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node9"><a xlink:title="{&#39;name&#39;: &#39;market_ferrous&#39;, &#39;description&#39;: &#39;market for waste ferrous&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;smelter_ferrous_to_market_ferrous:0.55kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;4&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1689.55,-431 1581.55,-431 1581.55,-395 1689.55,-395 1689.55,-431"/>
 <text text-anchor="middle" x="1635.55" y="-409.3" font-family="Cabin" font-size="14.00">market_ferrous</text>
 </a>
@@ -336,7 +336,7 @@
 <polyline fill="none" stroke="darkred" points="1947.01,-413 1945.01,-413 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1860.44" y="-415.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 1.02e&#45;01 kg</text>
+<text text-anchor="middle" x="1860.44" y="-415.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 5.50e&#45;01 kg</text>
 </g>
 <!-- market_waste -->
 <g id="node10" class="node">
@@ -383,7 +383,7 @@
 <!-- market_waste_plastic -->
 <g id="node12" class="node">
 <title>market_waste_plastic</title>
-<g id="a_node12"><a xlink:title="{&#39;name&#39;: &#39;market_waste_plastic&#39;, &#39;description&#39;: &#39;market for waste plastic&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_batt_to_market_waste_plastic:0.15496943867153kg&#39;, &#39;shredding_elec_to_market_waste_plastic:1.5116016049424812kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;1&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
+<g id="a_node12"><a xlink:title="{&#39;name&#39;: &#39;market_waste_plastic&#39;, &#39;description&#39;: &#39;market for waste plastic&#39;, &#39;WS&#39;: &#39;None&#39;, &#39;transformation_level&#39;: &#39;market&#39;, &#39;tags&#39;: &#39;market&#39;, &#39;inputs&#39;: [&#39;shredding_batt_to_market_waste_plastic:0.1kg&#39;, &#39;shredding_elec_to_market_waste_plastic:0.31kg&#39;], &#39;outputs&#39;: [], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;&#45;1&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: []}">
 <polygon fill="lightpink" stroke="black" points="1217.83,-186 1071.83,-186 1071.83,-150 1217.83,-150 1217.83,-186"/>
 <text text-anchor="middle" x="1144.83" y="-164.3" font-family="Cabin" font-size="14.00">market_waste_plastic</text>
 </a>
@@ -399,7 +399,7 @@
 <polyline fill="none" stroke="darkred" points="1481.87,-168 1479.87,-168 "/>
 </a>
 </g>
-<text text-anchor="middle" x="1410.67" y="-170.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 1.67e+00 kg</text>
+<text text-anchor="middle" x="1410.67" y="-170.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 4.10e&#45;01 kg</text>
 </g>
 <!-- market_waste_slag -->
 <g id="node13" class="node">
@@ -432,12 +432,12 @@
 <polyline fill="none" stroke="darkred" points="1011.67,-561.61 1009.67,-561.58 "/>
 </a>
 </g>
-<text text-anchor="middle" x="879" y="-563.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 5.85e&#45;02 kg</text>
+<text text-anchor="middle" x="879" y="-563.6" font-family="Cabin" font-size="8.00" fill="darkred">Leaving system boundary: 2.00e&#45;02 kg</text>
 </g>
 <!-- PutOnMarket_ICE -->
 <g id="node15" class="node">
 <title>PutOnMarket_ICE</title>
-<g id="a_node15"><a xlink:title="{&#39;name&#39;: &#39;PutOnMarket_ICE&#39;, &#39;description&#39;: &#39;put on market for ICE vehicles&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;input&#39;, &#39;tags&#39;: &#39;None&#39;, &#39;inputs&#39;: [], &#39;outputs&#39;: [&#39;PutOnMarket_ICE_to_collection_ICE:1000000kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;None&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;NEW_ICE&#45;&#45;0.8&#45;&#45;&gt;ELV_ICE&#39;]}">
+<g id="a_node15"><a xlink:title="{&#39;name&#39;: &#39;PutOnMarket_ICE&#39;, &#39;description&#39;: &#39;put on market for ICE vehicles&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;input&#39;, &#39;tags&#39;: &#39;None&#39;, &#39;inputs&#39;: [], &#39;outputs&#39;: [&#39;PutOnMarket_ICE_to_collection_ICE:1000000kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;None&#39;, &#39;consumption_water&#39;: &#39;None&#39;, &#39;cost_operation&#39;: &#39;None&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;NEW_ICE&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE&#39;]}">
 <polygon fill="lightpink" stroke="black" points="123,-384 0,-384 0,-348 123,-348 123,-384"/>
 <text text-anchor="middle" x="61.5" y="-362.3" font-family="Cabin" font-size="14.00">PutOnMarket_ICE</text>
 </a>
@@ -479,7 +479,7 @@
 <!-- smelter_nonferrous -->
 <g id="node22" class="node">
 <title>smelter_nonferrous</title>
-<g id="a_node22"><a xlink:title="{&#39;name&#39;: &#39;smelter_nonferrous&#39;, &#39;description&#39;: &#39;smelting of nonferrous fractions&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;element&#39;, &#39;tags&#39;: &#39;smelter&#39;, &#39;inputs&#39;: [&#39;hammermill_body_to_smelter_nonferrous:0.2945641931842511kg&#39;, &#39;shredding_elec_to_smelter_nonferrous:0kg&#39;, &#39;shredding_engtrans_to_smelter_nonferrous:0.06175008100007741kg&#39;], &#39;outputs&#39;: [&#39;smelter_nonferrous_to_market_nonferrous:0.013278579715597556kg&#39;, &#39;smelter_nonferrous_to_market_waste_slag:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;45&#39;, &#39;consumption_water&#39;: &#39;42&#39;, &#39;cost_operation&#39;: &#39;18.9&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_nfe&#45;&#45;0.215037446114134&#45;&#45;&gt;ELV_ICE_nfe&#39;, &#39;ELV_ICE_nfe&#45;&#45;0.226250479775035&#45;&#45;&gt;ELV_ICE_slag_nfe&#39;]}">
+<g id="a_node22"><a xlink:title="{&#39;name&#39;: &#39;smelter_nonferrous&#39;, &#39;description&#39;: &#39;smelting of nonferrous fractions&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;element&#39;, &#39;tags&#39;: &#39;smelter&#39;, &#39;inputs&#39;: [&#39;hammermill_body_to_smelter_nonferrous:0.22kg&#39;, &#39;shredding_elec_to_smelter_nonferrous:0kg&#39;, &#39;shredding_engtrans_to_smelter_nonferrous:0.07kg&#39;], &#39;outputs&#39;: [&#39;smelter_nonferrous_to_market_nonferrous:0.07kg&#39;, &#39;smelter_nonferrous_to_market_waste_slag:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;45&#39;, &#39;consumption_water&#39;: &#39;42&#39;, &#39;cost_operation&#39;: &#39;18.9&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_nfe&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_nfe&#39;, &#39;ELV_ICE_nfe&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_slag_nfe&#39;]}">
 <polygon fill="mediumturquoise" stroke="black" points="1211.83,-285 1077.83,-285 1077.83,-249 1211.83,-249 1211.83,-285"/>
 <text text-anchor="middle" x="1144.83" y="-263.3" font-family="Cabin" font-size="14.00">smelter_nonferrous</text>
 </a>
@@ -488,18 +488,18 @@
 <!-- shredding_engtrans&#45;&gt;smelter_nonferrous -->
 <g id="edge12" class="edge">
 <title>shredding_engtrans&#45;&gt;smelter_nonferrous</title>
-<g id="a_edge12"><a xlink:title="{&#39;Name&#39;: &#39;shredding_engtrans_to_smelter_nonferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_nonferrous&#39;, &#39;From&#39;: &#39;shredding_engtrans&#39;, &#39;Amount&#39;: 0.06175008100007741, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_nfe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge12"><a xlink:title="{&#39;Name&#39;: &#39;shredding_engtrans_to_smelter_nonferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_nonferrous&#39;, &#39;From&#39;: &#39;shredding_engtrans&#39;, &#39;Amount&#39;: 0.07, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_nfe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M737.1,-380.95C765.75,-366.63 801,-349 801,-349 801,-349 812,-331 812,-331 812,-331 946,-315 946,-315 946,-315 1016.74,-297.84 1073.61,-284.04"/>
 <polygon fill="black" stroke="black" points="1077.68,-283.05 1074.22,-285.74 1075.74,-283.52 1073.8,-283.99 1073.8,-283.99 1073.8,-283.99 1075.74,-283.52 1073.37,-282.24 1077.68,-283.05 1077.68,-283.05"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-340.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="879" y="-333.2" font-family="Cabin" font-size="6.00">Amount: 6.18e&#45;02 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-333.2" font-family="Cabin" font-size="6.00">Amount: 7.00e&#45;02 &#160;kg</text>
 </g>
 <!-- smelter_ferrous -->
 <g id="node23" class="node">
 <title>smelter_ferrous</title>
-<g id="a_node23"><a xlink:title="{&#39;name&#39;: &#39;smelter_ferrous&#39;, &#39;description&#39;: &#39;smelting of ferrous fractions&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;element&#39;, &#39;tags&#39;: &#39;smelter&#39;, &#39;inputs&#39;: [&#39;hammermill_body_to_smelter_ferrous:1.3469080810579224kg&#39;, &#39;shredding_engtrans_to_smelter_ferrous:1.1324159365150668kg&#39;, &#39;shredding_tyre_to_smelter_ferrous:1.550807591477859kg&#39;], &#39;outputs&#39;: [&#39;smelter_ferrous_to_market_ferrous:0.1020905053696399kg&#39;, &#39;smelter_ferrous_to_market_waste_slag:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;60&#39;, &#39;consumption_water&#39;: &#39;33&#39;, &#39;cost_operation&#39;: &#39;19.8&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_fe&#45;&#45;0.0658305426995954&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_fe&#45;&#45;0.516436415646474&#45;&#45;&gt;ELV_ICE_slag_fe&#39;]}">
+<g id="a_node23"><a xlink:title="{&#39;name&#39;: &#39;smelter_ferrous&#39;, &#39;description&#39;: &#39;smelting of ferrous fractions&#39;, &#39;WS&#39;: &#39;ELV&#39;, &#39;transformation_level&#39;: &#39;element&#39;, &#39;tags&#39;: &#39;smelter&#39;, &#39;inputs&#39;: [&#39;hammermill_body_to_smelter_ferrous:0.63kg&#39;, &#39;shredding_engtrans_to_smelter_ferrous:0.9kg&#39;, &#39;shredding_tyre_to_smelter_ferrous:0.55kg&#39;], &#39;outputs&#39;: [&#39;smelter_ferrous_to_market_ferrous:0.55kg&#39;, &#39;smelter_ferrous_to_market_waste_slag:0kg&#39;], &#39;parameters&#39;: {}, &#39;consumption_energy&#39;: &#39;60&#39;, &#39;consumption_water&#39;: &#39;33&#39;, &#39;cost_operation&#39;: &#39;19.8&#39;, &#39;cost_capital&#39;: None, &#39;transfer_coefficients&#39;: [&#39;ELV_ICE_fe&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_fe&#39;, &#39;ELV_ICE_fe&#45;&#45;1.0&#45;&#45;&gt;ELV_ICE_slag_fe&#39;]}">
 <polygon fill="mediumturquoise" stroke="black" points="1200.83,-431 1088.83,-431 1088.83,-395 1200.83,-395 1200.83,-431"/>
 <text text-anchor="middle" x="1144.83" y="-409.3" font-family="Cabin" font-size="14.00">smelter_ferrous</text>
 </a>
@@ -508,46 +508,46 @@
 <!-- shredding_engtrans&#45;&gt;smelter_ferrous -->
 <g id="edge14" class="edge">
 <title>shredding_engtrans&#45;&gt;smelter_ferrous</title>
-<g id="a_edge14"><a xlink:title="{&#39;Name&#39;: &#39;shredding_engtrans_to_smelter_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_ferrous&#39;, &#39;From&#39;: &#39;shredding_engtrans&#39;, &#39;Amount&#39;: 1.1324159365150668, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge14"><a xlink:title="{&#39;Name&#39;: &#39;shredding_engtrans_to_smelter_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_ferrous&#39;, &#39;From&#39;: &#39;shredding_engtrans&#39;, &#39;Amount&#39;: 0.9, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M767.17,-407.94C790.94,-411.15 812,-414 812,-414 812,-414 946,-414 946,-414 946,-414 1026.29,-413.59 1084.57,-413.3"/>
 <polygon fill="black" stroke="black" points="1088.73,-413.28 1084.73,-415.1 1086.73,-413.29 1084.73,-413.3 1084.73,-413.3 1084.73,-413.3 1086.73,-413.29 1084.72,-411.5 1088.73,-413.28 1088.73,-413.28"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-423.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="879" y="-416.2" font-family="Cabin" font-size="6.00">Amount: 1.13e+00 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-416.2" font-family="Cabin" font-size="6.00">Amount: 9.00e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_tyre&#45;&gt;market_waste_rubber -->
 <g id="edge16" class="edge">
 <title>shredding_tyre&#45;&gt;market_waste_rubber</title>
-<g id="a_edge16"><a xlink:title="{&#39;Name&#39;: &#39;shredding_tyre_to_market_waste_rubber&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_rubber&#39;, &#39;From&#39;: &#39;shredding_tyre&#39;, &#39;Amount&#39;: 0.6882789626723962, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ALL_rubber&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge16"><a xlink:title="{&#39;Name&#39;: &#39;shredding_tyre_to_market_waste_rubber&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_rubber&#39;, &#39;From&#39;: &#39;shredding_tyre&#39;, &#39;Amount&#39;: 0.15, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ALL_rubber&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M753.25,-505.06C782.04,-508.95 812,-513 812,-513 812,-513 968.51,-513.47 1066.56,-513.77"/>
 <polygon fill="black" stroke="black" points="1070.6,-513.78 1066.59,-515.57 1068.6,-513.77 1066.6,-513.77 1066.6,-513.77 1066.6,-513.77 1068.6,-513.77 1066.61,-511.97 1070.6,-513.78 1070.6,-513.78"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-523.2" font-family="Cabin" font-size="6.00">Composition: ALL_rubber</text>
-<text text-anchor="middle" x="879" y="-516.2" font-family="Cabin" font-size="6.00">Amount: 6.88e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-516.2" font-family="Cabin" font-size="6.00">Amount: 1.50e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_tyre&#45;&gt;smelter_ferrous -->
 <g id="edge15" class="edge">
 <title>shredding_tyre&#45;&gt;smelter_ferrous</title>
-<g id="a_edge15"><a xlink:title="{&#39;Name&#39;: &#39;shredding_tyre_to_smelter_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_ferrous&#39;, &#39;From&#39;: &#39;shredding_tyre&#39;, &#39;Amount&#39;: 1.550807591477859, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge15"><a xlink:title="{&#39;Name&#39;: &#39;shredding_tyre_to_smelter_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_ferrous&#39;, &#39;From&#39;: &#39;shredding_tyre&#39;, &#39;Amount&#39;: 0.55, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M753.26,-490.11C825.21,-479.24 946,-461 946,-461 946,-461 957,-439 957,-439 957,-439 1029.83,-428.86 1084.55,-421.25"/>
 <polygon fill="black" stroke="black" points="1088.79,-420.66 1085.07,-422.99 1086.81,-420.94 1084.83,-421.21 1084.83,-421.21 1084.83,-421.21 1086.81,-420.94 1084.58,-419.43 1088.79,-420.66 1088.79,-420.66"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-490.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="879" y="-483.2" font-family="Cabin" font-size="6.00">Amount: 1.55e+00 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-483.2" font-family="Cabin" font-size="6.00">Amount: 5.50e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_elec&#45;&gt;market_waste_plastic -->
 <g id="edge26" class="edge">
 <title>shredding_elec&#45;&gt;market_waste_plastic</title>
-<g id="a_edge26"><a xlink:title="{&#39;Name&#39;: &#39;shredding_elec_to_market_waste_plastic&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_plastic&#39;, &#39;From&#39;: &#39;shredding_elec&#39;, &#39;Amount&#39;: 1.5116016049424812, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ALL_plastic&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge26"><a xlink:title="{&#39;Name&#39;: &#39;shredding_elec_to_market_waste_plastic&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_plastic&#39;, &#39;From&#39;: &#39;shredding_elec&#39;, &#39;Amount&#39;: 0.31, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ALL_plastic&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M753.54,-226.17C831.42,-214.56 977.94,-192.72 1067.62,-179.36"/>
 <polygon fill="black" stroke="black" points="1071.58,-178.77 1067.89,-181.14 1069.6,-179.06 1067.62,-179.36 1067.62,-179.36 1067.62,-179.36 1069.6,-179.06 1067.36,-177.58 1071.58,-178.77 1071.58,-178.77"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-226.2" font-family="Cabin" font-size="6.00">Composition: ALL_plastic</text>
-<text text-anchor="middle" x="879" y="-219.2" font-family="Cabin" font-size="6.00">Amount: 1.51e+00 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-219.2" font-family="Cabin" font-size="6.00">Amount: 3.10e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_elec&#45;&gt;smelter_nonferrous -->
 <g id="edge11" class="edge">
@@ -563,35 +563,35 @@
 <!-- shredding_batt&#45;&gt;market_lead -->
 <g id="edge18" class="edge">
 <title>shredding_batt&#45;&gt;market_lead</title>
-<g id="a_edge18"><a xlink:title="{&#39;Name&#39;: &#39;shredding_batt_to_market_lead&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_lead&#39;, &#39;From&#39;: &#39;shredding_batt&#39;, &#39;Amount&#39;: 1.9644418896744495, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;Pb&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge18"><a xlink:title="{&#39;Name&#39;: &#39;shredding_batt_to_market_lead&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_lead&#39;, &#39;From&#39;: &#39;shredding_batt&#39;, &#39;Amount&#39;: 0.65, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;Pb&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M753.25,-84.35C782.04,-81.24 812,-78 812,-78 812,-78 1002.79,-72.25 1095.03,-69.47"/>
 <polygon fill="black" stroke="black" points="1099.08,-69.35 1095.14,-71.27 1097.08,-69.41 1095.08,-69.47 1095.08,-69.47 1095.08,-69.47 1097.08,-69.41 1095.03,-67.67 1099.08,-69.35 1099.08,-69.35"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-87.2" font-family="Cabin" font-size="6.00">Composition: Pb</text>
-<text text-anchor="middle" x="879" y="-80.2" font-family="Cabin" font-size="6.00">Amount: 1.96e+00 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-80.2" font-family="Cabin" font-size="6.00">Amount: 6.50e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_batt&#45;&gt;market_H2SO4 -->
 <g id="edge19" class="edge">
 <title>shredding_batt&#45;&gt;market_H2SO4</title>
-<g id="a_edge19"><a xlink:title="{&#39;Name&#39;: &#39;shredding_batt_to_market_H2SO4&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_H2SO4&#39;, &#39;From&#39;: &#39;shredding_batt&#39;, &#39;Amount&#39;: 0.25398435121990753, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;H2SO4&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge19"><a xlink:title="{&#39;Name&#39;: &#39;shredding_batt_to_market_H2SO4&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_H2SO4&#39;, &#39;From&#39;: &#39;shredding_batt&#39;, &#39;Amount&#39;: 0.25, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;H2SO4&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M753.25,-74.94C782.04,-66.64 812,-58 812,-58 812,-58 990.41,-36.49 1085.59,-25.02"/>
 <polygon fill="black" stroke="black" points="1089.78,-24.52 1086.02,-26.78 1087.79,-24.76 1085.81,-24.99 1085.81,-24.99 1085.81,-24.99 1087.79,-24.76 1085.59,-23.21 1089.78,-24.52 1089.78,-24.52"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-67.2" font-family="Cabin" font-size="6.00">Composition: H2SO4</text>
-<text text-anchor="middle" x="879" y="-60.2" font-family="Cabin" font-size="6.00">Amount: 2.54e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-60.2" font-family="Cabin" font-size="6.00">Amount: 2.50e&#45;01 &#160;kg</text>
 </g>
 <!-- shredding_batt&#45;&gt;market_waste_plastic -->
 <g id="edge25" class="edge">
 <title>shredding_batt&#45;&gt;market_waste_plastic</title>
-<g id="a_edge25"><a xlink:title="{&#39;Name&#39;: &#39;shredding_batt_to_market_waste_plastic&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_plastic&#39;, &#39;From&#39;: &#39;shredding_batt&#39;, &#39;Amount&#39;: 0.15496943867153, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ALL_plastic&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge25"><a xlink:title="{&#39;Name&#39;: &#39;shredding_batt_to_market_waste_plastic&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_waste_plastic&#39;, &#39;From&#39;: &#39;shredding_batt&#39;, &#39;Amount&#39;: 0.1, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ALL_plastic&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M753.26,-96.61C825.21,-105.72 946,-121 946,-121 946,-121 957,-143 957,-143 957,-143 1015.91,-150.88 1067.58,-157.8"/>
 <polygon fill="black" stroke="black" points="1071.6,-158.33 1067.4,-159.59 1069.62,-158.07 1067.63,-157.8 1067.63,-157.8 1067.63,-157.8 1069.62,-158.07 1067.87,-156.02 1071.6,-158.33 1071.6,-158.33"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-130.2" font-family="Cabin" font-size="6.00">Composition: ALL_plastic</text>
-<text text-anchor="middle" x="879" y="-123.2" font-family="Cabin" font-size="6.00">Amount: 1.55e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-123.2" font-family="Cabin" font-size="6.00">Amount: 1.00e&#45;01 &#160;kg</text>
 </g>
 <!-- hammermill_body&#45;&gt;market_waste -->
 <g id="edge22" class="edge">
@@ -607,35 +607,35 @@
 <!-- hammermill_body&#45;&gt;smelter_nonferrous -->
 <g id="edge10" class="edge">
 <title>hammermill_body&#45;&gt;smelter_nonferrous</title>
-<g id="a_edge10"><a xlink:title="{&#39;Name&#39;: &#39;hammermill_body_to_smelter_nonferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_nonferrous&#39;, &#39;From&#39;: &#39;hammermill_body&#39;, &#39;Amount&#39;: 0.2945641931842511, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_nfe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge10"><a xlink:title="{&#39;Name&#39;: &#39;hammermill_body_to_smelter_nonferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_nonferrous&#39;, &#39;From&#39;: &#39;hammermill_body&#39;, &#39;Amount&#39;: 0.22, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_nfe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M752.28,-305.98C781.36,-295.77 812,-285 812,-285 812,-285 976.06,-276.1 1073.47,-270.82"/>
 <polygon fill="black" stroke="black" points="1077.48,-270.6 1073.58,-272.61 1075.48,-270.71 1073.49,-270.82 1073.49,-270.82 1073.49,-270.82 1075.48,-270.71 1073.39,-269.02 1077.48,-270.6 1077.48,-270.6"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-294.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="879" y="-287.2" font-family="Cabin" font-size="6.00">Amount: 2.95e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-287.2" font-family="Cabin" font-size="6.00">Amount: 2.20e&#45;01 &#160;kg</text>
 </g>
 <!-- hammermill_body&#45;&gt;smelter_ferrous -->
 <g id="edge13" class="edge">
 <title>hammermill_body&#45;&gt;smelter_ferrous</title>
-<g id="a_edge13"><a xlink:title="{&#39;Name&#39;: &#39;hammermill_body_to_smelter_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_ferrous&#39;, &#39;From&#39;: &#39;hammermill_body&#39;, &#39;Amount&#39;: 1.3469080810579224, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge13"><a xlink:title="{&#39;Name&#39;: &#39;hammermill_body_to_smelter_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;smelter_ferrous&#39;, &#39;From&#39;: &#39;hammermill_body&#39;, &#39;Amount&#39;: 0.63, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M762.67,-337.33C788.22,-342.86 812,-348 812,-348 812,-348 946,-364 946,-364 946,-364 957,-374 957,-374 957,-374 1029.83,-389.2 1084.55,-400.62"/>
 <polygon fill="black" stroke="black" points="1088.79,-401.51 1084.5,-402.45 1086.83,-401.1 1084.87,-400.69 1084.87,-400.69 1084.87,-400.69 1086.83,-401.1 1085.24,-398.93 1088.79,-401.51 1088.79,-401.51"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-373.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="879" y="-366.2" font-family="Cabin" font-size="6.00">Amount: 1.35e+00 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-366.2" font-family="Cabin" font-size="6.00">Amount: 6.30e&#45;01 &#160;kg</text>
 </g>
 <!-- smelter_cc&#45;&gt;market_ree -->
 <g id="edge17" class="edge">
 <title>smelter_cc&#45;&gt;market_ree</title>
-<g id="a_edge17"><a xlink:title="{&#39;Name&#39;: &#39;smelter_cc_to_market_ree&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_ree&#39;, &#39;From&#39;: &#39;smelter_cc&#39;, &#39;Amount&#39;: 1.1436692407868152, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_ree&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge17"><a xlink:title="{&#39;Name&#39;: &#39;smelter_cc_to_market_ree&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_ree&#39;, &#39;From&#39;: &#39;smelter_cc&#39;, &#39;Amount&#39;: 0.31, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_ree&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M741.07,-164.97C772.87,-157.81 812,-149 812,-149 812,-149 1006.68,-130.81 1097.81,-122.3"/>
 <polygon fill="black" stroke="black" points="1101.81,-121.93 1097.99,-124.09 1099.82,-122.11 1097.82,-122.3 1097.82,-122.3 1097.82,-122.3 1099.82,-122.11 1097.66,-120.51 1101.81,-121.93 1101.81,-121.93"/>
 </a>
 </g>
 <text text-anchor="middle" x="879" y="-158.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_ree</text>
-<text text-anchor="middle" x="879" y="-151.2" font-family="Cabin" font-size="6.00">Amount: 1.14e+00 &#160;kg</text>
+<text text-anchor="middle" x="879" y="-151.2" font-family="Cabin" font-size="6.00">Amount: 3.10e&#45;01 &#160;kg</text>
 </g>
 <!-- smelter_cc&#45;&gt;market_waste_slag -->
 <g id="edge27" class="edge">
@@ -651,13 +651,13 @@
 <!-- smelter_nonferrous&#45;&gt;market_nonferrous -->
 <g id="edge20" class="edge">
 <title>smelter_nonferrous&#45;&gt;market_nonferrous</title>
-<g id="a_edge20"><a xlink:title="{&#39;Name&#39;: &#39;smelter_nonferrous_to_market_nonferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_nonferrous&#39;, &#39;From&#39;: &#39;smelter_nonferrous&#39;, &#39;Amount&#39;: 0.013278579715597556, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_nfe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge20"><a xlink:title="{&#39;Name&#39;: &#39;smelter_nonferrous_to_market_nonferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_nonferrous&#39;, &#39;From&#39;: &#39;smelter_nonferrous&#39;, &#39;Amount&#39;: 0.07, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_nfe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M1212,-262.67C1304.5,-256.61 1471.66,-245.67 1565.62,-239.51"/>
 <polygon fill="black" stroke="black" points="1569.76,-239.24 1565.89,-241.3 1567.77,-239.37 1565.77,-239.5 1565.77,-239.5 1565.77,-239.5 1567.77,-239.37 1565.65,-237.71 1569.76,-239.24 1569.76,-239.24"/>
 </a>
 </g>
 <text text-anchor="middle" x="1410.67" y="-263.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_nfe</text>
-<text text-anchor="middle" x="1410.67" y="-256.2" font-family="Cabin" font-size="6.00">Amount: 1.33e&#45;02 &#160;kg</text>
+<text text-anchor="middle" x="1410.67" y="-256.2" font-family="Cabin" font-size="6.00">Amount: 7.00e&#45;02 &#160;kg</text>
 </g>
 <!-- smelter_nonferrous&#45;&gt;market_waste_slag -->
 <g id="edge29" class="edge">
@@ -673,13 +673,13 @@
 <!-- smelter_ferrous&#45;&gt;market_ferrous -->
 <g id="edge21" class="edge">
 <title>smelter_ferrous&#45;&gt;market_ferrous</title>
-<g id="a_edge21"><a xlink:title="{&#39;Name&#39;: &#39;smelter_ferrous_to_market_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_ferrous&#39;, &#39;From&#39;: &#39;smelter_ferrous&#39;, &#39;Amount&#39;: 0.1020905053696399, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
+<g id="a_edge21"><a xlink:title="{&#39;Name&#39;: &#39;smelter_ferrous_to_market_ferrous&#39;, &#39;Tags&#39;: [], &#39;To&#39;: &#39;market_ferrous&#39;, &#39;From&#39;: &#39;smelter_ferrous&#39;, &#39;Amount&#39;: 0.55, &#39;Unit&#39;: &#39;kg&#39;, &#39;Composition&#39;: &#39;ELV_ICE_fe&#39;, &#39;Parameters&#39;: {}}">
 <path fill="none" stroke="black" d="M1200.95,-413C1294.29,-413 1482.58,-413 1577.34,-413"/>
 <polygon fill="black" stroke="black" points="1581.5,-413 1577.5,-414.8 1579.5,-413 1577.5,-413 1577.5,-413 1577.5,-413 1579.5,-413 1577.5,-411.2 1581.5,-413 1581.5,-413"/>
 </a>
 </g>
 <text text-anchor="middle" x="1410.67" y="-422.2" font-family="Cabin" font-size="6.00">Composition: ELV_ICE_fe</text>
-<text text-anchor="middle" x="1410.67" y="-415.2" font-family="Cabin" font-size="6.00">Amount: 1.02e&#45;01 &#160;kg</text>
+<text text-anchor="middle" x="1410.67" y="-415.2" font-family="Cabin" font-size="6.00">Amount: 5.50e&#45;01 &#160;kg</text>
 </g>
 <!-- smelter_ferrous&#45;&gt;market_waste_slag -->
 <g id="edge28" class="edge">
