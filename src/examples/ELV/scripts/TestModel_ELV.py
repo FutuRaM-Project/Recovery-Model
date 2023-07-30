@@ -23,7 +23,7 @@ Dependencies:
 # %% Import the main package for the FutuRaM recovery model
 # (other packages are imported by the subpackages and their modules)
 import futuram as f
-
+import os
 # Get the directory of the current file
 dir_path = os.path.dirname(os.path.realpath(__file__))
 

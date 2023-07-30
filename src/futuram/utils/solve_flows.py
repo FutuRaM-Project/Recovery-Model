@@ -53,9 +53,10 @@ def calculate_output_flows(process, model):
                     print(f'\t ** No match for {flow_in.composition} with {flow_out.composition}')
         
         # if the process has outputs, add the next process to the list of next processes
-        if flow_out.process_to not in next_processes and \
-            model.processes[flow_out.process_to].outputs:
-            next_processes.append(flow_out.process_to)
+        # if flow_out.process_to not in next_processes and \
+        #     model.processes[flow_out.process_to].outputs:
+        next_processes.append(flow_out.process_to)
+        print(f'Next processes: {next_processes}')
 
     return next_processes
 
@@ -67,6 +68,7 @@ def calculate_next_processes(next_processes, model):
         process = model.processes[process]
         next_next_processes += calculate_output_flows(process, model)
     
+    print(f'Next next processes: {next_next_processes}')
     return next_next_processes
 
 #%%
@@ -82,13 +84,21 @@ def calculate_model_flows(model):
 
     return next_next_processes
 
+#%% I couldn't get the function about to work properly, so I'm just going to do it manually for now
+# It works for most processes,but some don't work and I dont know why...
+for process in model.processes.values():
+    print(f'Process: {process.name}')
+    calculate_output_flows(process, model)
+
 #%% For testing the script, you can use any model
 # if the import isnt working just run the test model in and use same kernel
 # to get the model variable to feed the calculate_model_flows function
 
 # # ! not working now
 if __name__ == '__main__':
-    from ..examples.ELV.scripts.TestModel_ELV import model
+    import sys
+    sys.path.append('..examples.ELV.scripts.TestModel_ELV')
+    from TestModel_ELV import model
     calculate_model_flows(model)
     model.get_flows()
     model.print_flows()
@@ -99,3 +109,4 @@ if __name__ == '__main__':
 # model.get_flows()
 # model.print_flows()
 # model.make_flowchart_model()
+# %%

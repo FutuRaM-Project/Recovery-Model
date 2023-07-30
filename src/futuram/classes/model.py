@@ -134,7 +134,7 @@ class Model:
         using the transfer coefficients, the composition of the flows
         and the input flows to the model
         '''
-        calculate_output_flows(self)
+        calculate_output_flows(self, self)
 
 
     def make_flowchart_model(self):
