@@ -10,7 +10,7 @@ Modules:
 - split_xlsx_to_csvs.py: Split an xlsx file into csvs for each sheet.
 - get_random.py: Get random objects from a model.
 - validate_model.py: Validate a model.
-
+- object_import_export.py: Import and export objects to and from json files and pickle files.
 '''
 
 from .import_flows import import_flows_xlsx
@@ -20,3 +20,4 @@ from .import_transfercoefficients import import_transfercoefficients_xlsx
 from .split_xlsx_to_csvs import xlsx_to_csvs
 from .get_random import get_random_process, get_random_flow, get_random_matter
 from .validate_model import validate_model, validate_flows, validate_matter
+from .object_import_export import export_object, import_object

@@ -41,6 +41,7 @@ from tabulate import tabulate
 
 from ..visualisation import make_flowchart, make_network
 from ..utils.solve_flows import calculate_output_flows
+from ..utils.object_import_export import export_object
 
 class Model:
     """
@@ -128,6 +129,14 @@ class Model:
 
         print(f"\n{'=' * 50}\n\tCreated model: {self.name}\n{'=' * 50}\n")
 
+    def export_model(self):
+        """
+        Exports the model as a json or pickle file
+        """
+    
+        export_object(self)
+    
+        
     def calculate_flows(self):
         '''
         calculates the flows amounts iteratively in the model
@@ -575,6 +584,7 @@ class Model:
         #         print()
         return matter_names
 
+#! the export functions need testing and improvement
     def to_dataframe(self):
         """
         Convert the model objects to a dataframe.
@@ -584,7 +594,9 @@ class Model:
         """
         data = []
 
-        for objects in [
+        for model_object in [
+            self.name,
+            self.type,
             self.parameters,
             self.scenarios,
             self.processes,
@@ -594,9 +606,17 @@ class Model:
             self.materials,
             self.components,
             self.products,
-        ]:
-            for obj in objects.values():
-                data.append(obj.to_dict())
+            self.matter,
+            self.inputs,
+            self.outputs,
+            self.transfer_coefficients,
+        ]:            
+        
+            if isinstance(model_object, dict):
+                for key, value in model_object.items():
+                    data.append([key, value])
+            else:
+                data.append([model_object])
 
         df = pd.DataFrame(data)
         return df
@@ -637,24 +657,28 @@ class Model:
 
         Returns:
             dict: A dictionary representing the model objects.
+
         """
-        data = {}
-
-        for objects in [
-            self.parameters,
-            self.scenarios,
-            self.processes,
-            self.flows,
-            self.elements,
-            self.compounds,
-            self.materials,
-            self.components,
-            self.products,
-        ]:
-            for obj_name, obj in objects.items():
-                data[obj_name] = obj.to_dict()
-
-        return data
+        model_dict = {
+                    "name": self.name,
+                    "type": self.type,
+                    "parameters": self.parameters,
+                    "scenarios": self.scenarios,
+                    "processes": self.processes,
+                    "flows": self.flows,
+                    "elements": self.elements,
+                    "compounds": self.compounds,
+                    "materials": self.materials,
+                    "components": self.components,
+                    "products": self.products,
+                    "matter": self.matter,
+                    "inputs": self.inputs,
+                    "outputs": self.outputs,
+                    "transfer_coefficients": self.transfer_coefficients,
+                }
+        
+        return model_dict
+    
 
     def list_parameter_attributes(self):
         print("Parameters:")
