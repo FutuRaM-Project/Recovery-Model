@@ -1,14 +1,14 @@
-futuram package
+FutuRaM package
 ===============
 
 Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
-   futuram.classes
    futuram.utils
+   futuram.classes
    futuram.visualisation
 
 Module contents

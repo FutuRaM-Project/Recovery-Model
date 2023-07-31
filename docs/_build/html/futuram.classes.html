@@ -18,7 +18,9 @@
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="futuram.utils package" href="futuram.utils.html" />
+    <link rel="prev" title="Setup and usage" href="setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,284 +42,293 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">futuram.classes package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-futuram.classes.flows">futuram.classes.flows module</a><ul>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow"><code class="docutils literal notranslate"><span class="pre">Flow</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.name"><code class="docutils literal notranslate"><span class="pre">Flow.name</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.parameters"><code class="docutils literal notranslate"><span class="pre">Flow.parameters</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.tags"><code class="docutils literal notranslate"><span class="pre">Flow.tags</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.to"><code class="docutils literal notranslate"><span class="pre">Flow.to</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.from_"><code class="docutils literal notranslate"><span class="pre">Flow.from_</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.amount"><code class="docutils literal notranslate"><span class="pre">Flow.amount</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.composition"><code class="docutils literal notranslate"><span class="pre">Flow.composition</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.unit"><code class="docutils literal notranslate"><span class="pre">Flow.unit</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.add_tag"><code class="docutils literal notranslate"><span class="pre">Flow.add_tag()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.add_to_model"><code class="docutils literal notranslate"><span class="pre">Flow.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.calculate_amount"><code class="docutils literal notranslate"><span class="pre">Flow.calculate_amount()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.clear_parameters"><code class="docutils literal notranslate"><span class="pre">Flow.clear_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.get_all_parameters"><code class="docutils literal notranslate"><span class="pre">Flow.get_all_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.get_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.get_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.get_tags"><code class="docutils literal notranslate"><span class="pre">Flow.get_tags()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.has_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.has_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.remove_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.remove_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.remove_tag"><code class="docutils literal notranslate"><span class="pre">Flow.remove_tag()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.set_amount"><code class="docutils literal notranslate"><span class="pre">Flow.set_amount()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.set_composition"><code class="docutils literal notranslate"><span class="pre">Flow.set_composition()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.set_from"><code class="docutils literal notranslate"><span class="pre">Flow.set_from()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.set_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.set_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.set_to"><code class="docutils literal notranslate"><span class="pre">Flow.set_to()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.to_dict"><code class="docutils literal notranslate"><span class="pre">Flow.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.to_series"><code class="docutils literal notranslate"><span class="pre">Flow.to_series()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.flows.Flow.validate_flow"><code class="docutils literal notranslate"><span class="pre">Flow.validate_flow()</span></code></a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup and usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">futuram.classes package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-futuram.classes.flows">futuram.classes.flows module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.flows.Flow"><code class="docutils literal notranslate"><span class="pre">Flow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.name"><code class="docutils literal notranslate"><span class="pre">Flow.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.parameters"><code class="docutils literal notranslate"><span class="pre">Flow.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.tags"><code class="docutils literal notranslate"><span class="pre">Flow.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.to"><code class="docutils literal notranslate"><span class="pre">Flow.to</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.from_"><code class="docutils literal notranslate"><span class="pre">Flow.from_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.amount"><code class="docutils literal notranslate"><span class="pre">Flow.amount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.composition"><code class="docutils literal notranslate"><span class="pre">Flow.composition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.unit"><code class="docutils literal notranslate"><span class="pre">Flow.unit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.add_tag"><code class="docutils literal notranslate"><span class="pre">Flow.add_tag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.add_to_model"><code class="docutils literal notranslate"><span class="pre">Flow.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.calculate_amount"><code class="docutils literal notranslate"><span class="pre">Flow.calculate_amount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.clear_parameters"><code class="docutils literal notranslate"><span class="pre">Flow.clear_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.get_all_parameters"><code class="docutils literal notranslate"><span class="pre">Flow.get_all_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.get_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.get_tags"><code class="docutils literal notranslate"><span class="pre">Flow.get_tags()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.has_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.has_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.remove_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.remove_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.remove_tag"><code class="docutils literal notranslate"><span class="pre">Flow.remove_tag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.set_amount"><code class="docutils literal notranslate"><span class="pre">Flow.set_amount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.set_composition"><code class="docutils literal notranslate"><span class="pre">Flow.set_composition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.set_from"><code class="docutils literal notranslate"><span class="pre">Flow.set_from()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.set_parameter"><code class="docutils literal notranslate"><span class="pre">Flow.set_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.set_to"><code class="docutils literal notranslate"><span class="pre">Flow.set_to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.to_dict"><code class="docutils literal notranslate"><span class="pre">Flow.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.to_series"><code class="docutils literal notranslate"><span class="pre">Flow.to_series()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.flows.Flow.validate_flow"><code class="docutils literal notranslate"><span class="pre">Flow.validate_flow()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-futuram.classes.matter">futuram.classes.matter module</a><ul>
-<li><a class="reference internal" href="#futuram.classes.matter.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound"><code class="docutils literal notranslate"><span class="pre">Compound</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.add_to_model"><code class="docutils literal notranslate"><span class="pre">Compound.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.calculate_mass_fractions"><code class="docutils literal notranslate"><span class="pre">Compound.calculate_mass_fractions()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.calculate_molar_fractions"><code class="docutils literal notranslate"><span class="pre">Compound.calculate_molar_fractions()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.calculate_molecular_weight"><code class="docutils literal notranslate"><span class="pre">Compound.calculate_molecular_weight()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.formula_to_dict"><code class="docutils literal notranslate"><span class="pre">Compound.formula_to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.get_formula"><code class="docutils literal notranslate"><span class="pre">Compound.get_formula()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.print_formula"><code class="docutils literal notranslate"><span class="pre">Compound.print_formula()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.to_dict"><code class="docutils literal notranslate"><span class="pre">Compound.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Compound.to_series"><code class="docutils literal notranslate"><span class="pre">Compound.to_series()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-futuram.classes.matter">futuram.classes.matter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.matter.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.matter.Compound"><code class="docutils literal notranslate"><span class="pre">Compound</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.add_to_model"><code class="docutils literal notranslate"><span class="pre">Compound.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.calculate_mass_fractions"><code class="docutils literal notranslate"><span class="pre">Compound.calculate_mass_fractions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.calculate_molar_fractions"><code class="docutils literal notranslate"><span class="pre">Compound.calculate_molar_fractions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.calculate_molecular_weight"><code class="docutils literal notranslate"><span class="pre">Compound.calculate_molecular_weight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.formula_to_dict"><code class="docutils literal notranslate"><span class="pre">Compound.formula_to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.get_formula"><code class="docutils literal notranslate"><span class="pre">Compound.get_formula()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.print_formula"><code class="docutils literal notranslate"><span class="pre">Compound.print_formula()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.to_dict"><code class="docutils literal notranslate"><span class="pre">Compound.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Compound.to_series"><code class="docutils literal notranslate"><span class="pre">Compound.to_series()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#futuram.classes.matter.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.matter.Element.add_to_model"><code class="docutils literal notranslate"><span class="pre">Element.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Element.get_symbol"><code class="docutils literal notranslate"><span class="pre">Element.get_symbol()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Element.to_dict"><code class="docutils literal notranslate"><span class="pre">Element.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Element.to_series"><code class="docutils literal notranslate"><span class="pre">Element.to_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.matter.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Element.add_to_model"><code class="docutils literal notranslate"><span class="pre">Element.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Element.get_symbol"><code class="docutils literal notranslate"><span class="pre">Element.get_symbol()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Element.to_dict"><code class="docutils literal notranslate"><span class="pre">Element.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Element.to_series"><code class="docutils literal notranslate"><span class="pre">Element.to_series()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#futuram.classes.matter.Material"><code class="docutils literal notranslate"><span class="pre">Material</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter"><code class="docutils literal notranslate"><span class="pre">Matter</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.add_tag"><code class="docutils literal notranslate"><span class="pre">Matter.add_tag()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.add_to_model"><code class="docutils literal notranslate"><span class="pre">Matter.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.composition_expanded_to_json"><code class="docutils literal notranslate"><span class="pre">Matter.composition_expanded_to_json()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.create_treemap"><code class="docutils literal notranslate"><span class="pre">Matter.create_treemap()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.expand_composition"><code class="docutils literal notranslate"><span class="pre">Matter.expand_composition()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.to_dict"><code class="docutils literal notranslate"><span class="pre">Matter.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.matter.Matter.to_series"><code class="docutils literal notranslate"><span class="pre">Matter.to_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.matter.Material"><code class="docutils literal notranslate"><span class="pre">Material</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.matter.Matter"><code class="docutils literal notranslate"><span class="pre">Matter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.add_tag"><code class="docutils literal notranslate"><span class="pre">Matter.add_tag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.add_to_model"><code class="docutils literal notranslate"><span class="pre">Matter.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.composition_expanded_to_json"><code class="docutils literal notranslate"><span class="pre">Matter.composition_expanded_to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.create_treemap"><code class="docutils literal notranslate"><span class="pre">Matter.create_treemap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.expand_composition"><code class="docutils literal notranslate"><span class="pre">Matter.expand_composition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.to_dict"><code class="docutils literal notranslate"><span class="pre">Matter.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.matter.Matter.to_series"><code class="docutils literal notranslate"><span class="pre">Matter.to_series()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#futuram.classes.matter.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.matter.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-futuram.classes.model">futuram.classes.model module</a><ul>
-<li><a class="reference internal" href="#futuram.classes.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.model.Model.name"><code class="docutils literal notranslate"><span class="pre">Model.name</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.type"><code class="docutils literal notranslate"><span class="pre">Model.type</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.parameters"><code class="docutils literal notranslate"><span class="pre">Model.parameters</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.scenarios"><code class="docutils literal notranslate"><span class="pre">Model.scenarios</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.processes"><code class="docutils literal notranslate"><span class="pre">Model.processes</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.flows"><code class="docutils literal notranslate"><span class="pre">Model.flows</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.elements"><code class="docutils literal notranslate"><span class="pre">Model.elements</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.compounds"><code class="docutils literal notranslate"><span class="pre">Model.compounds</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.materials"><code class="docutils literal notranslate"><span class="pre">Model.materials</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.components"><code class="docutils literal notranslate"><span class="pre">Model.components</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.products"><code class="docutils literal notranslate"><span class="pre">Model.products</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.matter"><code class="docutils literal notranslate"><span class="pre">Model.matter</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.inputs"><code class="docutils literal notranslate"><span class="pre">Model.inputs</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.outputs"><code class="docutils literal notranslate"><span class="pre">Model.outputs</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Model.transfer_coefficients</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_parameter"><code class="docutils literal notranslate"><span class="pre">Model.add_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_parameter"><code class="docutils literal notranslate"><span class="pre">Model.get_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_scenario"><code class="docutils literal notranslate"><span class="pre">Model.add_scenario()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_scenario"><code class="docutils literal notranslate"><span class="pre">Model.get_scenario()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_process"><code class="docutils literal notranslate"><span class="pre">Model.add_process()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_process"><code class="docutils literal notranslate"><span class="pre">Model.get_process()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_flow"><code class="docutils literal notranslate"><span class="pre">Model.add_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_flow"><code class="docutils literal notranslate"><span class="pre">Model.get_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_element"><code class="docutils literal notranslate"><span class="pre">Model.add_element()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_element"><code class="docutils literal notranslate"><span class="pre">Model.get_element()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_compound"><code class="docutils literal notranslate"><span class="pre">Model.add_compound()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_compound"><code class="docutils literal notranslate"><span class="pre">Model.get_compound()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_material"><code class="docutils literal notranslate"><span class="pre">Model.add_material()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_material"><code class="docutils literal notranslate"><span class="pre">Model.get_material()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_component"><code class="docutils literal notranslate"><span class="pre">Model.add_component()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_component"><code class="docutils literal notranslate"><span class="pre">Model.get_component()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_product"><code class="docutils literal notranslate"><span class="pre">Model.add_product()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_product"><code class="docutils literal notranslate"><span class="pre">Model.get_product()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_input"><code class="docutils literal notranslate"><span class="pre">Model.add_input()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_input"><code class="docutils literal notranslate"><span class="pre">Model.get_input()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_output"><code class="docutils literal notranslate"><span class="pre">Model.add_output()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_output"><code class="docutils literal notranslate"><span class="pre">Model.get_output()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Model.add_transfer_coefficient()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Model.get_transfer_coefficient()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.expand_composition"><code class="docutils literal notranslate"><span class="pre">Model.expand_composition()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_matter"><code class="docutils literal notranslate"><span class="pre">Model.get_matter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.add_matter"><code class="docutils literal notranslate"><span class="pre">Model.add_matter()</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Model.add_component()</span></code></a></li>
-<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Model.add_compound()</span></code></a></li>
-<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Model.add_element()</span></code></a></li>
-<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Model.add_flow()</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Model.add_material()</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Model.add_matter()</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Model.add_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Model.add_process()</span></code></a></li>
-<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">Model.add_product()</span></code></a></li>
-<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">Model.add_scenario()</span></code></a></li>
-<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">Model.get_component()</span></code></a></li>
-<li><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">Model.get_compound()</span></code></a></li>
-<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">Model.get_element()</span></code></a></li>
-<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">Model.get_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_flows"><code class="docutils literal notranslate"><span class="pre">Model.get_flows()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_inputs"><code class="docutils literal notranslate"><span class="pre">Model.get_inputs()</span></code></a></li>
-<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">Model.get_material()</span></code></a></li>
-<li><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">Model.get_matter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_outputs"><code class="docutils literal notranslate"><span class="pre">Model.get_outputs()</span></code></a></li>
-<li><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">Model.get_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">Model.get_process()</span></code></a></li>
-<li><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">Model.get_product()</span></code></a></li>
-<li><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">Model.get_scenario()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.get_transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Model.get_transfer_coefficients()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_components"><code class="docutils literal notranslate"><span class="pre">Model.list_components()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_compounds"><code class="docutils literal notranslate"><span class="pre">Model.list_compounds()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_elements"><code class="docutils literal notranslate"><span class="pre">Model.list_elements()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_materials"><code class="docutils literal notranslate"><span class="pre">Model.list_materials()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_matter"><code class="docutils literal notranslate"><span class="pre">Model.list_matter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_parameter_attributes"><code class="docutils literal notranslate"><span class="pre">Model.list_parameter_attributes()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_parameters"><code class="docutils literal notranslate"><span class="pre">Model.list_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_products"><code class="docutils literal notranslate"><span class="pre">Model.list_products()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_scenario_attributes"><code class="docutils literal notranslate"><span class="pre">Model.list_scenario_attributes()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.list_scenarios"><code class="docutils literal notranslate"><span class="pre">Model.list_scenarios()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.make_flowchart_model"><code class="docutils literal notranslate"><span class="pre">Model.make_flowchart_model()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.make_flowchart_processes"><code class="docutils literal notranslate"><span class="pre">Model.make_flowchart_processes()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.make_network"><code class="docutils literal notranslate"><span class="pre">Model.make_network()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.print_flows"><code class="docutils literal notranslate"><span class="pre">Model.print_flows()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.print_flows_by_process"><code class="docutils literal notranslate"><span class="pre">Model.print_flows_by_process()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.print_matter"><code class="docutils literal notranslate"><span class="pre">Model.print_matter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.print_matter_subclasses"><code class="docutils literal notranslate"><span class="pre">Model.print_matter_subclasses()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.print_processes"><code class="docutils literal notranslate"><span class="pre">Model.print_processes()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.print_transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Model.print_transfer_coefficients()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.random_flow"><code class="docutils literal notranslate"><span class="pre">Model.random_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.random_matter"><code class="docutils literal notranslate"><span class="pre">Model.random_matter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.random_process"><code class="docutils literal notranslate"><span class="pre">Model.random_process()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.to_csv"><code class="docutils literal notranslate"><span class="pre">Model.to_csv()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.to_dataframe"><code class="docutils literal notranslate"><span class="pre">Model.to_dataframe()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.to_dict"><code class="docutils literal notranslate"><span class="pre">Model.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.to_excel"><code class="docutils literal notranslate"><span class="pre">Model.to_excel()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.model.Model.to_json"><code class="docutils literal notranslate"><span class="pre">Model.to_json()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-futuram.classes.parameters">futuram.classes.parameters module</a><ul>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.name"><code class="docutils literal notranslate"><span class="pre">Parameter.name</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.value"><code class="docutils literal notranslate"><span class="pre">Parameter.value</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.unit"><code class="docutils literal notranslate"><span class="pre">Parameter.unit</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.description"><code class="docutils literal notranslate"><span class="pre">Parameter.description</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.data_sources"><code class="docutils literal notranslate"><span class="pre">Parameter.data_sources</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.lower_bound"><code class="docutils literal notranslate"><span class="pre">Parameter.lower_bound</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.upper_bound"><code class="docutils literal notranslate"><span class="pre">Parameter.upper_bound</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.uncertainty"><code class="docutils literal notranslate"><span class="pre">Parameter.uncertainty</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.internal"><code class="docutils literal notranslate"><span class="pre">Parameter.internal</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_description"><code class="docutils literal notranslate"><span class="pre">Parameter.set_description()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.add_data_source"><code class="docutils literal notranslate"><span class="pre">Parameter.add_data_source()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_bounds"><code class="docutils literal notranslate"><span class="pre">Parameter.set_bounds()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_uncertainty"><code class="docutils literal notranslate"><span class="pre">Parameter.set_uncertainty()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_internal"><code class="docutils literal notranslate"><span class="pre">Parameter.set_internal()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_external"><code class="docutils literal notranslate"><span class="pre">Parameter.set_external()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_description"><code class="docutils literal notranslate"><span class="pre">Parameter.get_description()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_data_sources"><code class="docutils literal notranslate"><span class="pre">Parameter.get_data_sources()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_bounds"><code class="docutils literal notranslate"><span class="pre">Parameter.get_bounds()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_uncertainty"><code class="docutils literal notranslate"><span class="pre">Parameter.get_uncertainty()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.is_internal"><code class="docutils literal notranslate"><span class="pre">Parameter.is_internal()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.to_dict"><code class="docutils literal notranslate"><span class="pre">Parameter.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.to_series"><code class="docutils literal notranslate"><span class="pre">Parameter.to_series()</span></code></a></li>
-<li><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">Parameter.add_data_source()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Parameter.add_to_model"><code class="docutils literal notranslate"><span class="pre">Parameter.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">Parameter.get_bounds()</span></code></a></li>
-<li><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">Parameter.get_data_sources()</span></code></a></li>
-<li><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">Parameter.get_description()</span></code></a></li>
-<li><a class="reference internal" href="#id24"><code class="docutils literal notranslate"><span class="pre">Parameter.get_uncertainty()</span></code></a></li>
-<li><a class="reference internal" href="#id25"><code class="docutils literal notranslate"><span class="pre">Parameter.is_internal()</span></code></a></li>
-<li><a class="reference internal" href="#id26"><code class="docutils literal notranslate"><span class="pre">Parameter.set_bounds()</span></code></a></li>
-<li><a class="reference internal" href="#id27"><code class="docutils literal notranslate"><span class="pre">Parameter.set_description()</span></code></a></li>
-<li><a class="reference internal" href="#id28"><code class="docutils literal notranslate"><span class="pre">Parameter.set_external()</span></code></a></li>
-<li><a class="reference internal" href="#id29"><code class="docutils literal notranslate"><span class="pre">Parameter.set_internal()</span></code></a></li>
-<li><a class="reference internal" href="#id30"><code class="docutils literal notranslate"><span class="pre">Parameter.set_uncertainty()</span></code></a></li>
-<li><a class="reference internal" href="#id31"><code class="docutils literal notranslate"><span class="pre">Parameter.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#id32"><code class="docutils literal notranslate"><span class="pre">Parameter.to_series()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario"><code class="docutils literal notranslate"><span class="pre">Scenario</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.name"><code class="docutils literal notranslate"><span class="pre">Scenario.name</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.description"><code class="docutils literal notranslate"><span class="pre">Scenario.description</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.parameters"><code class="docutils literal notranslate"><span class="pre">Scenario.parameters</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.set_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.set_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.set_description"><code class="docutils literal notranslate"><span class="pre">Scenario.set_description()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.get_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.get_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.has_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.has_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.remove_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.remove_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.get_all_parameters"><code class="docutils literal notranslate"><span class="pre">Scenario.get_all_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.clear_parameters"><code class="docutils literal notranslate"><span class="pre">Scenario.clear_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.to_dict"><code class="docutils literal notranslate"><span class="pre">Scenario.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.to_series"><code class="docutils literal notranslate"><span class="pre">Scenario.to_series()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.parameters.Scenario.add_to_model"><code class="docutils literal notranslate"><span class="pre">Scenario.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#id33"><code class="docutils literal notranslate"><span class="pre">Scenario.clear_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#id34"><code class="docutils literal notranslate"><span class="pre">Scenario.get_all_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#id35"><code class="docutils literal notranslate"><span class="pre">Scenario.get_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#id36"><code class="docutils literal notranslate"><span class="pre">Scenario.has_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#id37"><code class="docutils literal notranslate"><span class="pre">Scenario.remove_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#id38"><code class="docutils literal notranslate"><span class="pre">Scenario.set_description()</span></code></a></li>
-<li><a class="reference internal" href="#id39"><code class="docutils literal notranslate"><span class="pre">Scenario.set_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#id40"><code class="docutils literal notranslate"><span class="pre">Scenario.to_dict()</span></code></a></li>
-<li><a class="reference internal" href="#id41"><code class="docutils literal notranslate"><span class="pre">Scenario.to_series()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-futuram.classes.model">futuram.classes.model module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.name"><code class="docutils literal notranslate"><span class="pre">Model.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.type"><code class="docutils literal notranslate"><span class="pre">Model.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.parameters"><code class="docutils literal notranslate"><span class="pre">Model.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.scenarios"><code class="docutils literal notranslate"><span class="pre">Model.scenarios</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.processes"><code class="docutils literal notranslate"><span class="pre">Model.processes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.flows"><code class="docutils literal notranslate"><span class="pre">Model.flows</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.elements"><code class="docutils literal notranslate"><span class="pre">Model.elements</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.compounds"><code class="docutils literal notranslate"><span class="pre">Model.compounds</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.materials"><code class="docutils literal notranslate"><span class="pre">Model.materials</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.components"><code class="docutils literal notranslate"><span class="pre">Model.components</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.products"><code class="docutils literal notranslate"><span class="pre">Model.products</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.matter"><code class="docutils literal notranslate"><span class="pre">Model.matter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.inputs"><code class="docutils literal notranslate"><span class="pre">Model.inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.outputs"><code class="docutils literal notranslate"><span class="pre">Model.outputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Model.transfer_coefficients</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_parameter"><code class="docutils literal notranslate"><span class="pre">Model.add_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_parameter"><code class="docutils literal notranslate"><span class="pre">Model.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_scenario"><code class="docutils literal notranslate"><span class="pre">Model.add_scenario()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_scenario"><code class="docutils literal notranslate"><span class="pre">Model.get_scenario()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_process"><code class="docutils literal notranslate"><span class="pre">Model.add_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_process"><code class="docutils literal notranslate"><span class="pre">Model.get_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_flow"><code class="docutils literal notranslate"><span class="pre">Model.add_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_flow"><code class="docutils literal notranslate"><span class="pre">Model.get_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_element"><code class="docutils literal notranslate"><span class="pre">Model.add_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_element"><code class="docutils literal notranslate"><span class="pre">Model.get_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_compound"><code class="docutils literal notranslate"><span class="pre">Model.add_compound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_compound"><code class="docutils literal notranslate"><span class="pre">Model.get_compound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_material"><code class="docutils literal notranslate"><span class="pre">Model.add_material()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_material"><code class="docutils literal notranslate"><span class="pre">Model.get_material()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_component"><code class="docutils literal notranslate"><span class="pre">Model.add_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_component"><code class="docutils literal notranslate"><span class="pre">Model.get_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_product"><code class="docutils literal notranslate"><span class="pre">Model.add_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_product"><code class="docutils literal notranslate"><span class="pre">Model.get_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_input"><code class="docutils literal notranslate"><span class="pre">Model.add_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_input"><code class="docutils literal notranslate"><span class="pre">Model.get_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_output"><code class="docutils literal notranslate"><span class="pre">Model.add_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_output"><code class="docutils literal notranslate"><span class="pre">Model.get_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Model.add_transfer_coefficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Model.get_transfer_coefficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.expand_composition"><code class="docutils literal notranslate"><span class="pre">Model.expand_composition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_matter"><code class="docutils literal notranslate"><span class="pre">Model.get_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.add_matter"><code class="docutils literal notranslate"><span class="pre">Model.add_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Model.add_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Model.add_compound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Model.add_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Model.add_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Model.add_material()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Model.add_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Model.add_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Model.add_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">Model.add_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">Model.add_scenario()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.calculate_flows"><code class="docutils literal notranslate"><span class="pre">Model.calculate_flows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.export_model"><code class="docutils literal notranslate"><span class="pre">Model.export_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">Model.get_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">Model.get_compound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">Model.get_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">Model.get_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_flows"><code class="docutils literal notranslate"><span class="pre">Model.get_flows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_inputs"><code class="docutils literal notranslate"><span class="pre">Model.get_inputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">Model.get_material()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">Model.get_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_outputs"><code class="docutils literal notranslate"><span class="pre">Model.get_outputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">Model.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">Model.get_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">Model.get_product()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">Model.get_scenario()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.get_transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Model.get_transfer_coefficients()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_components"><code class="docutils literal notranslate"><span class="pre">Model.list_components()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_compounds"><code class="docutils literal notranslate"><span class="pre">Model.list_compounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_elements"><code class="docutils literal notranslate"><span class="pre">Model.list_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_materials"><code class="docutils literal notranslate"><span class="pre">Model.list_materials()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_matter"><code class="docutils literal notranslate"><span class="pre">Model.list_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_parameter_attributes"><code class="docutils literal notranslate"><span class="pre">Model.list_parameter_attributes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_parameters"><code class="docutils literal notranslate"><span class="pre">Model.list_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_products"><code class="docutils literal notranslate"><span class="pre">Model.list_products()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_scenario_attributes"><code class="docutils literal notranslate"><span class="pre">Model.list_scenario_attributes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.list_scenarios"><code class="docutils literal notranslate"><span class="pre">Model.list_scenarios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.make_flowchart_model"><code class="docutils literal notranslate"><span class="pre">Model.make_flowchart_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.make_flowchart_processes"><code class="docutils literal notranslate"><span class="pre">Model.make_flowchart_processes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.make_network"><code class="docutils literal notranslate"><span class="pre">Model.make_network()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.print_flows"><code class="docutils literal notranslate"><span class="pre">Model.print_flows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.print_flows_by_process"><code class="docutils literal notranslate"><span class="pre">Model.print_flows_by_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.print_matter"><code class="docutils literal notranslate"><span class="pre">Model.print_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.print_matter_subclasses"><code class="docutils literal notranslate"><span class="pre">Model.print_matter_subclasses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.print_processes"><code class="docutils literal notranslate"><span class="pre">Model.print_processes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.print_transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Model.print_transfer_coefficients()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.random_flow"><code class="docutils literal notranslate"><span class="pre">Model.random_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.random_matter"><code class="docutils literal notranslate"><span class="pre">Model.random_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.random_process"><code class="docutils literal notranslate"><span class="pre">Model.random_process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.to_csv"><code class="docutils literal notranslate"><span class="pre">Model.to_csv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.to_dataframe"><code class="docutils literal notranslate"><span class="pre">Model.to_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.to_dict"><code class="docutils literal notranslate"><span class="pre">Model.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.to_excel"><code class="docutils literal notranslate"><span class="pre">Model.to_excel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.model.Model.to_json"><code class="docutils literal notranslate"><span class="pre">Model.to_json()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-futuram.classes.processes">futuram.classes.processes module</a><ul>
-<li><a class="reference internal" href="#futuram.classes.processes.Process"><code class="docutils literal notranslate"><span class="pre">Process</span></code></a><ul>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.name"><code class="docutils literal notranslate"><span class="pre">Process.name</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.description"><code class="docutils literal notranslate"><span class="pre">Process.description</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.tags"><code class="docutils literal notranslate"><span class="pre">Process.tags</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.WS"><code class="docutils literal notranslate"><span class="pre">Process.WS</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.inputs"><code class="docutils literal notranslate"><span class="pre">Process.inputs</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.outputs"><code class="docutils literal notranslate"><span class="pre">Process.outputs</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.parameters"><code class="docutils literal notranslate"><span class="pre">Process.parameters</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.add_input"><code class="docutils literal notranslate"><span class="pre">Process.add_input()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.add_output"><code class="docutils literal notranslate"><span class="pre">Process.add_output()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.add_parameter"><code class="docutils literal notranslate"><span class="pre">Process.add_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.add_to_model"><code class="docutils literal notranslate"><span class="pre">Process.add_to_model()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.add_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Process.add_transfer_coefficient()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.add_transform_flow"><code class="docutils literal notranslate"><span class="pre">Process.add_transform_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.clear_inputs"><code class="docutils literal notranslate"><span class="pre">Process.clear_inputs()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.clear_outputs"><code class="docutils literal notranslate"><span class="pre">Process.clear_outputs()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.get_total_input_flow"><code class="docutils literal notranslate"><span class="pre">Process.get_total_input_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.get_total_output_flow"><code class="docutils literal notranslate"><span class="pre">Process.get_total_output_flow()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.has_input"><code class="docutils literal notranslate"><span class="pre">Process.has_input()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.has_output"><code class="docutils literal notranslate"><span class="pre">Process.has_output()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.has_tag"><code class="docutils literal notranslate"><span class="pre">Process.has_tag()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.input_table"><code class="docutils literal notranslate"><span class="pre">Process.input_table()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.make_flowchart"><code class="docutils literal notranslate"><span class="pre">Process.make_flowchart()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.output_table"><code class="docutils literal notranslate"><span class="pre">Process.output_table()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.print_flows"><code class="docutils literal notranslate"><span class="pre">Process.print_flows()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.print_table"><code class="docutils literal notranslate"><span class="pre">Process.print_table()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.print_transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Process.print_transfer_coefficients()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.remove_input"><code class="docutils literal notranslate"><span class="pre">Process.remove_input()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.remove_output"><code class="docutils literal notranslate"><span class="pre">Process.remove_output()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.remove_parameter"><code class="docutils literal notranslate"><span class="pre">Process.remove_parameter()</span></code></a></li>
-<li><a class="reference internal" href="#futuram.classes.processes.Process.to_dict"><code class="docutils literal notranslate"><span class="pre">Process.to_dict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-futuram.classes.parameters">futuram.classes.parameters module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.parameters.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.name"><code class="docutils literal notranslate"><span class="pre">Parameter.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.value"><code class="docutils literal notranslate"><span class="pre">Parameter.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.unit"><code class="docutils literal notranslate"><span class="pre">Parameter.unit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.description"><code class="docutils literal notranslate"><span class="pre">Parameter.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.data_sources"><code class="docutils literal notranslate"><span class="pre">Parameter.data_sources</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.lower_bound"><code class="docutils literal notranslate"><span class="pre">Parameter.lower_bound</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.upper_bound"><code class="docutils literal notranslate"><span class="pre">Parameter.upper_bound</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.uncertainty"><code class="docutils literal notranslate"><span class="pre">Parameter.uncertainty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.internal"><code class="docutils literal notranslate"><span class="pre">Parameter.internal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_description"><code class="docutils literal notranslate"><span class="pre">Parameter.set_description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.add_data_source"><code class="docutils literal notranslate"><span class="pre">Parameter.add_data_source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_bounds"><code class="docutils literal notranslate"><span class="pre">Parameter.set_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_uncertainty"><code class="docutils literal notranslate"><span class="pre">Parameter.set_uncertainty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_internal"><code class="docutils literal notranslate"><span class="pre">Parameter.set_internal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.set_external"><code class="docutils literal notranslate"><span class="pre">Parameter.set_external()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_description"><code class="docutils literal notranslate"><span class="pre">Parameter.get_description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_data_sources"><code class="docutils literal notranslate"><span class="pre">Parameter.get_data_sources()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_bounds"><code class="docutils literal notranslate"><span class="pre">Parameter.get_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.get_uncertainty"><code class="docutils literal notranslate"><span class="pre">Parameter.get_uncertainty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.is_internal"><code class="docutils literal notranslate"><span class="pre">Parameter.is_internal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.to_dict"><code class="docutils literal notranslate"><span class="pre">Parameter.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.to_series"><code class="docutils literal notranslate"><span class="pre">Parameter.to_series()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">Parameter.add_data_source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Parameter.add_to_model"><code class="docutils literal notranslate"><span class="pre">Parameter.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">Parameter.get_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">Parameter.get_data_sources()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">Parameter.get_description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24"><code class="docutils literal notranslate"><span class="pre">Parameter.get_uncertainty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25"><code class="docutils literal notranslate"><span class="pre">Parameter.is_internal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26"><code class="docutils literal notranslate"><span class="pre">Parameter.set_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27"><code class="docutils literal notranslate"><span class="pre">Parameter.set_description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28"><code class="docutils literal notranslate"><span class="pre">Parameter.set_external()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29"><code class="docutils literal notranslate"><span class="pre">Parameter.set_internal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30"><code class="docutils literal notranslate"><span class="pre">Parameter.set_uncertainty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31"><code class="docutils literal notranslate"><span class="pre">Parameter.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32"><code class="docutils literal notranslate"><span class="pre">Parameter.to_series()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.parameters.Scenario"><code class="docutils literal notranslate"><span class="pre">Scenario</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.name"><code class="docutils literal notranslate"><span class="pre">Scenario.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.description"><code class="docutils literal notranslate"><span class="pre">Scenario.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.parameters"><code class="docutils literal notranslate"><span class="pre">Scenario.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.set_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.set_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.set_description"><code class="docutils literal notranslate"><span class="pre">Scenario.set_description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.get_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.has_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.has_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.remove_parameter"><code class="docutils literal notranslate"><span class="pre">Scenario.remove_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.get_all_parameters"><code class="docutils literal notranslate"><span class="pre">Scenario.get_all_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.clear_parameters"><code class="docutils literal notranslate"><span class="pre">Scenario.clear_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.to_dict"><code class="docutils literal notranslate"><span class="pre">Scenario.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.to_series"><code class="docutils literal notranslate"><span class="pre">Scenario.to_series()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.parameters.Scenario.add_to_model"><code class="docutils literal notranslate"><span class="pre">Scenario.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33"><code class="docutils literal notranslate"><span class="pre">Scenario.clear_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34"><code class="docutils literal notranslate"><span class="pre">Scenario.get_all_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35"><code class="docutils literal notranslate"><span class="pre">Scenario.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36"><code class="docutils literal notranslate"><span class="pre">Scenario.has_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id37"><code class="docutils literal notranslate"><span class="pre">Scenario.remove_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38"><code class="docutils literal notranslate"><span class="pre">Scenario.set_description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39"><code class="docutils literal notranslate"><span class="pre">Scenario.set_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40"><code class="docutils literal notranslate"><span class="pre">Scenario.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id41"><code class="docutils literal notranslate"><span class="pre">Scenario.to_series()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-futuram.classes">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-futuram.classes.processes">futuram.classes.processes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#futuram.classes.processes.Process"><code class="docutils literal notranslate"><span class="pre">Process</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.name"><code class="docutils literal notranslate"><span class="pre">Process.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.description"><code class="docutils literal notranslate"><span class="pre">Process.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.tags"><code class="docutils literal notranslate"><span class="pre">Process.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.WS"><code class="docutils literal notranslate"><span class="pre">Process.WS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.inputs"><code class="docutils literal notranslate"><span class="pre">Process.inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.outputs"><code class="docutils literal notranslate"><span class="pre">Process.outputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.parameters"><code class="docutils literal notranslate"><span class="pre">Process.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.add_input"><code class="docutils literal notranslate"><span class="pre">Process.add_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.add_output"><code class="docutils literal notranslate"><span class="pre">Process.add_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.add_parameter"><code class="docutils literal notranslate"><span class="pre">Process.add_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.add_to_model"><code class="docutils literal notranslate"><span class="pre">Process.add_to_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.add_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Process.add_transfer_coefficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.add_transform_flow"><code class="docutils literal notranslate"><span class="pre">Process.add_transform_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.clear_inputs"><code class="docutils literal notranslate"><span class="pre">Process.clear_inputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.clear_outputs"><code class="docutils literal notranslate"><span class="pre">Process.clear_outputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.get_total_input_flow"><code class="docutils literal notranslate"><span class="pre">Process.get_total_input_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.get_total_output_flow"><code class="docutils literal notranslate"><span class="pre">Process.get_total_output_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.has_input"><code class="docutils literal notranslate"><span class="pre">Process.has_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.has_output"><code class="docutils literal notranslate"><span class="pre">Process.has_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.has_tag"><code class="docutils literal notranslate"><span class="pre">Process.has_tag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.input_table"><code class="docutils literal notranslate"><span class="pre">Process.input_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.make_flowchart"><code class="docutils literal notranslate"><span class="pre">Process.make_flowchart()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.output_table"><code class="docutils literal notranslate"><span class="pre">Process.output_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.print_flows"><code class="docutils literal notranslate"><span class="pre">Process.print_flows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.print_table"><code class="docutils literal notranslate"><span class="pre">Process.print_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.print_transfer_coefficients"><code class="docutils literal notranslate"><span class="pre">Process.print_transfer_coefficients()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.remove_input"><code class="docutils literal notranslate"><span class="pre">Process.remove_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.remove_output"><code class="docutils literal notranslate"><span class="pre">Process.remove_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.remove_parameter"><code class="docutils literal notranslate"><span class="pre">Process.remove_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.classes.processes.Process.to_dict"><code class="docutils literal notranslate"><span class="pre">Process.to_dict()</span></code></a></li>
 </ul>
 </li>
 </ul>
-</div>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-futuram.classes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="futuram.utils.html">futuram.utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="futuram.utils.html#utilities">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="futuram.visualisation.html">futuram.visualisation package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="futuram.visualisation.html#visualisation">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Code documentation</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -344,6 +355,30 @@
              
   <section id="futuram-classes-package">
 <h1>futuram.classes package<a class="headerlink" href="#futuram-classes-package" title="Permalink to this heading"></a></h1>
+</section>
+<section id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This package contains the classes used to define the objects in the model.</p>
+<p>These classes are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#futuram.classes.model.Model" title="futuram.classes.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.model.Model</span></code></a> (this is the main class and can contain all the other classes)</p></li>
+<li><p><a class="reference internal" href="#futuram.classes.processes.Process" title="futuram.classes.processes.Process"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.processes.Process</span></code></a> (these are inserted to the class ‘Model’)</p></li>
+<li><p><a class="reference internal" href="#futuram.classes.flows.Flow" title="futuram.classes.flows.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.flows.Flow</span></code></a> (these are inserted to the class ‘Process’)</p></li>
+<li><p><a class="reference internal" href="#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.matter.Matter</span></code></a> (these are inserted to the class ‘Flow’)</p></li>
+<li><p><a class="reference internal" href="#futuram.classes.parameters.Parameter" title="futuram.classes.parameters.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.parameters.Parameter</span></code></a> (these can be act on all the other classes)</p></li>
+</ul>
+<p>The class ‘Matter’ is a superclass with the following subclasses:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#futuram.classes.matter.Product" title="futuram.classes.matter.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.matter.Product</span></code></a></p></li>
+<li><p><a class="reference internal" href="#futuram.classes.matter.Component" title="futuram.classes.matter.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.matter.Component</span></code></a></p></li>
+<li><p><a class="reference internal" href="#futuram.classes.matter.Material" title="futuram.classes.matter.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.matter.Material</span></code></a></p></li>
+<li><p><a class="reference internal" href="#futuram.classes.matter.Compound" title="futuram.classes.matter.Compound"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.matter.Compound</span></code></a></p></li>
+<li><p><a class="reference internal" href="#futuram.classes.matter.Element" title="futuram.classes.matter.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">futuram.classes.matter.Element</span></code></a></p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/matter.png"><img alt="_images/matter.png" class="align-center" src="_images/matter.png" style="width: 800px;" /></a>
+</section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
@@ -1418,6 +1453,20 @@ With the following structure:
 <dt class="sig sig-object py" id="id9">
 <span class="sig-name descname"><span class="pre">add_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.model.Model.calculate_flows">
+<span class="sig-name descname"><span class="pre">calculate_flows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.calculate_flows" title="Permalink to this definition"></a></dt>
+<dd><p>calculates the flows amounts iteratively in the model
+using the transfer coefficients, the composition of the flows
+and the input flows to the model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.model.Model.export_model">
+<span class="sig-name descname"><span class="pre">export_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.export_model" title="Permalink to this definition"></a></dt>
+<dd><p>Exports the model as a json or pickle file</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id10">
@@ -2616,7 +2665,10 @@ it uses the function from the visualisation module.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup.html" class="btn btn-neutral float-left" title="Setup and usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="futuram.utils.html" class="btn btn-neutral float-right" title="futuram.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

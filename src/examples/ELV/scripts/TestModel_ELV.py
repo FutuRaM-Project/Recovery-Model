@@ -1,24 +1,26 @@
-'''
-TestModel_ELV.py
+# '''
+# TestModel_ELV.py
 
-This is a test script to import dummy ELV data and 
-run the model.
+# This is a test script to import dummy ELV data and 
+# run the model.
 
-Steps:
-    1. Import the main package for the FutuRaM recovery model
-    2. Create the model object
-    3. Import matter objects
-    4. Import process objects
-    5. Import flows
-    6. Import transfer coefficients
-    7. Validate the model
-    8. Calculate the quantities of flows in the model
-    9. Visualise the model
-    10. The end
+# Steps:
+#     1. Import the main package for the FutuRaM recovery model
+#     2. Create the model object
+#     3. Import matter objects
+#     4. Import process objects
+#     5. Import flows
+#     6. Import transfer coefficients
+#     7. Validate the model
+#     8. Calculate the quantities of flows in the model
+#     9. Visualise the model
+#     10. The end
 
-Dependencies:
-    futuram
-'''
+# Dependencies:
+#     futuram
+#     all the requirements listed in the requirements.txt file
+
+# '''
 
 # %% Import the main package for the FutuRaM recovery model
 # (other packages are imported by the subpackages and their modules)
