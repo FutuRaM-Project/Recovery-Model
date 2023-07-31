@@ -149,13 +149,11 @@ f.utils.export_object(model, file_format='json')
 # Import the model object from a pickle file
 model_from_pickle = f.utils.import_object()
 
-# Import the model object from a json file
-model_from_json = f.utils.import_object("../export/TestModel_ELV.json")
 
 # %% COMPARE THE TWO MODEL OBJECTS
 #TODO: testing the import export functions (probably still needs work)
 # Compare the two model objects
-model_from_pickle.compare(model_from_json)
+model_from_pickle == model
 
 # %% THE END
 print(f"\n\n{'='*60}\n\t {'FIN '*10} \n{'='*60}\n")
