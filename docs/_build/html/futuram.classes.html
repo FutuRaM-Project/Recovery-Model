@@ -323,10 +323,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="futuram.utils.html">futuram.utils package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="futuram.utils.html#utilities">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="futuram.visualisation.html">futuram.visualisation package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="futuram.visualisation.html#visualisation">Visualisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
         </div>
@@ -738,7 +737,8 @@ linked processes are valid and in the model</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Compound.add_to_model">
 <span class="sig-name descname"><span class="pre">add_to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.add_to_model" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Adds the matter object to the model object.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Compound.calculate_mass_fractions">
@@ -805,7 +805,8 @@ linked processes are valid and in the model</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Compound.print_formula">
 <span class="sig-name descname"><span class="pre">print_formula</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.print_formula" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Prints the formula of the compound.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Compound.to_dict">
@@ -860,7 +861,8 @@ linked processes are valid and in the model</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Element.add_to_model">
 <span class="sig-name descname"><span class="pre">add_to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element.add_to_model" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Adds the matter object to the model object.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Element.get_symbol">
@@ -871,16 +873,7 @@ linked processes are valid and in the model</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Element.to_dict">
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element.to_dict" title="Permalink to this definition"></a></dt>
-<dd><p>Makes a dictionary of the matter object.
-With the following structure:
-{</p>
-<blockquote>
-<div><p>‘Name’: str,
-‘Tags’: list,
-‘Physical/chemical attributes’: dict,
-‘Economic attributes’: dict,</p>
-</div></blockquote>
-<p>}</p>
+<dd><p>Makes a dictionary of the element object.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -996,12 +989,14 @@ uncertainty : float between 0 and 1},</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Matter.add_tag">
 <span class="sig-name descname"><span class="pre">add_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.add_tag" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Adds a tag to the matter object’s tag list.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Matter.add_to_model">
 <span class="sig-name descname"><span class="pre">add_to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.add_to_model" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Adds the matter object to the model object.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="futuram.classes.matter.Matter.composition_expanded_to_json">
@@ -1026,14 +1021,12 @@ uncertainty : float between 0 and 1},</p>
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.to_dict" title="Permalink to this definition"></a></dt>
 <dd><p>Makes a dictionary of the matter object.
 With the following structure:
-{</p>
-<blockquote>
-<div><p>‘Name’: str,
+{
+‘Name’: str,
 ‘Tags’: list,
 ‘Physical/chemical attributes’: dict,
-‘Economic attributes’: dict,</p>
-</div></blockquote>
-<p>}</p>
+‘Economic attributes’: dict,
+}</p>
 </dd></dl>
 
 <dl class="py method">

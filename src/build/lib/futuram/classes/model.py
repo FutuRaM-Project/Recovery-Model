@@ -32,6 +32,7 @@ Dependencies:
     - random
 
 # TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.
+
 """
 import random
 # import json
@@ -42,6 +43,7 @@ from tabulate import tabulate
 from ..visualisation import make_flowchart, make_network
 from ..utils.solve_flows import calculate_output_flows
 from ..utils.object_import_export import export_object
+
 
 class Model:
     """
@@ -88,7 +90,6 @@ class Model:
         get_compound
         add_material
         get_material
-        add_component
         get_component
         add_product
         get_product
@@ -132,23 +133,24 @@ class Model:
     def export_model(self):
         """
         Exports the model as a json or pickle file
+
         """
-    
+
         export_object(self)
-    
-        
+
     def calculate_flows(self):
         '''
         calculates the flows amounts iteratively in the model
         using the transfer coefficients, the composition of the flows
         and the input flows to the model
+
         '''
         calculate_output_flows(self, self)
-
 
     def make_flowchart_model(self):
         """
         Create a flowchart for the whole model, showing all processes and their inputs and outputs
+
         """
         make_flowchart(self)
 
@@ -156,6 +158,7 @@ class Model:
         """
         Create a network of the processes in the model.
         Uses the networkx package to make a directed graph of the processes and flows in the model.
+
         """
         make_network(self)
 
@@ -178,6 +181,7 @@ class Model:
         """
         Returns a dictionary of all transfer coefficients in the model,\
               with keys in the format "ProcessName - TCName"
+
         """
         transfer_coefficients = {}
         for process in self.processes.values():
@@ -191,20 +195,27 @@ class Model:
     def print_transfer_coefficients(self):
         """
         Prints all of the transfer coefficients of the model in a nice table
+
         """
         self.get_transfer_coefficients()
         table = PrettyTable()
         table.title = f'There are {len(self.transfer_coefficients.values())} \
             transfer coefficients in model "{self.name}"'
-        table.field_names = [" Input", "Output", "Transfer coefficient", "Uncertainty"]
+        table.field_names = [" Input", "Output",
+                             "Transfer coefficient", "Uncertainty"]
         for tc in self.transfer_coefficients.values():
             tc_value = f'{tc["transfer_coefficient"]:.2f}'
-            table.add_row([tc["output"], tc["input"], tc_value, tc["uncertainty"]])
+            table.add_row([tc["output"], tc["input"],
+                          tc_value, tc["uncertainty"]])
 
         table.align = "l"
         print(table)
 
     def print_flows_by_process(self):
+        '''
+        Prints the flows in the model by process
+
+        '''
         print(
             f'\n{"="*60}\n\t  There are {len(self.processes.values())}\
                   flows in model {self.name}\n{"="*60}\n'
@@ -276,6 +287,7 @@ class Model:
     def print_matter(self):
         """
         prints the matter objects in the model
+
         """
         print(
             f'\n{"-"*60}\n\t There are {len(self.list_matter())} \
@@ -286,6 +298,7 @@ class Model:
     def print_matter_subclasses(self):
         """
         prints the matter subclasses in the model
+
         """
         table = PrettyTable()
         table.title = (
@@ -321,6 +334,12 @@ class Model:
         print(table)
 
     def get_flows(self):
+        """
+        Makes a dictionary of all flows in the model from the \
+        inputs and outputs of the processes
+
+        """
+
         flows = {}
         for process in self.processes.values():
             flows.update(process.inputs)
@@ -330,6 +349,11 @@ class Model:
         return self.flows
 
     def get_inputs(self):
+        ''' 
+        Finds the inputs to the model (i.e processes that don't have any inputs)
+
+        '''
+
         inputs = {}
         for process in self.processes.values():
             if not process.inputs.values():
@@ -340,6 +364,11 @@ class Model:
         return self.inputs
 
     def get_outputs(self):
+        '''
+        Gets the outputs from the model (i.e processes that don't have any outputs)
+
+        '''
+
         outputs = {}
         for process in self.processes.values():
             if not process.outputs.values():
@@ -355,6 +384,7 @@ class Model:
 
         Returns:
             Process: The random process.
+
         """
         random_process = random.choice(list(self.processes.values()))
 
@@ -366,6 +396,7 @@ class Model:
 
         Returns:
             Flow: The random flow.
+
         """
         random_process = self.random_process()
 
@@ -381,12 +412,18 @@ class Model:
         Returns:
             Element, Compound, Material, Component \
                 or Product: The random matter object.
+
         """
         random_matter = random.choice(list(self.matter.values()))
 
         return random_matter
 
     def add_parameter(self, parameter):
+        '''
+        Adds a parameter to the model
+
+        '''
+
         if type(parameter).__name__ == "Parameter":
             self.parameters[parameter.name] = parameter
         else:
@@ -395,24 +432,46 @@ class Model:
             )
 
     def add_scenario(self, scenario):
+        """
+        Adds a scenario to the model
+
+        """
+
         if type(scenario).__name__ == "Scenario":
             self.scenarios[scenario.name] = scenario
         else:
-            raise TypeError("Only objects of type Scenario can be added to scenarios.")
+            raise TypeError(
+                "Only objects of type Scenario can be added to scenarios.")
 
     def add_process(self, process):
+        '''
+        Adds a process to the model
+
+        '''
+
         if type(process).__name__ == "Process":
             self.processes[process.name] = process
         else:
-            raise TypeError("Only objects of type Process can be added to processes.")
+            raise TypeError(
+                "Only objects of type Process can be added to processes.")
 
     def add_flow(self, flow):
+        '''
+        Adds a flow to the model
+        
+        '''
+
         if type(flow).__name__ == "Flow":
             self.flows[flow.name] = flow
         else:
             raise TypeError("Only objects of type Flow can be added to flows.")
 
     def add_matter(self, matter):
+        ''' 
+        Adds matter objects to the model
+
+        '''
+
         if type(matter).__name__ == "Element":
             self.elements[matter.name] = matter
         elif type(matter).__name__ == "Compound":
@@ -429,24 +488,44 @@ class Model:
             )
 
     def add_element(self, element):
+        '''
+        Adds an element to the model object
+        
+        '''
+
         if type(element).__name__ == "Element":
             self.elements[element.name] = element
         else:
-            raise TypeError("Only objects of type Element can be added to elements.")
+            raise TypeError(
+                "Only objects of type Element can be added to elements.")
 
     def add_compound(self, compound):
+        '''
+        Adds a compound to the model object
+        
+        '''
         if type(compound).__name__ == "Compound":
             self.compounds[compound.name] = compound
         else:
-            raise TypeError("Only objects of type Compound can be added to compounds.")
+            raise TypeError(
+                "Only objects of type Compound can be added to compounds.")
 
     def add_material(self, material):
+        '''
+        Adds a material to the model object
+        
+        '''
         if type(material).__name__ == "Material":
             self.materials[material.name] = material
         else:
-            raise TypeError("Only objects of type Material can be added to materials.")
+            raise TypeError(
+                "Only objects of type Material can be added to materials.")
 
     def add_component(self, component):
+        '''
+        Adds a component to the model object
+
+        '''
         if type(component).__name__ == "Component":
             self.components[component.name] = component
         else:
@@ -455,49 +534,42 @@ class Model:
             )
 
     def add_product(self, product):
+        '''
+        Adds a product to the model object
+        
+        '''
         if type(product).__name__ == "Product":
             self.products[product.name] = product
         else:
-            raise TypeError("Only objects of type Product can be added to products.")
-
-    def get_parameter(self, parameter_name):
-        return self.parameters.get(parameter_name)
-
-    def get_scenario(self, scenario_name):
-        return self.scenarios.get(scenario_name)
-
-    def get_process(self, process_name):
-        return self.processes.get(process_name)
-
-    def get_flow(self, flow_name):
-        return self.flows.get(flow_name)
-
-    def get_element(self, element_name):
-        return self.elements.get(element_name)
-
-    def get_compound(self, compound_name):
-        return self.compounds.get(compound_name)
-
-    def get_material(self, material_name):
-        return self.materials.get(material_name)
-
-    def get_component(self, component_name):
-        return self.components.get(component_name)
-
-    def get_product(self, product_name):
-        return self.products.get(product_name)
+            raise TypeError(
+                "Only objects of type Product can be added to products.")
 
     def list_parameters(self):
+        '''
+        Lists the parameters in the model
+
+        '''
+
         parameter_names = list(self.parameters.keys())
         parameter_names.sort()
         print(parameter_names, sep="\n")
 
     def list_scenarios(self):
+        '''
+        Lists the scenarios in the model
+
+        '''
+
         scenario_names = list(self.scenarios.keys())
         scenario_names.sort()
         print(scenario_names, sep="\n")
 
     def print_processes(self):
+        '''
+        Prints a table of the processes in the model
+        
+        '''
+
         table = PrettyTable()
         table.title = f'Processes in "{self.name}"'
 
@@ -515,6 +587,11 @@ class Model:
         print(table)
 
     def print_flows(self):
+        '''
+        Prints a table of the flows in the model
+
+        '''
+
         table = PrettyTable()
         table.title = f'Flows in "{self.name}"'
         self.get_flows()
@@ -532,26 +609,49 @@ class Model:
         print(table)
 
     def list_elements(self):
+        '''
+        Makes a list of the elements in the model
+        '''
+
         element_names = list(self.elements.keys())
         element_names.sort()
         print(element_names, sep="\n")
 
     def list_compounds(self):
+        '''
+        Makes a list of the compounds in the model
+
+        '''
+
         compound_names = list(self.compounds.keys())
         compound_names.sort()
         print(compound_names, sep="\n")
 
     def list_materials(self):
+        '''
+        Prints a list of the materials in the model
+
+        '''
+
         material_names = list(self.materials.keys())
         material_names.sort()
         print(material_names, sep="\n")
 
     def list_components(self):
+        '''
+        Prints a list of the components in the model
+
+        '''
+
         component_names = list(self.components.keys())
         component_names.sort()
         print(component_names, sep="\n")
 
     def list_products(self):
+        '''
+        Prints a list of the products in the model
+
+        '''
         product_names = list(self.products.keys())
         product_names.sort()
         print(product_names)
@@ -559,7 +659,8 @@ class Model:
     def get_matter(self):
         """
         makes a dictionary of all matter in the model from the \
-            elements, compounds, materials, components and products
+        elements, compounds, materials, components and products
+
         """
         matter = {
             **self.elements,
@@ -572,7 +673,10 @@ class Model:
         return self.matter
 
     def list_matter(self):
-        """ """
+        """
+        Lists all matter in the model.
+
+        """
         self.get_matter()
         matter_names = list(self.matter.keys())
         matter_names.sort()
@@ -591,6 +695,7 @@ class Model:
 
         Returns:
             pd.DataFrame: A dataframe representing the model objects.
+
         """
         data = []
 
@@ -610,8 +715,8 @@ class Model:
             self.inputs,
             self.outputs,
             self.transfer_coefficients,
-        ]:            
-        
+        ]:
+
             if isinstance(model_object, dict):
                 for key, value in model_object.items():
                     data.append([key, value])
@@ -627,6 +732,7 @@ class Model:
 
         Args:
             filename (str): The name of the Excel file.
+
         """
         df = self.to_dataframe()
         df.to_excel(filename, index=False)
@@ -637,6 +743,7 @@ class Model:
 
         Args:
             filename (str): The name of the CSV file.
+
         """
         df = self.to_dataframe()
         df.to_csv(filename, index=False)
@@ -647,6 +754,7 @@ class Model:
 
         Args:
             filename (str): The name of the JSON file.
+
         """
         df = self.to_dataframe()
         df.to_json(filename, orient="records")
@@ -659,28 +767,33 @@ class Model:
             dict: A dictionary representing the model objects.
 
         """
+
         model_dict = {
-                    "name": self.name,
-                    "type": self.type,
-                    "parameters": self.parameters,
-                    "scenarios": self.scenarios,
-                    "processes": self.processes,
-                    "flows": self.flows,
-                    "elements": self.elements,
-                    "compounds": self.compounds,
-                    "materials": self.materials,
-                    "components": self.components,
-                    "products": self.products,
-                    "matter": self.matter,
-                    "inputs": self.inputs,
-                    "outputs": self.outputs,
-                    "transfer_coefficients": self.transfer_coefficients,
-                }
-        
+            "name": self.name,
+            "type": self.type,
+            "parameters": self.parameters,
+            "scenarios": self.scenarios,
+            "processes": self.processes,
+            "flows": self.flows,
+            "elements": self.elements,
+            "compounds": self.compounds,
+            "materials": self.materials,
+            "components": self.components,
+            "products": self.products,
+            "matter": self.matter,
+            "inputs": self.inputs,
+            "outputs": self.outputs,
+            "transfer_coefficients": self.transfer_coefficients,
+        }
+
         return model_dict
-    
 
     def list_parameter_attributes(self):
+        '''
+        Method to list the attributes of the parameters in the model
+        
+        '''
+
         print("Parameters:")
         for parameter_name, parameter in self.parameters.items():
             print(f"{parameter_name}: {parameter.value} {parameter.unit}")
@@ -690,6 +803,11 @@ class Model:
             print()
 
     def list_scenario_attributes(self):
+        '''
+        Method to list the attributes of the scenarios in the model
+        
+        '''
+
         print("Scenarios:")
         for scenario_name, scenario in self.scenarios.items():
             print(f"{scenario_name}:")
