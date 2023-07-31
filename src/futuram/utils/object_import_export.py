@@ -35,54 +35,69 @@ import pickle
 from datetime import datetime
 
 
-def import_object(filename):
-    '''
+def import_object(filename=None):
+    """
     This is a function to import a model object from file.
+    If there is no filename specified, it will import the latest file from the export folder.
 
     Usage example:
 
     TestModel_ELV = import('TestModel_ELV-20230707-1620.pkl')
-    '''
+    """
 
-    if not os.path.isfile(filename):
-        print(f'File not found: {filename}')
-        model_object = None
+    if filename is None:
+        export_dir = "../export/"
+        files = os.listdir(export_dir)
+        file_times = {}
 
-    else:
+        for file in files:
+            file_path = os.path.join(export_dir, file)
+            file_times[file] = os.path.getmtime(file_path)
+
+            # Find the file with the latest modification time
+            latest_file = max(file_times, key=file_times.get)
+
+            filename = os.path.join(export_dir, latest_file)
+
+    if os.path.isfile(filename):
         try:
-            if filename.endswith('.json'):
-                model_object = pickle.load(open(filename, 'rb'))
+            if filename.endswith(".json"):
+                model_object = pickle.load(open(filename, "rb"))
 
-            if filename.endswith('.pkl'):
-                model_object = pickle.load(open(filename, 'rb'))
+            if filename.endswith(".pkl"):
+                model_object = pickle.load(open(filename, "rb"))
+
+            print(f'\n\n{"="*90}\n\t Imported model object "{model_object.name}" from file: {filename}\n{"="*90}\n')
 
         except Exception as e:
-            print(f'Error loading file {filename}: {e}')
+            print(f"Error loading file {filename}: {e}")
+            model_object = None
+
+    
 
     return model_object
 
 
-def export_object(model_object, filename=None, file_format='pickle'):
+def export_object(model_object, filename=None, file_format="pickle"):
     """
     This is a wrapper function to export the model object to file.
 
     """
-    EXPORT_DIR = '../export/'
-    if not os.path.isdir(EXPORT_DIR):
-        os.mkdir(EXPORT_DIR)
+    export_dir = "../export/"
+    if not os.path.isdir(export_dir):
+        os.mkdir(export_dir)
 
     if filename is None:
-
         filename = f'{model_object.name}-{datetime.now().strftime("%Y%m%d_%H%M")}'
 
-    filename = os.path.join(EXPORT_DIR, filename)
+    filename = os.path.join(export_dir, filename)
 
-    if file_format == 'pickle':
-        filename = filename + '.pkl'
+    if file_format == "pickle":
+        filename = filename + ".pkl"
         export_to_pickle(model_object, filename)
 
-    elif file_format == 'json':
-        filename = filename + '.json'
+    elif file_format == "json":
+        filename = filename + ".json"
         export_to_json(model_object, filename)
 
     else:
@@ -91,7 +106,7 @@ def export_object(model_object, filename=None, file_format='pickle'):
 
 #! TODO: make this function, maybe we need to make a function to convert the model object to a fully to a dictionary first.
 def export_to_json(model_object, filename):
-    '''
+    """
     Exports the model object to a JSON file.
 
     Parameters
@@ -103,21 +118,20 @@ def export_to_json(model_object, filename):
         without the .json extension.
 
     Default filename is the object name and the current date and time. Default location is the export folder.
-    '''
+    """
 
-    model_json = model_object.to_json()
+    model_dict = model_object.to_dict()
 
     try:
-
-        json.dump(model_json, open(filename, 'w'))
+        json.dump(model_dict, open(filename, "w"))
         print(f'\n\n{"="*90}\n\t Exported model object to file: {filename}\n{"="*90}\n')
 
     except Exception as e:
-        print(f'Error exporting model object to file: {e}')
+        print(f"Error exporting model object to file: {e}")
 
 
 def export_to_pickle(model_object, filename):
-    '''
+    """
     Exports the model object to a pickle file.
 
     Parameters
@@ -130,14 +144,11 @@ def export_to_pickle(model_object, filename):
 
     Default filename is the object name and the current date and time. Default location is the export folder.
 
-    '''
+    """
 
     try:
-
-        pickle.dump(model_object, open(filename, 'wb'))
+        pickle.dump(model_object, open(filename, "wb"))
         print(f'\n\n{"="*90}\n\t Exported model object to file: {filename}\n{"="*90}\n')
 
     except Exception as e:
-        print(f'Error exporting model object to file: {e}')
-
-
+        print(f"Error exporting model object to file: {e}")
