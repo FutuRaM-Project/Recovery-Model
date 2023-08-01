@@ -1,0 +1,23 @@
+﻿futuram
+=======
+
+.. automodule:: futuram
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

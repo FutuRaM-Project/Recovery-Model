@@ -4,17 +4,17 @@ Utilities
 Description
 ------------
 
-The futuram.utils is a package of utility functions for the FutuRaM package.
+The futuram.utils is a package of utility functions for the FutuRaM package. 
 
-These are general functions that are not specific to any of the FutuRaM classes and can be used independently.
+These are general functions that are not specific to any of the FutuRaM classes and can be used independently. 
 They are used by the FutuRaM classes, but can also be used by the user to perform certain tasks.
 
-This includes functions to:
-* import data from csv and xlsx files and convert them to FutuRaM objects
-* split Excel files into CSV files
-* to validate FutuRaM models
-* import and export the objects
-* get random objects from the model for testing purposes
+This includes functions to: 
+* import data from csv and xlsx files and convert them to FutuRaM objects 
+* split Excel files into CSV files 
+* to validate FutuRaM models 
+* import and export the objects 
+* get random objects from the model for testing purposes 
 
 
 Submodules
