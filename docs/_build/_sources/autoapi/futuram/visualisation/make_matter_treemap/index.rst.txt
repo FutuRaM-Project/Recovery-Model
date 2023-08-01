@@ -1,0 +1,57 @@
+:py:mod:`futuram.visualisation.make_matter_treemap`
+===================================================
+
+.. py:module:: futuram.visualisation.make_matter_treemap
+
+.. autoapi-nested-parse::
+
+   make_matter_treemap.py
+
+   This module contains functions for creating treemaps of the matter in a model.
+
+   Functions:
+   - make_matter_treemap(data, name, level=0):  Makes a treemap of the matter in the model.
+   - prepare_treemap_data(data, parent_key='', level=0): Prepares the data for the treemap.
+
+   Dependencies:
+   - plotly
+
+   #! THIS ONE NEEDS WORK: THE NESTED DICTIONARIES SHOULD BE INSIDE OF #! THE OUTSIDE DICTIONARY IN THE BOXES. #! It would be also be good to have an option to choose the level of nesting to display.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   futuram.visualisation.make_matter_treemap.prepare_treemap_data
+   futuram.visualisation.make_matter_treemap.make_matter_treemap
+
+
+
+.. py:function:: prepare_treemap_data(data, parent_key='', level=0)
+
+   Prepares the data for the treemap.
+
+
+
+.. py:function:: make_matter_treemap(data, name, level=0)
+
+   Makes a treemap of the matter in the model.
+   Uses the plotly package to make a treemap of the matter composition at all levels in the model.
+
+   :param data: A dictionary of the matter composition at all levels in the model.
+   :type data: dict
+   :param name: The name of the model.
+   :type name: str
+   :param level: The level of nesting to display.
+   :type level: int
+
+   :returns: None
+
+

@@ -5,7 +5,7 @@ cd docs
 make html
 cd ..
 
-cp -R docs/ ../FutuRaM-Model-Docs/
+cp -R * ../FutuRaM-Model-Docs/
 cd ../FutuRaM-Model-Docs/docs
 make html
 

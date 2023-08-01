@@ -1,0 +1,967 @@
+:py:mod:`futuram.classes`
+=========================
+
+.. py:module:: futuram.classes
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   flows/index.rst
+   matter/index.rst
+   model/index.rst
+   parameters/index.rst
+   processes/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   futuram.classes.Process
+   futuram.classes.Model
+   futuram.classes.Element
+   futuram.classes.Compound
+   futuram.classes.Material
+   futuram.classes.Component
+   futuram.classes.Product
+   futuram.classes.Matter
+
+
+
+
+.. py:class:: Process(name)
+
+
+   A class representing a process that transforms input flows into output flows.
+
+   .. attribute:: name
+
+      The name of the process.
+
+      :type: str
+
+   .. attribute:: description
+
+      A description of the process.
+
+      :type: str
+
+   .. attribute:: tags
+
+      A list of tags associated with the process.
+
+      :type: list
+
+   .. attribute:: WS
+
+      A list of waste streams associated with the process.
+
+      :type: list
+
+   .. attribute:: inputs
+
+      A list of input flows to the process.
+
+      :type: list
+
+   .. attribute:: outputs
+
+      A list of output flows from the process.
+
+      :type: list
+
+   .. attribute:: parameters
+
+      A list of parameters associated with the process.
+
+      :type: list
+
+   .. py:method:: print_transfer_coefficients()
+
+      Prints the transfer coefficients of the process in a nice table
+
+
+   .. py:method:: print_flows()
+
+      Prints the input and output flows of the process in a nice table
+
+
+   .. py:method:: print_table()
+
+
+   .. py:method:: add_transfer_coefficient(flow_input, flow_output, transfer_coefficient, uncertainty)
+
+      Adds a transfer coefficient to the process.
+
+      :param input: The input flow.
+      :type input: str
+      :param output: The output flow.
+      :type output: str
+      :param transfer_coefficient: The transfer coefficient.
+      :type transfer_coefficient: float
+      :param uncertainty: The uncertainty of the transfer coefficient.
+      :type uncertainty: float
+
+
+   .. py:method:: add_to_model(model)
+
+
+   .. py:method:: add_input(flow)
+
+      Adds an input flow to the process.
+
+      :param flow: The input flow to add.
+      :type flow: Flow
+
+
+   .. py:method:: add_output(flow)
+
+      Adds an output flow to the process.
+
+      :param flow: The output flow to add.
+      :type flow: Flow
+
+
+   .. py:method:: remove_input(flow)
+
+      Removes an input flow from the process.
+
+      :param flow: The input flow to remove.
+      :type flow: Flow
+
+
+   .. py:method:: remove_output(flow)
+
+      Removes an output flow from the process.
+
+      :param flow: The output flow to remove.
+      :type flow: Flow
+
+
+   .. py:method:: clear_inputs()
+
+      Clears all input flows from the process.
+
+
+   .. py:method:: clear_outputs()
+
+      Clears all output flows from the process.
+
+
+   .. py:method:: get_total_input_flow()
+
+      Calculates the total input flow to the process.
+
+      :returns: The total input flow to the process.
+
+
+   .. py:method:: get_total_output_flow()
+
+      Calculates the total output flow from the process.
+
+      :returns: The total output flow from the process.
+
+
+   .. py:method:: add_transform_flow(flow, function)
+
+      Transforms an input flow and adds the resulting output flow to the process.
+
+      :param flow: The input flow to transform.
+      :type flow: Flow
+      :param function: The function to use for the transformation.
+      :type function: function
+
+
+   .. py:method:: has_input(flow)
+
+      Checks if an input flow is associated with the process.
+
+      :param flow: The input flow to check.
+      :type flow: Flow
+
+      :returns: True if the input flow is associated with the process, False otherwise.
+
+
+   .. py:method:: has_output(flow)
+
+      Checks if an output flow is associated with the process.
+
+      :param flow: The output flow to check.
+      :type flow: Flow
+
+      :returns: True if the output flow is associated with the process, False otherwise.
+
+
+   .. py:method:: has_tag(tag)
+
+      Checks if a tag is associated with the process.
+
+      :param tag: The tag to check.
+      :type tag: str
+
+      :returns: True if the tag is associated with the process, False otherwise.
+
+
+   .. py:method:: add_parameter(parameter)
+
+      Adds a parameter to the process.
+
+      :param parameter: The parameter to add.
+
+
+   .. py:method:: remove_parameter(parameter)
+
+      Removes a parameter from the process.
+
+      :param parameter: The parameter to remove.
+
+
+   .. py:method:: to_dict()
+
+      Converts the process to a dictionary.
+
+      :returns: A dictionary representation of the process.
+
+
+   .. py:method:: make_flowchart()
+
+      Creates an isolated process flow diagram for
+      the process, showing only the direct inputs and outputs.
+      This is only reversing the syntax really,
+      it uses the function from the visualisation module.
+
+
+   .. py:method:: output_table()
+
+      Creates a table of the output flows of the process.
+
+      :returns: A table of the output flows of the process.
+
+
+   .. py:method:: input_table()
+
+      Creates a table of the input flows of the process.
+
+      :returns: A table of the input flows of the process.
+
+
+
+.. py:class:: Model(name)
+
+
+   The Model class is the main class of the FutuRuM package.
+
+   The Model class contains all of the other classes,          and is the main object that is used to build a model.
+
+   .. attribute:: name
+
+      The name of the model.
+
+      :type: str
+
+   .. attribute:: type
+
+      The type of the model. This is always 'model'.
+
+      :type: str
+
+   .. attribute:: parameters
+
+      A dictionary of the parameters in the model.
+
+      :type: dict
+
+   .. attribute:: scenarios
+
+      A dictionary of the scenarios in the model.
+
+      :type: dict
+
+   .. attribute:: processes
+
+      A dictionary of the processes in the model.
+
+      :type: dict
+
+   .. attribute:: flows
+
+      A dictionary of the flows in the model.
+
+      :type: dict
+
+   .. attribute:: elements
+
+      A dictionary of the elements in the model.
+
+      :type: dict
+
+   .. attribute:: compounds
+
+      A dictionary of the compounds in the model.
+
+      :type: dict
+
+   .. attribute:: materials
+
+      A dictionary of the materials in the model.
+
+      :type: dict
+
+   .. attribute:: components
+
+      A dictionary of the components in the model.
+
+      :type: dict
+
+   .. attribute:: products
+
+      A dictionary of the products in the model.
+
+      :type: dict
+
+   .. attribute:: matter
+
+      A dictionary of all matter in the model.
+
+      :type: dict
+
+   .. attribute:: inputs
+
+      A dictionary of the inputs to the model.
+
+      :type: dict
+
+   .. attribute:: outputs
+
+      A dictionary of the outputs from the model.
+
+      :type: dict
+
+   .. attribute:: transfer_coefficients
+
+      A dictionary of the transfer coefficients in the model.
+
+      :type: dict
+
+   .. method:: add_parameter
+
+      
+
+   .. method:: get_parameter
+
+      
+
+   .. method:: add_scenario
+
+      
+
+   .. method:: get_scenario
+
+      
+
+   .. method:: add_process
+
+      
+
+   .. method:: get_process
+
+      
+
+   .. method:: add_flow
+
+      
+
+   .. method:: get_flow
+
+      
+
+   .. method:: add_element
+
+      
+
+   .. method:: get_element
+
+      
+
+   .. method:: add_compound
+
+      
+
+   .. method:: get_compound
+
+      
+
+   .. method:: add_material
+
+      
+
+   .. method:: get_material
+
+      
+
+   .. method:: add_component
+
+      
+
+   .. method:: get_component
+
+      
+
+   .. method:: add_product
+
+      
+
+   .. method:: get_product
+
+      
+
+   .. method:: add_input
+
+      
+
+   .. method:: get_input
+
+      
+
+   .. method:: add_output
+
+      
+
+   .. method:: get_output
+
+      
+
+   .. method:: add_transfer_coefficient
+
+      
+
+   .. method:: get_transfer_coefficient
+
+      
+
+   .. method:: expand_composition
+
+      
+
+   .. method:: get_matter
+
+      
+
+   .. method:: add_matter
+
+      
+      
+
+   Dependencies:
+       - pandas
+       - json
+       - prettytable
+       - random
+
+
+   .. py:method:: export_model()
+
+      Exports the model as a json or pickle file
+
+
+   .. py:method:: calculate_flows()
+
+      calculates the flows amounts iteratively in the model
+      using the transfer coefficients, the composition of the flows
+      and the input flows to the model
+
+
+   .. py:method:: make_flowchart_model()
+
+      Create a flowchart for the whole model, showing all processes and their inputs and outputs
+
+
+   .. py:method:: make_network()
+
+      Create a network of the processes in the model.
+      Uses the networkx package to make a directed graph of the processes and flows in the model.
+
+
+   .. py:method:: make_flowchart_processes()
+
+      Create isolated flowcharts for each process in the model,              showing only the process and its direct inputs and outputs
+
+
+   .. py:method:: get_transfer_coefficients()
+
+      Returns a dictionary of all transfer coefficients in the model,              with keys in the format "ProcessName - TCName"
+
+
+   .. py:method:: print_transfer_coefficients()
+
+      Prints all of the transfer coefficients of the model in a nice table
+
+
+   .. py:method:: print_flows_by_process()
+
+
+   .. py:method:: print_matter()
+
+      prints the matter objects in the model
+
+
+   .. py:method:: print_matter_subclasses()
+
+      prints the matter subclasses in the model
+
+
+   .. py:method:: get_flows()
+
+
+   .. py:method:: get_inputs()
+
+
+   .. py:method:: get_outputs()
+
+
+   .. py:method:: random_process()
+
+      Get a random process from the model.
+
+      :returns: The random process.
+      :rtype: Process
+
+
+   .. py:method:: random_flow()
+
+      Get a random flow from the model.
+
+      :returns: The random flow.
+      :rtype: Flow
+
+
+   .. py:method:: random_matter()
+
+      Get a random matter object from the model.
+
+      :returns: The random matter object.
+      :rtype: Element, Compound, Material, Component                 or Product
+
+
+   .. py:method:: add_parameter(parameter)
+
+
+   .. py:method:: add_scenario(scenario)
+
+
+   .. py:method:: add_process(process)
+
+
+   .. py:method:: add_flow(flow)
+
+
+   .. py:method:: add_matter(matter)
+
+
+   .. py:method:: add_element(element)
+
+
+   .. py:method:: add_compound(compound)
+
+
+   .. py:method:: add_material(material)
+
+
+   .. py:method:: add_component(component)
+
+
+   .. py:method:: add_product(product)
+
+
+   .. py:method:: get_parameter(parameter_name)
+
+
+   .. py:method:: get_scenario(scenario_name)
+
+
+   .. py:method:: get_process(process_name)
+
+
+   .. py:method:: get_flow(flow_name)
+
+
+   .. py:method:: get_element(element_name)
+
+
+   .. py:method:: get_compound(compound_name)
+
+
+   .. py:method:: get_material(material_name)
+
+
+   .. py:method:: get_component(component_name)
+
+
+   .. py:method:: get_product(product_name)
+
+
+   .. py:method:: list_parameters()
+
+
+   .. py:method:: list_scenarios()
+
+
+   .. py:method:: print_processes()
+
+
+   .. py:method:: print_flows()
+
+
+   .. py:method:: list_elements()
+
+
+   .. py:method:: list_compounds()
+
+
+   .. py:method:: list_materials()
+
+
+   .. py:method:: list_components()
+
+
+   .. py:method:: list_products()
+
+
+   .. py:method:: get_matter()
+
+      makes a dictionary of all matter in the model from the             elements, compounds, materials, components and products
+
+
+   .. py:method:: list_matter()
+
+
+   .. py:method:: to_dataframe()
+
+      Convert the model objects to a dataframe.
+
+      :returns: A dataframe representing the model objects.
+      :rtype: pd.DataFrame
+
+
+   .. py:method:: to_excel(filename)
+
+      Write the model objects to an Excel file.
+
+      :param filename: The name of the Excel file.
+      :type filename: str
+
+
+   .. py:method:: to_csv(filename)
+
+      Write the model objects to a CSV file.
+
+      :param filename: The name of the CSV file.
+      :type filename: str
+
+
+   .. py:method:: to_json(filename)
+
+      Write the model objects to a JSON file.
+
+      :param filename: The name of the JSON file.
+      :type filename: str
+
+
+   .. py:method:: to_dict()
+
+      Convert the model objects to a dictionary.
+
+      :returns: A dictionary representing the model objects.
+      :rtype: dict
+
+
+   .. py:method:: list_parameter_attributes()
+
+
+   .. py:method:: list_scenario_attributes()
+
+
+
+.. py:class:: Element(symbol)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents an element.
+   .. attribute:: - symbol
+
+      The symbol of the element.
+
+      :type: str
+
+   .. attribute:: - atomic_number
+
+      The atomic number of the element.
+
+      :type: int
+
+   .. attribute:: - atomic_mass
+
+      The atomic mass of the element.
+
+      :type: float
+
+   .. py:method:: get_symbol(symbol)
+
+      Checks if the composition is a dictionary or a             string and converts it to a dictionary if necessary.
+
+
+
+   .. py:method:: to_dict()
+
+      Makes a dictionary of the element object.
+
+
+
+   .. py:method:: to_series()
+
+      Converts the matter object dict to a pandas series.
+
+
+
+   .. py:method:: add_to_model(model)
+
+      Adds the matter object to the model object.
+
+
+
+
+.. py:class:: Compound(name, composition_molecular)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a compound.
+   .. attribute:: - formula
+
+      The chemical formula of the compound.
+
+   .. py:method:: print_formula()
+
+      Prints the formula of the compound.
+
+
+
+   .. py:method:: get_formula(composition_molecular)
+
+      Checks if the composition is a dictionary             or a string and converts it to a dictionary if necessary.
+
+
+
+   .. py:method:: formula_to_dict(formula)
+
+      Converts a chemical formula string to a dictionary of element symbols and counts.
+      :param formula: The chemical formula string.
+      :type formula: str
+
+      :returns: A dictionary of element symbols and counts.
+      :rtype: dict
+
+
+   .. py:method:: calculate_molecular_weight()
+
+      calculates the molecular weight of the compound
+
+
+
+   .. py:method:: calculate_molar_fractions()
+
+      calculates the molar fractions of the compound
+
+      :param molecular_weight: molecular weight of the compound
+      :type molecular_weight: float
+
+      :returns: **molar_fractions**
+      :rtype: dict
+
+
+   .. py:method:: calculate_mass_fractions()
+
+      calculates the mass fractions of the compound
+
+      :param molecular_weight: molecular weight of the compound
+      :type molecular_weight: float
+
+      :returns: **composition**
+      :rtype: dict
+
+
+   .. py:method:: to_dict()
+
+      Makes a dictionary of the compound object.
+
+
+
+   .. py:method:: to_series()
+
+      Converts the matter object dict to a pandas series.
+
+
+
+   .. py:method:: add_to_model(model)
+
+      Adds the matter object to the model object.
+
+
+
+
+.. py:class:: Material(name, composition)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a material made up of multiple composition.
+   .. attribute:: - composition
+
+      A dict of Component objects
+
+      :type: dict
+
+   .. attribute:: - matter_type
+
+      The type of matter, e.g. 'material'
+
+      :type: str
+
+
+.. py:class:: Component(name, composition)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a component of a material.
+   .. attribute:: - matter
+
+      A matter object representing the matter of the component.
+
+      :type: matter
+
+
+.. py:class:: Product(name, composition)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a product.
+   .. attribute:: - composition ()
+
+      A dictionary of matter objects              representing the composition of the product.
+
+
+.. py:class:: Matter(name)
+
+
+   A superclass that represents matter.
+   .. attribute:: - name
+
+      The name of the matter.
+
+      :type: str
+
+   .. attribute:: - EC
+
+      The EC number of the matter.
+
+      :type: str
+
+   .. attribute:: - composition
+
+      The composition of the matter.
+
+      :type: dict)(dict
+
+   .. attribute:: - attributes_physchem
+
+      A dictionary of physical/chemical attributes of the matter.
+
+      :type: dict
+
+   .. attribute:: - attributes_economic
+
+      A dictionary of economic attributes of the matter.
+
+      :type: dict
+
+   .. attribute:: The nested composition dictionary should be of the following structure
+
+      
+
+   {
+       name: {matter_type : string
+                mass_fraction : float between 0 and 1
+                uncertainty : float between 0 and 1},
+       name: {matter_type : string
+                   mass_fraction : float between 0 and 1
+                   uncertainty : float between 0 and 1},
+
+   }
+
+
+   .. py:method:: __repr__()
+
+      Return repr(self).
+
+
+   .. py:method:: add_to_model(model)
+
+      Adds the matter object to the model object.
+
+
+
+   .. py:method:: to_dict()
+
+      Makes a dictionary of the matter object.
+      With the following structure:
+      {
+      'Name': str,
+      'Tags': list,
+      'Physical/chemical attributes': dict,
+      'Economic attributes': dict,
+      }
+
+
+
+   .. py:method:: expand_composition()
+
+      Expands the composition of the matter to include the composition of its components.
+
+
+
+   .. py:method:: composition_expanded_to_json()
+
+      Converts the expanded composition to a json string.
+
+
+
+   .. py:method:: to_series()
+
+      Converts the matter object dict to a pandas series.
+
+
+
+   .. py:method:: add_tag(tag)
+
+      Adds a tag to the matter object's tag list.
+
+
+
+   .. py:method:: create_treemap()
+
+      Creates a treemap of the matter object.
+
+
+
+

@@ -1,0 +1,108 @@
+:py:mod:`futuram.visualisation.make_flowchart`
+==============================================
+
+.. py:module:: futuram.visualisation.make_flowchart
+
+.. autoapi-nested-parse::
+
+   make_flowchart.py
+
+   This module contains functions for creating flowcharts of processes and models.
+
+   Functions:
+   - make_flowchart(object):  This is a wrapper function that calls one of the subroutines.
+   - make_flowchart_process(process): Makes a flowchart of the process.
+   - make_flowchart_model(model): Makes a flowchart of the model.
+   - make_flowchart_matter(matter): Makes a flowchart of the matter.
+
+   #! TODO: not yet written
+
+   Dependencies:
+   - graphviz
+   - os
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   futuram.visualisation.make_flowchart.make_flowchart
+   futuram.visualisation.make_flowchart.make_flowchart_process
+   futuram.visualisation.make_flowchart.make_flowchart_model
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   futuram.visualisation.make_flowchart.DIR_FIGURES
+   futuram.visualisation.make_flowchart.DIR_FLOWCHARTS
+
+
+.. py:data:: DIR_FIGURES
+   :value: '../figures/'
+
+   
+
+.. py:data:: DIR_FLOWCHARTS
+
+   
+
+.. py:function:: make_flowchart(model_object)
+
+   Creates a flowchart for a model or a process object.
+   Depending on the type of object, the appropriate function is called.
+   Args:
+   object (object): The object to create the flowchart of.
+   Outputs:
+   A flowchart of the object in the figures folder. Formats: SVG, PDF, PNG and DOT.
+
+
+
+.. py:function:: make_flowchart_process(process)
+
+   Creates a flowchart for a process object.
+   Only considers the process itself and its direct inputs and outputs.
+
+   :param process: The process object to create the flowchart of.
+   :type process: Process
+
+   Outputs:
+       A flowchart of the process in the figures folder. Formats: SVG, PDF, PNG and DOT.
+
+
+.. py:function:: make_flowchart_model(model, tags=None, ws=None, level=None, name=None, description=None)
+
+   Creates a flowchart for a model object.
+   Considers all processes in the model and their inputs and outputs.
+   Args:
+   model (Model): The model object to create the flowchart of.
+
+   tags (list): A list of tags to filter the processes by. Default is None.
+
+   ws (str): The waste stream to filter the processes by. Default is None.
+
+   level (int): The transformation level to filter the processes by. Default is None.
+   (examples: 'market', 'component', 'material', 'compound', 'element')
+
+   name (str): The name of the process to filter by. Default is None.
+   (will catch all processes with the string in the name)
+
+   description (str): The description of the process to filter by. Default is None.
+   (will catch all processes with the string in the description)
+
+   Outputs:
+
+   A flowchart of the model in the figures folder.
+   Formats: SVG, PDF, PNG and DOT.
+
+
+

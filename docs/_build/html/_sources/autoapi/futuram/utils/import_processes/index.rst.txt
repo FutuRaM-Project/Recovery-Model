@@ -1,0 +1,42 @@
+:py:mod:`futuram.utils.import_processes`
+========================================
+
+.. py:module:: futuram.utils.import_processes
+
+.. autoapi-nested-parse::
+
+   import_processes.py
+
+   This module contains functions to import processes from
+   xlsx files to a model.
+
+   .. method:: import_processes_xlsx(filename, model)
+
+      
+      
+
+   Dependencies:
+       openpyxl
+
+   #! there is probably no reason to be dealing with xlsx files directly in the model, but this is likely how the data will arrive. We could also convert the xlsx files to csvs and import them that way.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   futuram.utils.import_processes.import_processes_xlsx
+
+
+
+.. py:function:: import_processes_xlsx(filename, model)
+
+   Import a xlsx file containing process data and create process objects for each row
+
+

@@ -1,0 +1,22 @@
+:py:mod:`futuram.utils.split_xlsx_to_csvs`
+==========================================
+
+.. py:module:: futuram.utils.split_xlsx_to_csvs
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   futuram.utils.split_xlsx_to_csvs.xlsx_to_csvs
+
+
+
+.. py:function:: xlsx_to_csvs(filename)
+
+

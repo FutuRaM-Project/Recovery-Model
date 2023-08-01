@@ -17,12 +17,11 @@ author = 'S.C.McDowall'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    'sphinx.ext.autodoc', 
-    'sphinx.ext.napoleon',    
-    'sphinx.ext.duration',
-    'sphinx.ext.doctest',
-    'sphinx.ext.autosummary']
+extensions = ['sphinx.ext.autodoc','sphinx.ext.napoleon','sphinx.ext.duration','sphinx.ext.doctest','sphinx.ext.autosummary',
+    'autoapi.extension'
+]
+
+autoapi_dirs = ['../src/futuram']
 
 source_suffix = ['.rst']
 templates_path = ['_templates']

@@ -1,0 +1,321 @@
+:py:mod:`futuram.classes.matter`
+================================
+
+.. py:module:: futuram.classes.matter
+
+.. autoapi-nested-parse::
+
+   matter.py
+
+   This module contains classes for representing matter.
+
+   Classes:
+   - Matter: A superclass that represents matter.
+   - Element: A subclass that represents an element.
+   - Compound: A subclass that represents a compound.
+   - Material: A subclass that represents a material made up of multiple composition.
+   - Component: A subclass that represents a component of a material.
+   - Product: A subclass that represents a product.
+
+   Dependencies:
+   - periodictable
+   - pandas
+   - json
+   - re
+   - ../visualisation/make_matter_treemap.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   futuram.classes.matter.Matter
+   futuram.classes.matter.Element
+   futuram.classes.matter.Compound
+   futuram.classes.matter.Material
+   futuram.classes.matter.Component
+   futuram.classes.matter.Product
+
+
+
+
+.. py:class:: Matter(name)
+
+
+   A superclass that represents matter.
+   .. attribute:: - name
+
+      The name of the matter.
+
+      :type: str
+
+   .. attribute:: - EC
+
+      The EC number of the matter.
+
+      :type: str
+
+   .. attribute:: - composition
+
+      The composition of the matter.
+
+      :type: dict)(dict
+
+   .. attribute:: - attributes_physchem
+
+      A dictionary of physical/chemical attributes of the matter.
+
+      :type: dict
+
+   .. attribute:: - attributes_economic
+
+      A dictionary of economic attributes of the matter.
+
+      :type: dict
+
+   .. attribute:: The nested composition dictionary should be of the following structure
+
+      
+
+   {
+       name: {matter_type : string
+                mass_fraction : float between 0 and 1
+                uncertainty : float between 0 and 1},
+       name: {matter_type : string
+                   mass_fraction : float between 0 and 1
+                   uncertainty : float between 0 and 1},
+
+   }
+
+
+   .. py:method:: __repr__()
+
+      Return repr(self).
+
+
+   .. py:method:: add_to_model(model)
+
+      Adds the matter object to the model object.
+
+
+
+   .. py:method:: to_dict()
+
+      Makes a dictionary of the matter object.
+      With the following structure:
+      {
+      'Name': str,
+      'Tags': list,
+      'Physical/chemical attributes': dict,
+      'Economic attributes': dict,
+      }
+
+
+
+   .. py:method:: expand_composition()
+
+      Expands the composition of the matter to include the composition of its components.
+
+
+
+   .. py:method:: composition_expanded_to_json()
+
+      Converts the expanded composition to a json string.
+
+
+
+   .. py:method:: to_series()
+
+      Converts the matter object dict to a pandas series.
+
+
+
+   .. py:method:: add_tag(tag)
+
+      Adds a tag to the matter object's tag list.
+
+
+
+   .. py:method:: create_treemap()
+
+      Creates a treemap of the matter object.
+
+
+
+
+.. py:class:: Element(symbol)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents an element.
+   .. attribute:: - symbol
+
+      The symbol of the element.
+
+      :type: str
+
+   .. attribute:: - atomic_number
+
+      The atomic number of the element.
+
+      :type: int
+
+   .. attribute:: - atomic_mass
+
+      The atomic mass of the element.
+
+      :type: float
+
+   .. py:method:: get_symbol(symbol)
+
+      Checks if the composition is a dictionary or a             string and converts it to a dictionary if necessary.
+
+
+
+   .. py:method:: to_dict()
+
+      Makes a dictionary of the element object.
+
+
+
+   .. py:method:: to_series()
+
+      Converts the matter object dict to a pandas series.
+
+
+
+   .. py:method:: add_to_model(model)
+
+      Adds the matter object to the model object.
+
+
+
+
+.. py:class:: Compound(name, composition_molecular)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a compound.
+   .. attribute:: - formula
+
+      The chemical formula of the compound.
+
+   .. py:method:: print_formula()
+
+      Prints the formula of the compound.
+
+
+
+   .. py:method:: get_formula(composition_molecular)
+
+      Checks if the composition is a dictionary             or a string and converts it to a dictionary if necessary.
+
+
+
+   .. py:method:: formula_to_dict(formula)
+
+      Converts a chemical formula string to a dictionary of element symbols and counts.
+      :param formula: The chemical formula string.
+      :type formula: str
+
+      :returns: A dictionary of element symbols and counts.
+      :rtype: dict
+
+
+   .. py:method:: calculate_molecular_weight()
+
+      calculates the molecular weight of the compound
+
+
+
+   .. py:method:: calculate_molar_fractions()
+
+      calculates the molar fractions of the compound
+
+      :param molecular_weight: molecular weight of the compound
+      :type molecular_weight: float
+
+      :returns: **molar_fractions**
+      :rtype: dict
+
+
+   .. py:method:: calculate_mass_fractions()
+
+      calculates the mass fractions of the compound
+
+      :param molecular_weight: molecular weight of the compound
+      :type molecular_weight: float
+
+      :returns: **composition**
+      :rtype: dict
+
+
+   .. py:method:: to_dict()
+
+      Makes a dictionary of the compound object.
+
+
+
+   .. py:method:: to_series()
+
+      Converts the matter object dict to a pandas series.
+
+
+
+   .. py:method:: add_to_model(model)
+
+      Adds the matter object to the model object.
+
+
+
+
+.. py:class:: Material(name, composition)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a material made up of multiple composition.
+   .. attribute:: - composition
+
+      A dict of Component objects
+
+      :type: dict
+
+   .. attribute:: - matter_type
+
+      The type of matter, e.g. 'material'
+
+      :type: str
+
+
+.. py:class:: Component(name, composition)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a component of a material.
+   .. attribute:: - matter
+
+      A matter object representing the matter of the component.
+
+      :type: matter
+
+
+.. py:class:: Product(name, composition)
+
+
+   Bases: :py:obj:`Matter`
+
+   A subclass that represents a product.
+   .. attribute:: - composition ()
+
+      A dictionary of matter objects              representing the composition of the product.
+
+

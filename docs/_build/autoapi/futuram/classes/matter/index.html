@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>futuram.classes.matter &mdash; FutuRaM - SRM recovery modelling  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="futuram.classes.model" href="../model/index.html" />
+    <link rel="prev" title="futuram.classes.flows" href="../flows/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            FutuRaM - SRM recovery modelling
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html">Setup and usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../futuram.html">FutuRaM package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.classes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../visualisation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.visualisation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FutuRaM - SRM recovery modelling</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.classes</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.classes.matter</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/futuram/classes/matter/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-futuram.classes.matter">
+<span id="futuram-classes-matter"></span><h1><a class="reference internal" href="../../../../futuram.classes.html#module-futuram.classes.matter" title="futuram.classes.matter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.classes.matter</span></code></a><a class="headerlink" href="#module-futuram.classes.matter" title="Permalink to this heading"></a></h1>
+<p>matter.py</p>
+<p>This module contains classes for representing matter.</p>
+<p>Classes:
+- Matter: A superclass that represents matter.
+- Element: A subclass that represents an element.
+- Compound: A subclass that represents a compound.
+- Material: A subclass that represents a material made up of multiple composition.
+- Component: A subclass that represents a component of a material.
+- Product: A subclass that represents a product.</p>
+<p>Dependencies:
+- periodictable
+- pandas
+- json
+- re
+- ../visualisation/make_matter_treemap.py</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matter</span></code></a></p></td>
+<td><p>A superclass that represents matter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Element" title="futuram.classes.matter.Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Element</span></code></a></p></td>
+<td><p>A subclass that represents an element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Compound" title="futuram.classes.matter.Compound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Compound</span></code></a></p></td>
+<td><p>A subclass that represents a compound.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Material" title="futuram.classes.matter.Material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Material</span></code></a></p></td>
+<td><p>A subclass that represents a material made up of multiple composition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Component" title="futuram.classes.matter.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Component</span></code></a></p></td>
+<td><p>A subclass that represents a component of a material.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Product" title="futuram.classes.matter.Product"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Product</span></code></a></p></td>
+<td><p>A subclass that represents a product.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">futuram.classes.matter.</span></span><span class="sig-name descname"><span class="pre">Matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter" title="Permalink to this definition"></a></dt>
+<dd><p>A superclass that represents matter.
+.. attribute:: - name</p>
+<blockquote>
+<div><p>The name of the matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">EC</span></span></dt>
+<dd><p>The EC number of the matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">composition</span></span></dt>
+<dd><p>The composition of the matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict)(dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">attributes_physchem</span></span></dt>
+<dd><p>A dictionary of physical/chemical attributes of the matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">attributes_economic</span></span></dt>
+<dd><p>A dictionary of economic attributes of the matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">The</span> <span class="pre">nested</span> <span class="pre">composition</span> <span class="pre">dictionary</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">structure</span></span></dt>
+<dd></dd></dl>
+
+<dl class="simple">
+<dt>{</dt><dd><dl class="simple">
+<dt>name: {matter_type<span class="classifier">string</span></dt><dd><p>mass_fraction : float between 0 and 1
+uncertainty : float between 0 and 1},</p>
+</dd>
+<dt>name: {matter_type<span class="classifier">string</span></dt><dd><p>mass_fraction : float between 0 and 1
+uncertainty : float between 0 and 1},</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.add_to_model">
+<span class="sig-name descname"><span class="pre">add_to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.add_to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Adds the matter object to the model object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a dictionary of the matter object.
+With the following structure:
+{
+‘Name’: str,
+‘Tags’: list,
+‘Physical/chemical attributes’: dict,
+‘Economic attributes’: dict,
+}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.expand_composition">
+<span class="sig-name descname"><span class="pre">expand_composition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.expand_composition" title="Permalink to this definition"></a></dt>
+<dd><p>Expands the composition of the matter to include the composition of its components.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.composition_expanded_to_json">
+<span class="sig-name descname"><span class="pre">composition_expanded_to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.composition_expanded_to_json" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the expanded composition to a json string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.to_series">
+<span class="sig-name descname"><span class="pre">to_series</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.to_series" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the matter object dict to a pandas series.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.add_tag">
+<span class="sig-name descname"><span class="pre">add_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.add_tag" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a tag to the matter object’s tag list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Matter.create_treemap">
+<span class="sig-name descname"><span class="pre">create_treemap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Matter.create_treemap" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a treemap of the matter object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="futuram.classes.matter.Element">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">futuram.classes.matter.</span></span><span class="sig-name descname"><span class="pre">Element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matter</span></code></a></p>
+<p>A subclass that represents an element.
+.. attribute:: - symbol</p>
+<blockquote>
+<div><p>The symbol of the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">atomic_number</span></span></dt>
+<dd><p>The atomic number of the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">atomic_mass</span></span></dt>
+<dd><p>The atomic mass of the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Element.get_symbol">
+<span class="sig-name descname"><span class="pre">get_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element.get_symbol" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the composition is a dictionary or a             string and converts it to a dictionary if necessary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Element.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a dictionary of the element object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Element.to_series">
+<span class="sig-name descname"><span class="pre">to_series</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element.to_series" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the matter object dict to a pandas series.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Element.add_to_model">
+<span class="sig-name descname"><span class="pre">add_to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Element.add_to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Adds the matter object to the model object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">futuram.classes.matter.</span></span><span class="sig-name descname"><span class="pre">Compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composition_molecular</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matter</span></code></a></p>
+<p>A subclass that represents a compound.
+.. attribute:: - formula</p>
+<blockquote>
+<div><p>The chemical formula of the compound.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.print_formula">
+<span class="sig-name descname"><span class="pre">print_formula</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.print_formula" title="Permalink to this definition"></a></dt>
+<dd><p>Prints the formula of the compound.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.get_formula">
+<span class="sig-name descname"><span class="pre">get_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">composition_molecular</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.get_formula" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the composition is a dictionary             or a string and converts it to a dictionary if necessary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.formula_to_dict">
+<span class="sig-name descname"><span class="pre">formula_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.formula_to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a chemical formula string to a dictionary of element symbols and counts.
+:param formula: The chemical formula string.
+:type formula: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary of element symbols and counts.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.calculate_molecular_weight">
+<span class="sig-name descname"><span class="pre">calculate_molecular_weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.calculate_molecular_weight" title="Permalink to this definition"></a></dt>
+<dd><p>calculates the molecular weight of the compound</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.calculate_molar_fractions">
+<span class="sig-name descname"><span class="pre">calculate_molar_fractions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.calculate_molar_fractions" title="Permalink to this definition"></a></dt>
+<dd><p>calculates the molar fractions of the compound</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>molecular_weight</strong> (<em>float</em>) – molecular weight of the compound</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>molar_fractions</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.calculate_mass_fractions">
+<span class="sig-name descname"><span class="pre">calculate_mass_fractions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.calculate_mass_fractions" title="Permalink to this definition"></a></dt>
+<dd><p>calculates the mass fractions of the compound</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>molecular_weight</strong> (<em>float</em>) – molecular weight of the compound</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>composition</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a dictionary of the compound object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.to_series">
+<span class="sig-name descname"><span class="pre">to_series</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.to_series" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the matter object dict to a pandas series.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="futuram.classes.matter.Compound.add_to_model">
+<span class="sig-name descname"><span class="pre">add_to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Compound.add_to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Adds the matter object to the model object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="futuram.classes.matter.Material">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">futuram.classes.matter.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Material" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matter</span></code></a></p>
+<p>A subclass that represents a material made up of multiple composition.
+.. attribute:: - composition</p>
+<blockquote>
+<div><p>A dict of Component objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">matter_type</span></span></dt>
+<dd><p>The type of matter, e.g. ‘material’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="futuram.classes.matter.Component">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">futuram.classes.matter.</span></span><span class="sig-name descname"><span class="pre">Component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Component" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matter</span></code></a></p>
+<p>A subclass that represents a component of a material.
+.. attribute:: - matter</p>
+<blockquote>
+<div><p>A matter object representing the matter of the component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matter</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="futuram.classes.matter.Product">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">futuram.classes.matter.</span></span><span class="sig-name descname"><span class="pre">Product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.matter.Product" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.matter.Matter" title="futuram.classes.matter.Matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matter</span></code></a></p>
+<p>A subclass that represents a product.
+.. attribute:: - composition ()</p>
+<blockquote>
+<div><p>A dictionary of matter objects              representing the composition of the product.</p>
+</div></blockquote>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../flows/index.html" class="btn btn-neutral float-left" title="futuram.classes.flows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../model/index.html" class="btn btn-neutral float-right" title="futuram.classes.model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+:py:mod:`futuram.utils.import_transfercoefficients`
+===================================================
+
+.. py:module:: futuram.utils.import_transfercoefficients
+
+.. autoapi-nested-parse::
+
+   import_transfercoefficients.py
+
+   This module contains functions to import transfer coefficients from
+   xlsx files to a model.
+
+   .. method:: import_transfercoefficients_xlsx(filename, model)
+
+      
+      
+
+   Dependencies:
+       openpyxl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   futuram.utils.import_transfercoefficients.import_transfercoefficients_xlsx
+
+
+
+.. py:function:: import_transfercoefficients_xlsx(filename, model)
+
+   Import a xlsx file containing transfer coefficient data and add them to the model
+   :param filename: The path to the xlsx file.
+   :type filename: str
+   :param model: The model object to add the transfer coefficients to.
+   :type model: Model
+
+   The xlsx file should have the following columns:
+       process (str): The name of the process.
+       flow_input (str): The name of the input flow.
+       flow_output (str): The name of the output flow.
+       transfer_coefficient (float): The transfer coefficient.
+       uncertainty (float): The uncertainty of the transfer coefficient.
+
+
+
