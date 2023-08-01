@@ -8,24 +8,20 @@ FutuRaM - SRM recovery model
 
 .. image:: /_static/futuram_baseline.jpg
    :align: center
-   :width: 50%
-
+   :width: 70%
+   
+ 
+------------------------------------------------------------------
+Welcome to documentation site!
 ------------------------------------------------------------------
 
-------------------------------------------------------------------
-
-Welcome to documentation site for the FutuRaM SRM recovery Model
-------------------------------------------------------------------
-
-------------------------------------------------------------------
-
+This site is continuously updated as the codebase evolves.
 
 This model is a part of the FutuRaM project, which is a project funded by the European Union's Horizon 2020 research and innovation programme.
 
-See the project website for more information: https://www.futuram.eu/
+See the official `project website <https://www.futuram.eu>`_ for more information
 
-The main GitHub repository for the model is here:  
-https://github.com/FutuRaM-Project/IntegratedModel
+The main GitHub repository for the model is `here <https://github.com/FutuRaM-Project/IntegratedModel>`_
 
 Goal and scope of the model
 ----------------------------
@@ -52,9 +48,7 @@ Outputs from the model include:
 Comments, questions, suggestions, bug reports
 ---------------------------------------------
 
-Please contact the developers of the model via the main GitHub repository:
-
-https://github.com/FutuRaM-Project/IntegratedModel
+Please contact the developers of the model via the `main GitHub repository <https://github.com/FutuRaM-Project/IntegratedModel>`_
 
 Add a new issue or comment on an existing issue.
 
@@ -64,15 +58,12 @@ License
 The model is licensed under the MIT license. See the LICENSE file for more details.
 
 
-Indices and tables
+Contents
 ------------------
 
 .. toctree::
    :maxdepth: 2
 
    setup
-   futuram.classes
-   futuram.utils
-   futuram.visualisation
-   modules
    examples
+   modules

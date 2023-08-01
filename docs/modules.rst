@@ -2,6 +2,8 @@ Code documentation
 ===================
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 1
 
-   futuram
+   futuram.classes
+   futuram.utils
+   futuram.visualisation

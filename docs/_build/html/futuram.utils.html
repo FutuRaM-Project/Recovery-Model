@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>futuram.utils package &mdash; FutuRaM - SRM recovery modelling  documentation</title>
+  <title>Utilities &mdash; FutuRaM - SRM recovery modelling  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="futuram.visualisation package" href="futuram.visualisation.html" />
-    <link rel="prev" title="futuram.classes package" href="futuram.classes.html" /> 
+    <link rel="next" title="Visualisation" href="futuram.visualisation.html" />
+    <link rel="prev" title="Classes" href="futuram.classes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,55 +44,54 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup and usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="futuram.classes.html">futuram.classes package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="futuram.classes.html#classes">Classes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">futuram.utils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.get_random">futuram.utils.get_random module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.get_random.get_random_flow"><code class="docutils literal notranslate"><span class="pre">get_random_flow()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.get_random.get_random_matter"><code class="docutils literal notranslate"><span class="pre">get_random_matter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.get_random.get_random_process"><code class="docutils literal notranslate"><span class="pre">get_random_process()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.import_flows">futuram.utils.import_flows module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.import_flows.import_flows_xlsx"><code class="docutils literal notranslate"><span class="pre">import_flows_xlsx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.import_matter">futuram.utils.import_matter module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.import_matter.import_matter_bulk"><code class="docutils literal notranslate"><span class="pre">import_matter_bulk()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.import_matter.import_matter_csv"><code class="docutils literal notranslate"><span class="pre">import_matter_csv()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">import_matter_bulk()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">import_matter_csv()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.import_processes">futuram.utils.import_processes module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.import_processes.import_processes_xlsx"><code class="docutils literal notranslate"><span class="pre">import_processes_xlsx()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">import_processes_xlsx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.import_transfercoefficients">futuram.utils.import_transfercoefficients module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.import_transfercoefficients.import_transfercoefficients_xlsx"><code class="docutils literal notranslate"><span class="pre">import_transfercoefficients_xlsx()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">import_transfercoefficients_xlsx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.split_xlsx_to_csvs">futuram.utils.split_xlsx_to_csvs module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.split_xlsx_to_csvs.xlsx_to_csvs"><code class="docutils literal notranslate"><span class="pre">xlsx_to_csvs()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils.validate_model">futuram.utils.validate_model module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.validate_model.validate_flows"><code class="docutils literal notranslate"><span class="pre">validate_flows()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.validate_model.validate_matter"><code class="docutils literal notranslate"><span class="pre">validate_matter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#futuram.utils.validate_model.validate_model"><code class="docutils literal notranslate"><span class="pre">validate_model()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-futuram.utils">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="futuram.visualisation.html">futuram.visualisation package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Code documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Code documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="futuram.classes.html">Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.get_random">futuram.utils.get_random module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.get_random.get_random_flow"><code class="docutils literal notranslate"><span class="pre">get_random_flow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.get_random.get_random_matter"><code class="docutils literal notranslate"><span class="pre">get_random_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.get_random.get_random_process"><code class="docutils literal notranslate"><span class="pre">get_random_process()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.import_flows">futuram.utils.import_flows module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.import_flows.import_flows_xlsx"><code class="docutils literal notranslate"><span class="pre">import_flows_xlsx()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.import_matter">futuram.utils.import_matter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.import_matter.import_matter_bulk"><code class="docutils literal notranslate"><span class="pre">import_matter_bulk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.import_matter.import_matter_csv"><code class="docutils literal notranslate"><span class="pre">import_matter_csv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">import_matter_bulk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">import_matter_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.import_processes">futuram.utils.import_processes module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.import_processes.import_processes_xlsx"><code class="docutils literal notranslate"><span class="pre">import_processes_xlsx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">import_processes_xlsx()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.import_transfercoefficients">futuram.utils.import_transfercoefficients module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.import_transfercoefficients.import_transfercoefficients_xlsx"><code class="docutils literal notranslate"><span class="pre">import_transfercoefficients_xlsx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">import_transfercoefficients_xlsx()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.split_xlsx_to_csvs">futuram.utils.split_xlsx_to_csvs module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.split_xlsx_to_csvs.xlsx_to_csvs"><code class="docutils literal notranslate"><span class="pre">xlsx_to_csvs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-futuram.utils.validate_model">futuram.utils.validate_model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.validate_model.validate_flows"><code class="docutils literal notranslate"><span class="pre">validate_flows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.validate_model.validate_matter"><code class="docutils literal notranslate"><span class="pre">validate_matter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futuram.utils.validate_model.validate_model"><code class="docutils literal notranslate"><span class="pre">validate_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="futuram.visualisation.html">Visualisation</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -109,7 +108,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">futuram.utils package</li>
+          <li class="breadcrumb-item"><a href="modules.html">Code documentation</a></li>
+      <li class="breadcrumb-item active">Utilities</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/futuram.utils.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -119,14 +119,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="futuram-utils-package">
-<h1>futuram.utils package<a class="headerlink" href="#futuram-utils-package" title="Permalink to this heading"></a></h1>
-<section id="utilities">
-<h2>Utilities:<a class="headerlink" href="#utilities" title="Permalink to this heading"></a></h2>
-</section>
+  <section id="utilities">
+<h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading"></a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
-<p>This package contains utility functions for the FutuRaM package.</p>
+<p>The futuram.utils is a package of utility functions for the FutuRaM package.</p>
 <p>These are general functions that are not specific to any of the FutuRaM classes and can be used independently.
 They are used by the FutuRaM classes, but can also be used by the user to perform certain tasks.</p>
 <p>This includes functions to:
@@ -390,28 +387,14 @@ uncertainty (float): The uncertainty of the transfer coefficient.</p>
 </dd></dl>
 
 </section>
-<section id="module-futuram.utils">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-futuram.utils" title="Permalink to this heading"></a></h2>
-<p>Subpackage: utils
-This subpackage contains modules with methods that are used by the futuram package.</p>
-<p>Modules:
-- import_flows.py: Import flows from an xlsx file.
-- import_processes.py: Import processes from an xlsx file.
-- import_matter.py: Import matter from a csv file.
-- import_transfercoefficients.py: Import transfer coefficients from an xlsx file.
-- split_xlsx_to_csvs.py: Split an xlsx file into csvs for each sheet.
-- get_random.py: Get random objects from a model.
-- validate_model.py: Validate a model.
-- object_import_export.py: Import and export objects to and from json files and pickle files.</p>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="futuram.classes.html" class="btn btn-neutral float-left" title="futuram.classes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="futuram.visualisation.html" class="btn btn-neutral float-right" title="futuram.visualisation package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="futuram.classes.html" class="btn btn-neutral float-left" title="Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="futuram.visualisation.html" class="btn btn-neutral float-right" title="Visualisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

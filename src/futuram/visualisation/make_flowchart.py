@@ -145,13 +145,14 @@ def make_flowchart_model(
         tags (list): A list of tags to filter the processes by. Default is None.
         ws (str): The waste stream to filter the processes by. Default is None.
         level (int): The transformation level to filter the processes by. Default is None.
-                         (examples: 'market', 'component', 'material', 'compound', 'element')
+                            (examples: 'market', 'component', 'material', 'compound', 'element')
         name (str): The name of the process to filter by. Default is None. 
                     (will catch all processes with the string in the name)
         description (str): The description of the process to filter by. Default is None. 
                     (will catch all processes with the string in the description)
     Outputs:
         A flowchart of the model in the figures folder. Formats: SVG, PDF, PNG and DOT.
+        
     """
 
     # TODO: we should add a way to toggle the display of the processs in the flowchart, maybe with a config file

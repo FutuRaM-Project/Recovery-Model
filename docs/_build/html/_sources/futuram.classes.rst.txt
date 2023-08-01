@@ -1,13 +1,10 @@
-futuram.classes package
-=======================
-
 Classes
 ========
 
 Description
 ------------
 
-This package contains the classes used to define the objects in the model.
+The futuram.classes subpackage contains the classes used to define the objects in the model.
 
 These classes are:
 
@@ -69,14 +66,6 @@ futuram.classes.processes module
 --------------------------------
 
 .. automodule:: futuram.classes.processes
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: futuram.classes
    :members:
    :undoc-members:
    :show-inheritance:

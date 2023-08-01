@@ -1,13 +1,10 @@
-futuram.utils package
-=====================
-
-Utilities:
-----------
+Utilities
+==========
 
 Description
 ------------
 
-This package contains utility functions for the FutuRaM package.
+The futuram.utils is a package of utility functions for the FutuRaM package.
 
 These are general functions that are not specific to any of the FutuRaM classes and can be used independently.
 They are used by the FutuRaM classes, but can also be used by the user to perform certain tasks.
@@ -79,10 +76,3 @@ futuram.utils.validate\_model module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: futuram.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:

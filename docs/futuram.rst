@@ -11,10 +11,10 @@ Subpackages
    futuram.classes
    futuram.visualisation
 
-Module contents
----------------
+.. Module contents
+.. ---------------
 
-.. automodule:: futuram
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. .. automodule:: futuram
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:

@@ -1,11 +1,14 @@
 #! bin/bash
+venv futuram-dev
+cd ~/code/gh/futuram/IntegratedModel
+cd docs
+make html
+cd ..
 
-ghpush update-docs
-git checkout main
-cp -R docs/_build/html ~/tmp/futuram-ghpages
-git checkout gh-pages
-cp -R ~/tmp/futuram-ghpages/html/* .
+cp -R docs ../FutuRaM-Model-Docs
+cd ../FutuRaM-Model-Docs
 git add .
-git commit -m "update docs"
+git commit -m update-docs
 git push
-#git checkout main
+
+cd ~/code/gh/futuram/IntegratedModel
