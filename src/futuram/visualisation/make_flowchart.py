@@ -29,9 +29,10 @@ def make_flowchart(model_object):
     Creates a flowchart for a model or a process object.
     Depending on the type of object, the appropriate function is called.
     Args:
-        object (object): The object to create the flowchart of.
+    object (object): The object to create the flowchart of.
     Outputs:
-        Alowchart of the object in the figures folder. Formats: SVG, PDF, PNG and DOT.
+    A flowchart of the object in the figures folder. Formats: SVG, PDF, PNG and DOT.
+
     """
     if model_object.type == "process":
         make_flowchart_process(model_object)
@@ -141,17 +142,19 @@ def make_flowchart_model(
     Creates a flowchart for a model object. 
     Considers all processes in the model and their inputs and outputs.
     Args:
-        model (Model): The model object to create the flowchart of.
-        tags (list): A list of tags to filter the processes by. Default is None.
-        ws (str): The waste stream to filter the processes by. Default is None.
-        level (int): The transformation level to filter the processes by. Default is None.
-                            (examples: 'market', 'component', 'material', 'compound', 'element')
-        name (str): The name of the process to filter by. Default is None. 
-                    (will catch all processes with the string in the name)
-        description (str): The description of the process to filter by. Default is None. 
-                    (will catch all processes with the string in the description)
+    - model (Model): The model object to create the flowchart of.
+    - tags (list): A list of tags to filter the processes by. Default is None.
+    - ws (str): The waste stream to filter the processes by. Default is None.
+    - level (int): The transformation level to filter the processes by. Default is None.
+    (examples: 'market', 'component', 'material', 'compound', 'element')
+    - name (str): The name of the process to filter by. Default is None. 
+    (will catch all processes with the string in the name)
+    - description (str): The description of the process to filter by. Default is None. 
+    (will catch all processes with the string in the description)
+    
     Outputs:
-        A flowchart of the model in the figures folder. Formats: SVG, PDF, PNG and DOT.
+    - A flowchart of the model in the figures folder. 
+    Formats: SVG, PDF, PNG and DOT.
         
     """
 
