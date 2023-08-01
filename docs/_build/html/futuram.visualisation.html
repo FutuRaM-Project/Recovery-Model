@@ -139,12 +139,10 @@
 <span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_flowchart.</span></span><span class="sig-name descname"><span class="pre">make_flowchart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_flowchart.make_flowchart" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a flowchart for a model or a process object.
 Depending on the type of object, the appropriate function is called.
-:param object: The object to create the flowchart of.
-:type object: object</p>
-<dl class="simple">
-<dt>Outputs:</dt><dd><p>Alowchart of the object in the figures folder. Formats: SVG, PDF, PNG and DOT.</p>
-</dd>
-</dl>
+Args:
+object (object): The object to create the flowchart of.
+Outputs:
+A flowchart of the object in the figures folder. Formats: SVG, PDF, PNG and DOT.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -152,30 +150,19 @@ Depending on the type of object, the appropriate function is called.
 <span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_flowchart.</span></span><span class="sig-name descname"><span class="pre">make_flowchart_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_flowchart.make_flowchart_model" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a flowchart for a model object.
 Considers all processes in the model and their inputs and outputs.
-:param model: The model object to create the flowchart of.
-:type model: Model
-:param tags: A list of tags to filter the processes by. Default is None.
-:type tags: list
-:param ws: The waste stream to filter the processes by. Default is None.
-:type ws: str
-:param level: The transformation level to filter the processes by. Default is None.</p>
-<blockquote>
-<div><p>(examples: ‘market’, ‘component’, ‘material’, ‘compound’, ‘element’)</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – The name of the process to filter by. Default is None.
-(will catch all processes with the string in the name)</p></li>
-<li><p><strong>description</strong> (<em>str</em>) – The description of the process to filter by. Default is None.
-(will catch all processes with the string in the description)</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="simple">
-<dt>Outputs:</dt><dd><p>A flowchart of the model in the figures folder. Formats: SVG, PDF, PNG and DOT.</p>
-</dd>
-</dl>
+Args:
+- model (Model): The model object to create the flowchart of.
+- tags (list): A list of tags to filter the processes by. Default is None.
+- ws (str): The waste stream to filter the processes by. Default is None.
+- level (int): The transformation level to filter the processes by. Default is None.
+(examples: ‘market’, ‘component’, ‘material’, ‘compound’, ‘element’)
+- name (str): The name of the process to filter by. Default is None.
+(will catch all processes with the string in the name)
+- description (str): The description of the process to filter by. Default is None.
+(will catch all processes with the string in the description)</p>
+<p>Outputs:
+- A flowchart of the model in the figures folder.
+Formats: SVG, PDF, PNG and DOT.</p>
 </dd></dl>
 
 <dl class="py function">
