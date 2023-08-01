@@ -1,9 +1,6 @@
 # Futurama system model
-[Go to Documentation](docs/_build/html/index.html) (only works if you have the repo locally we need to still host the site)
 
-For the documentation:
-1. Download the repo and unzip it
-2. find docs/_build/index.html and open it in a browser
+[Go to Documentation](https://futuram-model-docs.readthedocs.io)
 
 ## Installation
 

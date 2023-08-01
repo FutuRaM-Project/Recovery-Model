@@ -7,7 +7,9 @@ Functions:
 - make_flowchart(object):  This is a wrapper function that calls one of the subroutines.
 - make_flowchart_process(process): Makes a flowchart of the process.
 - make_flowchart_model(model): Makes a flowchart of the model.
-- make_flowchart_matter(matter): Makes a flowchart of the matter. #! TODO: not yet written
+- make_flowchart_matter(matter): Makes a flowchart of the matter. 
+
+#! TODO: not yet written
 
 Dependencies:
 - graphviz
@@ -142,18 +144,24 @@ def make_flowchart_model(
     Creates a flowchart for a model object. 
     Considers all processes in the model and their inputs and outputs.
     Args:
-    - model (Model): The model object to create the flowchart of.
-    - tags (list): A list of tags to filter the processes by. Default is None.
-    - ws (str): The waste stream to filter the processes by. Default is None.
-    - level (int): The transformation level to filter the processes by. Default is None.
+    model (Model): The model object to create the flowchart of.
+
+    tags (list): A list of tags to filter the processes by. Default is None.
+
+    ws (str): The waste stream to filter the processes by. Default is None.
+
+    level (int): The transformation level to filter the processes by. Default is None.
     (examples: 'market', 'component', 'material', 'compound', 'element')
-    - name (str): The name of the process to filter by. Default is None. 
+
+    name (str): The name of the process to filter by. Default is None. 
     (will catch all processes with the string in the name)
-    - description (str): The description of the process to filter by. Default is None. 
+
+    description (str): The description of the process to filter by. Default is None. 
     (will catch all processes with the string in the description)
     
     Outputs:
-    - A flowchart of the model in the figures folder. 
+
+    A flowchart of the model in the figures folder. 
     Formats: SVG, PDF, PNG and DOT.
         
     """

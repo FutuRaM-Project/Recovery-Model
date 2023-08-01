@@ -5,8 +5,10 @@ cd docs
 make html
 cd ..
 
-cp -R docs/* ../FutuRaM-Model-Docs
-cd ../FutuRaM-Model-Docs
+cp -R docs/ ../FutuRaM-Model-Docs/
+cd ../FutuRaM-Model-Docs/docs
+make html
+
 git add .
 git commit -m update-docs
 git push
