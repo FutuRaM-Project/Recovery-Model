@@ -21,55 +21,6 @@ class Parameter:
     """
     A class to represent a parameter.
 
-    Attributes
-    ----------
-    name : str
-        The name of the parameter.
-    value : float
-        The value of the parameter.
-    unit : str
-        The unit of the parameter.
-    description : str
-        The description of the parameter.
-    data_sources : list
-        The data sources of the parameter.
-    lower_bound : float
-        The lower bound of the parameter.
-    upper_bound : float
-        The upper bound of the parameter.
-    uncertainty : float
-        The uncertainty of the parameter.
-    internal : bool
-        Whether the parameter is internal or external.
-
-    Methods
-    -------
-    set_description(description)
-        Set the description of the parameter.
-    add_data_source(source)
-        Add a data source to the parameter.
-    set_bounds(lower_bound, upper_bound)
-        Set the bounds of the parameter.
-    set_uncertainty(uncertainty)
-        Set the uncertainty of the parameter.
-    set_internal(internal)
-        Set the parameter as internal.
-    set_external()
-        Set the parameter as external.
-    get_description()
-        Get the description of the parameter.
-    get_data_sources()
-        Get the data sources of the parameter.
-    get_bounds()
-        Get the bounds of the parameter.
-    get_uncertainty()
-        Get the uncertainty of the parameter.
-    is_internal()
-        Check if the parameter is internal.
-    to_dict()
-        Convert the parameter to a dictionary.
-    to_series()
-        Convert the parameter to a Pandas Series.
     """
 
     def __init__(
@@ -84,18 +35,7 @@ class Parameter:
         uncertainty=None,
         internal=True,
     ):
-        """
-        Parameters
-        ----------
-        name : str
-            The name of the parameter.
-        value : float
-            The value of the parameter.
-        unit : str
-            The unit of the parameter.
-        internal : bool, optional
-            Whether the parameter is internal or external, by default True
-        """
+
         self.name = name
         self.value = value
         self.unit = unit
@@ -292,43 +232,11 @@ class Scenario:
     """
     A class to represent a scenario.
 
-    Attributes
-    ----------
-    name : str
-        The name of the scenario.
-    description : str
-        The description of the scenario.
-    parameters : dict
-        The parameters of the scenario.
-
-    Methods
-    -------
-    set_parameter(parameter_name, value)
-        Set the value of a parameter in the scenario.
-    set_description(description)
-        Set the description of the scenario.
-    get_parameter(parameter_name)
-        Get the value of a parameter in the scenario.
-    has_parameter(parameter_name)
-        Check if a parameter exists in the scenario.
-    remove_parameter(parameter_name)
-        Remove a parameter from the scenario.
-    get_all_parameters()
-        Get all parameters in the scenario.
-    clear_parameters()
-        Clear all parameters in the scenario.
-    to_dict()
-        Convert the scenario to a dictionary.
-    to_series()
-        Convert the scenario to a Pandas Series.
     """
 
     def __init__(self, name):
         """
-        Parameters
-        ----------
-        name : str
-            The name of the scenario.
+
         """
         self.name = name
         self.description = None

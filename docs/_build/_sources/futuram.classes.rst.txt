@@ -27,45 +27,56 @@ The class 'Matter' is a superclass with the following subclasses:
    :align: center
 
 
-Submodules
-----------
+Details
+--------
 
-futuram.classes.flows module
-----------------------------
+See the API reference for more information on the modules and their functions.
 
-.. automodule:: futuram.classes.flows
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. autosummary::
+..    :toctree: generated
 
-futuram.classes.matter module
------------------------------
+..    futuram.utils
 
-.. automodule:: futuram.classes.matter
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
-futuram.classes.model module
-----------------------------
+.. Submodules
+.. ----------
 
-.. automodule:: futuram.classes.model
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. futuram.classes.flows module
+.. ----------------------------
 
-futuram.classes.parameters module
----------------------------------
+.. .. automodule:: futuram.classes.flows
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: futuram.classes.parameters
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. futuram.classes.matter module
+.. -----------------------------
 
-futuram.classes.processes module
---------------------------------
+.. .. automodule:: futuram.classes.matter
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
 
-.. automodule:: futuram.classes.processes
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. futuram.classes.model module
+.. ----------------------------
+
+.. .. automodule:: futuram.classes.model
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
+
+.. futuram.classes.parameters module
+.. ---------------------------------
+
+.. .. automodule:: futuram.classes.parameters
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
+
+.. futuram.classes.processes module
+.. --------------------------------
+
+.. .. automodule:: futuram.classes.processes
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:

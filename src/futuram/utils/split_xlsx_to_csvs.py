@@ -3,6 +3,21 @@ import csv
 import os
 
 def xlsx_to_csvs(filename):
+    """
+    This function splits an xlsx file into separate CSV files for each sheet.
+
+    Parameters
+    ----------
+    filename : str
+        The path to the xlsx file.
+    
+    Returns
+    -------
+    folder_name : str
+        The name of the folder where the CSV files were created.
+
+
+    """
     print(f'\n\n{"*" * 60}\n{"*" * 4} Splitting {os.path.basename(filename)} into CSV files {"*" * 4}\n{"*" * 60}')
     # set the path to the file
     path = filename

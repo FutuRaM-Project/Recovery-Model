@@ -1,0 +1,54 @@
+:py:mod:`template_substances`
+=============================
+
+.. py:module:: template_substances
+
+
+Module Contents
+---------------
+
+.. py:data:: wb
+
+   
+
+.. py:data:: info
+
+   
+
+.. py:data:: drawing
+
+   
+
+.. py:data:: columns
+   :value: ['name', 'code', 'matter_type', 'criticality', 'WasteStreams', 'code_EC', 'code_UNSPC',...
+
+   
+
+.. py:data:: columns_ele
+
+   
+
+.. py:data:: columns_com
+
+   
+
+.. py:data:: columns_mat
+
+   
+
+.. py:data:: columns_cpt
+
+   
+
+.. py:data:: columns_pro
+
+   
+
+.. py:data:: subclasses
+
+   
+
+.. py:data:: sheet
+
+   
+

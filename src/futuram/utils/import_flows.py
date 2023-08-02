@@ -28,6 +28,14 @@ def import_flows_xlsx(filename, model):
     The xlsx file should have the following structure:
     process_from,process_to,composition
 
+    Parameters
+    ----------
+    filename : str
+        The path to the xlsx file.
+
+    model : Model
+        The model object to add the flows to.
+    
     """
     print(
         f'\n\n{"-" * 70}\n\t Importing flows to model "{model.name}" from {filename}\n{"-" * 70}'

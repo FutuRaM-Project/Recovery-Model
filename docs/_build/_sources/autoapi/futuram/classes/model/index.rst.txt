@@ -11,6 +11,9 @@
 
    The Model class contains all of the other classes,     and is the main object that is used to build a model.
 
+   .. module:: model
+       :noindex:
+
    The Model class contains the following attributes:
        - name (str): The name of the model.
        - type (str): The type of the model. This is always 'model'.
@@ -36,6 +39,7 @@
        - random
 
    # TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.
+
 
 
 

@@ -46,8 +46,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../setup.html">Setup and usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Code documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../futuram.html">FutuRaM package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a><ul class="current">
@@ -91,7 +89,7 @@
            <div itemprop="articleBody">
              
   <section id="module-futuram.utils.import_matter">
-<span id="futuram-utils-import-matter"></span><h1><a class="reference internal" href="../../../../futuram.utils.html#module-futuram.utils.import_matter" title="futuram.utils.import_matter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils.import_matter</span></code></a><a class="headerlink" href="#module-futuram.utils.import_matter" title="Permalink to this heading"></a></h1>
+<span id="futuram-utils-import-matter"></span><h1><a class="reference internal" href="#module-futuram.utils.import_matter" title="futuram.utils.import_matter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils.import_matter</span></code></a><a class="headerlink" href="#module-futuram.utils.import_matter" title="Permalink to this heading"></a></h1>
 <p>import_matter.py</p>
 <p>This module contains functions to import matter from
 csv files to a model.</p>
@@ -105,16 +103,22 @@ csv files to a model.</p>
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.import_matter.</span></span><span class="sig-name descname"><span class="pre">import_matter_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_matter.import_matter_csv" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="simple">
+<dt>Dependencies:</dt><dd><p>os
+csv
+decimal</p>
+</dd>
+</dl>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../../futuram.utils.html#id0" title="futuram.utils.import_matter.import_matter_bulk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_matter_bulk</span></code></a>(dir_compositions, model)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="futuram.utils.import_matter.import_matter_bulk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_matter_bulk</span></code></a>(dir_compositions, model)</p></td>
 <td><p>Import all composition csvs from the data directory.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../../futuram.utils.html#id1" title="futuram.utils.import_matter.import_matter_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_matter_csv</span></code></a>(model, filename)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id1" title="futuram.utils.import_matter.import_matter_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_matter_csv</span></code></a>(model, filename)</p></td>
 <td><p>Import a csv file containing matter data.</p></td>
 </tr>
 </tbody>
@@ -145,13 +149,29 @@ csvs should have the following naming convention:
 &lt;WS&gt;_&lt;parent_product&gt;_&lt;matter name&gt;-&lt;matter_type&gt;.csv
 where matter types are one of:
 [‘elm’, ‘cmp’, ‘mat’, ‘cpt’, ‘prd’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_compositions</strong> (<em>str</em>) – The path to the directory containing the csv files.</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="../../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="id1">
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.import_matter.</span></span><span class="sig-name descname"><span class="pre">import_matter_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
-<dd><p>Import a csv file containing matter data.
-The csv should have the structure of the following example:</p>
+<dd><p>Import a csv file containing matter data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="../../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – The model object to add the matter to.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The path to the csv file.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The csv should have the structure of the following example:</p>
 <p>filename = ELV_ICE_ferrous-mat.csv
 ”
 fraction,matter,mass,mass_fraction,uncertainty
@@ -184,7 +204,7 @@ The sheet names should be the same structure as the filename above.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

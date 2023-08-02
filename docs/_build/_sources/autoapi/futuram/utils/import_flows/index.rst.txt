@@ -40,5 +40,9 @@ Functions
    The xlsx file should have the following structure:
    process_from,process_to,composition
 
+   :param filename: The path to the xlsx file.
+   :type filename: str
+   :param model: The model object to add the flows to.
+   :type model: Model
 
 

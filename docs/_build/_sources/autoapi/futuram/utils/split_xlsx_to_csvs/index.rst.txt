@@ -19,4 +19,12 @@ Functions
 
 .. py:function:: xlsx_to_csvs(filename)
 
+   This function splits an xlsx file into separate CSV files for each sheet.
+
+   :param filename: The path to the xlsx file.
+   :type filename: str
+
+   :returns: **folder_name** -- The name of the folder where the CSV files were created.
+   :rtype: str
+
 

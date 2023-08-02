@@ -89,4 +89,4 @@ Now, you can open a python console or and IDE (Visual Studio Code is recommended
 From here, you can build your own model or explore one of the examples.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3

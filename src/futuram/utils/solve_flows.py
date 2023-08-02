@@ -15,10 +15,10 @@ are calculated with the input flows to these, and the transfer coefficients.
 This is repeated until all flows have been calculated.
 Obviously, this only works if the model is a directed acyclic graph (DAG). Any loops in the model will cause an infinite loop in this script.
 
-Dum dum dum... Let's work out a way to express the multi level flows in a big matrix and solve it with linear algebra. That would be much faster.
+We are working out a way to express the multi level flows in a big matrix and solve it with linear algebra. That would be much faster.
 
 !# there is clearly still a bug or two in this script, but it's a start
-
+:noindex:
 """
 #%%
 

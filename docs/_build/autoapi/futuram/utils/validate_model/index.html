@@ -46,8 +46,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../setup.html">Setup and usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Code documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../futuram.html">FutuRaM package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a><ul class="current">
@@ -91,7 +89,7 @@
            <div itemprop="articleBody">
              
   <section id="module-futuram.utils.validate_model">
-<span id="futuram-utils-validate-model"></span><h1><a class="reference internal" href="../../../../futuram.utils.html#module-futuram.utils.validate_model" title="futuram.utils.validate_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils.validate_model</span></code></a><a class="headerlink" href="#module-futuram.utils.validate_model" title="Permalink to this heading"></a></h1>
+<span id="futuram-utils-validate-model"></span><h1><a class="reference internal" href="#module-futuram.utils.validate_model" title="futuram.utils.validate_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils.validate_model</span></code></a><a class="headerlink" href="#module-futuram.utils.validate_model" title="Permalink to this heading"></a></h1>
 <p>validate_model.py</p>
 <p>This module contains functions for validating the model object.</p>
 <p>Functions:
@@ -109,13 +107,13 @@
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../../futuram.utils.html#futuram.utils.validate_model.validate_model" title="futuram.utils.validate_model.validate_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_model</span></code></a>(model)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#futuram.utils.validate_model.validate_model" title="futuram.utils.validate_model.validate_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_model</span></code></a>(model)</p></td>
 <td><p>Validates the model object to ensure that all the matter and processes         referred to in the model are in the model</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../../futuram.utils.html#futuram.utils.validate_model.validate_flows" title="futuram.utils.validate_model.validate_flows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_flows</span></code></a>(model)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#futuram.utils.validate_model.validate_flows" title="futuram.utils.validate_model.validate_flows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_flows</span></code></a>(model)</p></td>
 <td><p>Validates the flows in the model object to ensure that the          matter in the flow's composition and the to and from processes are in the model</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../../futuram.utils.html#futuram.utils.validate_model.validate_matter" title="futuram.utils.validate_model.validate_matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_matter</span></code></a>(model)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#futuram.utils.validate_model.validate_matter" title="futuram.utils.validate_model.validate_matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_matter</span></code></a>(model)</p></td>
 <td><p>Validates the matter referred to in the flow objects          composition to ensure that the matter is in the model</p></td>
 </tr>
 </tbody>
@@ -126,7 +124,7 @@
 <dd><p>Validates the model object to ensure that all the matter and processes         referred to in the model are in the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>validity</strong> – True if the model is valid, False if not</p>
@@ -143,7 +141,7 @@
 <dd><p>Validates the flows in the model object to ensure that the          matter in the flow’s composition and the to and from processes are in the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>exception_count</strong> – The number of exceptions found</p>
@@ -160,7 +158,7 @@
 <dd><p>Validates the matter referred to in the flow objects          composition to ensure that the matter is in the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../../../futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>exception_count</strong> – The number of exceptions found</p>
@@ -186,7 +184,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

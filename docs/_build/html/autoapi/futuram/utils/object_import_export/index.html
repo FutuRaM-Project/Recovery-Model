@@ -46,8 +46,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../setup.html">Setup and usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Code documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../futuram.html">FutuRaM package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a><ul class="current">
@@ -93,28 +91,11 @@
   <section id="module-futuram.utils.object_import_export">
 <span id="futuram-utils-object-import-export"></span><h1><a class="reference internal" href="#module-futuram.utils.object_import_export" title="futuram.utils.object_import_export"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils.object_import_export</span></code></a><a class="headerlink" href="#module-futuram.utils.object_import_export" title="Permalink to this heading"></a></h1>
 <p>object_import_export.py</p>
-<p>This is a script to export and import the model and other model objects to file. Export formats are:</p>
+<p>This is a script to export and import the model and other model objects to file.</p>
+<p>Export formats are:</p>
 <ul class="simple">
 <li><p>JSON</p></li>
 <li><p>pickle</p></li>
-</ul>
-<p>Methods:</p>
-<ul>
-<li><p>export(model_object, filename, format=’pickle’):</p>
-<blockquote>
-<div><p>Wrapper function to export the model object to file.</p>
-</div></blockquote>
-</li>
-<li><p>export_to_json(<a href="#id1"><span class="problematic" id="id2">model_</span></a>, filename)</p></li>
-<li><p>export_to_pickle(model, filename)</p></li>
-<li><p>import(filename)</p></li>
-</ul>
-<p>Dependencies:</p>
-<ul class="simple">
-<li><p>pickle</p></li>
-<li><p>json</p></li>
-<li><p>datetime</p></li>
-<li><p>os</p></li>
 </ul>
 <p>#! this has not yet been fully tested. it could be that the model object is not fully exported to json and then imported again. the pickel export and import seems to work fine though. maybe we need to make a function to convert the model object to a fully to a dictionary first.</p>
 <section id="module-contents">
@@ -142,8 +123,18 @@
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.object_import_export.</span></span><span class="sig-name descname"><span class="pre">import_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.object_import_export.import_object" title="Permalink to this definition"></a></dt>
 <dd><p>This is a function to import a model object from file.
 If there is no filename specified, it will import the latest file from the export folder.</p>
-<p>Usage example:</p>
-<p>TestModel_ELV = import(‘TestModel_ELV-20230707-1620.pkl’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – <p>The filename to import the model object from.</p>
+<p>Default filename is the object name and the date and time of export. Default location is the export folder.</p>
+</p></li>
+<li><p><strong>example</strong> (<em>Usage</em>) – </p></li>
+<li><p><strong>-------------</strong> – </p></li>
+<li><p><strong>import</strong><strong>(</strong><strong>'TestModel_ELV-20230707-1620.pkl'</strong><strong>)</strong> (<em>TestModel_ELV =</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -199,7 +190,7 @@ without the .pkl extension.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

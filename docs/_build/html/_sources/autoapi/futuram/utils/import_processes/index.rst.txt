@@ -20,6 +20,8 @@
 
    #! there is probably no reason to be dealing with xlsx files directly in the model, but this is likely how the data will arrive. We could also convert the xlsx files to csvs and import them that way.
 
+   :noindex:
+
 
 
 Module Contents
@@ -38,5 +40,10 @@ Functions
 .. py:function:: import_processes_xlsx(filename, model)
 
    Import a xlsx file containing process data and create process objects for each row
+
+   :param filename (str):
+   :type filename (str): The path to the xlsx file.
+   :param model (Model):
+   :type model (Model): The model object to add the processes to.
 
 

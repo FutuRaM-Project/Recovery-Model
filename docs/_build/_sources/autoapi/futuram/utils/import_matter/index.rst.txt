@@ -19,6 +19,12 @@
       
       
 
+   Dependencies:
+       os
+       csv
+       decimal
+
+
 
 
 Module Contents
@@ -59,10 +65,21 @@ Attributes
    where matter types are one of:
    ['elm', 'cmp', 'mat', 'cpt', 'prd']
 
+   :param dir_compositions: The path to the directory containing the csv files.
+   :type dir_compositions: str
+   :param model:
+   :type model: Model
+
 
 .. py:function:: import_matter_csv(model, filename)
 
    Import a csv file containing matter data.
+
+   :param model: The model object to add the matter to.
+   :type model: Model
+   :param filename: The path to the csv file.
+   :type filename: str
+
    The csv should have the structure of the following example:
 
    filename = ELV_ICE_ferrous-mat.csv

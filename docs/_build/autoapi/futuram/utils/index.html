@@ -46,8 +46,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../setup.html">Setup and usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Code documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../futuram.html">FutuRaM package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a><ul class="current">
@@ -90,18 +88,24 @@
            <div itemprop="articleBody">
              
   <section id="module-futuram.utils">
-<span id="futuram-utils"></span><h1><a class="reference internal" href="#module-futuram.utils" title="futuram.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils</span></code></a><a class="headerlink" href="#module-futuram.utils" title="Permalink to this heading"></a></h1>
-<p>Subpackage: utils
-This subpackage contains modules with methods that are used by the futuram package.</p>
-<p>Modules:
-- import_flows.py: Import flows from an xlsx file.
-- import_processes.py: Import processes from an xlsx file.
-- import_matter.py: Import matter from a csv file.
-- import_transfercoefficients.py: Import transfer coefficients from an xlsx file.
-- split_xlsx_to_csvs.py: Split an xlsx file into csvs for each sheet.
-- get_random.py: Get random objects from a model.
-- validate_model.py: Validate a model.
-- object_import_export.py: Import and export objects to and from json files and pickle files.</p>
+<span id="futuram-utils"></span><h1><a class="reference internal" href="../../../generated/futuram.utils.html#module-futuram.utils" title="futuram.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram.utils</span></code></a><a class="headerlink" href="#module-futuram.utils" title="Permalink to this heading"></a></h1>
+<p>Subpackage: utils</p>
+<p>This subpackage contains modules with methods that are used by the futuram package.</p>
+<p>Modules:</p>
+<ul class="simple">
+<li><p>import_flows.py: Import flows from an xlsx file.</p></li>
+<li><p>import_processes.py: Import processes from an xlsx file.</p></li>
+<li><p>import_matter.py: Import matter from a csv file.</p></li>
+<li><p>import_transfercoefficients.py: Import transfer coefficients from an xlsx file.</p></li>
+<li><p>split_xlsx_to_csvs.py: Split an xlsx file into csvs for each sheet.</p></li>
+<li><p>get_random.py: Get random objects from a model.</p></li>
+<li><p>validate_model.py: Validate a model.</p></li>
+<li><p>object_import_export.py: Import and export objects to and from json files and pickle files.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">noindex<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -140,7 +144,7 @@ This subpackage contains modules with methods that are used by the futuram packa
 <td><p>Import a xlsx file containing transfer coefficient data and add them to the model</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#futuram.utils.xlsx_to_csvs" title="futuram.utils.xlsx_to_csvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xlsx_to_csvs</span></code></a>(filename)</p></td>
-<td><p></p></td>
+<td><p>This function splits an xlsx file into separate CSV files for each sheet.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#futuram.utils.get_random_process" title="futuram.utils.get_random_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_random_process</span></code></a>(model)</p></td>
 <td><p>Get a random process from the model.</p></td>
@@ -151,7 +155,7 @@ This subpackage contains modules with methods that are used by the futuram packa
 <tr class="row-odd"><td><p><a class="reference internal" href="#futuram.utils.get_random_matter" title="futuram.utils.get_random_matter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_random_matter</span></code></a>(model)</p></td>
 <td><p>Get a random matter object from the model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../futuram.utils.html#module-futuram.utils.validate_model" title="futuram.utils.validate_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_model</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="validate_model/index.html#module-futuram.utils.validate_model" title="futuram.utils.validate_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_model</span></code></a></p></td>
 <td><p>validate_model.py</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#futuram.utils.validate_flows" title="futuram.utils.validate_flows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_flows</span></code></a>(model)</p></td>
@@ -174,19 +178,43 @@ This subpackage contains modules with methods that are used by the futuram packa
 <dd><p>Import flows from an xlsx file.
 The xlsx file should have the following structure:
 process_from,process_to,composition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – The path to the xlsx file.</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – The model object to add the flows to.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="futuram.utils.import_processes_xlsx">
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.</span></span><span class="sig-name descname"><span class="pre">import_processes_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_processes_xlsx" title="Permalink to this definition"></a></dt>
 <dd><p>Import a xlsx file containing process data and create process objects for each row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>filename</em>) – </p></li>
+<li><p><strong>(</strong><strong>Model</strong><strong>)</strong> (<em>model</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="futuram.utils.import_matter_csv">
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.</span></span><span class="sig-name descname"><span class="pre">import_matter_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_matter_csv" title="Permalink to this definition"></a></dt>
-<dd><p>Import a csv file containing matter data.
-The csv should have the structure of the following example:</p>
+<dd><p>Import a csv file containing matter data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – The model object to add the matter to.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The path to the csv file.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The csv should have the structure of the following example:</p>
 <p>filename = ELV_ICE_ferrous-mat.csv
 ”
 fraction,matter,mass,mass_fraction,uncertainty
@@ -215,6 +243,14 @@ csvs should have the following naming convention:
 &lt;WS&gt;_&lt;parent_product&gt;_&lt;matter name&gt;-&lt;matter_type&gt;.csv
 where matter types are one of:
 [‘elm’, ‘cmp’, ‘mat’, ‘cpt’, ‘prd’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_compositions</strong> (<em>str</em>) – The path to the directory containing the csv files.</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -238,7 +274,19 @@ uncertainty (float): The uncertainty of the transfer coefficient.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="futuram.utils.xlsx_to_csvs">
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.</span></span><span class="sig-name descname"><span class="pre">xlsx_to_csvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.xlsx_to_csvs" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This function splits an xlsx file into separate CSV files for each sheet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – The path to the xlsx file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>folder_name</strong> – The name of the folder where the CSV files were created.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="futuram.utils.get_random_process">
@@ -282,7 +330,7 @@ uncertainty (float): The uncertainty of the transfer coefficient.</p>
 <dd><p>Validates the model object to ensure that all the matter and processes         referred to in the model are in the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../../futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>validity</strong> – True if the model is valid, False if not</p>
@@ -299,7 +347,7 @@ uncertainty (float): The uncertainty of the transfer coefficient.</p>
 <dd><p>Validates the flows in the model object to ensure that the          matter in the flow’s composition and the to and from processes are in the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../../futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>exception_count</strong> – The number of exceptions found</p>
@@ -316,7 +364,7 @@ uncertainty (float): The uncertainty of the transfer coefficient.</p>
 <dd><p>Validates the matter referred to in the flow objects          composition to ensure that the matter is in the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../../../futuram.classes.html#futuram.classes.model.Model" title="futuram.classes.model.Model"><em>Model</em></a>) – </p>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="../classes/model/index.html#model.Model" title="model.Model"><em>Model</em></a>) – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>exception_count</strong> – The number of exceptions found</p>
@@ -338,8 +386,18 @@ uncertainty (float): The uncertainty of the transfer coefficient.</p>
 <span class="sig-prename descclassname"><span class="pre">futuram.utils.</span></span><span class="sig-name descname"><span class="pre">import_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.utils.import_object" title="Permalink to this definition"></a></dt>
 <dd><p>This is a function to import a model object from file.
 If there is no filename specified, it will import the latest file from the export folder.</p>
-<p>Usage example:</p>
-<p>TestModel_ELV = import(‘TestModel_ELV-20230707-1620.pkl’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – <p>The filename to import the model object from.</p>
+<p>Default filename is the object name and the date and time of export. Default location is the export folder.</p>
+</p></li>
+<li><p><strong>example</strong> (<em>Usage</em>) – </p></li>
+<li><p><strong>-------------</strong> – </p></li>
+<li><p><strong>import</strong><strong>(</strong><strong>'TestModel_ELV-20230707-1620.pkl'</strong><strong>)</strong> (<em>TestModel_ELV =</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -357,7 +415,7 @@ If there is no filename specified, it will import the latest file from the expor
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

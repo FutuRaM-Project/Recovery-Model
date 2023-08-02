@@ -32,6 +32,7 @@ def validate_model(model):
     -------
     validity : bool
         True if the model is valid, False if not
+
     """
     # Validate the model
     print(f'\n\n{"="*90}\n\t Validating model: "{model.name}"\n{"="*90}')
@@ -67,7 +68,6 @@ def validate_flows(model):
     -------
     exception_count : int
         The number of exceptions found
-
 
     """
     print(f'\n{"-"*60}\n\t Validating flows in model: "{model.name}"\n{"-"*60}')

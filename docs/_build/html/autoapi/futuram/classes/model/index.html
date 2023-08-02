@@ -46,8 +46,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../setup.html">Setup and usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Code documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../futuram.html">FutuRaM package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">futuram</span></code></a><ul class="current">
@@ -95,34 +93,6 @@
 <p>model.py</p>
 <p>This file contains the Model class, which is the     main class of the FutuRuM package.</p>
 <p>The Model class contains all of the other classes,     and is the main object that is used to build a model.</p>
-<dl class="simple">
-<dt>The Model class contains the following attributes:</dt><dd><ul class="simple">
-<li><p>name (str): The name of the model.</p></li>
-<li><p>type (str): The type of the model. This is always ‘model’.</p></li>
-<li><p>parameters (dict): A dictionary of the parameters in the model.</p></li>
-<li><p>scenarios (dict): A dictionary of the scenarios in the model.</p></li>
-<li><p>processes (dict): A dictionary of the processes in the model.</p></li>
-<li><p>flows (dict): A dictionary of the flows in the model.</p></li>
-<li><p>elements (dict): A dictionary of the elements in the model.</p></li>
-<li><p>compounds (dict): A dictionary of the compounds in the model.</p></li>
-<li><p>materials (dict): A dictionary of the materials in the model.</p></li>
-<li><p>components (dict): A dictionary of the components in the model.</p></li>
-<li><p>products (dict): A dictionary of the products in the model.</p></li>
-<li><p>matter (dict): A dictionary of all matter in the model.</p></li>
-<li><p>inputs (dict): A dictionary of the inputs to the model.</p></li>
-<li><p>outputs (dict): A dictionary of the outputs from the model.</p></li>
-<li><p>transfer_coefficients (dict): A dictionary of the transfer coefficients in the model.</p></li>
-</ul>
-</dd>
-<dt>Dependencies:</dt><dd><ul class="simple">
-<li><p>pandas</p></li>
-<li><p>json</p></li>
-<li><p>prettytable</p></li>
-<li><p>random</p></li>
-</ul>
-</dd>
-</dl>
-<p># TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <section id="classes">
@@ -304,141 +274,6 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_parameter">
-<span class="sig-name descname"><span class="pre">add_parameter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_parameter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_parameter">
-<span class="sig-name descname"><span class="pre">get_parameter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_parameter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_scenario">
-<span class="sig-name descname"><span class="pre">add_scenario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_scenario" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_scenario">
-<span class="sig-name descname"><span class="pre">get_scenario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_scenario" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_process">
-<span class="sig-name descname"><span class="pre">add_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_process" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_process">
-<span class="sig-name descname"><span class="pre">get_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_process" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_flow">
-<span class="sig-name descname"><span class="pre">add_flow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_flow" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_flow">
-<span class="sig-name descname"><span class="pre">get_flow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_flow" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_element">
-<span class="sig-name descname"><span class="pre">add_element</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_element" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_element">
-<span class="sig-name descname"><span class="pre">get_element</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_element" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_compound">
-<span class="sig-name descname"><span class="pre">add_compound</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_compound" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_compound">
-<span class="sig-name descname"><span class="pre">get_compound</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_compound" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_material">
-<span class="sig-name descname"><span class="pre">add_material</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_material" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_material">
-<span class="sig-name descname"><span class="pre">get_material</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_material" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_component">
-<span class="sig-name descname"><span class="pre">add_component</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_component" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_component">
-<span class="sig-name descname"><span class="pre">get_component</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_component" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_product">
-<span class="sig-name descname"><span class="pre">add_product</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_product" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_product">
-<span class="sig-name descname"><span class="pre">get_product</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_product" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_input">
-<span class="sig-name descname"><span class="pre">add_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_input" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_input">
-<span class="sig-name descname"><span class="pre">get_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_input" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_output">
-<span class="sig-name descname"><span class="pre">add_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_output" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_output">
-<span class="sig-name descname"><span class="pre">get_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_output" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_transfer_coefficient">
-<span class="sig-name descname"><span class="pre">add_transfer_coefficient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_transfer_coefficient" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_transfer_coefficient">
-<span class="sig-name descname"><span class="pre">get_transfer_coefficient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_transfer_coefficient" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.expand_composition">
-<span class="sig-name descname"><span class="pre">expand_composition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.expand_composition" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.get_matter">
-<span class="sig-name descname"><span class="pre">get_matter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_matter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="futuram.classes.model.Model.add_matter">
-<span class="sig-name descname"><span class="pre">add_matter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_matter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="simple">
 <dt>Dependencies:</dt><dd><ul class="simple">
 <li><p>pandas</p></li>
@@ -568,98 +403,98 @@ Uses the networkx package to make a directed graph of the processes and flows in
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">add_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_parameter">
+<span class="sig-name descname"><span class="pre">add_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_parameter" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">add_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_scenario">
+<span class="sig-name descname"><span class="pre">add_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_scenario" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">add_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_process">
+<span class="sig-name descname"><span class="pre">add_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_process" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">add_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_flow">
+<span class="sig-name descname"><span class="pre">add_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_flow" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">add_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_matter">
+<span class="sig-name descname"><span class="pre">add_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_matter" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">add_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_element">
+<span class="sig-name descname"><span class="pre">add_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_element" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">add_compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_compound">
+<span class="sig-name descname"><span class="pre">add_compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_compound" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id7">
-<span class="sig-name descname"><span class="pre">add_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_material">
+<span class="sig-name descname"><span class="pre">add_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_material" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id8">
-<span class="sig-name descname"><span class="pre">add_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_component">
+<span class="sig-name descname"><span class="pre">add_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_component" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id9">
-<span class="sig-name descname"><span class="pre">add_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.add_product">
+<span class="sig-name descname"><span class="pre">add_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.add_product" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id10">
-<span class="sig-name descname"><span class="pre">get_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_parameter">
+<span class="sig-name descname"><span class="pre">get_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_parameter" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id11">
-<span class="sig-name descname"><span class="pre">get_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_scenario">
+<span class="sig-name descname"><span class="pre">get_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_scenario" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id12">
-<span class="sig-name descname"><span class="pre">get_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_process">
+<span class="sig-name descname"><span class="pre">get_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_process" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id13">
-<span class="sig-name descname"><span class="pre">get_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_flow">
+<span class="sig-name descname"><span class="pre">get_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_flow" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id14">
-<span class="sig-name descname"><span class="pre">get_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_element">
+<span class="sig-name descname"><span class="pre">get_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_element" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id15">
-<span class="sig-name descname"><span class="pre">get_compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compound_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_compound">
+<span class="sig-name descname"><span class="pre">get_compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compound_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_compound" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id16">
-<span class="sig-name descname"><span class="pre">get_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_material">
+<span class="sig-name descname"><span class="pre">get_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_material" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id17">
-<span class="sig-name descname"><span class="pre">get_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_component">
+<span class="sig-name descname"><span class="pre">get_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_component" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id18">
-<span class="sig-name descname"><span class="pre">get_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id18" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_product">
+<span class="sig-name descname"><span class="pre">get_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_product" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -708,8 +543,8 @@ Uses the networkx package to make a directed graph of the processes and flows in
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id19">
-<span class="sig-name descname"><span class="pre">get_matter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="futuram.classes.model.Model.get_matter">
+<span class="sig-name descname"><span class="pre">get_matter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#futuram.classes.model.Model.get_matter" title="Permalink to this definition"></a></dt>
 <dd><p>makes a dictionary of all matter in the model from the             elements, compounds, materials, components and products</p>
 </dd></dl>
 
@@ -806,7 +641,7 @@ Uses the networkx package to make a directed graph of the processes and flows in
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

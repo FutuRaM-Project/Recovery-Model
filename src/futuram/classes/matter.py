@@ -18,6 +18,7 @@ Dependencies:
 - re
 - ../visualisation/make_matter_treemap.py
 
+:noindex:
 """
 
 import re

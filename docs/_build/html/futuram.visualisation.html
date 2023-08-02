@@ -20,8 +20,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API" href="api.html" />
-    <link rel="prev" title="Utilities" href="futuram.utils.html" /> 
+    <link rel="next" title="API Reference" href="autoapi/index.html" />
+    <link rel="prev" title="Classes" href="futuram.classes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,37 +43,9 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup and usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Code documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="futuram.classes.html">Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="futuram.utils.html">Utilities</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualisation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-futuram.visualisation.make_flowchart">futuram.visualisation.make_flowchart module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_flowchart.make_flowchart"><code class="docutils literal notranslate"><span class="pre">make_flowchart()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_flowchart.make_flowchart_model"><code class="docutils literal notranslate"><span class="pre">make_flowchart_model()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_flowchart.make_flowchart_process"><code class="docutils literal notranslate"><span class="pre">make_flowchart_process()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-futuram.visualisation.make_matter_treemap">futuram.visualisation.make_matter_treemap module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_matter_treemap.make_matter_treemap"><code class="docutils literal notranslate"><span class="pre">make_matter_treemap()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_matter_treemap.prepare_treemap_data"><code class="docutils literal notranslate"><span class="pre">prepare_treemap_data()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-futuram.visualisation.make_network">futuram.visualisation.make_network module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_network.make_network"><code class="docutils literal notranslate"><span class="pre">make_network()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_network.make_network_matter"><code class="docutils literal notranslate"><span class="pre">make_network_matter()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#futuram.visualisation.make_network.make_network_process"><code class="docutils literal notranslate"><span class="pre">make_network_process()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="futuram.html">FutuRaM package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
@@ -92,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">Code documentation</a></li>
+          <li class="breadcrumb-item"><a href="futuram.html">FutuRaM package</a></li>
       <li class="breadcrumb-item active">Visualisation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/futuram.visualisation.rst.txt" rel="nofollow"> View page source</a>
@@ -107,154 +79,34 @@
 <h1>Visualisation<a class="headerlink" href="#visualisation" title="Permalink to this heading"></a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
-<p>The fururam.visualisation subpackage contains modules for visualising the model.</p>
+<p>The futuram.visualisation subpackage contains modules for visualising the model.</p>
 <p>The sub-package contains the following modules:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt><cite>make_flowchart</cite>: contains functions for making a flowchart of the</dt><dd><p>model.</p>
+<dt><cite>make_flowchart</cite>:</dt><dd><p>contains functions for making a flowchart of the model.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><cite>make_matter_treemap</cite>: contains functions for making a treemap of</dt><dd><p>the matter flows in the model.</p>
+<dt><cite>make_matter_treemap</cite>:</dt><dd><p>contains functions for making a treemap of the matter flows in the model.</p>
 </dd>
 </dl>
 </li>
-<li><p><cite>make_network</cite>: contains functions for making a network graph of the model of the objects inside of it</p></li>
+<li><dl class="simple">
+<dt><cite>make_network</cite>:</dt><dd><p>contains functions for making a network graph of the model of the objects inside of it</p>
+</dd>
+</dl>
+</li>
 </ul>
 <p>In the future, we will add more visualisation modules to cover the results of the model, the impact assessment, etc.</p>
 </section>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-futuram.visualisation.make_flowchart">
-<span id="futuram-visualisation-make-flowchart-module"></span><h2>futuram.visualisation.make_flowchart module<a class="headerlink" href="#module-futuram.visualisation.make_flowchart" title="Permalink to this heading"></a></h2>
-<p>make_flowchart.py</p>
-<p>This module contains functions for creating flowcharts of processes and models.</p>
-<p>Functions:
-- make_flowchart(object):  This is a wrapper function that calls one of the subroutines.
-- make_flowchart_process(process): Makes a flowchart of the process.
-- make_flowchart_model(model): Makes a flowchart of the model.
-- make_flowchart_matter(matter): Makes a flowchart of the matter.</p>
-<p>#! TODO: not yet written</p>
-<p>Dependencies:
-- graphviz
-- os</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_flowchart.make_flowchart">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_flowchart.</span></span><span class="sig-name descname"><span class="pre">make_flowchart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_flowchart.make_flowchart" title="Permalink to this definition"></a></dt>
-<dd><p>Creates a flowchart for a model or a process object.
-Depending on the type of object, the appropriate function is called.
-Args:
-object (object): The object to create the flowchart of.
-Outputs:
-A flowchart of the object in the figures folder. Formats: SVG, PDF, PNG and DOT.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_flowchart.make_flowchart_model">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_flowchart.</span></span><span class="sig-name descname"><span class="pre">make_flowchart_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_flowchart.make_flowchart_model" title="Permalink to this definition"></a></dt>
-<dd><p>Creates a flowchart for a model object.
-Considers all processes in the model and their inputs and outputs.
-Args:
-model (Model): The model object to create the flowchart of.</p>
-<p>tags (list): A list of tags to filter the processes by. Default is None.</p>
-<p>ws (str): The waste stream to filter the processes by. Default is None.</p>
-<p>level (int): The transformation level to filter the processes by. Default is None.
-(examples: ‘market’, ‘component’, ‘material’, ‘compound’, ‘element’)</p>
-<p>name (str): The name of the process to filter by. Default is None.
-(will catch all processes with the string in the name)</p>
-<p>description (str): The description of the process to filter by. Default is None.
-(will catch all processes with the string in the description)</p>
-<p>Outputs:</p>
-<p>A flowchart of the model in the figures folder.
-Formats: SVG, PDF, PNG and DOT.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_flowchart.make_flowchart_process">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_flowchart.</span></span><span class="sig-name descname"><span class="pre">make_flowchart_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_flowchart.make_flowchart_process" title="Permalink to this definition"></a></dt>
-<dd><p>Creates a flowchart for a process object.
-Only considers the process itself and its direct inputs and outputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>process</strong> (<a class="reference internal" href="futuram.classes.html#futuram.classes.processes.Process" title="futuram.classes.processes.Process"><em>Process</em></a>) – The process object to create the flowchart of.</p>
-</dd>
-</dl>
-<dl class="simple">
-<dt>Outputs:</dt><dd><p>A flowchart of the process in the figures folder. Formats: SVG, PDF, PNG and DOT.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-futuram.visualisation.make_matter_treemap">
-<span id="futuram-visualisation-make-matter-treemap-module"></span><h2>futuram.visualisation.make_matter_treemap module<a class="headerlink" href="#module-futuram.visualisation.make_matter_treemap" title="Permalink to this heading"></a></h2>
-<p>make_matter_treemap.py</p>
-<p>This module contains functions for creating treemaps of the matter in a model.</p>
-<p>Functions:
-- make_matter_treemap(data, name, level=0):  Makes a treemap of the matter in the model.
-- prepare_treemap_data(data, parent_key=’’, level=0): Prepares the data for the treemap.</p>
-<p>Dependencies:
-- plotly</p>
-<p>#! THIS ONE NEEDS WORK: THE NESTED DICTIONARIES SHOULD BE INSIDE OF #! THE OUTSIDE DICTIONARY IN THE BOXES. #! It would be also be good to have an option to choose the level of nesting to display.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_matter_treemap.make_matter_treemap">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_matter_treemap.</span></span><span class="sig-name descname"><span class="pre">make_matter_treemap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_matter_treemap.make_matter_treemap" title="Permalink to this definition"></a></dt>
-<dd><p>Makes a treemap of the matter in the model.
-Uses the plotly package to make a treemap of the matter composition at all levels in the model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>dict</em>) – A dictionary of the matter composition at all levels in the model.</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – The name of the model.</p></li>
-<li><p><strong>level</strong> (<em>int</em>) – The level of nesting to display.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_matter_treemap.prepare_treemap_data">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_matter_treemap.</span></span><span class="sig-name descname"><span class="pre">prepare_treemap_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_matter_treemap.prepare_treemap_data" title="Permalink to this definition"></a></dt>
-<dd><p>Prepares the data for the treemap.</p>
-</dd></dl>
-
-</section>
-<section id="module-futuram.visualisation.make_network">
-<span id="futuram-visualisation-make-network-module"></span><h2>futuram.visualisation.make_network module<a class="headerlink" href="#module-futuram.visualisation.make_network" title="Permalink to this heading"></a></h2>
-<p>make_network.py</p>
-<p>This module contains functions for creating network graphs of processes and matter in a model.</p>
-<p>Functions:
-- make_network(model):  This is a wrapper function that calls one of the subroutines.
-- make_network_matter(model): Makes a network of the matter in the model.
-- make_network_process(model): Makes a network of the processes in the model.</p>
-<p>Dependencies:
-- networkx
-- matplotlib</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_network.make_network">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_network.</span></span><span class="sig-name descname"><span class="pre">make_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_network.make_network" title="Permalink to this definition"></a></dt>
-<dd><p>This is a wrapper function that calls either make_network_process or make_network_matter depending on the type of object.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_network.make_network_matter">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_network.</span></span><span class="sig-name descname"><span class="pre">make_network_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_network.make_network_matter" title="Permalink to this definition"></a></dt>
-<dd><p>Makes a network of the matter in the model.
-Uses the networkx package to make a graph of the matter composition at all levels in the model.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="futuram.visualisation.make_network.make_network_process">
-<span class="sig-prename descclassname"><span class="pre">futuram.visualisation.make_network.</span></span><span class="sig-name descname"><span class="pre">make_network_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#futuram.visualisation.make_network.make_network_process" title="Permalink to this definition"></a></dt>
-<dd><p>Makes a network of the processes in the model.
-Uses the networkx package to make a directed graph of the processes and flows in the model.</p>
-</dd></dl>
-
+<section id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this heading"></a></h2>
+<p>See the API reference for more information on the modules and their functions.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -262,14 +114,14 @@ Uses the networkx package to make a directed graph of the processes and flows in
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="futuram.utils.html" class="btn btn-neutral float-left" title="Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="futuram.classes.html" class="btn btn-neutral float-left" title="Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoapi/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, S.C.McDowall.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -11,32 +11,6 @@
 
    The Model class contains all of the other classes,     and is the main object that is used to build a model.
 
-   The Model class contains the following attributes:
-       - name (str): The name of the model.
-       - type (str): The type of the model. This is always 'model'.
-       - parameters (dict): A dictionary of the parameters in the model.
-       - scenarios (dict): A dictionary of the scenarios in the model.
-       - processes (dict): A dictionary of the processes in the model.
-       - flows (dict): A dictionary of the flows in the model.
-       - elements (dict): A dictionary of the elements in the model.
-       - compounds (dict): A dictionary of the compounds in the model.
-       - materials (dict): A dictionary of the materials in the model.
-       - components (dict): A dictionary of the components in the model.
-       - products (dict): A dictionary of the products in the model.
-       - matter (dict): A dictionary of all matter in the model.
-       - inputs (dict): A dictionary of the inputs to the model.
-       - outputs (dict): A dictionary of the outputs from the model.
-       - transfer_coefficients (dict): A dictionary of the transfer coefficients in the model.
-
-
-   Dependencies:
-       - pandas
-       - json
-       - prettytable
-       - random
-
-   # TODO: we should make a way to save and load whole models in a database or as a json file, or a set of csvs, or something.
-
 
 
 Module Contents
@@ -149,115 +123,6 @@ Classes
 
       :type: dict
 
-   .. method:: add_parameter
-
-      
-
-   .. method:: get_parameter
-
-      
-
-   .. method:: add_scenario
-
-      
-
-   .. method:: get_scenario
-
-      
-
-   .. method:: add_process
-
-      
-
-   .. method:: get_process
-
-      
-
-   .. method:: add_flow
-
-      
-
-   .. method:: get_flow
-
-      
-
-   .. method:: add_element
-
-      
-
-   .. method:: get_element
-
-      
-
-   .. method:: add_compound
-
-      
-
-   .. method:: get_compound
-
-      
-
-   .. method:: add_material
-
-      
-
-   .. method:: get_material
-
-      
-
-   .. method:: add_component
-
-      
-
-   .. method:: get_component
-
-      
-
-   .. method:: add_product
-
-      
-
-   .. method:: get_product
-
-      
-
-   .. method:: add_input
-
-      
-
-   .. method:: get_input
-
-      
-
-   .. method:: add_output
-
-      
-
-   .. method:: get_output
-
-      
-
-   .. method:: add_transfer_coefficient
-
-      
-
-   .. method:: get_transfer_coefficient
-
-      
-
-   .. method:: expand_composition
-
-      
-
-   .. method:: get_matter
-
-      
-
-   .. method:: add_matter
-
-      
-      
-
    Dependencies:
        - pandas
        - json
@@ -270,6 +135,7 @@ Classes
       Exports the model as a json or pickle file
 
 
+
    .. py:method:: calculate_flows()
 
       calculates the flows amounts iteratively in the model
@@ -277,9 +143,11 @@ Classes
       and the input flows to the model
 
 
+
    .. py:method:: make_flowchart_model()
 
       Create a flowchart for the whole model, showing all processes and their inputs and outputs
+
 
 
    .. py:method:: make_network()
@@ -288,9 +156,11 @@ Classes
       Uses the networkx package to make a directed graph of the processes and flows in the model.
 
 
+
    .. py:method:: make_flowchart_processes()
 
       Create isolated flowcharts for each process in the model,              showing only the process and its direct inputs and outputs
+
 
 
    .. py:method:: get_transfer_coefficients()
@@ -298,9 +168,11 @@ Classes
       Returns a dictionary of all transfer coefficients in the model,              with keys in the format "ProcessName - TCName"
 
 
+
    .. py:method:: print_transfer_coefficients()
 
       Prints all of the transfer coefficients of the model in a nice table
+
 
 
    .. py:method:: print_flows_by_process()
@@ -309,6 +181,7 @@ Classes
    .. py:method:: print_matter()
 
       prints the matter objects in the model
+
 
 
    .. py:method:: print_matter_subclasses()
@@ -438,7 +311,10 @@ Classes
       makes a dictionary of all matter in the model from the             elements, compounds, materials, components and products
 
 
+
    .. py:method:: list_matter()
+
+      
 
 
    .. py:method:: to_dataframe()

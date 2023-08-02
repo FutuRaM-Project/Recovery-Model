@@ -8,6 +8,12 @@ Methods:
     import_matter_bulk(dir_compositions, model)
     import_matter_csv(model, filename)
 
+Dependencies:
+    os
+    csv
+    decimal
+
+
 """
 
 
@@ -37,6 +43,14 @@ def import_matter_bulk(dir_compositions, model):
     <WS>_<parent_product>_<matter name>-<matter_type>.csv
     where matter types are one of:
     ['elm', 'cmp', 'mat', 'cpt', 'prd']
+
+    Parameters
+    ----------
+    dir_compositions : str
+        The path to the directory containing the csv files.
+    
+    model : Model
+
     """
     print(
         f'\n\n{"-" * 30}\n\t Importing matter to {model.name} from {dir_compositions}\n{"-" * 30}'
@@ -63,6 +77,17 @@ def import_matter_bulk(dir_compositions, model):
 def import_matter_csv(model, filename):
     """
     Import a csv file containing matter data.
+
+    Parameters
+    ----------
+
+    model : Model
+        The model object to add the matter to.
+    
+    filename : str
+        The path to the csv file.
+
+
     The csv should have the structure of the following example:
 
     filename = ELV_ICE_ferrous-mat.csv

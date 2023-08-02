@@ -5,16 +5,9 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    futuram.utils
    futuram.classes
    futuram.visualisation
 
-Module contents
----------------
-
-.. automodule:: futuram
-   :members:
-   :undoc-members:
-   :show-inheritance:

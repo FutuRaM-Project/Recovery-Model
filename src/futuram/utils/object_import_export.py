@@ -1,29 +1,12 @@
 """
 object_import_export.py
 
-This is a script to export and import the model and other model objects to file. Export formats are:
+This is a script to export and import the model and other model objects to file. 
+
+Export formats are:
 
 - JSON
 - pickle
-
-Methods:
-
-- export(model_object, filename, format='pickle'):  
-
-    Wrapper function to export the model object to file.
-
-- export_to_json(model_, filename)
-
-- export_to_pickle(model, filename)
-
-- import(filename)
-
-Dependencies:
-
-- pickle
-- json
-- datetime
-- os
 
 #! this has not yet been fully tested. it could be that the model object is not fully exported to json and then imported again. the pickel export and import seems to work fine though. maybe we need to make a function to convert the model object to a fully to a dictionary first.
 
@@ -40,9 +23,19 @@ def import_object(filename=None):
     This is a function to import a model object from file.
     If there is no filename specified, it will import the latest file from the export folder.
 
-    Usage example:
+    Parameters
+    ----------
+    filename : str
+
+        The filename to import the model object from.
+
+        Default filename is the object name and the date and time of export. Default location is the export folder.
+
+    Usage example
+    -------------
 
     TestModel_ELV = import('TestModel_ELV-20230707-1620.pkl')
+
     """
 
     if filename is None:
@@ -140,6 +133,8 @@ def export_to_json(model_object, filename):
         without the .json extension.
 
     Default filename is the object name and the current date and time. Default location is the export folder.
+
+
     """
 
     model_dict = model_object.to_dict()

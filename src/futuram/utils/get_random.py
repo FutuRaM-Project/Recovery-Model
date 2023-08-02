@@ -27,6 +27,7 @@ def get_random_process(model):
 
     :param model: The model to get the process from.
     :return: The random process.
+
     """
     random_process = choice(list(model.processes.values()))
 
@@ -39,6 +40,7 @@ def get_random_flow(model):
 
     :param model: The model to get the flow from.
     :return: The random flow.
+
     """
     random_process = get_random_process(model)
 
@@ -53,6 +55,7 @@ def get_random_matter(model):
     Get a random matter object from the model.
     :param model: The model to get the matter object from.
     :return: The random matter object.
+    
     """
 
     random_matter = choice(list(model.matter.values()))

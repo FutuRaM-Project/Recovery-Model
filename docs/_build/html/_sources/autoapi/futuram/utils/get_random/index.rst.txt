@@ -46,6 +46,7 @@ Functions
    :return: The random process.
 
 
+
 .. py:function:: get_random_flow(model)
 
    Get a random flow from the model.
@@ -54,10 +55,12 @@ Functions
    :return: The random flow.
 
 
+
 .. py:function:: get_random_matter(model)
 
    Get a random matter object from the model.
    :param model: The model to get the matter object from.
    :return: The random matter object.
+
 
 

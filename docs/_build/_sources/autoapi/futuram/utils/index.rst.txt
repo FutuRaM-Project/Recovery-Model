@@ -6,17 +6,28 @@
 .. autoapi-nested-parse::
 
    Subpackage: utils
+
    This subpackage contains modules with methods that are used by the futuram package.
 
    Modules:
+
    - import_flows.py: Import flows from an xlsx file.
+
    - import_processes.py: Import processes from an xlsx file.
+
    - import_matter.py: Import matter from a csv file.
+
    - import_transfercoefficients.py: Import transfer coefficients from an xlsx file.
+
    - split_xlsx_to_csvs.py: Split an xlsx file into csvs for each sheet.
+
    - get_random.py: Get random objects from a model.
+
    - validate_model.py: Validate a model.
+
    - object_import_export.py: Import and export objects to and from json files and pickle files.
+
+   :noindex:
 
 
 
@@ -69,16 +80,31 @@ Functions
    The xlsx file should have the following structure:
    process_from,process_to,composition
 
+   :param filename: The path to the xlsx file.
+   :type filename: str
+   :param model: The model object to add the flows to.
+   :type model: Model
 
 
 .. py:function:: import_processes_xlsx(filename, model)
 
    Import a xlsx file containing process data and create process objects for each row
 
+   :param filename (str):
+   :type filename (str): The path to the xlsx file.
+   :param model (Model):
+   :type model (Model): The model object to add the processes to.
+
 
 .. py:function:: import_matter_csv(model, filename)
 
    Import a csv file containing matter data.
+
+   :param model: The model object to add the matter to.
+   :type model: Model
+   :param filename: The path to the csv file.
+   :type filename: str
+
    The csv should have the structure of the following example:
 
    filename = ELV_ICE_ferrous-mat.csv
@@ -112,6 +138,11 @@ Functions
    where matter types are one of:
    ['elm', 'cmp', 'mat', 'cpt', 'prd']
 
+   :param dir_compositions: The path to the directory containing the csv files.
+   :type dir_compositions: str
+   :param model:
+   :type model: Model
+
 
 .. py:function:: import_transfercoefficients_xlsx(filename, model)
 
@@ -132,6 +163,14 @@ Functions
 
 .. py:function:: xlsx_to_csvs(filename)
 
+   This function splits an xlsx file into separate CSV files for each sheet.
+
+   :param filename: The path to the xlsx file.
+   :type filename: str
+
+   :returns: **folder_name** -- The name of the folder where the CSV files were created.
+   :rtype: str
+
 
 .. py:function:: get_random_process(model)
 
@@ -139,6 +178,7 @@ Functions
 
    :param model: The model to get the process from.
    :return: The random process.
+
 
 
 .. py:function:: get_random_flow(model)
@@ -149,11 +189,13 @@ Functions
    :return: The random flow.
 
 
+
 .. py:function:: get_random_matter(model)
 
    Get a random matter object from the model.
    :param model: The model to get the matter object from.
    :return: The random matter object.
+
 
 
 .. py:function:: validate_model(model)
@@ -200,8 +242,12 @@ Functions
    This is a function to import a model object from file.
    If there is no filename specified, it will import the latest file from the export folder.
 
-   Usage example:
+   :param filename: The filename to import the model object from.
 
-   TestModel_ELV = import('TestModel_ELV-20230707-1620.pkl')
+                    Default filename is the object name and the date and time of export. Default location is the export folder.
+   :type filename: str
+   :param Usage example:
+   :param -------------:
+   :param TestModel_ELV = import('TestModel_ELV-20230707-1620.pkl'):
 
 

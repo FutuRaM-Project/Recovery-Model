@@ -10,7 +10,9 @@ Methods:
 Dependencies:
     openpyxl
 
-#! there is probably no reason to be dealing with xlsx files directly in the model, but this is likely how the data will arrive. We could also convert the xlsx files to csvs and import them that way. 
+#! there is probably no reason to be dealing with xlsx files directly in the model, but this is likely how the data will arrive. We could also convert the xlsx files to csvs and import them that way.
+
+:noindex:
 '''
 
 import openpyxl
@@ -19,6 +21,14 @@ from ..classes.processes import Process
 def import_processes_xlsx(filename, model):
     """
     Import a xlsx file containing process data and create process objects for each row
+
+    Parameters
+    ----------
+
+    filename (str): The path to the xlsx file.
+    model (Model): The model object to add the processes to.
+
+
     """
     print(f'\n\n{"-" * 60}\n   Importing processes to model \"{model.name}\" from {filename}\n{"-" * 60}\n')
 

@@ -24,6 +24,8 @@
    - re
    - ../visualisation/make_matter_treemap.py
 
+   :noindex:
+
 
 
 Module Contents
