@@ -1,9 +1,0 @@
-.. toctree::
-   :maxdepth: 6
-
-   setup
-   futuram
-   futuram.classes
-   futuram.utils
-   futuram.visualisation
-   examples
