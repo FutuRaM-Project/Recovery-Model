@@ -101,4 +101,10 @@ def merge_data(flows_path, processes_path, tcs_path):
     # Step 7: Sort the merged dataframe for better readability
     merged_df.sort_values(by=['process_from', 'process_to'], inplace=True)
 
+    # Step 8: Drop empty columns, but retain specific columns
+    keep_columns = ["Technology_Used", "Reason_for_Technology_Selection", "TLR", "Scientific_References", "Remarks"]
+    drop_columns = merged_df.columns[merged_df.isnull().all()].tolist()
+    drop_columns = [col for col in drop_columns if col not in keep_columns]
+    merged_df.drop(columns=drop_columns, inplace=True)
+
     return merged_df
