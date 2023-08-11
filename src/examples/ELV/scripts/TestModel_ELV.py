@@ -52,8 +52,12 @@ os.chdir(dir_path)
 # toggle test mode to print out more information
 TEST = True
 
+'''
 # Set the path to the data directory
 DIR_DATA = "../data/"
+'''
+# Set the path to the data directory
+DIR_DATA = os.path.join(dir_path, 'src', 'examples', 'ELV', 'data')
 
 # %% CREATE THE MODEL OBJECT
 
