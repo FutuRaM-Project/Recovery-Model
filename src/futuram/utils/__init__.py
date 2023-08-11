@@ -21,3 +21,4 @@ from .split_xlsx_to_csvs import xlsx_to_csvs
 from .get_random import get_random_process, get_random_flow, get_random_matter
 from .validate_model import validate_model, validate_flows, validate_matter
 from .object_import_export import export_object, import_object
+from .merged_flows_processes_TCs import merge_data

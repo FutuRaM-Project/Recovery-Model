@@ -17,6 +17,7 @@ Dependencies:
 - json
 - re
 - ../visualisation/make_matter_treemap.py
+
 """
 
 import re
@@ -47,6 +48,7 @@ class Matter:
                     uncertainty : float between 0 and 1},
 
     }
+
     """
 
     def __init__(self, name):
@@ -76,6 +78,10 @@ class Matter:
         return f"{self.__class__.__name__}({self.name})"
 
     def add_to_model(self, model):
+        '''
+        Adds the matter object to the model object.
+
+        '''
         model.add_matter(self)
 
     def to_dict(self):
@@ -83,11 +89,12 @@ class Matter:
         Makes a dictionary of the matter object.
         With the following structure:
         {
-            'Name': str,
-            'Tags': list,
-            'Physical/chemical attributes': dict,
-            'Economic attributes': dict,
+        'Name': str,
+        'Tags': list,
+        'Physical/chemical attributes': dict,
+        'Economic attributes': dict,
         }
+
         """
         matter_dict = {
             "Name": self.name,
@@ -100,6 +107,7 @@ class Matter:
     def expand_composition(self):
         """
         Expands the composition of the matter to include the composition of its components.
+
         """
 
         def expand_component(component, fraction):
@@ -141,6 +149,7 @@ class Matter:
     def composition_expanded_to_json(self):
         """
         Converts the expanded composition to a json string.
+
         """
         j = json.dumps(self.composition_expanded)
         self.composition_expanded_json = j
@@ -149,12 +158,17 @@ class Matter:
     def to_series(self):
         """
         Converts the matter object dict to a pandas series.
+
         """
         matter_dict = self.to_dict()
         series = pd.Series(matter_dict)
         return series
 
     def add_tag(self, tag):
+        '''
+        Adds a tag to the matter object's tag list.
+        
+        '''
         self.tags.append(tag)
 
     # def to_json(self, filename):
@@ -165,6 +179,7 @@ class Matter:
     def create_treemap(self):
         """
         Creates a treemap of the matter object.
+
         """
         data = self.composition_expanded
         name = self.name
@@ -178,6 +193,7 @@ class Element(Matter):
         - symbol (str): The symbol of the element.
         - atomic_number (int): The atomic number of the element.
         - atomic_mass (float): The atomic mass of the element.
+
     """
 
     def __init__(self, symbol):
@@ -195,6 +211,7 @@ class Element(Matter):
         """
         Checks if the composition is a dictionary or a \
             string and converts it to a dictionary if necessary.
+
         """
         if isinstance(symbol, dict):
             for k in symbol.keys():
@@ -205,6 +222,10 @@ class Element(Matter):
         return self.symbol
 
     def to_dict(self):
+        """
+        Makes a dictionary of the element object.
+
+        """
         element_dict = super().to_dict()
         element_dict.update(
             {
@@ -230,6 +251,7 @@ class Compound(Matter):
     A subclass that represents a compound.
     Attributes:
         - formula: The chemical formula of the compound.
+
     """
 
     def __init__(self, name, composition_molecular):
@@ -240,12 +262,18 @@ class Compound(Matter):
         self.composition = self.calculate_mass_fractions()
 
     def print_formula(self):
+        '''
+        Prints the formula of the compound.
+        
+        '''
+
         print(self.formula)
 
     def get_formula(self, composition_molecular):
         """
         Checks if the composition is a dictionary \
             or a string and converts it to a dictionary if necessary.
+
         """
         for k, v in composition_molecular.items():
             if isinstance(v, dict):
@@ -263,6 +291,7 @@ class Compound(Matter):
 
         Returns:
             dict: A dictionary of element symbols and counts.
+
         """
         pattern = r"([A-Z][a-z]*)(\d*)"
         matches = re.findall(pattern, formula)
@@ -276,27 +305,29 @@ class Compound(Matter):
         return elements
 
     def calculate_molecular_weight(self):
-        '''
+        """
         calculates the molecular weight of the compound
-        '''
+
+        """
         molecular_weight = 0
         for symbol, count in self.formula.items():
             molecular_weight += periodictable.elements.symbol(symbol)._mass * count
         return molecular_weight
 
     def calculate_molar_fractions(self):
-        '''
+        """
         calculates the molar fractions of the compound
 
         Parameters
         ----------
         molecular_weight : float
             molecular weight of the compound
-        
+
         Returns
         -------
         molar_fractions : dict
-        '''
+
+        """
         molar_fractions = {}
         total_count = sum(self.formula.values())
         for symbol, count in self.formula.items():
@@ -304,7 +335,7 @@ class Compound(Matter):
         return molar_fractions
 
     def calculate_mass_fractions(self):
-        '''
+        """
         calculates the mass fractions of the compound
 
         Parameters
@@ -315,7 +346,8 @@ class Compound(Matter):
         Returns
         -------
         composition : dict
-        '''
+
+        """
         composition = {}
         for symbol, count in self.formula.items():
             composition[symbol] = (
@@ -326,9 +358,10 @@ class Compound(Matter):
         return composition
 
     def to_dict(self):
-        '''
+        """
         Makes a dictionary of the compound object.
-        '''
+
+        """
         compound_dict = super().to_dict()
         compound_dict.update(
             {
@@ -381,6 +414,7 @@ class Material(Matter):
     Attributes:
         - composition (dict): A dict of Component objects
         - matter_type (str): The type of matter, e.g. 'material'
+
     """
 
     def __init__(self, name, composition):
@@ -409,6 +443,7 @@ class Product(Matter):
     Attributes:
         - composition (): A dictionary of matter objects\
               representing the composition of the product.
+
     """
 
     def __init__(self, name, composition):
