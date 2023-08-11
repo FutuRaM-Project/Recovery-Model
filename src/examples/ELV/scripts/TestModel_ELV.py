@@ -96,6 +96,26 @@ if TEST:
     print("\n\n All transfer coefficients in the model:")
     model.print_transfer_coefficients()
 
+
+def merge_and_split():
+    # Step 1: Merge the Excel files
+    print("Merging the data...")
+    merged_data = f.utils.merged_flows_processes_TCs.merge_data(FLOWS_XLSX, PROCESS_XLSX, TRANSFER_COEFFICIENTS_XLSX)
+
+    # Save the merged data to an Excel file in the same directory
+    output_file = DIR_DATA + "Merged_flows_processes_TCs.xlsx"
+    merged_data.to_excel(output_file, index=False)
+    print(f"Merged data saved to: {output_file}")
+
+    # Step 2: Split the merged Excel into CSVs
+    print("Splitting the merged Excel file into CSVs...")
+    f.utils.split_xlsx_to_csvs.xlsx_to_csvs(output_file)
+    print("CSVs generated in the directory.")
+
+
+# Execute the function
+merge_and_split()
+
 # %% VALIDATE THE MODEL
 f.utils.validate_model(model)
 
