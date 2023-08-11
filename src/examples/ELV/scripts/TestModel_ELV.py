@@ -1,3 +1,20 @@
+'''
+# You may face issues with installing 'futuram' package
+# So you need to reinatll the package
+#Start by deactivating the current virtual environment 'venv'
+deactivate
+# Remove the deactivated virtual environment 'venv'
+rm -r venv
+# Create a new virtual environment 'vienv' (you can take the old name for the virtual environment 'venv'
+python -m venv vienv
+# Activate the new virtual environment
+vienv\Scripts\activate
+# Activate the 'futuram' package in the new virtual environment
+pip install -e ./src (Optional: if you do not want to edit the 'futuram' packaae then you can use "pip install ./src")
+# If you face issue with pip, try upgrading it
+pythom -m pip install --upgrade pip
+'''
+
 # '''
 # TestModel_ELV.py
 

@@ -21,6 +21,7 @@ futuram/utils/import_flows.py
 futuram/utils/import_matter.py
 futuram/utils/import_processes.py
 futuram/utils/import_transfercoefficients.py
+futuram/utils/merged_flows_processes_TCs.py
 futuram/utils/object_import_export.py
 futuram/utils/solve_flows.py
 futuram/utils/split_xlsx_to_csvs.py
