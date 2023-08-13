@@ -47,7 +47,7 @@ class Model:
     """
     The Model class is the main class of the FutuRuM package.
 
-    The Model class contains all of the other classes,\
+    The Model class contains all the other classes,\
           and is the main object that is used to build a model.
 
     Attributes:

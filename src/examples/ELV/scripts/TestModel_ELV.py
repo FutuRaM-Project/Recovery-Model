@@ -60,8 +60,8 @@ DIR_DATA = "../data/"
 DIR_DATA = os.path.join(dir_path, 'src', 'examples', 'ELV', 'data')
 
 # Take the composition, flow, process, TC xlsx and split it into csvs for each sheet
-
-DIR_COMPOSITIONS = f.utils.xlsx_to_csvs(f"{DIR_DATA}ELV_ICE_compositions_flows_processes_TCs.xlsx")
+from f.utils.ssplit_xlsx_to_csvs import xlsx_to_csvs
+DIR_COMPOSITIONS = xlsx_to_csvs(f"{DIR_DATA}ELV_ICE_compositions_flows_processes_TCs.xlsx")
 
 
 

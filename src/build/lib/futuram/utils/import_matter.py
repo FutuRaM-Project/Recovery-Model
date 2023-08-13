@@ -30,7 +30,7 @@ def import_matter_bulk(dir_compositions, model):
     """
     Import all composition csvs from the data directory.
     one function scans a directory, and employs the 
-    other function in the module to import each csv idividually.
+    other function in the module to import each csv individually.
 
     Csvs should be in a subdirectory called 'compositions-split'
     csvs should have the following naming convention:

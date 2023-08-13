@@ -40,20 +40,20 @@ def xlsx_to_csvs(filename, output_folder = None):
     try:
         workbook = openpyxl.load_workbook(filename, data_only=True)
     except Exception as e:
-        print(f"Error loading the Excel file: {e})")
+        print(f"Error loading the Excel file: {e}")
         return
 
     # Step 3: Get the names of all sheets in the Excel workbook
     sheet_names = workbook.sheetnames
-        # Step 3.1: Encourage users to rename default-named sheets
-        default_sheet_names = [sheet_name for sheet_name in sheet_names if sheet_name.startswith('Sheet')]
-        if default_sheet_names:
+    # Step 3.1: Encourage users to rename default-named sheets
+    default_sheet_names = [sheet_name for sheet_name in sheet_names if sheet_name.startswith('Sheet')]
+    if default_sheet_names:
             print("\nEncouragement:")
             print("\nConsider renaming the following sheets to something more descriptive:")
             for sheet_name in default_sheet_names:
-            sheet_number = sheet_names.index(sheet_name) + 1  # +1 because sheet indexing starts from 1
-            print(f'Change name of Sheet number {sheet_number}: ***{sheet_name.upper()}***')
-            print("\n")
+                sheet_number = sheet_names.index(sheet_name) + 1  # +1 because sheet indexing starts from 1
+                print(f'Change name of Sheet number {sheet_number}: ***{sheet_name.upper()}***')
+                print("\n")
 
     # Step 4: Determine the output folder's name
     folder_name =  output_folder or f'{os.path.splitext(filename)[0]}-split'
@@ -90,7 +90,8 @@ def xlsx_to_csvs(filename, output_folder = None):
         with open(f'{folder_name}/{sheet_name}.csv', 'r+', newline='') as csvfile:
             data = csvfile.read().splitlines(True)
             csvfile.seek(0)
-            csvfile.writelines(data[:last_row + 1]) # adding this +1 because last_row here is not None but slicing opeartion is end-exclusive
+            # adding this +1 because last_row here is not None but slicing opeartion is end-exclusive
+            csvfile.writelines(data[:last_row + 1])
             csvfile.truncate()
 
     # Step 6: Print a completon message along with the names of sheets processed
