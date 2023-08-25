@@ -1,0 +1,24 @@
+name,uuid,description,tags,WS,transformation_level,consumption_energy,consumption_water,cost_operation
+collection_ICE,ELV_cl_ice,collection of an ice car,collection,ELV,market,1,1,0.1
+dismantling_ICE,ELV_dm_ice,manual dismantling of an ice car,"manual, mechanical",ELV,component,4,2,0.8
+market_reuse_ELVcomponents,ELV_ru_com,direct or indirect reuse of components from an elv,,ELV,component,,,20
+shredding_engtrans,ELV_sh_et,shredding of car engine and transmission,shredding,ELV,material,10,4,4
+hammermill_body,ELV_hm_b,hammermillilng of car body,mechanical,ELV,material,5,2,1
+smelter_cc,ELV_sh_cc,smelting of catalytic converters,smelter,ELV,element,50,20,10
+shredding_tyre,ELV_sh_t,shredding of tyres,shredding,ELV,material,2,6,1.2
+shredding_elec,ELV_sh_e,shredding of electrical components,shredding,ELV,material,4,3,1.2
+shredding_batt,ELV_sh_b,shredding of a lead acid battery,shredding,ELV,material,6,42,25.2
+smelter_nonferrous,ELV_sm_nf,smelting of nonferrous fractions,smelter,ELV,element,45,42,18.9
+smelter_ferrous,ELV_sm_f,smelting of ferrous fractions,smelter,ELV,element,60,33,19.8
+market_waste_rubber,mkt_w_rub,market for waste rubber,market,,market,,,-5
+market_ree,mkt_w_ree,market for waste REE mix,market,,market,,,-2000
+market_lead,mkt_w_pb,market for waste lead,market,,market,,,-20
+market_H2SO4,mkt_w_H2SO4,market for waste H2SO4,market,,market,,,-10
+market_nonferrous,mkt_w_nfe,market for waste non-ferrous,market,,market,,,-5
+market_ferrous,mkt_w_fe,market for waste ferrous,market,,market,,,-4
+market_waste,mkt_w_gen,market for waste (general),market,,market,,,10
+market_waste_glass,mkt_w_gls,market for waste glass,market,,market,,,-2
+market_waste_plastic,mkt_w_pla,market for waste plastic,market,,market,,,-1
+market_waste_slag,mkt_w_slag,market for waste slag,market,,market,,,-10
+market_waste_oil,mkt_w_pla,market for waste oil,market,,market,,,3
+PutOnMarket_ICE,ELV_pom_ice,put on market for ICE vehicles,,ELV,input,,

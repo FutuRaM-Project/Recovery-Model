@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: recycling
+Version: 0.1
+Summary: A package for recycling analysis.
+Author: Deepjyoti
+Author-email: dasd@chalmers.se
+License: MIT
+Keywords: recycling analysis,vehicle
