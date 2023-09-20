@@ -6,5 +6,5 @@
 __pycache__*
 #futuram.egg-info/
 .vscode/
-
+.*
 
