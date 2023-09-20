@@ -25,10 +25,10 @@ If you make changes to the code, do it in your own branch and make a pull reques
 
 
 ## Overview of the classes in system model
-![OverviewOfClassesInTheModel](docs/figures/OverviewOfClassesInTheModel.svg)
+![OverviewOfClassesInTheModel](README_ASSETS/OverviewOfClassesInTheModel.svg)
 
 ## Overview of matter classes in the model
-![OverviewOfMatterClassesInTheModel](docs/figures/Matter_classes_in_the_FutuRaM_recovery_model.png)
+![OverviewOfMatterClassesInTheModel](README_ASSETS/Matter_classes_in_the_FutuRaM_recovery_model.png)
 
 To do:  
 * establish/connect templates for process and product data
