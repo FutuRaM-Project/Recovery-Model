@@ -73,6 +73,8 @@ if input_venv == "y":
     print("\nTo activate the virtual environment, open you terminal and run:")
     print(f"\tLinux/Mac:    source {venv_dir}/bin/activate")
     print(f"\tWindows:      {venv_dir}\\Scripts\\activate.bat")
+else:
+    venv_dir = sys.prefix
 
 print(f'\n\n{"*"*30}\n Installing the FutuRaM package...\n{"*"*30}\n')
 
@@ -102,13 +104,11 @@ if input_dev == "y":
 print(f'\n\n{"*"*30}\n Installation complete!\n{"*"*30}\n')
 
 print(
-    """
+   f"""
       To use the package:
     1. Activate the virtual environment
-        on Linux/Mac:   source <venv_dir>/bin/activate
-        on Windows:     <venv_dir>\Scripts\activate.bat
-
-        if you created a new virtual environment in this script, the <venv_dir> is printed.
+        on Linux/Mac:   'source {venv_dir}/bin/activate'
+        on Windows:     '{venv_dir}\Scripts\activate.bat'
 
     2. You can now run the example scripts in src/examples
         eg. 

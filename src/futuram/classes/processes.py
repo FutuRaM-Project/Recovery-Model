@@ -34,8 +34,13 @@ class Process:
 
     def __init__(self, name):
         self.name = name
+        self.name_leveltwo = None
+        self.name_levelone = None
         self.type = "process"
-        self.uuid = None
+        self.code = None
+        self.code_leveltwo = None
+        self.code_levelone = None
+        self.note = None
         self.description = None
         self.tags = []
         self.transformation_level = None

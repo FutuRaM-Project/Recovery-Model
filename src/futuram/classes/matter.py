@@ -197,7 +197,7 @@ class Element(Matter):
 
     """
 
-    def __init__(self, symbol):
+    def __init__(self, symbol, composition=None):
         super().__init__(symbol)
         symbol = self.get_symbol(symbol)
         element = periodictable.elements.symbol(symbol)

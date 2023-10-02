@@ -19,14 +19,9 @@ Dependencies:
 
 import os
 import csv
-import openpyxl
-import pandas as pd
 from decimal import Decimal
-import re
 
-from futuram.classes.matter import Element, Compound, Material, Component, Product
-
-from futuram.utils.config import CODELIST_MATTER, WS_names
+from ..classes.matter import Element, Compound, Material, Component, Product
 
 matter_types = {
     "element": "elm",
@@ -36,100 +31,6 @@ matter_types = {
     "product": "prd",
 }
 
-
-from futuram.classes.model import Model
-model = Model('test')
-
-
-
-def split_formula(formula):
-    # Define a regular expression pattern to match elements and their counts
-    pattern = r'([A-Z][a-z]*)(\d*)'
-    # Find all matches of the pattern in the formula
-    matches = re.findall(pattern, formula)
-    # Create a dictionary that maps each element to its count
-    elements = {}
-    for match in matches:
-        element, count = match
-        count = int(count) if count else 1
-        if element in elements:
-            elements[element] += count
-        else:
-            elements[element] = count
-    return elements
-
-def import_matter_codelist(model, CODELIST_MATTER):
-    """"""
-    path = CODELIST_MATTER
-
-    print(f'\n\n{"-" * 60}\n   Importing matter codelist to model "{model.name}" \
-        \n   from {path}\n{"-" * 60}\n')
-    
-    sheet_names = workbook.sheetnames
-    sheet_names = [sheet.replace("EEE", "WEEE").replace("VEHICLE", "ELV") for sheet in sheet_names]
-    levels_keys = ['Key', 'SubKey', 'SubSubKey']
-    sheets_WSkeys = [WS_name+key for WS_name in WS_names for key in levels_keys]
-    
-    sheets_products = [sheet.replace("WEEE", "EEE").replace("ELV", "VEHICLE") \
-        for sheet in sheet_names if sheet in sheets_WSkeys]
-    
-    sheets_matter = {
-        "element": ["element"],
-        "compound": ["compounds"],
-        "minerals": ["minerals"],
-        "material": ["materialKeyLevel4"],
-        "component": ["componentKeyLevel2"],
-        "product": sheets_products,
-    }
-    
-    # not a very fast way to do this (loading the file each time), but simple. 
-    dict_matter = {}
-    for matter_type, sheets in sheets_matter.items():
-        for sheet in sheets:
-            try:
-                df = pd.read_excel(path, sheet_name=sheet)
-                df['matter_type'] = f'{matter_type}-{sheet}'
-                if matter_type in dict_matter:
-                    dict_matter[matter_type] = pd.concat([dict_matter[matter_type], df])
-                else:
-                    dict_matter[matter_type] = df
-            except ValueError as e:
-                print(e)
-                
-    
-    args = {
-    'element': None,
-    'compound': split_formula(row['code']),
-    'material': None,
-    'component': None,
-    'product': None,
-}
-    
-count = 0
-error_count = 0
-    for matter_object in Element, Compound, Material, Component, Product:
-        matter_type = matter_object.__name__.lower()
-        df = dict_matter[matter_type]
-        df.columns = [col.lower() for col in df.columns]
-
-        for index, row in df.iterrows():
-            try:
-                matter = matter_object(row['code'], args[matter_type])
-                matter.description = row['description']
-                #! need to add the other columns
-                #print(f"Added {matter_type}: \t{matter.name}")
-                model.add_matter(matter)
-                count += 1
-            except Exception as e:
-                print(f'\n *********** IMPORT ERROR *********** \n \
-                    {e} \n with row: \n {row} \n')
-                error_count += 1
-    
-    print(f"Imported {count} matter objects to model {model.name} with {error_count} errors")
-
-
-
-## BELOW IS FROM THE OLD IMPORT_MATTER.PY FILE NEEDS TO BE UPDATED FOR COMPOSITIONS
 
 def import_matter_bulk(dir_compositions, model):
     """
@@ -171,8 +72,6 @@ def import_matter_bulk(dir_compositions, model):
 
             matter_name = os.path.basename(file).split("-")[0]
             print(f"Imported {matter_name} as {matter_type} to model {model.name}")
-            
-            
 
 
 def import_matter_csv(model, filename):
