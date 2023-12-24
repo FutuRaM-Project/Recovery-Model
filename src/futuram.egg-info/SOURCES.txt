@@ -16,6 +16,7 @@ futuram/classes/model.py
 futuram/classes/parameters.py
 futuram/classes/processes.py
 futuram/utils/__init__.py
+futuram/utils/config.py
 futuram/utils/get_random.py
 futuram/utils/import_flows.py
 futuram/utils/import_matter.py
