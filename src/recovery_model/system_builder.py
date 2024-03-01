@@ -10,27 +10,61 @@ from pprint import pformat
 
 import numpy as np
 import pandas as pd
-from scipy import sparse
-
-if __name__ == "__main__":
-    import sys
-
-    sys.path.insert(0, "../")
-
+from scipy.sparse import coo_array, coo_matrix, linalg
 from utils.helper_functions import map_array, map_multiidx_to_iloc
+
+# if __name__ == "__main__":  # when trying to run the script from the terminal
+#     import sys
+
+#     sys.path.insert(0, "../")
+
 
 # %%
 
 
 @dataclass
 class System:
+    """Class representing the recovery model.
+
+    Attributes:
+        composition_dct (dict): Metadata about the excel file with inflow composition.
+        inputs_dct (dict): Metadata about the excel file with mass inflows.
+        tc_dct (dict): Metadata about the excel file with transfer coefficients.
+        __idx_keys (tuple): Names for the multi-index levels of the system matrix (e.g. PCME).
+
+    Methods:
+        __post_init__(): Initialize the System class.
+        __get_var_names(): Get variable names (products, components, materials, elements)
+        __get_index(): Get the multi-index of the System.
+        __broadcast_idxs(): Broadcast partial index into complete index.
+        __read_input(): Read input data from an Excel file and process it.
+        __get_linear_eqs(): Create the system matrix of linear equations as a sparse matrix.
+        __get_y_vec(): Create the vector of constant terms (Y) as a sparse matrix.
+        solve(): Solve the system of linear equations.
+
+    Getters and Setters:
+        get_indexer(): Get the integer-based indices corresponding to the given targets.
+        index_loc(): Format targets into appropriate index values.
+        index_iloc(): Return the index values of the DataFrame at the specified integer-based positions.
+        var(): Get the variable names of the system.
+        flows(): Get the list of flows within the system.
+        products(): Get the list of products within the system.
+        components(): Get the list of components within the system.
+        materials(): Get the list of materials within the system.
+        elements(): Get the list of elements within the system.
+        index(): Get the index of the system.
+        tcs(): Get the transfer coefficients (TCs) matrix of the system.
+        y(): Get the constant terms that the linear equations should satisfy
+        __str__(): Return a string representation of the system.
+    """
+
     composition_dct: dict
     inputs_dct: dict
     tc_dct: dict
     __idx_keys = ("flows", "products", "components", "materials", "elements")  # "flows" comes 1st
 
     # ------------------------------------------------------------
-    # SYSTEM INITIALIZATION
+    # I. SYSTEM INITIALIZATION
     # ------------------------------------------------------------
 
     def __post_init__(self, fill_idx=-1):
@@ -42,35 +76,45 @@ class System:
             which is NOT part of C1, C2, etc.
             fill_idx does NOT apply to flows (only products, components, materials and elements)
         """
-        self.__get_var_names()
-        self.__set_index(fill_idx=fill_idx)
+        # ! I.1) Define system variables
+        # Get names from excel files (for flows, products, components, materials, elements)
+        self.__var = self.__get_var_names()
+        # Build the multi-index of the system matrix
+        self.__index = self.__get_index(fill_idx=fill_idx)
 
-        # ! 1) Process composition data
+        # ! I.2) Process composition data
         comp_data, comp_rows, comp_cols = self.__read_input(dct=self.composition_dct, fill_idx=fill_idx)
 
-        comp_data = -comp_data
         comp_rows = self.get_indexer(targets=comp_rows)
         comp_cols = self.get_indexer(targets=comp_cols)
 
-        # ! 2) Process transfer coefficients data
+        # ! I.3) Process transfer coefficients data
+        # TO BE IMPLEMENTED
 
-        # ! 3) Process input data (mass of flows entering the system
+        # ! I.4) Process input data (mass of flows entering the system)
         input_data, input_rows, _ = self.__read_input(dct=self.inputs_dct, fill_idx=fill_idx)
         input_rows = self.get_indexer(targets=input_rows)
 
-        # ! 4) Create the matrix of TCs
+        # ! I.5) Fill in the (square) system matrix and the Y vector
+        comp_data *= -1  # ! EXPLAIN CLEARLY WHY WE MULTIPLY BY -1
         composition = (comp_data, comp_rows, comp_cols)
         flow_tcs = None
-        self.__fill_tcs(composition=composition, flow_tcs=flow_tcs)
+        self.__ln_eqs = self.__get_linear_eqs(composition=composition, flow_tcs=flow_tcs)
+        self.__y = self.__get_y_vec(data=input_data, rows=input_rows)
 
-        # ! 5) Create the Y vector
-        self.__fill_y(data=input_data, rows=input_rows)
+    # ------------------------------------------------------------
+    # I.1) Define system variables
+    # ------------------------------------------------------------
 
     def __get_var_names(self):
-        """Get variable names (products, components, materials, elements) from composition excel file."""
-        self.__var = dict()
+        """Get variable names (products, components, materials, elements) from composition excel file.
 
-        # ! 1) Get flow names from transfer coefficients excel file
+        Note:   We assume that no 'new' products / components / materials appear throughout
+                the recycling pathways (e.g. no non-mechanical treatment processes).
+        """
+        __var = dict()
+
+        # ! I.1.1) Get flow names from transfer coefficients excel file
         flow_names = set()
         # get the path to the excel file with the transfer coefficients
         filepath = self.tc_dct["url"]
@@ -84,56 +128,57 @@ class System:
                 new_flow_names = file[sheet][flow].unique()
                 flow_names.update(new_flow_names)
         # sort and store the flow names
-        self.__var.update({self.__idx_keys[0]: tuple(sorted(flow_names))})
+        __var.update({self.__idx_keys[0]: tuple(sorted(flow_names))})
 
-        # ! 2) Get variable names (products, components, materials and elements) from composition excel file
+        # ! I.1.2) Get variable names (products, components, materials and elements) from composition excel file
         variable_names = {name: set() for name in self.__idx_keys[1:]}
+        # get the path to the excel file with the composition data
         filepath = self.composition_dct["url"]
+        # get the columns correspondance that will ensure consistency
+        # (e.g. ["value", "tc", "share"] -> "data")
         mapper = self.composition_dct["mapper"]
+        # read the excel file
         file = pd.read_excel(filepath, sheet_name=None)
         for sheet in file.keys():
             # Rename columns from excel file to ensure consistent naming across waste streams
             df = file[sheet].rename(mapper=mapper, axis=1)
             # Only consider columns that are either products, components, materials or elements
+            # How other columns (e.g. "years", "region") would be tracked remains to be determined.
             for col in set(variable_names.keys()) & set(df.columns):
                 new_variables = df[col].unique()
                 (variable_names[col]).update(new_variables)
-        self.__var.update({k: tuple(sorted(v)) for k, v in variable_names.items()})
+        # store P, C, M and E names
+        __var.update({k: tuple(sorted(v)) for k, v in variable_names.items()})
 
-        # 3) Get unit of input data
-        self.__var["unit"] = self.inputs_dct["unit"]
+        # ! I.1.3) Get unit of input data
+        __var["unit"] = self.inputs_dct["unit"]
 
-    def __set_index(self, fill_idx):
+        # return all variable names
+        return __var
+
+    def __get_index(self, fill_idx):
         """Set the index of the System.
 
         Args:
             fill_idx [int or str]: The value to bypass the hierarchical decomposition.
         """
         idxs = self.__idx_keys
+        # build the following nested list
+        #  [[F1, F2, ..., Fxx],
+        #   [-1, P1, P2, ..., Pxx],
+        #   [-1, C1, C2, ..., Cxx],
+        #   [-1, M1, M2, ..., Mxx],
+        #   [-1, E1, E2, ..., Exx]]
         iterables = [self.__var[idxs[0]]] + [[fill_idx] + list(self.__var[i]) for i in idxs[1:]]
-        # store index as pd.DataFrame for easier manipulation (see __getitem__)
-        __index = pd.MultiIndex.from_product(iterables, names=idxs)
-        self.__index = __index.to_frame()
-        # also store values of each multiindex levels for printing (see __str__)
+        # store values of each multi-index levels for printing (see __str__)
         self.__var["index"] = {idxs[i]: {v: k for k, v in enumerate(seq)} for i, seq in enumerate(iterables)}
+        # return the multi-index as pd.DataFrame for easier manipulation (see __getitem__)
+        __index = pd.MultiIndex.from_product(iterables, names=idxs)
+        return __index.to_frame()
 
-    def __broadcast_idxs(self, df_idx, fill_idx):
-        """Broadcast partial index into complete index (e.g. [F1, M1, E1] --> [F1, -1, -1, M1, E1])
-
-        Args:
-            df_idx (pandas.DataFrame): The partial index to be broadcasted.
-            fill_idx (int or str): The value to fill the missing columns with.
-
-        Returns:
-            numpy.ndarray: The complete index with the missing columns filled.
-
-        """
-        if isinstance(df_idx, pd.Series):
-            df_idx = df_idx.to_frame()
-        missing_cols = list(set(self.__idx_keys).difference(set(df_idx.columns)))
-        new_idx = df_idx.copy()
-        new_idx[missing_cols] = np.full(shape=(len(new_idx), len(missing_cols)), fill_value=fill_idx)
-        return new_idx.loc[:, self.__idx_keys]  # Sort columns in the right order
+    # ------------------------------------------------------------
+    # I.2-I.4) Helper function to process data
+    # ------------------------------------------------------------
 
     def __read_input(self, dct, fill_idx, year=None):
         """Read input data from an Excel file and process it.
@@ -149,8 +194,11 @@ class System:
         """
         # Specify sheet, and columns we are interested (values need to be sequences)
         rows, cols, data = [], [], []
+        # get the path to the excel file with the data to be processed
         filepath = dct["url"]
+        # get the columns correspondance that will ensure consistency
         mapper = dct["mapper"]
+        # get the sheet and read the excel file
         excel = dct["sheet"]
         file = pd.read_excel(filepath, sheet_name=None)
 
@@ -178,10 +226,14 @@ class System:
 
         data = np.hstack(data)
         rows = np.vstack(rows)
-        cols = np.vstack(cols) if cols != [] else None
+        cols = np.vstack(cols) if cols != [] else None  # can't remember why it is different for cols
         return (data, rows, cols)
 
-    def __fill_tcs(self, composition, flow_tcs):
+    # ------------------------------------------------------------
+    # I.5.1) Matrix filling: define the set of linear equations
+    # ------------------------------------------------------------
+
+    def __get_linear_eqs(self, composition, flow_tcs):
         """Create the matrix of TCs (transfer coefficient) as a sparse matrix.
 
         Args:
@@ -200,11 +252,15 @@ class System:
         rows = np.hstack([comp_rows, diag_idxs])
         cols = np.hstack([comp_cols, diag_idxs])
 
-        coo_mat = sparse.coo_matrix((data, (rows, cols)), shape=(len(self.index), len(self.index)))
+        coo_mat = coo_matrix((data, (rows, cols)), shape=(len(self.index), len(self.index)))
         csr_mat = coo_mat.tocsr()
-        self.__tcs = csr_mat
+        return csr_mat
 
-    def __fill_y(self, data, rows):
+    # ------------------------------------------------------------
+    # I.5.2) Matrix filling: Y vector
+    # ------------------------------------------------------------
+
+    def __get_y_vec(self, data, rows):
         """Create the vector of constant terms (Y) as a sparse matrix.
 
         Args:
@@ -212,12 +268,12 @@ class System:
             rows (ndarray): The rows of the Y vector.
         """
         cols = np.zeros_like(rows)
-        coo_arr = sparse.coo_array((data, (rows, cols)), shape=(len(self.index), 1))
+        coo_arr = coo_array((data, (rows, cols)), shape=(len(self.index), 1))
         csc_arr = coo_arr.tocsc()
-        self.__y = csc_arr
+        return csc_arr
 
     # ------------------------------------------------------------
-    # SYSTEM SOLVER
+    # II) SYSTEM SOLVER
     # ------------------------------------------------------------
 
     def solve(self, output="mass"):
@@ -229,7 +285,7 @@ class System:
         Returns:
             pd.Series: The solution of the system of linear equations as a pandas Series object.
         """
-        solution = sparse.linalg.spsolve(self.tcs, self.y)
+        solution = linalg.spsolve(self.__ln_eqs, self.__y)
         if output == "mass":
             unit = self.var["unit"]
             return pd.Series(solution, index=self.index, name=f"mass ({unit})")
@@ -238,8 +294,26 @@ class System:
             # ! TO BE IMPLEMENTED
 
     # ------------------------------------------------------------
-    # GETTERS AND SETTERS
+    # III) HELPERS, GETTERS AND SETTERS
     # ------------------------------------------------------------
+
+    def __broadcast_idxs(self, df_idx, fill_idx):
+        """Broadcast partial index into complete index (e.g. [F1, M1, E1] --> [F1, -1, -1, M1, E1])
+
+        Args:
+            df_idx (pandas.DataFrame): The partial index to be broadcasted.
+            fill_idx (int or str): The value to fill the missing columns with.
+
+        Returns:
+            numpy.ndarray: The complete index with the missing columns filled.
+
+        """
+        if isinstance(df_idx, pd.Series):
+            df_idx = df_idx.to_frame()
+        missing_cols = list(set(self.__idx_keys).difference(set(df_idx.columns)))
+        new_idx = df_idx.copy()
+        new_idx[missing_cols] = np.full(shape=(len(new_idx), len(missing_cols)), fill_value=fill_idx)
+        return new_idx.loc[:, list(self.__idx_keys)]  # Sort columns in the right order
 
     def get_indexer(self, targets):
         """Get the integer-based indices corresponding to the given targets.
@@ -255,7 +329,8 @@ class System:
         # Convert from 2D-ndarray[str] to 2D-ndarray[int]
         midx_as_int = map_array(arr=midx, mapper=self.__var["index"], keys=self.__idx_keys)
         # Convert from 2D-ndarray[int] to 1D-ndarray[int] using corresponding integer-based indices
-        midx_iloc = map_multiidx_to_iloc(arr=midx_as_int, shape=self.index.levshape)
+        shape = self.__index.levshape
+        midx_iloc = map_multiidx_to_iloc(arr=midx_as_int, shape=shape)
         return midx_iloc
 
     def index_loc(self, targets):
@@ -350,13 +425,13 @@ class System:
         return self.__index.index
 
     @property
-    def tcs(self):
+    def lneqs(self):
         """Get the transfer coefficients (TCs) matrix of the system.
 
         Returns:
             csr_matrix: The transfer coefficients (TCs) as a Compressed Sparse Rows matrix
         """
-        return self.__tcs
+        return self.__ln_eqs
 
     @property
     def y(self):
