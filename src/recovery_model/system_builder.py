@@ -84,7 +84,6 @@ class System:
 
         # ! I.2) Process composition data
         comp_data, comp_rows, comp_cols = self.__read_input(dct=self.composition_dct, fill_idx=fill_idx)
-
         comp_rows = self.get_indexer(targets=comp_rows)
         comp_cols = self.get_indexer(targets=comp_cols)
 
@@ -329,26 +328,34 @@ class System:
         # Convert from 2D-ndarray[str] to 2D-ndarray[int]
         midx_as_int = map_array(arr=midx, mapper=self.__var["index"], keys=self.__idx_keys)
         # Convert from 2D-ndarray[int] to 1D-ndarray[int] using corresponding integer-based indices
-        shape = self.__index.levshape
+        shape = self.index.levshape
         midx_iloc = map_multiidx_to_iloc(arr=midx_as_int, shape=shape)
         return midx_iloc
 
-    def index_loc(self, targets):
-        """Format targets into appropriate index values
+    def index_loc(self, candidates):
+        """Format candidates index into correct system index
 
         Args:
-            targets (Union[pd.IndexSlice, Tuple[Any, ...], np.ndarray]): The targets to retrieve values for.
+            candidates: candidate index to be format Possible types are:
+                - string (in this case it is assumed that it corresponds to the flow level)
+                - tuple[str] / list[str] / np.ndarray[str]
+                - nested list / nested tuple / 2d ndarray of strings
+                - pd.IndexSlice
 
         Returns:
-            np.ndarray: The formated index corresponding to the targets
+            2d np.ndarray: The formated index corresponding to the candidates
         """
-        try:  # handle case where targets is a pd.IndexSlice
-            return self.__index.loc[targets].values
-        except KeyError:  # handle case where targets is a single tuple
-            targets = [targets]
-            return self.__index.loc[targets].values
-        except ValueError:  # handle case where targets is a 2D ndarray
-            return targets
+        if isinstance(candidates, str):
+            candidates = (candidates,)
+        try:  # this should handle most cases
+            idxs = self.__index.loc[tuple(candidates), :].values
+        except KeyError:  # but in case candidates is a nested list/tuple
+            candidates = [tuple(row) for row in candidates]
+            idxs = self.__index.loc[candidates, :].values
+
+        if len(idxs.shape) == 1:
+            return idxs[np.newaxis, :]  # make sure it is 2D
+        return idxs
 
     def index_iloc(self, targets):
         """Return the index values of the DataFrame at the specified integer-based positions.
@@ -416,13 +423,22 @@ class System:
         return self.__var["elements"]
 
     @property
-    def index(self):
+    def index(self) -> pd.MultiIndex:
         """Get the index of the system.
 
         Returns:
             pd.MultiIndex: The index of the system.
         """
         return self.__index.index
+
+    @property
+    def idx(self):
+        """Get the index of the system.
+
+        Returns:
+            pd.MultiIndex: The index of the system.
+        """
+        return self.__index  # ! temp
 
     @property
     def lneqs(self):

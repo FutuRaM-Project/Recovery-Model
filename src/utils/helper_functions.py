@@ -66,10 +66,9 @@ def map_array(arr, mapper, keys):
     """
     if arr.ndim == 1:
         return map_1d_array(arr, mapper)
-    elif arr.ndim == 2:
+    if arr.ndim == 2:
         return map_2d_array(arr, mapper, keys)
-    else:
-        raise ValueError("Array must be 1D or 2D")
+    raise ValueError("Array must be 1D or 2D")
 
 
 def map_multiidx_to_iloc(arr, shape):
