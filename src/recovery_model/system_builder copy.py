@@ -5,6 +5,7 @@
 @Date: 28.02.2024
 """
 # %%
+import warnings
 from dataclasses import dataclass
 from itertools import chain, product
 from pprint import pformat
@@ -85,25 +86,22 @@ class System:
         # ! I.1) Define system variables
         # Get names from excel files (for flows, products, components, materials, elements)
         self.__var = self.__read_var_names()
-
         # Build the multi-index of the system matrix
         self.__index = self.__build_index(fill_idx=fill_idx)
 
         # ! I.2) Process composition excel file
         comp_data, comp_rows, comp_cols = self.__read_composition(fill_idx=fill_idx)
-
-        comp_rows = self.get_indexer(comp_rows)
-        comp_cols = self.get_indexer(comp_cols)
+        # comp_rows = self.get_indexer(comp_rows)
+        # comp_cols = self.get_indexer(comp_cols)
 
         # ! I.3) Process transfer coefficients excel file
         tc_data, tc_rows, tc_cols = self.__read_tcs(fill_idx=fill_idx)
-
-        tc_rows = self.get_indexer(tc_rows)
-        tc_cols = self.get_indexer(tc_cols)
+        # tc_rows = self.get_indexer(tc_rows)
+        # tc_cols = self.get_indexer(tc_cols)
 
         # ! I.4) Process input data (mass of flows entering the system)
         input_data, input_rows = self.__read_inflows(fill_idx=fill_idx)
-        input_rows = self.get_indexer(input_rows)
+        # input_rows = self.get_indexer(input_rows)
 
         # test
         self.input_rows = input_rows
@@ -117,11 +115,10 @@ class System:
 
         # # ! I.5) Fill in the (square) system matrix and the Y vector
         # comp_data *= -1  # ! EXPLAIN CLEARLY WHY WE MULTIPLY BY -1
-        # tc_data *= -1
-        composition = (comp_data, comp_rows, comp_cols)
-        tcs = (tc_data, tc_rows, tc_cols)
-        self.__ln_eqs = self.__get_linear_eqs(composition=composition, tcs=tcs)
-        self.__y = self.__get_y_vec(data=input_data, rows=input_rows)
+        # composition = (comp_data, comp_rows, comp_cols)
+        # flow_tcs = None
+        # self.__ln_eqs = self.__get_linear_eqs(composition=composition, flow_tcs=flow_tcs)
+        # self.__y = self.__get_y_vec(data=input_data, rows=input_rows)
 
     # ------------------------------------------------------------
     # I.1) Define system variables
@@ -330,74 +327,22 @@ class System:
         df = df.rename(mapper=mapper, axis=1)
 
         # Sanity check: Ensure the names of the layers are consistent
-        unique = [df[col].dropna().unique() for col in layer_lvls]
-        levels = set(chain.from_iterable(unique)) - {np.nan, None}
+        unique = [df[col].unique() for col in layer_lvls]
+        levels = set(chain.from_iterable(unique)) - {np.nan}
         if not levels.issubset(set(self.layer_names)):
-            print(levels)
-            print(set(self.layer_names))
             raise ValueError("Layers in TC file are not consistent with the system layers")
 
         # ! I.3.2) Expand columns to (F, P, C, M, E) format
-        # First we expand for input top layer
-        df_inflows = df[[layer_lvls[0], layer_keys[0]]].pivot(columns=layer_lvls[0], values=layer_keys[0])
-        df_inflows.columns.name = None
-        df_inflows = self.autocomplete(df_inflows, np.nan)
-        df_inflows["flows"] = df["inflows"]
-        # Then we update it with the info contained in the input sub layer (only for nan values)
-        df_inflows2 = df[[layer_lvls[1], layer_keys[1]]].pivot(columns=layer_lvls[1], values=layer_keys[1])
-        df_inflows2.columns.name = None
-        df_inflows.update(df_inflows2, overwrite=False)  # only update nan values
-        # We do the same for the outflow
-        df_outflows = df[[layer_lvls[2], layer_keys[2]]].pivot(columns=layer_lvls[2], values=layer_keys[2])
-        df_outflows.columns.name = None
-        df_outflows = self.autocomplete(df_outflows, np.nan)
-        df_outflows["flows"] = df["outflows"]
+        df_inflows = self.__expand_columns(df, layer_lvls[0], layer_keys[0], "inflows")
+        df_inflows2 = self.__expand_columns(df, layer_lvls[1], layer_keys[1])
+        df_outflows = self.__expand_columns(df, layer_lvls[2], layer_keys[2], "outflows")
+        df_inflows.update(df_inflows2, overwrite=False)
         df_inflows.update(df_outflows, overwrite=False)
-        # for the inflows, the cells containing a "all" symbol are replaced by the matching outflow
-        # cell if the latter is more precise
-        # e.g.
-        # |          inflow         ||       outflow       |
-        # | F1 | P1 | 'all' |   |   || F2 |   | C1 |   |   |
-        #
-        # becomes
-        # |          inflow         ||       outflow       |
-        # | F1 | P1 |   C1  |   |   || F2 |   | C1 |   |   |
-        for col in self.layer_names[1:]:
-            mask = df_inflows[col].eq(self.tc_dct["all_symbol"][col]) & df_outflows[col].notna()
-            df_inflows.loc[mask, col] = df_outflows.loc[mask, col]
-        # For the level hierarchy to be maintained, there can not be an nan values
-        # between two NON nan values. Therefore we replace those specific nan values
-        # as follows:
-        # |        inflow        |      -->     |          inflow          |
-        # | F1 | P1 |   | M1 |   |              | F1 | P1 | 'all' | M1 | ∅ |
-        mask = True
-        for col in self.layer_names[-1:0:-1]:
-            mask = mask & df_inflows.loc[:, col].isna()
-            df_inflows.loc[mask, col] = fill_idx
-        for col in self.layer_names[1:]:
-            df_inflows[col] = df_inflows[col].fillna(self.tc_dct["all_symbol"][col])
-        # However for the outflows, it is much more straightforward
-        df_outflows = df_outflows.fillna(fill_idx)
-        # We combined the (columns-) augmented inflows and outflows into a single dataframe
-        other_columns = df.columns.difference(layer_lvls + layer_keys + ["inflows", "outflows"])
-        df = pd.concat(
-            {
-                "inflow": df_inflows,
-                "outflow": df_outflows,
-                "info": df[other_columns],
-            },
-            axis=1,
-        )
+        df_inflows = self.__replace_all_symbols(df_inflows, self.tc_dct["all_symbol"])
+        df_outflows = self.__replace_all_symbols(df_outflows, self.tc_dct["all_symbol"])
+        df = self.__combine_dataframes(df_inflows, df_outflows, df)
 
         # ! I.3.3) Compute priorities in case of conflicts between rows
-        # e.g
-        # |          inflow         ||       outflow       |
-        # | F1 | 'all' | C1 | ∅ | ∅ || F2 | ∅ | ∅ | M1 | ∅ |
-        # | F1 |  P1   | C1 | ∅ | ∅ || F2 | ∅ | ∅ | M1 | ∅ |
-        #
-        # both rows cover the case (F1, P1, C1, M1, ∅),
-        # but the second row is more precise than the first one.
-        # Therefore the second row will be assigned a higher priority.
         df[("other", "priority")] = self.compute_row_priority(
             df=df["inflow"].loc[:, self.layer_names[1:]],
             nan_symbol=fill_idx,
@@ -407,44 +352,57 @@ class System:
         if self.save_intermediary_steps:
             df.to_csv("STEP_1_tc_with_expanded_columns&priorities.csv")
 
-        # # -------------------------------
-
         # ! I.3.4) Expand rows that contains the keyword 'all'
+        df = self.__expand_rows(df, self.layer_names[1:], fill_idx)
 
-        # first we replace 'all' by their corresponding tuple
-        # e.g.
-        # [F1, P1, 'all', M1, ∅] --> [F1, P1, (C1, C2...Cx) , M1, ∅]
-        #
-        # then we explode the dataframe:
-        #                                     [F1, P1, C1, M1, ∅]
-        # [F1, P1, (C1, C2...Cx) , M1, ∅] --> [F1, P1, C2, M1, ∅]
-        #                                             ...
-        #                                     [F1, P1, Cx, M1, ∅]
-        #
-        # In we followed the same procedure for the outflows,
-        # we would end up with a cartesian product, which would create mass
-        # e.g
-        # |         inflow         ||         outflow        |
-        # | F1 | 'all' | ∅ | ∅ | ∅ || F2 | 'all' | ∅ | ∅ | ∅ |
-        #
-        # would yield
-        # |         inflow         ||         outflow        |
-        # | F1 |  P1   | ∅ | ∅ | ∅ || F2 | 'all' | ∅ | ∅ | ∅ |
-        # | F1 |  P2   | ∅ | ∅ | ∅ || F2 | 'all' | ∅ | ∅ | ∅ |
-        # | F1 |  ...  | ∅ | ∅ | ∅ || F2 | 'all' | ∅ | ∅ | ∅ |
-        #
-        # and then:
-        # |         inflow         ||         outflow        |
-        # | F1 |  P1   | ∅ | ∅ | ∅ || F2 |  P1   | ∅ | ∅ | ∅ |
-        # | F1 |  P1   | ∅ | ∅ | ∅ || F2 |  P2   | ∅ | ∅ | ∅ |
-        # | F1 |  P2   | ∅ | ∅ | ∅ || F2 |  P1   | ∅ | ∅ | ∅ |
-        # | F1 |  P2   | ∅ | ∅ | ∅ || F2 |  P2   | ∅ | ∅ | ∅ |
-        # | F1 |  ...  | ∅ | ∅ | ∅ || F2 |  ...  | ∅ | ∅ | ∅ |
-        #
-        # So instead, 'all' symbols on the outflow side are
-        # replaced by the corresponding value on the inflow side
-        for layer in self.layer_names[1:]:  # not flows
-            # replace 'all' on the inflow side
+        # ! OPTIONAL
+        if self.save_intermediary_steps:
+            df.to_csv("STEP_2_tc_with_expanded_columns&rows_with_conflict.csv")
+
+        # ! I.3.5) Remove conflicting rows
+        df = self.__remove_conflicting_rows(df)
+
+        # ! OPTIONAL
+        if self.save_intermediary_steps:
+            df.to_csv("STEP_3_tc_with_expanded_columns&rows_NO_conflict.csv")
+
+        # ! I.3.6) return the dataframe in the (data, rows, cols) format
+        return (
+            df[("info", "data")].values,
+            pd.MultiIndex.from_frame(df["inflow"]),  # rows
+            pd.MultiIndex.from_frame(df["inflow"]),  # columns
+        )
+
+    def __expand_columns(self, df, layer_lvl, layer_key, flow_col=None):
+        df_expanded = df[[layer_lvl, layer_key]].pivot(columns=layer_lvl, values=layer_key)
+        df_expanded.columns.name = None
+        df_expanded = self.autocomplete(df_expanded, np.nan)
+        if flow_col:
+            df_expanded["flows"] = df[flow_col]
+        return df_expanded
+
+    def __replace_all_symbols(self, df, all_symbol):
+        for col in self.layer_names[1:]:
+            mask = df[col].eq(all_symbol[col]) & df_outflows[col].notna()
+            df.loc[mask, col] = df_outflows.loc[mask, col]
+        for col in self.layer_names[1:]:
+            df[col] = df[col].fillna(all_symbol[col])
+        return df
+
+    def __combine_dataframes(self, df_inflows, df_outflows, df):
+        other_columns = df.columns.difference(layer_lvls + layer_keys + ["inflows", "outflows"])
+        df = pd.concat(
+            {
+                "inflow": df_inflows,
+                "outflow": df_outflows,
+                "info": df[other_columns],
+            },
+            axis=1,
+        )
+        return df
+
+    def __expand_rows(self, df, layers, fill_idx):
+        for layer in layers:
             all_symbol = self.tc_dct["all_symbol"][layer]
             mask = df[("inflow", layer)].eq(all_symbol)
             corresponding_tuples = self.__var["index"][layer].keys()
@@ -452,38 +410,17 @@ class System:
             temp_idx = mask[mask].index
             new_values = pd.Series(temp_data, index=temp_idx)
             df.loc[mask, ("inflow", layer)] = new_values
-            # expand the rows of the dataframe
             df = df.explode(("inflow", layer))
-            # handle outflow side
             mask = df[("outflow", layer)].eq(self.tc_dct["all_symbol"][layer])
             df.loc[mask, ("outflow", layer)] = df.loc[mask, ("inflow", layer)]
+        return df
 
-        # ! OPTIONAL
-        if self.save_intermediary_steps:
-            df.to_csv("STEP_2_tc_with_expanded_columns&rows_with_conflict.csv")
-
-        # ! I.3.5) Remove conflicting rows
-        # now that we have expanded the dataframe, we can remove conflicting cases
-        # order rows by their priority (first rows with highest priorities)
+    def __remove_conflicting_rows(self, df):
         priority = pd.IndexSlice[("other", "priority")]
         df = df.sort_values(by=priority, ascending=False)
-        # in case of duplicated rows, only keep the first occurence
-        # (i.e. the one with the highest priority)
         df = df[~df.loc[:, ["inflow", "outflow"]].duplicated(keep="first")]
-        # and reorganize the dataframe by the original index
         df = df.sort_index()
-
-        # ! OPTIONAL
-        if self.save_intermediary_steps:
-            df.to_csv("STEP_3_tc_with_expanded_columns&rows_NO_conflict.csv")
-
-        # ! I.3.6) return the dataframe in the (data, rows, cols) format
-
-        return (
-            df[("info", "data")].values,
-            pd.MultiIndex.from_frame(df["outflow"]),  # rows
-            pd.MultiIndex.from_frame(df["inflow"]),  # columns
-        )
+        return df
 
     # ------------------------------------------------------------
     # I.4) Process input data (mass of flows entering the system)
@@ -531,23 +468,23 @@ class System:
     # I.5.1) Matrix filling: define the set of linear equations
     # ------------------------------------------------------------
 
-    def __get_linear_eqs(self, composition, tcs):
+    def __get_linear_eqs(self, composition, flow_tcs):
         """Create the matrix of TCs (transfer coefficient) as a sparse matrix.
         Args:
             composition (tuple): A tuple containing 3 arrays: data, rows and cols.
             flow_tcs (tuple): A tuple containing 3 arrays: data, rows and cols.
         """
         comp_data, comp_rows, comp_cols = composition
-        tcs_data, tcs_rows, tcs_cols = tcs
+        # tcs_data, tcs_rows, tcs_cols = flow_tcs  # ! TO BE IMPLEMENTED
 
         # add ones on the diagonal
         diag_data = np.ones(len(self.index))
         diag_idxs = np.arange(len(self.index))
 
         # combine data, rows, cols
-        data = np.hstack([diag_data, -comp_data, -tcs_data])  # ! explain why x-1
-        rows = np.hstack([diag_idxs, comp_rows, tcs_rows])
-        cols = np.hstack([diag_idxs, comp_cols, tcs_cols])
+        data = np.hstack([comp_data, diag_data])
+        rows = np.hstack([comp_rows, diag_idxs])
+        cols = np.hstack([comp_cols, diag_idxs])
 
         coo_mat = coo_matrix((data, (rows, cols)), shape=(len(self.index), len(self.index)))
         csr_mat = coo_mat.tocsr()
@@ -581,9 +518,8 @@ class System:
         """
         solution = linalg.spsolve(self.__ln_eqs, self.__y)
         if output == "mass":
-            # unit = self.var["unit"]
-            # return pd.Series(solution, index=self.index, name=f"mass ({unit})")
-            return pd.Series(solution, index=self.index)
+            unit = self.var["unit"]
+            return pd.Series(solution, index=self.index, name=f"mass ({unit})")
         elif output == "fraction":
             unit = "%"
             # ! TO BE IMPLEMENTED
@@ -773,6 +709,15 @@ class System:
             pd.MultiIndex: The index of the system.
         """
         return self.__index.index
+
+    @property
+    def _index(self) -> pd.MultiIndex:
+        """Get the index of the system.
+
+        Returns:
+            pd.MultiIndex: The index of the system.
+        """
+        return self.__index
 
     @property
     def lneqs(self):  # -> scipy.sparse._arrays.csr_array:
