@@ -5,26 +5,23 @@
 @Date: 28.02.2024
 """
 # %%
+import warnings
 from dataclasses import dataclass
+from functools import reduce
 from itertools import chain, product
+from operator import mul
 from pprint import pformat
 
 import numpy as np
 import pandas as pd
-from scipy.sparse import coo_array, coo_matrix, linalg
+from scipy.sparse import coo_array, coo_matrix, eye_array, linalg
 from utils.helper_functions import map_array, map_multiidx_to_iloc
-
-# if __name__ == "__main__":  # when trying to run the script from the terminal
-#     import sys
-
-#     sys.path.insert(0, "../")
-
 
 # %%
 
 
 @dataclass
-class System:
+class RecoveryModel:
     """Class representing the recovery model.
 
     Attributes:
@@ -65,14 +62,15 @@ class System:
     composition_dct: dict
     inputs_dct: dict
     tc_dct: dict
-    layer_names = ("flows", "products", "components", "materials", "elements")  # order matters
-    save_intermediary_steps = True
+    layer_names: tuple  # order matters
+    input_format: str = "csv"  # "xlsx"
+    save_intermediary_steps: bool = True
 
     # ------------------------------------------------------------
     # I. SYSTEM INITIALIZATION
     # ------------------------------------------------------------
-
     def __post_init__(self, fill_idx="\u2205"):
+        # def initialize(self, fill_idx="\u2205"):
         """Initialize the System class.
         Args:
             fill_idx [int or str]: The value that represents the bypassing of a hierarchical level
@@ -82,52 +80,43 @@ class System:
         Notes:
             "\u2205" = ∅
         """
+        self.fill_idx = fill_idx
         # ! I.1) Define system variables
         # Get names from excel files (for flows, products, components, materials, elements)
-        self.__var = self.__read_var_names()
-
+        self.__var = self.read_var_names()
         # Build the multi-index of the system matrix
-        self.__index = self.__build_index(fill_idx=fill_idx)
+        self.__index = self.build_index(fill_idx=fill_idx)
+
+        self.__levshape = tuple(len(i) for i in self.var["index"].values())
+        self.__size = reduce(mul, self.__levshape)
 
         # ! I.2) Process composition excel file
-        comp_data, comp_rows, comp_cols = self.__read_composition(fill_idx=fill_idx)
-
-        comp_rows = self.get_indexer(comp_rows)
-        comp_cols = self.get_indexer(comp_cols)
+        comp_data, comp_rows, comp_cols = self.read_composition(fill_idx=fill_idx)
+        comp_rows = self.get_indexer(comp_rows, formatted=True)
+        comp_cols = self.get_indexer(comp_cols, formatted=True)
 
         # ! I.3) Process transfer coefficients excel file
-        tc_data, tc_rows, tc_cols = self.__read_tcs(fill_idx=fill_idx)
-
-        tc_rows = self.get_indexer(tc_rows)
-        tc_cols = self.get_indexer(tc_cols)
+        tc_data, tc_rows, tc_cols = self.read_tcs(fill_idx=fill_idx)
+        tc_rows = self.get_indexer(tc_rows, formatted=True)
+        tc_cols = self.get_indexer(tc_cols, formatted=True)
 
         # ! I.4) Process input data (mass of flows entering the system)
-        input_data, input_rows = self.__read_inflows(fill_idx=fill_idx)
-        input_rows = self.get_indexer(input_rows)
+        input_data, input_rows = self.read_inflows(fill_idx=fill_idx)
+        input_rows = self.get_indexer(input_rows, formatted=True)
 
-        # test
-        self.input_rows = input_rows
-        self.input_data = input_data
-        self.comp_rows = comp_rows
-        self.comp_cols = comp_cols
-        self.comp_data = comp_data
-        self.tc_rows = tc_rows
-        self.tc_cols = tc_cols
-        self.tc_data = tc_data
-
-        # # ! I.5) Fill in the (square) system matrix and the Y vector
-        # comp_data *= -1  # ! EXPLAIN CLEARLY WHY WE MULTIPLY BY -1
-        # tc_data *= -1
+        # ! I.5) Fill in the (square) system matrix and the Y vector
         composition = (comp_data, comp_rows, comp_cols)
         tcs = (tc_data, tc_rows, tc_cols)
-        self.__ln_eqs = self.__get_linear_eqs(composition=composition, tcs=tcs)
-        self.__y = self.__get_y_vec(data=input_data, rows=input_rows)
+        self.__ln_eqs = self.get_linear_eqs(composition=composition, tcs=tcs)
+        self.__y = self.get_y_vec(data=input_data, rows=input_rows)
+
+        # ! MODIF
 
     # ------------------------------------------------------------
     # I.1) Define system variables
     # ------------------------------------------------------------
 
-    def __read_var_names(self) -> dict:
+    def read_var_names(self) -> dict:
         """Get variable names (products, components, materials, elements) from the
         composition and TCs excel files.
         Note:   1) We assume that no 'new' products / components / materials appear
@@ -146,8 +135,11 @@ class System:
         flow_names = set()
         # read the TCs excel file
         filepath = self.tc_dct["url"]
-        sheet = self.tc_dct["sheet"]
-        df = pd.read_excel(filepath, sheet_name=sheet)
+        if self.input_format == "xlsx":
+            sheet = self.tc_dct["sheet"]
+            df = pd.read_excel(filepath, sheet_name=sheet)
+        elif self.input_format == "csv":
+            df = pd.read_csv(filepath)
         # get the columns correspondance that will ensure consistency
         # (e.g. ["Layer1", "Layer2"] -> ["products", "components"])
         mapper = self.tc_dct["mapper"]
@@ -163,8 +155,11 @@ class System:
         variable_names = {name: set() for name in self.layer_names[1:]}
         # get the path to the excel file with the composition data
         filepath = self.composition_dct["url"]
-        sheet = self.composition_dct["sheet"]
-        df = pd.read_excel(filepath, sheet_name=sheet)
+        if self.input_format == "xlsx":
+            sheet = self.composition_dct["sheet"]
+            df = pd.read_excel(filepath, sheet_name=sheet)
+        elif self.input_format == "csv":
+            df = pd.read_csv(filepath)
         # get the columns correspondance that will ensure consistency
         # (e.g. ["Layer1", "Layer2"] -> ["products", "components"])
         mapper = self.composition_dct["mapper"]
@@ -181,7 +176,7 @@ class System:
 
         return __var
 
-    def __build_index(self, fill_idx) -> pd.DataFrame:
+    def build_index(self, fill_idx) -> pd.DataFrame:
         """Set the index of the System.
         Args:
             fill_idx [int or str]: The value to bypass the hierarchical decomposition.
@@ -209,31 +204,14 @@ class System:
         #   [∅, M1, M2, ..., Mxx],     <-- materials
         #   [∅, E1, E2, ..., Exx]]        <-- elements
         iterables = [self.__var[levels[0]]] + [(fill_idx,) + self.__var[i] for i in levels[1:]]
-        midx = pd.DataFrame(data=list(product(*iterables)), columns=levels)
-        # if len(self.__var) == 5:
-        #     lvl1_notna = midx[levels[1]] != fill_idx  # products
-        #     lvl2_notna = midx[levels[2]] != fill_idx  # components
-        #     lvl3_notna = midx[levels[3]] != fill_idx  # materials
-        #     lvl4_notna = midx[levels[4]] != fill_idx  # elements
-        #     lvl2_isna = ~lvl2_notna
-        #     lvl3_isna = ~lvl3_notna
-        #     case_1_2 = lvl2_notna & lvl3_isna & lvl4_notna
-        #     case_3_4_5 = lvl1_notna & lvl2_isna & (lvl3_notna | lvl4_notna)
-        #     rows_to_remove = midx.loc[case_1_2 | case_3_4_5].index
-        #     midx = midx.drop(index=rows_to_remove).reset_index(drop=True)
-        # elif len(self.__var) == 4:
-        #     lvl1_notna = midx[levels[1]] != fill_idx
-        #     lvl2_isna = midx[levels[2]] == fill_idx
-        #     lvl3_notna = midx[levels[3]] != fill_idx
-        #     case_1 = lvl1_notna & lvl2_isna & lvl3_notna
-        #     rows_to_remove = midx.loc[case_1].index
-        #     midx = midx.drop(index=rows_to_remove).reset_index(drop=True)
 
         # store values of each multi-index levels for printing (see __str__)
         self.__var["index"] = {levels[i]: {v: k for k, v in enumerate(seq)} for i, seq in enumerate(iterables)}
         # # return the multi-index as pd.DataFrame for easier manipulation (see __getitem__)
         # return pd.MultiIndex.from_product(iterables, names=levels).to_frame()
 
+        # ! MODIF
+        midx = pd.DataFrame(data=list(product(*iterables)), columns=levels)
         midx.index = pd.MultiIndex.from_frame(midx)
         return midx
 
@@ -241,7 +219,7 @@ class System:
     # I.2) Process composition excel file
     # ------------------------------------------------------------
 
-    def __read_composition(self, fill_idx):
+    def read_composition(self, fill_idx):
         """Read composition data from Excel file and process it.
         Args:
             fill_idx (str): The value to fill missing data with.
@@ -259,8 +237,11 @@ class System:
         """
         # ! I.2.1) read excel file
         filepath = self.composition_dct["url"]
-        sheet = self.composition_dct["sheet"]
-        df = pd.read_excel(filepath, sheet_name=sheet)
+        if self.input_format == "xlsx":
+            sheet = self.composition_dct["sheet"]
+            df = pd.read_excel(filepath, sheet_name=sheet)
+        elif self.input_format == "csv":
+            df = pd.read_csv(filepath)
         # get the columns correspondance that will ensure consistency
         # (e.g. ["Layer1", "Layer2"] -> ["products", "components"])
         mapper = self.composition_dct["mapper"]
@@ -292,16 +273,13 @@ class System:
         #    components -->  rows = [F, P, C, M] & cols = [F, P, C, ∅].
         #
         # data and rows are pretty straightforward!
+
         data = df["data"].values
-        rows = df.set_index(list(self.layer_names)).index
-        # but columns requires a bit more processing
-        # the idea is to replace the last layer that contains information
-        # by 'fill_dx' (= ∅).  In the example above, M1 becomes ∅.
-        temp = df.copy()
+        rows = df[list(self.layer_names)].to_numpy(dtype=str)
         for layer, layer_codes in self.composition_dct["data_processing"].items():
-            mask = temp["layer_code"].isin(set(layer_codes))
-            temp.loc[mask, layer] = fill_idx
-        cols = temp.set_index(list(self.layer_names)).index
+            mask = df["layer_code"].isin(set(layer_codes))
+            df.loc[mask, layer] = fill_idx
+        cols = df[list(self.layer_names)].to_numpy(dtype=str)
 
         return (data, rows, cols)
 
@@ -309,7 +287,7 @@ class System:
     # I.3) Process transfer coefficients excel file
     # ------------------------------------------------------------
 
-    def __read_tcs(self, fill_idx):
+    def read_tcs(self, fill_idx):
         """Read input data from an Excel file and process it.
         Args:
             fill_idx (str): The value to fill missing data with.
@@ -322,8 +300,11 @@ class System:
 
         # ! I.3.1) read excel file
         filepath = self.tc_dct["url"]
-        sheet = self.tc_dct["sheet"]
-        df = pd.read_excel(filepath, sheet_name=sheet)
+        if self.input_format == "xlsx":
+            sheet = self.tc_dct["sheet"]
+            df = pd.read_excel(filepath, sheet_name=sheet)
+        elif self.input_format == "csv":
+            df = pd.read_csv(filepath)
         # get the columns correspondance that will ensure consistency
         # (e.g. ["Layer1", "Layer2"] -> ["products", "components"])
         mapper = self.tc_dct["mapper"]
@@ -341,8 +322,8 @@ class System:
         # First we expand for input top layer
         df_inflows = df[[layer_lvls[0], layer_keys[0]]].pivot(columns=layer_lvls[0], values=layer_keys[0])
         df_inflows.columns.name = None
-        df_inflows = self.autocomplete(df_inflows, np.nan)
-        df_inflows["flows"] = df["inflows"]
+        df_inflows = self.autocomplete(df_inflows, np.nan).astype(object)
+        df_inflows[self.layer_names[0]] = df["inflows"]
         # Then we update it with the info contained in the input sub layer (only for nan values)
         df_inflows2 = df[[layer_lvls[1], layer_keys[1]]].pivot(columns=layer_lvls[1], values=layer_keys[1])
         df_inflows2.columns.name = None
@@ -350,8 +331,8 @@ class System:
         # We do the same for the outflow
         df_outflows = df[[layer_lvls[2], layer_keys[2]]].pivot(columns=layer_lvls[2], values=layer_keys[2])
         df_outflows.columns.name = None
-        df_outflows = self.autocomplete(df_outflows, np.nan)
-        df_outflows["flows"] = df["outflows"]
+        df_outflows = self.autocomplete(df_outflows, np.nan).astype(object)
+        df_outflows[self.layer_names[0]] = df["outflows"]
         df_inflows.update(df_outflows, overwrite=False)
         # for the inflows, the cells containing a "all" symbol are replaced by the matching outflow
         # cell if the latter is more precise
@@ -371,25 +352,31 @@ class System:
         # |        inflow        |      -->     |          inflow          |
         # | F1 | P1 |   | M1 |   |              | F1 | P1 | 'all' | M1 | ∅ |
         mask = True
-        for col in self.layer_names[-1:0:-1]:
-            mask = mask & df_inflows.loc[:, col].isna()
-            df_inflows.loc[mask, col] = fill_idx
+        # ! TEST 1
+        # for col in self.layer_names[-1:0:-1]:
+        #     mask = mask & df_inflows.loc[:, col].isna()
+        #     df_inflows.loc[mask, col] = fill_idx
+        # ! END OF TEST 1
         for col in self.layer_names[1:]:
             df_inflows[col] = df_inflows[col].fillna(self.tc_dct["all_symbol"][col])
+            # ! TEST 2
+            df_outflows[col] = df_outflows[col].fillna(self.tc_dct["all_symbol"][col])
         # However for the outflows, it is much more straightforward
+
         df_outflows = df_outflows.fillna(fill_idx)
         # We combined the (columns-) augmented inflows and outflows into a single dataframe
         other_columns = df.columns.difference(layer_lvls + layer_keys + ["inflows", "outflows"])
         df = pd.concat(
             {
-                "inflow": df_inflows,
                 "outflow": df_outflows,
+                "inflow": df_inflows,
                 "info": df[other_columns],
             },
             axis=1,
         )
 
         # ! I.3.3) Compute priorities in case of conflicts between rows
+
         # e.g
         # |          inflow         ||       outflow       |
         # | F1 | 'all' | C1 | ∅ | ∅ || F2 | ∅ | ∅ | M1 | ∅ |
@@ -405,12 +392,11 @@ class System:
 
         # ! OPTIONAL
         if self.save_intermediary_steps:
-            df.to_csv("STEP_1_tc_with_expanded_columns&priorities.csv")
+            df.to_csv("results/STEP_1_tc_with_expanded_columns&priorities.csv")
 
         # # -------------------------------
 
         # ! I.3.4) Expand rows that contains the keyword 'all'
-
         # first we replace 'all' by their corresponding tuple
         # e.g.
         # [F1, P1, 'all', M1, ∅] --> [F1, P1, (C1, C2...Cx) , M1, ∅]
@@ -460,7 +446,7 @@ class System:
 
         # ! OPTIONAL
         if self.save_intermediary_steps:
-            df.to_csv("STEP_2_tc_with_expanded_columns&rows_with_conflict.csv")
+            df.to_csv("results/STEP_2_tc_with_expanded_columns&rows_with_conflict.csv")
 
         # ! I.3.5) Remove conflicting rows
         # now that we have expanded the dataframe, we can remove conflicting cases
@@ -475,21 +461,20 @@ class System:
 
         # ! OPTIONAL
         if self.save_intermediary_steps:
-            df.to_csv("STEP_3_tc_with_expanded_columns&rows_NO_conflict.csv")
+            df.to_csv("results/STEP_3_tc_with_expanded_columns&rows_NO_conflict.csv")
 
         # ! I.3.6) return the dataframe in the (data, rows, cols) format
-
         return (
             df[("info", "data")].values,
-            pd.MultiIndex.from_frame(df["outflow"]),  # rows
-            pd.MultiIndex.from_frame(df["inflow"]),  # columns
+            df["outflow"].to_numpy(dtype=str),
+            df["inflow"].to_numpy(dtype=str),
         )
 
     # ------------------------------------------------------------
     # I.4) Process input data (mass of flows entering the system)
     # ------------------------------------------------------------
 
-    def __read_inflows(self, fill_idx):
+    def read_inflows(self, fill_idx):
         """Read input data from an Excel file and process it.
         Args:
             dct (dict): A dictionary containing the file path, mapper, and sheet information.
@@ -500,8 +485,11 @@ class System:
         """
         # ! I.4.1) read excel file
         filepath = self.inputs_dct["url"]
-        sheet = self.inputs_dct["sheet"]
-        df = pd.read_excel(filepath, sheet_name=sheet)
+        if self.input_format == "xlsx":
+            sheet = self.inputs_dct["sheet"]
+            df = pd.read_excel(filepath, sheet_name=sheet)
+        elif self.input_format == "csv":
+            df = pd.read_csv(filepath)
         # get the columns correspondance that will ensure consistency
         # (e.g. ["Layer1", "Layer2"] -> ["products", "components"])
         mapper = self.inputs_dct["mapper"]
@@ -523,7 +511,8 @@ class System:
         # ! I.4.4) convert excel file into (data, rows) format
         # ! to build the sparse vector Y
         data = df["data"].values
-        rows = expanded_df.set_index(list(self.layer_names)).index
+        # rows = expanded_df.set_index(list(self.layer_names)).index
+        rows = expanded_df[list(self.layer_names)].to_numpy(dtype=str)
 
         return (data, rows)
 
@@ -531,7 +520,7 @@ class System:
     # I.5.1) Matrix filling: define the set of linear equations
     # ------------------------------------------------------------
 
-    def __get_linear_eqs(self, composition, tcs):
+    def get_linear_eqs(self, composition, tcs):
         """Create the matrix of TCs (transfer coefficient) as a sparse matrix.
         Args:
             composition (tuple): A tuple containing 3 arrays: data, rows and cols.
@@ -540,31 +529,30 @@ class System:
         comp_data, comp_rows, comp_cols = composition
         tcs_data, tcs_rows, tcs_cols = tcs
 
-        # add ones on the diagonal
-        diag_data = np.ones(len(self.index))
-        diag_idxs = np.arange(len(self.index))
-
         # combine data, rows, cols
-        data = np.hstack([diag_data, -comp_data, -tcs_data])  # ! explain why x-1
-        rows = np.hstack([diag_idxs, comp_rows, tcs_rows])
-        cols = np.hstack([diag_idxs, comp_cols, tcs_cols])
-
-        coo_mat = coo_matrix((data, (rows, cols)), shape=(len(self.index), len(self.index)))
+        data = np.hstack([comp_data, tcs_data])  # *-1  # ! explain why x-1
+        rows = np.hstack([comp_rows, tcs_rows])
+        cols = np.hstack([comp_cols, tcs_cols])
+        # ! MODIF
+        # coo_mat = coo_matrix((data, (rows, cols)), shape=(len(self.index), len(self.index)))
+        coo_mat = coo_matrix((data, (rows, cols)), shape=(self.size, self.size))
         csr_mat = coo_mat.tocsr()
-        return csr_mat
+        return csr_mat  # + eye_array(len(self.index))
 
     # ------------------------------------------------------------
     # I.5.2) Matrix filling: Y vector
     # ------------------------------------------------------------
 
-    def __get_y_vec(self, data, rows):
+    def get_y_vec(self, data, rows):
         """Create the vector of constant terms (Y) as a sparse matrix.
         Args:
             data (ndarray): The data values of the Y vector.
             rows (ndarray): The rows of the Y vector.
         """
         cols = np.zeros_like(rows)
-        coo_arr = coo_array((data, (rows, cols)), shape=(len(self.index), 1))
+        # ! MODIF
+        # coo_arr = coo_array((data, (rows, cols)), shape=(len(self.index), 1))
+        coo_arr = coo_array((data, (rows, cols)), shape=(self.size, 1))
         csc_arr = coo_arr.tocsc()
         return csc_arr
 
@@ -572,21 +560,57 @@ class System:
     # II) SYSTEM SOLVER
     # ------------------------------------------------------------
 
-    def solve(self, output="mass"):
+    def solve(self, output="mass", expand=False):
         """Solve the system of linear equations.
         Args:
             output (str, optional): Either in mass or mass fraction. Defaults to "mass".
         Returns:
             pd.Series: The solution of the system of linear equations as a pandas Series object.
         """
-        solution = linalg.spsolve(self.__ln_eqs, self.__y)
-        if output == "mass":
-            # unit = self.var["unit"]
-            # return pd.Series(solution, index=self.index, name=f"mass ({unit})")
-            return pd.Series(solution, index=self.index)
-        elif output == "fraction":
-            unit = "%"
-            # ! TO BE IMPLEMENTED
+        # arr = linalg.spsolve(self.__ln_eqs, self.__y)
+        arr = linalg.spsolve(eye_array(self.size) - self.__ln_eqs, self.__y)
+        solution = pd.Series(arr, index=self.index, name=output)  # ! MODIF NEEDED
+        if expand:
+            solution = self.expand_solution(solution, self.fill_idx)
+        solution = solution[solution != 0]
+        solution.to_csv(f"results/solution_expand_{expand}.csv")
+        return solution
+
+    def expand_solution(self, solution, fill_idx="\u2205"):
+        """Expand the solution to include all the hierarchical levels.
+        Args:
+            solution (pd.Series): The solution to be expanded.
+            fill_idx (str, optional): The value to fill missing data with. Defaults to "\u2205".
+        Returns:
+            pd.Series: The expanded solution.
+        """
+        expanded_solution = solution.copy()
+
+        for lvl in range(len(self.layer_names) - 1, 0, -1):
+            expanded_solution = expanded_solution.unstack(level=lvl)
+
+            exclude_sub_lvl = expanded_solution.notna().all(axis=1)
+            for i in range(lvl, len(self.layer_names) - 1):
+                exclude_sub_lvl &= expanded_solution.index.get_level_values(i) == fill_idx
+
+            arr = expanded_solution.loc[exclude_sub_lvl, expanded_solution.columns != fill_idx].sum(axis=1)
+
+            sum_lvl_not_null = expanded_solution.loc[exclude_sub_lvl, fill_idx] != 0
+            sum_lvl_not_consistant = ~np.isclose(expanded_solution.loc[exclude_sub_lvl, fill_idx], arr)
+            lvl_not_bypassed = expanded_solution.loc[exclude_sub_lvl].index.get_level_values(lvl - 1) != fill_idx
+            mask = sum_lvl_not_null & sum_lvl_not_consistant & lvl_not_bypassed
+
+            if mask.any():
+                print(expanded_solution.loc[mask, :])
+                warnings.warn("mass balance inconsistant")
+
+            mask = ~sum_lvl_not_null & lvl_not_bypassed
+
+            expanded_solution.loc[mask[mask].index, fill_idx] = arr
+            expanded_solution = expanded_solution.stack().reorder_levels(self.layer_names)
+
+        expanded_solution.name = solution.name
+        return expanded_solution
 
     # ------------------------------------------------------------
     # III) HELPERS, GETTERS AND SETTERS
@@ -650,7 +674,7 @@ class System:
             )
         return priority
 
-    def get_indexer(self, idxs) -> np.ndarray:
+    def get_indexer(self, idxs, formatted=False) -> np.ndarray:
         """Get the integer-based indices corresponding to the given targets.
         Args:
             idxs: The idxs for which to retrieve the indices.
@@ -663,7 +687,10 @@ class System:
             ndarray[int]: The integer-based indices corresponding to the given targets.
         """
         # format targets into appropriate index values
-        formatted_idxs = self.format_index(idxs)
+        if not formatted:
+            formatted_idxs = self.format_index(idxs)
+        else:
+            formatted_idxs = idxs  # np.array(idxs.tolist(), dtype=str)
         # Convert from 2D-ndarray[str] to 2D-ndarray[int]
         # e.g. ["F0", "P1", "C1", "M2", "E2"] --> [0, 1, 1, 2, 2]
         formatted_idxs_as_int = map_array(arr=formatted_idxs, mapper=self.__var["index"], keys=self.layer_names)
@@ -671,7 +698,10 @@ class System:
         # e.g. [[0, 0, 0, 0, 0]     [0
         #       [0, 0, 0, 0, 1] -->  1
         #       [0, 0, 0, 0, 2]]     2]
-        shape = self.index.levshape
+
+        # ! MODIF
+        # shape = self.index.levshape
+        shape = self.levshape
         return map_multiidx_to_iloc(arr=formatted_idxs_as_int, shape=shape)
 
     def format_index(self, idxs) -> np.ndarray:
@@ -699,18 +729,6 @@ class System:
             return formatted_idxs[np.newaxis, :]  # make sure it is 2D
         return formatted_idxs
 
-    def index_iloc(self, keys) -> pd.MultiIndex:
-        """Return the index values of the DataFrame at the specified integer-based positions.
-
-        Args:
-            keys (Union[int, List[int]]): The integer-based positions.
-
-        Returns:
-            pandas.Index: The index values at the specified positions.
-        """
-        # return self.__index.iloc[keys].index
-        return self.__index.iloc[keys].index
-
     @property
     def var(self) -> dict:
         """Get the variable names of the system.
@@ -721,51 +739,6 @@ class System:
         return self.__var
 
     @property
-    def flows(self) -> tuple:
-        """Get the list of flows within the system.
-
-        Returns:
-            tuple: The flows' names.
-        """
-        return self.__var["flows"]
-
-    @property
-    def products(self) -> tuple:
-        """Get the list of products within the system.
-
-        Returns:
-            tuple: The products' names.
-        """
-        return self.__var["products"]
-
-    @property
-    def components(self) -> tuple:
-        """Get the list of components within the system.
-
-        Returns:
-            tuple: The components' names.
-        """
-        return self.__var["components"]
-
-    @property
-    def materials(self) -> tuple:
-        """Get the list of materials within the system.
-
-        Returns:
-            tuple: The materials' names.
-        """
-        return self.__var["materials"]
-
-    @property
-    def elements(self) -> tuple:
-        """Get the list of elements within the system.
-
-        Returns:
-            tuple: The elements' names.
-        """
-        return self.__var["elements"]
-
-    @property
     def index(self) -> pd.MultiIndex:
         """Get the index of the system.
 
@@ -773,6 +746,24 @@ class System:
             pd.MultiIndex: The index of the system.
         """
         return self.__index.index
+
+    @property
+    def size(self) -> int:
+        """Get the size of the system.
+
+        Returns:
+            int: The size of the system.
+        """
+        return self.__size
+
+    @property
+    def levshape(self) -> tuple:
+        """Get the size of the system.
+
+        Returns:
+            int: The size of the system.
+        """
+        return self.__levshape
 
     @property
     def lneqs(self):  # -> scipy.sparse._arrays.csr_array:

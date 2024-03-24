@@ -17,6 +17,8 @@ from operator import mul
 
 import numpy as np
 
+# from joblib import Parallel, delayed
+
 
 def map_1d_array(arr, mapper):
     """
@@ -29,7 +31,7 @@ def map_1d_array(arr, mapper):
     Returns:
         ndarray: The mapped 1D array.
     """
-    return np.vectorize(mapper.__getitem__)(arr)
+    return np.vectorize(mapper.__getitem__, otypes=[np.int32])(arr)
 
 
 def map_2d_array(arr, mapper, keys):
@@ -44,7 +46,10 @@ def map_2d_array(arr, mapper, keys):
     Returns:
         ndarray: The mapped 2D array.
     """
+
     res = [map_1d_array(arr=arr[:, i], mapper=mapper[keys[i]]) for i in range(arr.shape[1])]
+    # n = min(arr.shape[1], 6)
+    # res = Parallel(n_jobs=n)(delayed(map_1d_array)(arr=arr[:, i], mapper=mapper[keys[i]]) for i in range(arr.shape[1]))
     return np.vstack(res).T
 
 

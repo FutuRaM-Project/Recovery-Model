@@ -1,0 +1,8 @@
+Waste Stream,Location,Year,Scenario,Substance_main_parent,Stock/Flow ID,Value,Unit,Data Quality,Reference
+WEEE,EU27+4,2020,OBS,WEEE_Cat1,WEEE_generatedDedicated,1693201,Mg,2,M18
+WEEE,EU27+4,2020,OBS,WEEE_Cat2,WEEE_generatedDedicated,834213,Mg,2,M18
+WEEE,EU27+4,2020,OBS,WEEE_Cat3,WEEE_generatedDedicated,100807,Mg,2,M18
+WEEE,EU27+4,2020,OBS,WEEE_Cat4a,WEEE_generatedDedicated,3518379,Mg,2,M18
+WEEE,EU27+4,2020,OBS,WEEE_Cat4b,WEEE_generatedDedicated,138014,Mg,1,M18
+WEEE,EU27+4,2020,OBS,WEEE_Cat5,WEEE_generatedDedicated,3158006,Mg,2,M18
+WEEE,EU27+4,2020,OBS,WEEE_Cat6,WEEE_generatedDedicated,837749,Mg,2,M18
