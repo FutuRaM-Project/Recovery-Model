@@ -1,19 +1,22 @@
-# Futurama system model
+# Futuram Recovery Model
 
-SM: I have started building up a draft structure for the integrated model  
+## Table of Contents
 
-* See example_usage.py to get an idea how it can work
-* I recommend running it line by line so that you can look at the different objects. 
-* See classes/ for the different objects in the model  
+This repository contains:  
+- `doc/` the documentation about recovery model  
+- `src/` the source code of the recovery model  
+- `data/` mock data to test the model  
+- `results/` the results obtained when running the model
+- `consolidation/` intermediary file to ensure consistency of the model inputs
+- `performance/`  additional files to investigate the recovery model performances
 
-## Diagram of the system model
 
-![OverviewOfClassesInTheModel](OverviewOfClassesInTheModel.svg)
+## To Do list
 
-To do:  
-* establish/connect templates for process and product data
-
-* fix the tree map code to get the nested dicts inside the outer ones
-
-* connect the parameters the rest of the model, 
-add subclasses to parameters for the different kinds 
+- [] enable viewing subset of the recovery model matrix
+- [] write routine for mass balance check:
+  - [] for the composition
+  - [] for the entire system
+- [] define priority rules in case of conflicts accross TCs (?)
+- [] enable to divide the system into sub-system that can be solved sequentially
+- [] Define how uncertainty and data quality should be propagated
