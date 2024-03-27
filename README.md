@@ -13,10 +13,10 @@ This repository contains:
 
 ## To Do list
 
-- [] enable viewing subset of the recovery model matrix
-- [] write routine for mass balance check:
-  - [] for the composition
-  - [] for the entire system
-- [] define priority rules in case of conflicts accross TCs (?)
-- [] enable to divide the system into sub-system that can be solved sequentially
-- [] Define how uncertainty and data quality should be propagated
+- [ ] enable viewing subset of the recovery model matrix
+- [ ] write routine for mass balance check:
+  - [x] for the composition
+  - [ ] for the entire system
+- [ ] define priority rules in case of conflicts accross TCs (?)
+- [ ] enable to divide the system into sub-system that can be solved sequentially
+- [ ] Define how uncertainty and data quality should be propagated
