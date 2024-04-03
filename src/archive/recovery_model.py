@@ -15,7 +15,8 @@ from pprint import pformat
 import numpy as np
 import pandas as pd
 from scipy.sparse import coo_array, coo_matrix, eye_array, linalg
-from utils.helper_functions import map_array, map_multiidx_to_iloc
+
+from .helper_functions import map_array, map_multiidx_to_iloc
 
 # %%
 

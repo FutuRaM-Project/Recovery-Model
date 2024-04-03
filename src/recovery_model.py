@@ -5,11 +5,11 @@
 @Date: 24.03.2024
 """
 # %%
-import warnings
 from dataclasses import dataclass
 from itertools import chain
 from pprint import pformat
 
+import networkx as nx
 import numpy as np
 import pandas as pd
 from pandas.api.types import CategoricalDtype
@@ -20,43 +20,9 @@ from scipy.sparse import coo_array, coo_matrix, eye_array, linalg
 
 @dataclass
 class RecoveryModel:
-    """Class representing the recovery model.
+    """Class representing the recovery model"""
 
-    Attributes:
-        composition (dict): Metadata about the excel file with inflow composition.
-        inputs (dict): Metadata about the excel file with mass inflows.
-        tcs (dict): Metadata about the excel file with transfer coefficients.
-        layer_names (tuple): Names for the multi-index levels of the system matrix (e.g. PCME).
-
-    Methods:
-        __post_init__(): Initialize the System class.
-        __read_var_names(): Get variable names (products, components, materials, elements)
-        __build_index(): Get the multi-index of the System.
-        autocomplete(): Broadcast partial index into complete index.
-        __read_input(): Read input data from an Excel file and process it.
-        __get_linear_eqs(): Create the system matrix of linear equations as a sparse matrix.
-        __get_y_vec(): Create the vector of constant terms (Y) as a sparse matrix.
-        solve(): Solve the system of linear equations.
-
-    Getters and Setters:
-        get_indexer(): Get the integer-based indices corresponding to the given targets.
-        index_loc(): Format targets into appropriate index values.
-        index_iloc(): Return the index values of the DataFrame at the specified integer-based positions.
-        var(): Get the variable names of the system.
-        flows(): Get the list of flows within the system.
-        products(): Get the list of products within the system.
-        components(): Get the list of components within the system.
-        materials(): Get the list of materials within the system.
-        elements(): Get the list of elements within the system.
-        index(): Get the index of the system.
-        tcs(): Get the transfer coefficients (TCs) matrix of the system.
-        y(): Get the constant terms that the linear equations should satisfy
-        __str__(): Return a string representation of the system.
-
-    Notes: 1) the name of the (crossboundary) inflow(s) has to be manually added
-            in the excel files and it has to be consistent across files.
-    """
-
+    name: str
     metadata: dict
     composition: dict
     inputs: dict
@@ -93,7 +59,7 @@ class RecoveryModel:
         input_rows = self.ravel_multi_index(input_rows, self.unravel_coeffs)
 
         # IV) Process transfer coefficients excel file
-        tc_data, tc_rows, tc_cols = self.read_tcs()
+        tc_data, tc_rows, tc_cols, self.flows_eqs, self.sub_systems = self.read_tcs()
         tc_rows = self.ravel_multi_index(tc_rows, self.unravel_coeffs)
         tc_cols = self.ravel_multi_index(tc_cols, self.unravel_coeffs)
 
@@ -101,7 +67,7 @@ class RecoveryModel:
         data = np.hstack([comp_data, tc_data])
         rows = np.hstack([comp_rows, tc_rows])
         cols = np.hstack([comp_cols, tc_cols])
-        self.lneqs = self.get_linear_eqs(data=data, rows=rows, cols=cols)
+        self.lneqs = self.get_mass_eqs(data=data, rows=rows, cols=cols)
         self.y = self.get_y_vec(data=input_data, rows=input_rows)
 
     # ------------------------------------------------------------
@@ -136,7 +102,7 @@ class RecoveryModel:
                 dct = categories[layer]
                 symbol = self.tcs["all_symbols"][layer]
                 if symbol not in dct:
-                    dct[symbol] = len(dct)
+                    dct[symbol] = len(dct)  # by construction, len(dct) is the highest integer
                 else:
                     key = max(dct, key=dct.get)
                     val = dct[key].copy()
@@ -158,28 +124,6 @@ class RecoveryModel:
                 raise ValueError(f"Collision in mapping column {col}:\n{categories[col]}")
 
         return (categories, reverse_categories, cat_dtype)
-
-    def get_dims(self) -> tuple:
-        """Get the dimension of each layer of the system.
-        Returns:
-            tuple: The shape of each level of the system matrix.
-        """
-        return tuple(len(self.categories[layer]) for layer in self.layer_names)
-
-    def get_unravel_coeffs(self, shape) -> np.ndarray:
-        """Get the coefficients to flatten a multi-index into a 1D index.
-
-        Args:
-            shape (tuple): The dimensional space
-
-        Returns:
-            ndarray: The integer-based indices = (a0, a1, ..., an-1, an), with:
-                a0 = shape[1] * shape[2] * ... * shape[n] * 1,
-                a1 = shape[2] * ... * shape[n] * 1,
-                an-1 = shape[n]
-                an = 1
-        """
-        return np.array([np.prod(shape[i + 1 :]) if i + 1 < len(shape) else 1 for i in range(len(shape))])
 
     # ------------------------------------------------------------
     # II) Process composition excel file
@@ -295,7 +239,26 @@ class RecoveryModel:
             print(f"{levels} vs {set(self.layer_names)}")
             raise ValueError("Layers in TC file are not consistent with the system layers")
 
-        # ! IV.2) Expand columns to (F, P, C, M, E) format
+        # ! IV.2) Get Flow equations
+        flows_eqs = df[["inflows", "outflows", "process"]].drop_duplicates()
+        process = flows_eqs[["process"]].copy()  # ! to improve
+        self.encode_label(process)  # ! to improve
+        inflows = pd.get_dummies(flows_eqs["inflows"], dtype=int)
+        inflows["process"] = flows_eqs["process"]
+        outflows = pd.get_dummies(flows_eqs["outflows"], dtype=int)
+        outflows["process"] = flows_eqs["process"]
+        inflows, outflows = inflows.align(outflows, fill_value=0)
+        inflows = inflows.groupby("process").any().astype(int)
+        outflows = outflows.groupby("process").any().astype(int)
+        flows_eqs = inflows - outflows
+
+        # ! IV.3) Check how system could be divided into sub-systems
+        from_ = df[["outflows", "process"]].rename(columns={"process": "from"}).drop_duplicates().set_index("outflows")
+        to_ = df[["process", "inflows"]].rename(columns={"process": "to"}).drop_duplicates().set_index("inflows")
+        flows_edge_list = pd.concat([from_, to_], axis=1)
+        sub_systems = self.get_sub_systems(flows_edge_list)
+
+        # ! IV.4) Expand columns to (F, P, C, M, E) format
         # First we expand for input top layer
         df_inflows = df[[lvls[0], keys[0]]].pivot(columns=lvls[0], values=keys[0])
         df_inflows[self.layer_names[0]] = df["inflows"]
@@ -321,7 +284,7 @@ class RecoveryModel:
                 f"{path}STEP_1_tcs_with_expanded_columns.csv"
             )
 
-        # ! IV.3) Encode and harmonize inflows with outflows
+        # ! IV.5) Encode and harmonize inflows with outflows
         self.encode_label(df_inflows)
         self.encode_label(df_outflows)
         all_symbols = dict()
@@ -345,7 +308,7 @@ class RecoveryModel:
             df_inflows[layer] = df_inflows[layer].replace(-1, all_symbols[layer])
             df_outflows[layer] = df_outflows[layer].replace(-1, all_symbols[layer])
 
-        # ! IV.4) Compute priorities in case of conflicts between rows
+        # ! IV.6) Compute priorities in case of conflicts between rows
         # e.g
         # |          inflow         ||       outflow       |
         # | F1 | 'all' | C1 | ∅ | ∅ || F2 | ∅ | ∅ | M1 | ∅ |
@@ -364,7 +327,7 @@ class RecoveryModel:
             self.decode_label(df).to_csv(f"{path}STEP_2_tcs_with_priorities.csv")
         # # -------------------------------
 
-        # ! IV.5) Expand rows that contains the keyword 'all'
+        # ! IV.7) Expand rows that contains the keyword 'all'
 
         #
         # In we followed the same procedure for the outflows,
@@ -393,7 +356,7 @@ class RecoveryModel:
         # reset_index so as to keep track of the original row
         df = df.reset_index(drop=False)
 
-        # # ! ORIGINAL IDEA
+        # ! USING EXPLODE()   (slower)
         # expanded_df = df.copy().astype(object)
         # for layer in self.layer_names[1:]:  # not flows
         #     # first we replace 'all' by their corresponding tuple
@@ -407,29 +370,30 @@ class RecoveryModel:
         #     #                                     [F1, P1, Cx, M1, ∅]
         #     n = all_symbols[layer]
         #     mask = df[("inflow", layer)] == n
-        #     combinations = np.arange(-1, n, dtype=df[("inflow", layer)].dtype)
+        #     dtype = np.dtype(df[("inflow", layer)].dtype.name)
+        #     combinations = np.arange(-1, n, dtype=dtype)
         #     temp_data = [combinations] * mask.sum()
         #     temp_idx = mask[mask].index
         #     new_values = pd.Series(temp_data, index=temp_idx)
         #     expanded_df.loc[mask, ("inflow", layer)] = new_values
         #     expanded_df = expanded_df.explode(("inflow", layer))
         #     mask = expanded_df[("outflow", layer)] == n
-        #     expanded_df.loc[mask, ("outflow", layer)] = expanded_df.loc[mask, ("inflow", layer)]
+        #     expanded_df.loc[mask, ("outflow", layer)] = expanded_df.loc[mask][("inflow", layer)]
         # df = expanded_df.astype(df.dtypes)
 
-        # # ! OPTIMIZED ATTEMPT
+        # # ! OPTIMIZED VERSION
         for layer in self.layer_names[1:]:
-            n = all_symbols[layer]
+            n: int = all_symbols[layer]
             mask = df[("inflow", layer)] == n
             repeated_rows = np.argwhere(mask).squeeze()
-            dtype = df[("inflow", layer)].dtype
+            dtype = np.dtype(df[("inflow", layer)].dtype.name)
             combinations = np.arange(-1, n, dtype=dtype)
             arr = np.tile(combinations, mask[mask].sum())
             temp = df.iloc[repeated_rows.repeat(n + 1)]
             temp.loc[:, ("inflow", layer)] = arr
             df = pd.concat([df.loc[~mask], temp])
             mask = df[("outflow", layer)] == n
-            df.loc[mask, ("outflow", layer)] = df.loc[mask, ("inflow", layer)]
+            df.loc[mask, ("outflow", layer)] = df.loc[mask][("inflow", layer)]
 
         df.columns = pd.MultiIndex.from_tuples([("info", "original row")] + df.columns.tolist()[1:])
 
@@ -437,9 +401,9 @@ class RecoveryModel:
             path = self.tcs["path"] + "intermediary_steps/"
             self.decode_label(df).to_csv(f"{path}STEP_3_tcs_with_expanded_rows.csv")
 
-        # ! IV.6) Remove conflicting rows
-        # ! THIS STEPS IS NOT CONSISTENT AND CAN YIELD DIFFERENT RESULTS
-        # ! TO BE IMPROVED
+        # ! IV.8) Remove conflicting rows
+        # ! Further test is needed to make sure that results are consistent
+        # ! regardless of the expansion method used (explode() vs optimized)
         # now that we have expanded the dataframe, we can remove conflicting cases
         # order rows by their priority (first rows with highest priorities)
         priority = pd.IndexSlice[("info", "priority")]
@@ -448,7 +412,8 @@ class RecoveryModel:
         # (i.e. the one with the highest priority)
         if self.save_duplicates:
             mask = df.loc[:, ["inflow", "outflow"]].duplicated(keep=False)
-            df.loc[mask, :].to_csv("consolidation/duplicates.csv")
+            if mask.any():
+                df.loc[mask, :].to_csv(f"consolidation/{self.name}_TCs_duplicates.csv")
         df = df[~df.loc[:, ["inflow", "outflow"]].duplicated(keep="first")]
         # and reorganize the dataframe by the original index
         df = df.sort_index()
@@ -457,28 +422,43 @@ class RecoveryModel:
             path = self.tcs["path"] + "intermediary_steps/"
             self.decode_label(df).to_csv(f"{path}STEP_4_tcs_without_NO_conflicts.csv")
 
-        # ! IV.7) return the dataframe in the (data, rows, cols) format
-        return (df[("info", "data")].values, df["outflow"].values, df["inflow"].values)
+        # ! IV.9) return the dataframe in the (data, rows, cols) format
+        return (df[("info", "data")].values, df["outflow"].values, df["inflow"].values, flows_eqs, sub_systems)
 
     # ------------------------------------------------------------
     # V) Matrix filling: define the set of linear equations
     # ------------------------------------------------------------
 
-    def get_linear_eqs(self, data, rows, cols):
+    def get_mass_eqs(self, data, rows, cols, element_only=False):
         """Create the matrix of TCs (transfer coefficient) as a sparse matrix.
+
         Args:
-            composition (tuple): A tuple containing 3 arrays: data, rows and cols.
-            flow_tcs (tuple): A tuple containing 3 arrays: data, rows and cols.
+            data (_type_): _description_
+            rows (_type_): _description_
+            cols (_type_): _description_
+            element_only (bool, optional): _description_. Defaults to False.
+
+        Returns:
+            _type_: _description_
         """
+        if element_only:  # ! TO BE IMPLEMENTED
+            pass
         coo_mat = coo_matrix((data, (rows, cols)), shape=(self.size, self.size))
         return coo_mat.tocsr()
 
-    def get_y_vec(self, data, rows):
+    def get_y_vec(self, data, rows, element_only=False):
         """Create the vector of constant terms (Y) as a sparse matrix.
+
         Args:
-            data (ndarray): The data values of the Y vector.
-            rows (ndarray): The rows of the Y vector.
+            data (_type_): _description_
+            rows (_type_): _description_
+            element_only (bool, optional): _description_. Defaults to False.
+
+        Returns:
+            _type_: _description_
         """
+        if element_only:  # ! TO BE IMPLEMENTED
+            pass
         cols = np.zeros_like(rows)
         coo_arr = coo_array((data, (rows, cols)), shape=(self.size, 1))
         return coo_arr.tocsc()
@@ -487,66 +467,121 @@ class RecoveryModel:
     # VI) SYSTEM SOLVER
     # ------------------------------------------------------------
 
-    def solve(self, output="mass", expand=False):
+    def solve(self, aggregate: bool = True, pivot: bool = True, name: str = "data"):
         """Solve the system of linear equations.
+
         Args:
-            output (str, optional): Either in mass or mass fraction. Defaults to "mass".
+            aggregate (bool, optional): _description_. Defaults to True.
+            pivot (bool, optional): _description_. Defaults to True.
+            name (str, optional): _description_. Defaults to "data".
+            fill_idx (str, optional): _description_. Defaults to "".
+
         Returns:
-            pd.Series: The solution of the system of linear equations as a pandas Series object.
+            _type_: _description_
         """
         arr = linalg.spsolve(eye_array(self.size) - self.lneqs, self.y)
         mask = arr != 0
         int_idx = np.nonzero(mask)[0]
         midx = self.unravel_index(int_idx)
-        data = np.hstack([midx, arr[mask, np.newaxis]])
-        solution = self.decode_label(pd.DataFrame(data, columns=list(self.layer_names) + [output]))
-        if expand:
-            solution = self.expand_solution(solution)
+        # data = np.hstack([midx, arr[mask, np.newaxis]])
+        # solution = self.decode_label(pd.DataFrame(data, columns=list(self.layer_names) + [name]))
+        idx = pd.MultiIndex.from_arrays(midx.T, names=self.layer_names)
+        solution = pd.Series(arr[mask], index=idx, name=name)
         solution = solution[solution != 0]
-        solution.to_csv(f"results/solution_expand_{expand}.csv")
+
+        pivoted_solution = solution.unstack(level=self.layer_names[0])
+        self.check_mass_balance(pivoted_solution, name)
+
+        if aggregate:
+            lst = []
+            for layer, frame in self.groupby_layer(solution.reset_index(), name).items():
+                frame = self.decode_label(frame).rename({layer: "key"}, axis=1)
+                frame["layer"] = layer
+                if pivot:
+
+                    frame = frame.pivot(index=["layer", "key"], columns=self.layer_names[0], values=name)
+                else:
+                    frame = frame[[self.layer_names[0], "layer", "key", name]]
+                lst.append(frame)
+            solution = pd.concat(lst)
+
+        elif pivot:
+            solution = self.decode_label(
+                pivoted_solution.rename(columns=self.reverse_categories[self.layer_names[0]]).reset_index()
+            )
+        else:
+            solution = self.decode_label(solution.reset_index())
+
+        solution.to_csv(f"results/{self.name}_solution_agg={aggregate}_pivot={pivot}.csv")
         return solution
 
-    def expand_solution(self, solution, fill_idx="\u2205"):
-        """Expand the solution to include all the hierarchical levels.
+    def groupby_layer(self, solution: pd.DataFrame, name: str) -> dict:
+        """_summary_
+
         Args:
-            solution (pd.Series): The solution to be expanded.
-            fill_idx (str, optional): The value to fill missing data with. Defaults to "\u2205".
+            solution (pd.DataFrame): _description_
+            pivot (bool): _description_
+            name (str): _description_
+
         Returns:
-            pd.Series: The expanded solution.
+            _type_: _description_
         """
-        expanded_solution = solution.copy()
+        groups = dict()
+        for lvl, layer in enumerate(self.layer_names):
+            if lvl == 0:
+                continue
+            cols = [self.layer_names[0]] + [layer]
+            mask1 = (solution.loc[:, layer] != -1).astype(bool)
+            mask2 = (solution.loc[:, list(self.layer_names[lvl + 1 :])] == -1).all(axis=1)
+            # mask1 = solution.loc[:, self.layer_names[lvl]].notna().astype(bool)
+            # mask2 = solution.loc[:, list(self.layer_names[lvl + 1 :])].isna().all(axis=1)
+            rows = mask1 & mask2
+            assert isinstance(rows, pd.Series)
+            temp = solution.loc[rows, cols + [name]].groupby(cols, as_index=False).sum()
+            # temp.rename({name: layer}, axis=1, inplace=True)
+            groups[layer] = temp
+            # res.append(temp.unstack(level=1))
+        # result = pd.concat(res, axis=1)
+        # result.columns.names = ["layer", "key"]
+        # if pivot:
+        #     return result.T
+        # return result.unstack().reorder_levels([self.layer_names[0], "layer", "key"])
+        return groups
 
-        for lvl in range(len(self.layer_names) - 1, 0, -1):
-            expanded_solution = expanded_solution.unstack(level=lvl)
+    def check_mass_balance(self, solution: pd.DataFrame, name: str):
+        """_summary_
 
-            exclude_sub_lvl = expanded_solution.notna().all(axis=1)
-            for i in range(lvl, len(self.layer_names) - 1):
-                exclude_sub_lvl &= expanded_solution.index.get_level_values(i) == fill_idx
+        Args:
+            solution (pd.DataFrame): _description_
+            name (str): _description_
+        """
+        flows_eq = self.flows_eqs.rename(index=self.categories["process"], columns=self.categories[self.layer_names[0]])
+        flows_eq, solution = flows_eq.align(solution, axis=1, fill_value=0)
+        res = pd.DataFrame(
+            (flows_eq.values[:, None] * solution.values[None, :]).reshape(-1, flows_eq.shape[1]),
+            columns=flows_eq.columns,
+        )
+        new_idx = np.hstack(
+            [
+                np.tile(np.array(solution.index.tolist()), reps=(len(flows_eq), 1)),
+                np.repeat(flows_eq.index.to_numpy(), len(solution.index))[:, None],
+            ]
+        )
 
-            arr = expanded_solution.loc[exclude_sub_lvl, expanded_solution.columns != fill_idx].sum(axis=1)
-
-            sum_lvl_not_null = expanded_solution.loc[exclude_sub_lvl, fill_idx] != 0
-            sum_lvl_not_consistant = ~np.isclose(expanded_solution.loc[exclude_sub_lvl, fill_idx], arr)
-            lvl_not_bypassed = expanded_solution.loc[exclude_sub_lvl].index.get_level_values(lvl - 1) != fill_idx
-            mask = sum_lvl_not_null & sum_lvl_not_consistant & lvl_not_bypassed
-
-            if mask.any():
-                print(expanded_solution.loc[mask, :])
-                warnings.warn("mass balance inconsistant")
-
-            mask = ~sum_lvl_not_null & lvl_not_bypassed
-
-            expanded_solution.loc[mask[mask].index, fill_idx] = arr
-            expanded_solution = expanded_solution.stack().reorder_levels(self.layer_names)
-
-        expanded_solution.name = solution.name
-        return expanded_solution
+        res.index = pd.MultiIndex.from_tuples(list(new_idx), names=list(self.layer_names[1:]) + ["process"])
+        res["mass_balance"] = res.sum(axis=1)
+        res = res[res["mass_balance"] != 0]
+        res = res.sort_index(level=-1)
+        self.decode_label(res.rename(columns=self.reverse_categories[self.layer_names[0]]).reset_index()).to_csv(
+            f"consolidation/{self.name}_solution_mass_balance.csv"
+        )
+        return
 
     # ------------------------------------------------------------
     # VII) HELPERS AND GETTERS
     # ------------------------------------------------------------
 
-    def encode_label(self, df: pd.DataFrame) -> None:
+    def encode_label(self, df) -> None:
         """Label encoder for categorical data (e.g. products, components,
         materials, elements). Object and category are converted to int.
 
@@ -559,24 +594,29 @@ class RecoveryModel:
             ValueError: if a value in the dataframe has no mapping, eventhough the
             column is supposed to have a mapping, an error is raised.
         """
+        if isinstance(df, pd.Series):
+            # ! to be implemented
+            pass
+
         # check if there is already an encoding mapping for the 'object' columns
         # (i.e. non-numerical), if yes, encode the columns accordingly
-        mask = df.dtypes == object
-        for col in set(df.columns[mask]) & set(self.cat_dtype):
+        is_object = df.dtypes == object
+        for col in set(df.columns[is_object]) & set(self.cat_dtype):
             df[col] = df[col].astype(self.cat_dtype[col])
-        mask = df.dtypes == object
+        is_object = df.dtypes == object
         # for the remaining unmapped object column, update the encoding mapping
-        if mask.any():
-            for col in df.columns[mask]:
+        if is_object.any():
+            for col in df.columns[is_object]:
                 df[col] = df[col].astype("category")
                 self.categories[col] = {v: k for k, v in enumerate(df[col].dropna().unique())}
                 self.reverse_categories[col] = {v: k for k, v in self.categories[col].items()}
+        del is_object
         # for encoded columns, ensure that the mapping is consistent with the metadata
-        mask = df.dtypes == "category"
-        if mask.any():
-            for col in df.columns[mask]:
-                mask = df[col].cat.codes == -1
-                if df.loc[mask, col].notna().any():
+        is_category = df.dtypes == "category"
+        if is_category.any():
+            for col in df.columns[is_category]:
+                is_category = df[col].cat.codes == -1
+                if df.loc[is_category, col].notna().any():
                     raise ValueError(f"Mismatch with metadata. Unknown value in {col}.")
                 df[col] = df[col].cat.codes
 
@@ -613,6 +653,49 @@ class RecoveryModel:
         ordered_columns = list(self.layer_names) + additional_columns
         return df.reindex(columns=ordered_columns)
 
+    def get_sub_systems(self, edge_list: pd.DataFrame, source: str = "from", target: str = "to"):
+        """
+
+        Args:
+            edge_list (pd.DataFrame): _description_
+            source (str, optional): _description_. Defaults to "from".
+            target (str, optional): _description_. Defaults to "to".
+        """
+        virtual_nodes = set()
+        mask = edge_list["from"].isna()
+        mapping = {idx: f"source_{idx}" for idx in mask[mask].index}
+        virtual_nodes.update(mapping.values())
+        edge_list["from"] = edge_list["from"].fillna(mapping)
+        mask = edge_list["to"].isna()
+        mapping = {idx: f"sink_{idx}" for idx in mask[mask].index}
+        virtual_nodes.update(mapping.values())
+        edge_list["to"] = edge_list["to"].fillna(mapping)
+        # ! SECTION BELOW TO BE REVIEWED
+        network = nx.from_pandas_edgelist(edge_list, source, target, create_using=nx.DiGraph())
+        # Get the strongly connected components
+        scc = list(nx.strongly_connected_components(network))
+        # Create a new directed graph
+        agg_network = nx.DiGraph()
+        # Create a dictionary to store the components
+        components_dict = {}
+        # Add a node for each strongly connected component
+        for i, component in enumerate(scc):
+            node_name = i
+            agg_network.add_node(node_name)
+            components_dict[node_name] = component
+        # Add edges between the components
+        for i, component in enumerate(scc):
+            for node in component:
+                for successor in network.successors(node):
+                    if successor not in component:
+                        agg_network.add_edge(i, [j for j, c in enumerate(scc) if successor in c][0])
+        sub_systems = []
+        for i in nx.topological_sort(agg_network):
+            component = components_dict[i].difference(virtual_nodes)
+            if component:
+                sub_systems.append(component)
+        return tuple(sub_systems)
+
     def compute_priority(self, df: pd.DataFrame, all_symbols: dict, nan_symbol: int = -1) -> np.ndarray:
         """_summary_
 
@@ -625,65 +708,87 @@ class RecoveryModel:
             _type_: _description_
         """
 
-        def compute_column_priority(serie: pd.Series, all_symbol: int, nan_symbol: int) -> np.ndarray:
-            """Compute cell priority:
-            Args:
-                serie (pd.Series[str]): pandas Serie
-                all_symbol (str): symbol for all
-                nan_symbol (str): symbol for nan values
+        # def compute_column_priority(serie: pd.Series, all_symbol: int, nan_symbol: int) -> np.ndarray:
+        #     """Compute cell priority:
+        #     Args:
+        #         serie (pd.Series[str]): pandas Serie
+        #         all_symbol (str): symbol for all
+        #         nan_symbol (str): symbol for nan values
 
-            Returns:
-                np.ndarray: array with values 0, 1 or 2:
-                - 0 if original cell is "nan"
-                - 1 if original cell is "all"
-                - 2 otherwise
-            """
-            res = np.full_like(serie, 2, dtype=int)
-            res[serie.eq(nan_symbol)] = 0
-            res[serie.eq(all_symbol)] = 1
-            return res
+        #     Returns:
+        #         np.ndarray: array with values 0, 1 or 2:
+        #         - 0 if original cell is "nan"
+        #         - 1 if original cell is "all"
+        #         - 2 otherwise
+        #     """
+        #     res = np.full_like(serie, 2, dtype=int)
+        #     res[serie.eq(nan_symbol)] = 0
+        #     res[serie.eq(all_symbol)] = 1
+        #     return res
 
         priority = np.zeros(df.shape[0], dtype=int)
         for i, layer in enumerate(self.layer_names[1:]):
-            col_priority = compute_column_priority(df[layer], all_symbols[layer], nan_symbol)
+            col_priority = np.full_like(df[layer], 2, dtype=int)
+            col_priority[df[layer].eq(nan_symbol)] = 0
+            col_priority[df[layer].eq(all_symbols[layer])] = 1
+            # col_priority = compute_column_priority(df[layer], all_symbols[layer], nan_symbol)
             priority += col_priority * 10**i
         return priority
 
-    def ravel_multi_index(self, multi_index: np.ndarray, unravel_coeffs: np.ndarray) -> np.ndarray:
-        """Get the integer-based indices corresponding to the given targets.
+    def get_dims(self) -> tuple:
+        """Get the dimension of each layer of the system.
+        Returns:
+            tuple: The shape of each level of the system matrix.
+        """
+        return tuple(len(self.categories[layer]) for layer in self.layer_names)
+
+    def get_unravel_coeffs(self, shape) -> np.ndarray:
+        """Get the coefficients to flatten a multi-index into a 1D index.
 
         Args:
-            multi_index (np.ndarray): The multi-index to get the flatten integer indices for.
-            unravel_coeffs (np.ndarray): The coefficients to flatten a multi-index into a 1D index.
+            shape (tuple): The dimensional space
 
         Returns:
-            np.ndarray: The integer-based indices corresponding to the given targets.
+            ndarray: The integer-based indices = (a0, a1, ..., an-1, an), with:
+                a0 = shape[1] * shape[2] * ... * shape[n] * 1,
+                a1 = shape[2] * ... * shape[n] * 1,
+                an-1 = shape[n]
+                an = 1
+        """
+        return np.array([np.prod(shape[i + 1 :]) if i + 1 < len(shape) else 1 for i in range(len(shape))])
 
-        Notes: we add +1 to the array, since by construction the encoded array contains -1
-        (= NaN) values (besides for flows). To ensure index starts at 0, we shift
-        every columns by 1 (besides the first one, which correspond to the flow)
+    def ravel_multi_index(self, multi_index: np.ndarray, unravel_coeffs: np.ndarray) -> np.ndarray:
+        """Flatten a multi-index into a 1D index.
+
+        Args:
+            multi_index (np.ndarray): The (encoded) multi-index to flatten
+            unravel_coeffs (np.ndarray): The coefficients used to flatten a multi-index
+
+        Returns:
+            np.ndarray: The integer-based indices.
         """
         n = multi_index.shape[1] - 1
+        # To ensure index starts at 0, we shift every columns by 1 (besides the 1st column,
+        # which corresponds to the flow), since by construction the encoded array contains
+        # -1 ()= NaN) values (besides for flows).
         shift = np.array([0] + [1] * n)
         return np.dot(multi_index + shift, unravel_coeffs)
 
     def unravel_index(self, indices: np.ndarray) -> np.ndarray:
-        """Get the integer-based indices corresponding to the given targets.
+        """Get the original indices from the integer-based indices.
 
         Args:
-            multi_index (np.ndarray): The multi-index to get the flatten integer indices for.
-            unravel_coeffs (np.ndarray): The coefficients to flatten a multi-index into a 1D index.
+            indices (np.ndarray): The integer-based indices.
 
         Returns:
-            np.ndarray: The integer-based indices corresponding to the given targets.
-
-        Notes: we add +1 to the array, since by construction the encoded array contains -1
-        (= NaN) values (besides for flows). To ensure index starts at 0, we shift
-        every columns by 1 (besides the first one, which correspond to the flow)
+            np.ndarray: The original (encoded) indices.
         """
         n = len(self.dims) - 1
         shift = np.array([0] + [1] * n)
         coords = np.unravel_index(indices, self.dims)
+        # When raveling multi-index, we shifted every columns by 1 to ensure index starts at 0,
+        # since by construction the encoded array contained -1 (= NaN) values.
+        # We now subtract the shift to get the original indices.
         return np.vstack(coords).T - shift
 
     def __str__(self):
