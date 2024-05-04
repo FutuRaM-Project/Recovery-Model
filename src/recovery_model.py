@@ -51,22 +51,32 @@ class RecoveryModel:
 
         # II) Process composition excel file
         comp_data, comp_rows, comp_cols = self.read_composition()
-        comp_rows = self.ravel_multi_index(comp_rows, self.unravel_coeffs)
-        comp_cols = self.ravel_multi_index(comp_cols, self.unravel_coeffs)
 
         # III) Process input data (mass of flows entering the system)
         input_data, input_rows = self.read_inflows()
-        input_rows = self.ravel_multi_index(input_rows, self.unravel_coeffs)
 
         # IV) Process transfer coefficients excel file
         tc_data, tc_rows, tc_cols, self.flows_eqs, self.sub_systems = self.read_tcs()
+
+        # convert to integer based index
+        comp_rows = self.ravel_multi_index(comp_rows, self.unravel_coeffs)
+        comp_cols = self.ravel_multi_index(comp_cols, self.unravel_coeffs)
         tc_rows = self.ravel_multi_index(tc_rows, self.unravel_coeffs)
         tc_cols = self.ravel_multi_index(tc_cols, self.unravel_coeffs)
+        input_rows = self.ravel_multi_index(input_rows, self.unravel_coeffs)
 
         # V) Fill in the (square) system matrix and the Y vector
         data = np.hstack([comp_data, tc_data])
         rows = np.hstack([comp_rows, tc_rows])
         cols = np.hstack([comp_cols, tc_cols])
+        self.nnz_idx = np.unique(np.hstack([rows, cols, input_rows]))
+        self.real_size = len(self.nnz_idx)
+
+        self.data = data
+        self.rows = rows
+        self.cols = cols
+        self.input_data = input_data
+        self.input_rows = input_rows
         self.lneqs = self.get_mass_eqs(data=data, rows=rows, cols=cols)
         self.y = self.get_y_vec(data=input_data, rows=input_rows)
 
@@ -572,9 +582,12 @@ class RecoveryModel:
         res["mass_balance"] = res.sum(axis=1)
         res = res[res["mass_balance"] != 0]
         res = res.sort_index(level=-1)
-        self.decode_label(res.rename(columns=self.reverse_categories[self.layer_names[0]]).reset_index()).to_csv(
-            f"consolidation/{self.name}_solution_mass_balance.csv"
-        )
+        res = self.decode_label(res.rename(columns=self.reverse_categories[self.layer_names[0]]).reset_index())
+        res.to_csv(f"consolidation/{self.name}_solution_mass_balance.csv")
+        mass_creation = res["mass_balance"] < 0
+        assert isinstance(mass_creation, pd.Series)
+        if mass_creation.any():
+            print(res[mass_creation])
         return
 
     # ------------------------------------------------------------
@@ -605,6 +618,7 @@ class RecoveryModel:
             df[col] = df[col].astype(self.cat_dtype[col])
         is_object = df.dtypes == object
         # for the remaining unmapped object column, update the encoding mapping
+        assert isinstance(is_object, pd.Series)
         if is_object.any():
             for col in df.columns[is_object]:
                 df[col] = df[col].astype("category")
@@ -613,6 +627,7 @@ class RecoveryModel:
         del is_object
         # for encoded columns, ensure that the mapping is consistent with the metadata
         is_category = df.dtypes == "category"
+        assert isinstance(is_category, pd.Series)
         if is_category.any():
             for col in df.columns[is_category]:
                 is_category = df[col].cat.codes == -1
