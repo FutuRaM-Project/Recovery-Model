@@ -20,7 +20,7 @@ OUTPUT_DATA_FOLDER_NAME = "output_data"
 
 METADATA_FILENAME = "metadata.csv"
 TCS_FILENAME = "TCs.csv"
-INPUTS_FILENAME = "inputs.csv"
+INPUTS_FILENAME = "inflows.csv"
 COMPOSITION_FILENAME = "composition.csv"
 SOLUTION_FILENAME = "solution.csv"
 
