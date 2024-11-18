@@ -1,0 +1,5 @@
+Flow,Product,Component,Material,Element,Value
+F1,P1,C1,,,0.8
+F1,P1,C2,,,0.2
+F1,P1,C1,M1,,1
+F1,P1,C2,M1,,1

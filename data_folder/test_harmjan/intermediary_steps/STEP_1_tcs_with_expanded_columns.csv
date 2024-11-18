@@ -1,0 +1,6 @@
+,outflow,outflow,outflow,outflow,outflow,inflow,inflow,inflow,inflow,inflow,data
+,flow,product,component,material,element,flow,product,component,material,element,data
+0,F2,,C1,,,F1,P1,C1,,,0.7
+1,F2,,C2,,,F1,P1,C2,,,0.7
+2,F3,,,M1,,F2,,C1,M1,,0.95
+3,F3,,,M1,,F2,,C2,M1,,0.95

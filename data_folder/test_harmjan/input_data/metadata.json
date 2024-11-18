@@ -1,0 +1,27 @@
+{
+    "layers": [
+        {
+            "name": "flow",
+            "items": ["F1", "F2","F3"]
+        },
+        {
+            "name": "product",
+            "items": ["P1"]
+        },
+        {
+            "name": "component",
+            "items": ["C1","C2"]
+        },
+        {
+            "name": "material",
+            "items": ["M1"]
+        },
+        {
+            "name": "element",
+            "items": []
+        }
+    ],
+    "parametercodes": [
+        "c-p","m-c", "e-m"
+    ]
+}

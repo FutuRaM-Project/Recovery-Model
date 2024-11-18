@@ -1,0 +1,5 @@
+input_flow,input_layer,input_layer_key,input_sub_layer,input_sub_layer_key,output_flow,output_layer,output_target_key,value,process,technology
+F1,product,P1,,,F2,component,C1,0.7,T1,
+F1,product,P1,,,F2,component,C2,0.7,T1,
+F2,component,C1,,,F3,material,M1,0.95,T1,
+F2,component,C2,,,F3,material,M1,0.95,T1,

@@ -1,0 +1,6 @@
+,outflow,outflow,outflow,outflow,outflow,inflow,inflow,inflow,inflow,inflow,info,info,info,info
+,flow,product,component,material,element,flow,product,component,material,element,data,priority,process,technology
+0,F2,P*,C1,M*,E*,F1,P1,C1,M*,E*,0.7,1122,,
+1,F2,P*,C2,M*,E*,F1,P1,C2,M*,E*,0.7,1122,,
+2,F3,P*,C*,M1,E*,F2,P*,C1,M1,E*,0.95,1221,,
+3,F3,P*,C*,M1,E*,F2,P*,C2,M1,E*,0.95,1221,,
