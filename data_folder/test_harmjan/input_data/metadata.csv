@@ -1,4 +1,4 @@
-flow,product,component,material,element,parameterCode
-F1,P1,C1,M1,,c-p
-F2,,C2,,,m-c
-F3,,,,,e-m
+flow,product,component,material,element
+F1,P1,C1,M1,
+F2,,C2,,
+F3,,,,

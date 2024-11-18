@@ -12,4 +12,4 @@ model = RecoveryModel(
     data_folder=data_folder,
 )
 
-print(model.solve(aggregate=False, pivot=False))
+print(model.solve())
