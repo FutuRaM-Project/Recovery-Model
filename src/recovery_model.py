@@ -20,13 +20,13 @@ OUTPUT_DATA_FOLDER_NAME = "output_data"
 
 METADATA_FILENAME = "metadata.csv"
 TCS_FILENAME = "TCs.csv"
-INPUTS_FILENAME = "inflows.csv"
+INPUTS_FILENAME = "inputs.csv"
 COMPOSITION_FILENAME = "composition.csv"
 SOLUTION_FILENAME = "solution.csv"
 
 class RecoveryModel:
     """Class representing the recovery model"""
-    def __init__(self, data_folder: str):
+    def __init__(self, data_folder: str, data_version: str):
         """
         Initialize the System class.
          - Defines and creates folder structure
@@ -36,6 +36,7 @@ class RecoveryModel:
             data_folder: directory containing input and output data for this model
         """
         # Set data folder and create structure if needed
+        self.data_version = data_version
         self.data_folder = data_folder
         if not os.path.exists(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME)):
             os.makedirs(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME))
@@ -61,6 +62,8 @@ class RecoveryModel:
 
         """
         metadata_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, METADATA_FILENAME))
+        if self.data_version=='v1':
+            metadata_df = metadata_df.drop(columns='parameterCode')
         layer_names = list(metadata_df.columns)
         reverse_encoding = {}
         for layer in metadata_df.columns:
@@ -80,7 +83,7 @@ class RecoveryModel:
         composition_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, COMPOSITION_FILENAME))
 
         # Backward compatibility with previous versions
-        if 'Year' in composition_df.columns:
+        if self.data_version=='v1':
             composition_df = composition_df.drop(columns=['Year','parameterCode'])
 
         composition_df.columns = self.layer_names + ['value']
@@ -115,7 +118,7 @@ class RecoveryModel:
         inflows_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, INPUTS_FILENAME))
 
         # Backward compatibility with previous version
-        if len(inflows_df.columns)==5:
+        if self.data_version=='v1':
             inflows_df = inflows_df.drop(columns=['Year','Unit'])
             inflows_df.columns = ['flow','substance','Value']
             inflows_df.insert(1, 'layer','product')
@@ -159,6 +162,7 @@ class RecoveryModel:
 
         new_tcs_df = pd.DataFrame(columns=['input_'+layer_name for layer_name in self.layer_names]+['output_'+layer_name for layer_name in self.layer_names]+['value'])
         for _, row in tcs_df.iterrows():
+            # For each TC entry, fill the values one-by-one.
             new_row = {}
             new_row['input_flow'] = row['input_flow']
             new_row['output_flow'] = row['output_flow']
