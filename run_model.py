@@ -6,11 +6,10 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 
 
-data_folder = "data_folder/test_2"
+data_folder = "data_folder/test_harmjan"
 
 model = RecoveryModel(
     data_folder=data_folder,
-    data_version="v1"
 )
 
 print(model.solve())

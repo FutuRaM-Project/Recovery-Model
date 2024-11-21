@@ -5,17 +5,14 @@
 @Date: 24.03.2024
 """
 # %%
-import json
 import numpy as np
 import pandas as pd
 import os
-from pandas.api.types import CategoricalDtype
 from scipy.sparse import coo_array, coo_matrix, eye_array, linalg, csr_array
 from typing import Tuple, List, Dict
-
+from dataclasses import dataclass
 
 # Definition of file/folder names within the overarching data directory
-INPUT_DATA_FOLDER_NAME = "input_data"
 OUTPUT_DATA_FOLDER_NAME = "output_data"
 
 METADATA_FILENAME = "metadata.csv"
@@ -24,9 +21,21 @@ INPUTS_FILENAME = "inputs.csv"
 COMPOSITION_FILENAME = "composition.csv"
 SOLUTION_FILENAME = "solution.csv"
 
+
+@dataclass
+class InputDataFormat:
+    """
+    Dataclass defining mandatory columns for each input table
+    """
+    composition_columns = ['Stock/Flow ID','Layer 1','Layer 2','Layer 3','Layer 4','Value']
+    input_columns = ['Stock/Flow ID','Substance_main_parent','Value']
+    TCs_columns = ['input_flow','input_layer','input_layer_key','input_parent_layer','input_parent_layer_key','output_flow','output_layer','output_target_key','value']
+
+
+
 class RecoveryModel:
     """Class representing the recovery model"""
-    def __init__(self, data_folder: str, data_version: str):
+    def __init__(self, data_folder: str):
         """
         Initialize the System class.
          - Defines and creates folder structure
@@ -36,7 +45,6 @@ class RecoveryModel:
             data_folder: directory containing input and output data for this model
         """
         # Set data folder and create structure if needed
-        self.data_version = data_version
         self.data_folder = data_folder
         if not os.path.exists(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME)):
             os.makedirs(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME))
@@ -46,8 +54,7 @@ class RecoveryModel:
         self.dims = self.get_dims()
         self.size = np.prod(self.dims, dtype=int)
 
-        # Read input composition, transfer coefficients and inflows and express in vector/matrix form
-        self.input_matrix = self.read_inflows()
+        self.inflow_vector = self.read_inflows()
         self.composition_matrix = self.read_composition()
         self.tcs_matrix = self.read_tcs()
 
@@ -61,13 +68,11 @@ class RecoveryModel:
              - "Decoding" dictionary, mapping integers back to the appropriate flow/resource
 
         """
-        metadata_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, METADATA_FILENAME))
-        if self.data_version=='v1':
-            metadata_df = metadata_df.drop(columns='parameterCode')
-        layer_names = list(metadata_df.columns)
+        metadata_df = pd.read_csv(os.path.join(self.data_folder, METADATA_FILENAME))
+        layer_names = list(metadata_df.columns.drop('Stock/Flow ID'))
         reverse_encoding = {}
         for layer in metadata_df.columns:
-            items_to_encode = ([] if layer=='flow' else ['empty']) + list(metadata_df[layer].dropna())
+            items_to_encode = ([] if layer=='Stock/Flow ID' else ['empty']) + list(metadata_df[layer].dropna())
             reverse_encoding[layer] = dict(enumerate(items_to_encode))
         encoding = {col: {v: k for k, v in dct.items()} for col, dct in reverse_encoding.items()}
         return layer_names, encoding, reverse_encoding
@@ -80,16 +85,12 @@ class RecoveryModel:
         :returns:
             A CSR matrix containing the composition values at appropriate indices
         """
-        composition_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, COMPOSITION_FILENAME))
-
-        # Backward compatibility with previous versions
-        if self.data_version=='v1':
-            composition_df = composition_df.drop(columns=['Year','parameterCode'])
-
-        composition_df.columns = self.layer_names + ['value']
+        composition_df = pd.read_csv(os.path.join(self.data_folder, COMPOSITION_FILENAME))
+        composition_df = composition_df[InputDataFormat.composition_columns]
+        composition_df.columns = ['Stock/Flow ID'] + self.layer_names + ['value']
 
         # Add 'empty' as a value instead of NaN for all columns that are allowed to have empty values
-        columns_to_fill_na = [col for col in self.layer_names if col!="flow"]
+        columns_to_fill_na = [col for col in self.layer_names]
         composition_df[columns_to_fill_na] = composition_df[columns_to_fill_na].fillna('empty')
 
         # Encode all columns that have an encoding. 
@@ -100,8 +101,8 @@ class RecoveryModel:
 
         # The row value is the contained resource, and the column value is the containing resource. 
         # This means the row value is the specified composition and the column value is obtained by replacing the smallest material with 'empty'.
-        composition_rows = composition_df[self.layer_names].values
-        composition_cols = composition_df[self.layer_names].apply(HelperFunctions.set_rightmost_nonzero_to_zero, axis=1).values
+        composition_rows = composition_df[['Stock/Flow ID'] + self.layer_names].values
+        composition_cols = composition_df[['Stock/Flow ID'] + self.layer_names].apply(HelperFunctions.set_rightmost_nonzero_to_zero, axis=1).values
         composition_rows = HelperFunctions.ravel_multi_index(multi_index=composition_rows, dimensions=self.dims)
         composition_cols = HelperFunctions.ravel_multi_index(multi_index=composition_cols, dimensions=self.dims)
         comp_matrix = HelperFunctions.create_sparse_matrix(values=composition_values, rows=composition_rows, cols=composition_cols, size=self.size)
@@ -115,26 +116,17 @@ class RecoveryModel:
         Returns:
             A CSR matrix containing the inflow values at appropriate indices
         """
-        inflows_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, INPUTS_FILENAME))
-
-        # Backward compatibility with previous version
-        if self.data_version=='v1':
-            inflows_df = inflows_df.drop(columns=['Year','Unit'])
-            inflows_df.columns = ['flow','substance','Value']
-            inflows_df.insert(1, 'layer','product')
+        inflows_df = pd.read_csv(os.path.join(self.data_folder, INPUTS_FILENAME))
+        inflows_df = inflows_df[InputDataFormat.input_columns]
 
         # Create a new dataframe that expresses the flows/resources in encodable form
-        encoding_df = pd.DataFrame(columns=self.layer_names)
+        encoding_df = pd.DataFrame(columns=['Stock/Flow ID'] + self.layer_names)
         for _, row in inflows_df.iterrows():
             new_row = {}
-            # For each inflow, loop over the layers and fill in values one by one
-            for layer in self.layer_names:
-                if layer == 'flow':
-                    new_row[layer] = row['flow']
-                elif row['layer']==layer:
-                    new_row[layer] = row['substance']
-                else:
-                    new_row[layer] = 'empty'
+            new_row['Stock/Flow ID'] = row['Stock/Flow ID']
+            new_row[self.layer_names[0]] = row['Substance_main_parent']
+            for layer in self.layer_names[1:]:
+                new_row[layer] = 'empty'
             encoding_df = encoding_df._append(new_row, ignore_index=True)
 
         for column, mapping in self.encoding_dict.items():
@@ -154,13 +146,30 @@ class RecoveryModel:
         Returns:
             A CSR matrix containing the TC values at appropriate indices
         """
-        tcs_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, TCS_FILENAME))
+        tcs_df = pd.read_csv(os.path.join(self.data_folder, TCS_FILENAME))
+        tcs_df = tcs_df[InputDataFormat.TCs_columns]
 
-        # Backward compatibility
-        tcs_df = tcs_df.drop(columns=['input_sub_layer', 'input_sub_layer_key','process','technology'])
-        tcs_df.columns = ['input_flow','input_layer','input_substance','output_flow','output_layer', 'output_substance','value']
+        # This snippet explodes all values with a *, e.g P* will be exploded to make an entry for every product.
+        def fill_star_values(row, column_key, column_layer):
+            if '*' in row[column_key]:
+                return list(self.encoding_dict[row[column_layer]].keys())
+            return row[column_key]
+        tcs_df['input_layer_key'] = tcs_df.apply(lambda row: fill_star_values(row, 'input_layer_key', 'input_layer'), axis=1)
+        tcs_df['output_layer_key'] = tcs_df.apply(lambda row: fill_star_values(row, 'output_target_key', 'output_layer'), axis=1)
+        tcs_df = tcs_df.explode('input_layer_key')
+        tcs_df = tcs_df.explode('output_target_key')
 
-        new_tcs_df = pd.DataFrame(columns=['input_'+layer_name for layer_name in self.layer_names]+['output_'+layer_name for layer_name in self.layer_names]+['value'])
+        # We create a sorted version of the tcs_df, where the TCs that are more important are sorted towards
+        # the bottom, so that they are processed last and overwrite previous TCs. Priority is defined as follows:
+        # 1. TCs with the 'input_parent_layer' set will take precedence over those without, as 
+        # 2. The TCs for the lowest layer always takes priority, as this is the most specific information
+        layer_order = {name: i for i, name in enumerate(['Stock/Flow ID'] + self.layer_names)}
+        tcs_df['input_parent_layer_sort'] = tcs_df['input_parent_layer'].map(layer_order).fillna(-1)
+        tcs_df['input_layer_sort'] = tcs_df['input_layer'].map(layer_order)
+        tcs_df = tcs_df.sort_values(by=['input_parent_layer_sort','input_layer_sort'],ascending=[True,True])
+        
+        # Now we create a new dataframe that has the same shape as the final matrix. We fill it row by row and use it to create the final matrix.
+        new_tcs_df = pd.DataFrame(columns=['input_flow'] + ['input_'+layer_name for layer_name in self.layer_names]+['output_flow'] +['output_'+layer_name for layer_name in self.layer_names]+['value'])
         for _, row in tcs_df.iterrows():
             # For each TC entry, fill the values one-by-one.
             new_row = {}
@@ -168,14 +177,15 @@ class RecoveryModel:
             new_row['output_flow'] = row['output_flow']
             new_row['value'] = row['value']
             for layer in self.layer_names:
-                if layer == 'flow':
-                    continue
                 if row['input_layer']==layer:
-                    new_row['input_'+layer] = row['input_substance']
-                    new_row['output_'+layer] = row['input_substance']
+                    new_row['input_'+layer] = row['input_layer_key']
+                    new_row['output_'+layer] = row['input_layer_key']
                 elif row['output_layer']==layer:
-                    new_row['input_'+layer] = row['output_substance']
-                    new_row['output_'+layer] = row['output_substance']
+                    new_row['input_'+layer] = row['output_target_key']
+                    new_row['output_'+layer] = row['output_target_key']
+                elif row['input_parent_layer']==layer:
+                    new_row['input_'+layer] = row['input_parent_layer_key']
+                    new_row['output_'+layer] = row['input_parent_layer_key']
                 else:
                     new_row['input_'+layer] = list(self.decoding_dict[layer].values())
                     new_row['output_'+layer] = list(self.decoding_dict[layer].values())
@@ -184,13 +194,19 @@ class RecoveryModel:
         for layer in self.layer_names:
             new_tcs_df = new_tcs_df.explode(['input_'+layer, 'output_'+layer])
 
-        for column, mapping in self.encoding_dict.items():
-            new_tcs_df['input_'+column] = new_tcs_df['input_'+column].replace(mapping)
-            new_tcs_df['output_'+column] = new_tcs_df['output_'+column].replace(mapping)
+        # Only keep the highest priority entry for each combination of layers, remove the rest.
+        new_tcs_df = new_tcs_df.groupby([col for col in new_tcs_df.columns if col != 'value'], as_index=False).last()
+
+        new_tcs_df['input_flow'] = new_tcs_df['input_flow'].replace(self.encoding_dict['Stock/Flow ID'])
+        new_tcs_df['output_flow'] = new_tcs_df['output_flow'].replace(self.encoding_dict['Stock/Flow ID'])
+        for layer in self.layer_names:
+            encoding = self.encoding_dict[layer]
+            new_tcs_df['input_'+layer] = new_tcs_df['input_'+layer].replace(encoding)
+            new_tcs_df['output_'+layer] = new_tcs_df['output_'+layer].replace(encoding)
 
         tcs_values = new_tcs_df["value"].values
-        tcs_cols = new_tcs_df[['input_'+layer for layer in self.layer_names]].values
-        tcs_rows = new_tcs_df[['output_'+layer for layer in self.layer_names]].values
+        tcs_cols = new_tcs_df[['input_flow']+['input_'+layer for layer in self.layer_names]].values
+        tcs_rows = new_tcs_df[['output_flow']+['output_'+layer for layer in self.layer_names]].values
         tc_rows = HelperFunctions.ravel_multi_index(multi_index=tcs_rows, dimensions=self.dims)
         tc_cols = HelperFunctions.ravel_multi_index(multi_index=tcs_cols, dimensions=self.dims)
         tc_matrix = HelperFunctions.create_sparse_matrix(values=tcs_values, cols=tc_cols, rows=tc_rows, size=self.size)
@@ -206,14 +222,14 @@ class RecoveryModel:
             Dataframe containing the system's solution
         """
         # Solve the system of equations
-        arr = linalg.spsolve(eye_array(self.size) - self.tcs_matrix - self.composition_matrix, self.input_matrix)
+        arr = linalg.spsolve(eye_array(self.size) - self.tcs_matrix - self.composition_matrix, self.inflow_vector)
 
         # Decode the solution
         mask = arr != 0
         int_idx = np.nonzero(mask)[0]
         midx = HelperFunctions.unravel_multi_index(indices=int_idx,dimensions=self.dims)
 
-        idx = pd.MultiIndex.from_arrays(midx.T, names=self.layer_names)
+        idx = pd.MultiIndex.from_arrays(midx.T, names=['Stock/Flow ID'] + self.layer_names)
         solution = pd.Series(arr[mask], index=idx)
         solution = solution[solution != 0]
 
@@ -222,6 +238,7 @@ class RecoveryModel:
 
         solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"))
         return solution
+
 
     def decode_label(self, df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -251,7 +268,7 @@ class RecoveryModel:
         Returns:
             The shape of each layer of the system, which corresponds to the number of possible resources in that layer + an empty layer
         """
-        return tuple(len(self.encoding_dict[layer]) for layer in self.layer_names)
+        return tuple(len(self.encoding_dict[layer]) for layer in ['Stock/Flow ID'] + self.layer_names)
 
 
 class HelperFunctions:
@@ -331,7 +348,3 @@ class HelperFunctions:
         cols = np.zeros_like(rows)
         coo_arr = coo_array((values, (rows, cols)), shape=(size, 1))
         return coo_arr.tocsc()
-    
-class InputValidation:
-    def check_mass_balance():
-        pass
