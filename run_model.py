@@ -6,7 +6,7 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 
 
-data_folder = "data_folder/test_harmjan"
+data_folder = "data_folder/test_2"
 
 model = RecoveryModel(
     data_folder=data_folder,

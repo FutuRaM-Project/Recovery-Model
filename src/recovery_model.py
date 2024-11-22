@@ -27,7 +27,6 @@ class InputDataFormat:
     """
     Dataclass defining mandatory columns for each input table
     """
-    composition_columns = ['Stock/Flow ID','Layer 1','Layer 2','Layer 3','Layer 4','Value']
     input_columns = ['Stock/Flow ID','Substance_main_parent','Value']
     TCs_columns = ['input_flow','input_layer','input_layer_key','input_parent_layer','input_parent_layer_key','output_flow','output_layer','output_target_key','value']
 
@@ -86,8 +85,8 @@ class RecoveryModel:
             A CSR matrix containing the composition values at appropriate indices
         """
         composition_df = pd.read_csv(os.path.join(self.data_folder, COMPOSITION_FILENAME))
-        composition_df = composition_df[InputDataFormat.composition_columns]
-        composition_df.columns = ['Stock/Flow ID'] + self.layer_names + ['value']
+        composition_df_columns = ['Stock/Flow ID'] + self.layer_names + ['Value']
+        composition_df = composition_df[composition_df_columns]
 
         # Add 'empty' as a value instead of NaN for all columns that are allowed to have empty values
         columns_to_fill_na = [col for col in self.layer_names]
@@ -97,7 +96,7 @@ class RecoveryModel:
         for column, mapping in self.encoding_dict.items():
             composition_df[column] = composition_df[column].replace(mapping)
 
-        composition_values = composition_df["value"].values
+        composition_values = composition_df["Value"].values
 
         # The row value is the contained resource, and the column value is the containing resource. 
         # This means the row value is the specified composition and the column value is obtained by replacing the smallest material with 'empty'.

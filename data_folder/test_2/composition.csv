@@ -1,4 +1,4 @@
-Year,Stock/Flow ID,Layer 1,Layer 2,Layer 3,Layer 4,Value,parameterCode
+Year,Stock/Flow ID,product,component,material,element,Value,parameterCode
 2020,F1,P1,C1,,,0.25,c-p
 2020,F1,P1,C2,,,0.59,c-p
 2020,F1,P1,C3,,,0.16,c-p
