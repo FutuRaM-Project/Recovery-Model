@@ -18,12 +18,14 @@ To use the model, you can add a new folder to 'data_folder' and add 4 files to t
 - TCs.csv -- Defines the transfer coefficients
 
 Then, specify your data folder in the run_model.py or run_model.ipynb file and execute it. Your data will be saved to an output folder within the folder you created.
+The definitions for how these tables should be formatted can be found in /doc/user_guide.docx. 
 
 ## To Do list
 
 - [ ] write routine for mass balance check:
   - [ ] for the composition
   - [ ] for the entire system
-- [ ] define priority rules in case of conflicts accross TCs (?)
-- [ ] enable to divide the system into sub-system that can be solved sequentially
+- Implement input validation to ensure no issues occur due to invalid inputs
+- [ ] Implement code to automatically execute the model for each different year/scenario
+- [ ] Investigate methods to speed up the model for large datasets
 - [ ] Define how uncertainty and data quality should be propagated
