@@ -234,6 +234,7 @@ class RecoveryModel:
 
         solution = self.decode_label(solution.reset_index())
         solution = solution.replace('empty','')
+        solution.columns = ['Stock/Flow ID'] + self.layer_names + ['Value']
 
         solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"))
         return solution

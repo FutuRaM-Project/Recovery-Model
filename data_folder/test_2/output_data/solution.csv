@@ -1,4 +1,4 @@
-,Stock/Flow ID,product,component,material,element,0
+,Stock/Flow ID,product,component,material,element,Value
 0,F1,P1,,,,1000.0
 1,F1,P1,C1,,,250.0
 2,F1,P1,C1,M1,,130.0
