@@ -1,5 +1,4 @@
 Input_FlowID,Input_layer,Input_layer_key,Output_FlowID,TC_target_layer,TC_target_key,value,process,technology
-F2,component,C1,F5,material,M1,.8,T2,
 F1,product,P1,F2,component,C1,0.25,T1,
 F1,product,P1,F2,component,C2,0.04,T1,
 F1,product,P2,F2,component,C1,0.08,T1,
