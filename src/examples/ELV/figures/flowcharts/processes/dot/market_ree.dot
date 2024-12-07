@@ -1,0 +1,41 @@
+digraph {
+	graph [bb="0,0,317,88",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_ree
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="158.5,62",
+		lwidth=4.18,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_ree	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="246,18",
+		shape=box,
+		style=filled,
+		width=1.1944];
+	smelter_cc	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="60,18",
+		shape=box,
+		style=filled,
+		width=0.88889];
+	smelter_cc -> market_ree	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_ree
+Amount: 0.00e+00 kg",
+		lp="147.5,25",
+		pos="e,202.91,18 92.213,18 119.69,18 160.26,18 192.69,18"];
+}

@@ -1,0 +1,50 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart (isolated) for: dismantling_ICE
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	dismantling_ICE [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	collection_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	collection_ICE -> dismantling_ICE [label="Composition: ELV_ICE
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_reuse_ELVcomponents [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> market_reuse_ELVcomponents [label="Composition: ELV_ICE_parts
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	shredding_batt [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_batt [label="Composition: ELV_ICE_batt
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	hammermill_body [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> hammermill_body [label="Composition: ELV_ICE_body
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	smelter_cc [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> smelter_cc [label="Composition: ELV_ICE_catconv
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	shredding_elec [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_elec [label="Composition: ELV_ICE_elec
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	shredding_engtrans [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_engtrans [label="Composition: ELV_ICE_engtrans
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_waste_oil [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> market_waste_oil [label="Composition: ELV_ICE_liquids
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	shredding_tyre [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_tyre [label="Composition: ELV_ICE_tyres
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	font=Cabin
+}

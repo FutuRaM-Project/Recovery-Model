@@ -1,0 +1,101 @@
+digraph {
+	graph [bb="0,0,571,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: smelter_nonferrous
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="285.5,220",
+		lwidth=5.18,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	smelter_nonferrous	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="279,97",
+		shape=box,
+		style=filled,
+		width=1.8611];
+	market_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="521.5,137",
+		shape=box,
+		style=filled,
+		width=1.3472];
+	smelter_nonferrous -> market_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg",
+		lp="409,132",
+		pos="e,472.91,129.09 346.04,107.98 382.61,114.07 427.65,121.56 462.81,127.4"];
+	market_waste_slag	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="521.5,58",
+		shape=box,
+		style=filled,
+		width=1.375];
+	smelter_nonferrous -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_slag_nfe
+Amount: 0.00e+00 kg",
+		lp="409,77",
+		pos="e,471.72,59.12 332.11,78.956 343.8,75.487 356.23,72.241 368,70 398.55,64.183 433.07,61.177 461.53,59.628"];
+	hammermill_body	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,176",
+		shape=box,
+		style=filled,
+		width=1.3194];
+	hammermill_body -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg",
+		lp="156,157",
+		pos="e,226.15,115.04 97.759,159.73 132.07,147.79 179.01,131.45 216.38,118.45"];
+	shredding_elec	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,97",
+		shape=box,
+		style=filled,
+		width=1.125];
+	shredding_elec -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg",
+		lp="156,104",
+		pos="e,211.82,97 90.54,97 121.08,97 164.26,97 201.49,97"];
+	shredding_engtrans	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg",
+		lp="156,71",
+		pos="e,226.08,78.931 100.26,35.142 134.37,47.014 180.03,62.905 216.53,75.607"];
+}

@@ -1,0 +1,25 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart (isolated) for: hammermill_body
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	hammermill_body [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> hammermill_body [label="Composition: ELV_ICE_body
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	smelter_ferrous [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	hammermill_body -> smelter_ferrous [label="Composition: ELV_ICE_fe
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	smelter_nonferrous [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	hammermill_body -> smelter_nonferrous [label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_waste [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	hammermill_body [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	hammermill_body -> market_waste [label="Composition: ELV_ICE_waste_shredder
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	font=Cabin
+}

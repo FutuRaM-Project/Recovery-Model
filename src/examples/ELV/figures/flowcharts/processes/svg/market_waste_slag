@@ -1,0 +1,20 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart (isolated) for: market_waste_slag
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	smelter_cc [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_cc -> market_waste_slag [label="Composition: ALL_slag_ree
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	smelter_ferrous [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_ferrous -> market_waste_slag [label="Composition: ELV_ICE_slag_fe
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_waste_slag [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	smelter_nonferrous [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	market_waste_slag [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	smelter_nonferrous -> market_waste_slag [label="Composition: ELV_ICE_slag_nfe
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	font=Cabin
+}

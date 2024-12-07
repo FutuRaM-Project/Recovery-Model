@@ -1,0 +1,101 @@
+digraph {
+	graph [bb="0,0,543,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: smelter_ferrous
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="271.5,220",
+		lwidth=4.71,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	smelter_ferrous	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="265,97",
+		shape=box,
+		style=filled,
+		width=1.5556];
+	market_ferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="493.5,137",
+		shape=box,
+		style=filled,
+		width=1.125];
+	smelter_ferrous -> market_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00 kg",
+		lp="382.5,131",
+		pos="e,452.83,129.99 321.12,106.73 358.18,113.28 406.65,121.84 442.58,128.18"];
+	market_waste_slag	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="493.5,58",
+		shape=box,
+		style=filled,
+		width=1.375];
+	smelter_ferrous -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_slag_fe
+Amount: 0.00e+00 kg",
+		lp="382.5,77",
+		pos="e,443.91,58.749 311.46,78.895 321.69,75.43 332.61,72.201 343,70 372.48,63.758 405.85,60.707 433.58,59.238"];
+	hammermill_body	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,176",
+		shape=box,
+		style=filled,
+		width=1.3194];
+	hammermill_body -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00 kg",
+		lp="154.5,155",
+		pos="e,215.15,115.12 97.744,158.66 129.4,146.92 171.47,131.32 205.36,118.75"];
+	shredding_engtrans	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,97",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00 kg",
+		lp="154.5,104",
+		pos="e,208.74,97 100.13,97 129.4,97 166.91,97 198.65,97"];
+	shredding_tyre	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="50,18",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	shredding_tyre -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00 kg",
+		lp="154.5,73",
+		pos="e,215.46,78.996 90.067,32.49 122.48,44.512 169.05,61.784 205.85,75.431"];
+}

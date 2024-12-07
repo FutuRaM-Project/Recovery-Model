@@ -1,0 +1,11 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart (isolated) for: market_wasterubber
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	market_wasterubber [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_tyre [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	market_wasterubber [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_tyre -> market_wasterubber [label="Composition: rubber
+Amount: None 
+Unit: None" color=black fontname=Cabin fontsize=6]
+	font=Cabin
+}

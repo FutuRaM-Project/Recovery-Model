@@ -1,0 +1,86 @@
+digraph {
+	graph [bb="0,0,523,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: shredding_batt
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="261.5,220",
+		lwidth=4.61,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	shredding_batt	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="252,97",
+		shape=box,
+		style=filled,
+		width=1.4722];
+	market_waste_plastic	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="468.5,176",
+		shape=box,
+		style=filled,
+		width=1.5139];
+	shredding_batt -> market_waste_plastic	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.00e+00 kg",
+		lp="359.5,155",
+		pos="e,418.4,157.92 301.94,115.03 333.68,126.71 375.2,142.01 408.72,154.35"];
+	market_H2SO4	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="468.5,97",
+		shape=box,
+		style=filled,
+		width=1.1528];
+	shredding_batt -> market_H2SO4	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: H2SO4
+Amount: 0.00e+00 kg",
+		lp="359.5,104",
+		pos="e,426.89,97 305.2,97 339.14,97 383.17,97 416.8,97"];
+	market_lead	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="468.5,18",
+		shape=box,
+		style=filled,
+		width=0.95833];
+	shredding_batt -> market_lead	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: Pb
+Amount: 0.00e+00 kg",
+		lp="359.5,77",
+		pos="e,433.79,30.417 301.94,78.975 338.79,65.405 388.82,46.977 424.22,33.942"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,97",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> shredding_batt	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_batt
+Amount: 0.00e+00 kg",
+		lp="142,104",
+		pos="e,198.76,97 85.491,97 115.11,97 155.29,97 188.64,97"];
+}

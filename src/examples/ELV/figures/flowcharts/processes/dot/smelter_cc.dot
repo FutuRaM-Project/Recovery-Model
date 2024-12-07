@@ -1,0 +1,71 @@
+digraph {
+	graph [bb="0,0,504,167",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: smelter_cc
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="252,141",
+		lwidth=4.12,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	smelter_cc	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="250,57",
+		shape=box,
+		style=filled,
+		width=1.1389];
+	market_waste_slag	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="454.5,97",
+		shape=box,
+		style=filled,
+		width=1.375];
+	smelter_cc -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_slag_ree
+Amount: 0.00e+00 kg",
+		lp="348,89",
+		pos="e,404.64,87.348 291.01,64.903 320.57,70.742 361.29,78.785 394.57,85.359"];
+	market_ree	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="454.5,18",
+		shape=box,
+		style=filled,
+		width=0.90278];
+	smelter_cc -> market_ree	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_ree
+Amount: 0.00e+00 kg",
+		lp="348,37",
+		pos="e,421.77,17.79 287.02,38.974 295.37,35.459 304.35,32.19 313,30 345.41,21.795 383.22,18.929 411.45,18.041"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,57",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> smelter_cc	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_catconv
+Amount: 0.00e+00 kg",
+		lp="147,64",
+		pos="e,208.87,57 85.086,57 117.82,57 163.58,57 198.43,57"];
+}

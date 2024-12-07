@@ -1,0 +1,875 @@
+digraph {
+	graph [bb="0,0,2209.2,692",
+		engine=neato,
+		fontname=Cabin,
+		fontsize=24,
+		label="Flowchart for Model: TestModel_ELV
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.72,
+		lp="1104.6,662",
+		lwidth=5.17,
+		nodesep=0.2,
+		rankdir=LR,
+		ranksep=0.3,
+		splines=polyline
+	];
+	node [label="\N"];
+	subgraph collection {
+		graph [fontname=Cabin,
+			fontsize=16,
+			label=Collection,
+			labelloc=t,
+			margin=25,
+			rank=1,
+			rankdir=LR,
+			style="rounded,filled"
+		];
+		collection_ICE	[fillcolor=salmon1,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="253,366",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'collection_ICE', 'description': 'collection of an ice car', 'WS': 'ELV', 'transformation_level': 'market', 'tags': 'collection', '\
+inputs': ['PutOnMarket_ICE_to_collection_ICE:1000000kg'], 'outputs': ['collection_ICE_to_dismantling_ICE:0kg'], 'parameters': {}, '\
+consumption_energy': '1', 'consumption_water': '1', 'cost_operation': '0.1', 'cost_capital': None, 'transfer_coefficients': ['ELV_\
+ICE--1.0-->ELV_ICE']}",
+			width=1.3889];
+	}
+	subgraph dismantling {
+		graph [fontname=Cabin,
+			fontsize=16,
+			label=Dismantling,
+			labelloc=t,
+			margin=25,
+			rank=2,
+			rankdir=LR,
+			style="rounded,filled"
+		];
+		dismantling_ICE	[fillcolor=plum1,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="442,366",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'dismantling_ICE', 'description': 'manual dismantling of an ice car', 'WS': 'ELV', 'transformation_level': 'component', '\
+tags': 'manual, mechanical', 'inputs': ['collection_ICE_to_dismantling_ICE:0kg'], 'outputs': ['dismantling_ICE_to_market_reuse_ELVcomponents:\
+0kg', 'dismantling_ICE_to_shredding_batt:0kg', 'dismantling_ICE_to_hammermill_body:0kg', 'dismantling_ICE_to_smelter_cc:0kg', 'dismantling_\
+ICE_to_shredding_elec:0kg', 'dismantling_ICE_to_shredding_engtrans:0kg', 'dismantling_ICE_to_market_waste_oil:0kg', 'dismantling_\
+ICE_to_shredding_tyre:0kg'], 'parameters': {}, 'consumption_energy': '4', 'consumption_water': '2', 'cost_operation': '0.8', 'cost_\
+capital': None, 'transfer_coefficients': ['ELV_ICE--1.0-->ELV_ICE_parts', 'ELV_ICE--1.0-->ELV_ICE', 'ELV_ICE--1.0-->ELV_ICE_batt', '\
+ELV_ICE--1.0-->ELV_ICE_body', 'ELV_ICE--1.0-->ELV_ICE_catconv', 'ELV_ICE--1.0-->ELV_ICE_elec', 'ELV_ICE--1.0-->ELV_ICE_engtrans', '\
+ELV_ICE--1.0-->ELV_ICE_liquids', 'ELV_ICE--1.0-->ELV_ICE_tyres']}",
+			width=1.5556];
+	}
+	subgraph market {
+		graph [fontname=Cabin,
+			fontsize=16,
+			label=Market,
+			labelloc=t,
+			margin=25,
+			rank=5,
+			rankdir=LR,
+			style="rounded,filled"
+		];
+		market_reuse_ELVcomponents	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,610",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_reuse_ELVcomponents', 'description': 'direct or indirect reuse of components from an elv', 'WS': 'ELV', 'transformation_\
+level': 'component', 'tags': 'None', 'inputs': ['dismantling_ICE_to_market_reuse_ELVcomponents:0kg'], 'outputs': [], 'parameters': {}, '\
+consumption_energy': 'None', 'consumption_water': 'None', 'cost_operation': '20', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=2.8056];
+		market_waste_rubber	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,514",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_waste_rubber', 'description': 'market for waste rubber', 'WS': 'None', 'transformation_level': 'market', 'tags': '\
+market', 'inputs': ['shredding_tyre_to_market_waste_rubber:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', '\
+consumption_water': 'None', 'cost_operation': '-5', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=2.0556];
+		market_ree	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,118",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_ree', 'description': 'market for waste REE mix', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['smelter_cc_to_market_ree:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', 'consumption_water': '\
+None', 'cost_operation': '-2000', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.1944];
+		market_lead	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,68",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_lead', 'description': 'market for waste lead', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['shredding_batt_to_market_lead:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', 'consumption_water': '\
+None', 'cost_operation': '-20', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.2639];
+		market_H2SO4	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,18",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_H2SO4', 'description': 'market for waste H2SO4', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['shredding_batt_to_market_H2SO4:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', 'consumption_water': '\
+None', 'cost_operation': '-10', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.5278];
+		market_nonferrous	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1638.6,235",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_nonferrous', 'description': 'market for waste non-ferrous', 'WS': 'None', 'transformation_level': 'market', 'tags': '\
+market', 'inputs': ['smelter_nonferrous_to_market_nonferrous:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', '\
+consumption_water': 'None', 'cost_operation': '-5', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.8194];
+		market_ferrous	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1638.6,413",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_ferrous', 'description': 'market for waste ferrous', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['smelter_ferrous_to_market_ferrous:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', 'consumption_\
+water': 'None', 'cost_operation': '-4', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.5];
+		market_waste	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,349",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_waste', 'description': 'market for waste (general)', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['hammermill_body_to_market_waste:0kg', 'shredding_engtrans_to_market_waste:0kg'], 'outputs': [], 'parameters': {}, 'consumption_\
+energy': 'None', 'consumption_water': 'None', 'cost_operation': '10', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.4028];
+		market_waste_glass	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,464",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_waste_glass', 'description': 'market for waste glass', 'WS': 'None', 'transformation_level': 'market', 'tags': '\
+market', 'inputs': ['shredding_engtrans_to_market_waste_glass:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', '\
+consumption_water': 'None', 'cost_operation': '-2', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.9028];
+		market_waste_plastic	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,168",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_waste_plastic', 'description': 'market for waste plastic', 'WS': 'None', 'transformation_level': 'market', 'tags': '\
+market', 'inputs': ['shredding_batt_to_market_waste_plastic:0kg', 'shredding_elec_to_market_waste_plastic:0kg'], 'outputs': [], '\
+parameters': {}, 'consumption_energy': 'None', 'consumption_water': 'None', 'cost_operation': '-1', 'cost_capital': None, 'transfer_\
+coefficients': []}",
+			width=2.0278];
+		market_waste_slag	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1638.6,285",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_waste_slag', 'description': 'market for waste slag', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['smelter_cc_to_market_waste_slag:0kg', 'smelter_ferrous_to_market_waste_slag:0kg', 'smelter_nonferrous_to_market_waste_\
+slag:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', 'consumption_water': 'None', 'cost_operation': '-10', '\
+cost_capital': None, 'transfer_coefficients': []}",
+			width=1.8194];
+		market_waste_oil	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,556",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'market_waste_oil', 'description': 'market for waste oil', 'WS': 'None', 'transformation_level': 'market', 'tags': 'market', '\
+inputs': ['dismantling_ICE_to_market_waste_oil:0kg'], 'outputs': [], 'parameters': {}, 'consumption_energy': 'None', 'consumption_\
+water': 'None', 'cost_operation': '3', 'cost_capital': None, 'transfer_coefficients': []}",
+			width=1.6944];
+		PutOnMarket_ICE	[fillcolor=lightpink,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="61.5,366",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'PutOnMarket_ICE', 'description': 'put on market for ICE vehicles', 'WS': 'ELV', 'transformation_level': 'input', 'tags': '\
+None', 'inputs': [], 'outputs': ['PutOnMarket_ICE_to_collection_ICE:1000000kg'], 'parameters': {}, 'consumption_energy': 'None', '\
+consumption_water': 'None', 'cost_operation': 'None', 'cost_capital': None, 'transfer_coefficients': ['NEW_ICE--1.0-->ELV_ICE']}",
+			width=1.7083];
+	}
+	subgraph shredding {
+		graph [fontname=Cabin,
+			fontsize=16,
+			label=Shredding,
+			labelloc=t,
+			margin=25,
+			rank=3,
+			rankdir=LR,
+			style="rounded,filled"
+		];
+		shredding_engtrans	[fillcolor=darkolivegreen1,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,399",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'shredding_engtrans', 'description': 'shredding of car engine and transmission', 'WS': 'ELV', 'transformation_level': '\
+material', 'tags': 'shredding', 'inputs': ['dismantling_ICE_to_shredding_engtrans:0kg'], 'outputs': ['shredding_engtrans_to_market_\
+waste_glass:0kg', 'shredding_engtrans_to_smelter_ferrous:0kg', 'shredding_engtrans_to_smelter_nonferrous:0kg', 'shredding_engtrans_\
+to_market_waste:0kg'], 'parameters': {}, 'consumption_energy': '10', 'consumption_water': '4', 'cost_operation': '4', 'cost_capital': \
+None, 'transfer_coefficients': ['ELV_ICE_body--1.0-->ALL_glass', 'ELV_ICE_body--1.0-->ELV_ICE_fe', 'ELV_ICE_body--1.0-->ELV_ICE_\
+nfe', 'ELV_ICE_body--1.0-->ELV_ICE_waste_shredder']}",
+			width=1.8611];
+		shredding_tyre	[fillcolor=darkolivegreen1,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,498",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'shredding_tyre', 'description': 'shredding of tyres', 'WS': 'ELV', 'transformation_level': 'material', 'tags': 'shredding', '\
+inputs': ['dismantling_ICE_to_shredding_tyre:0kg'], 'outputs': ['shredding_tyre_to_market_waste_rubber:0kg', 'shredding_tyre_to_\
+smelter_ferrous:0kg'], 'parameters': {}, 'consumption_energy': '2', 'consumption_water': '6', 'cost_operation': '1.2', 'cost_capital': \
+None, 'transfer_coefficients': ['ELV_ICE_tyres--1.0-->ALL_rubber', 'ELV_ICE_tyres--1.0-->ELV_ICE_fe']}",
+			width=1.4722];
+		shredding_elec	[fillcolor=darkolivegreen1,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,234",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'shredding_elec', 'description': 'shredding of electrical components', 'WS': 'ELV', 'transformation_level': 'material', '\
+tags': 'shredding', 'inputs': ['dismantling_ICE_to_shredding_elec:0kg'], 'outputs': ['shredding_elec_to_market_waste_plastic:0kg', '\
+shredding_elec_to_smelter_nonferrous:0kg'], 'parameters': {}, 'consumption_energy': '4', 'consumption_water': '3', 'cost_operation': '\
+1.2', 'cost_capital': None, 'transfer_coefficients': ['ELV_ICE_elec--1.0-->ALL_plastic', 'ELV_ICE_elec--1.0-->ELV_ICE_nfe']}",
+			width=1.4861];
+		shredding_batt	[fillcolor=darkolivegreen1,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,90",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'shredding_batt', 'description': 'shredding of a lead acid battery', 'WS': 'ELV', 'transformation_level': 'material', '\
+tags': 'shredding', 'inputs': ['dismantling_ICE_to_shredding_batt:0kg'], 'outputs': ['shredding_batt_to_market_waste_plastic:0kg', '\
+shredding_batt_to_market_H2SO4:0kg', 'shredding_batt_to_market_lead:0kg'], 'parameters': {}, 'consumption_energy': '6', 'consumption_\
+water': '42', 'cost_operation': '25.2', 'cost_capital': None, 'transfer_coefficients': ['ELV_ICE_batt--1.0-->ALL_plastic', 'ELV_\
+ICE_batt--1.0-->H2SO4', 'ELV_ICE_batt--1.0-->Pb']}",
+			width=1.4722];
+	}
+	subgraph hammermill {
+		graph [fontname=Cabin,
+			fontsize=16,
+			label=Hammermill,
+			labelloc=t,
+			margin=25,
+			rank=3,
+			rankdir=LR,
+			style="rounded,filled"
+		];
+		hammermill_body	[fillcolor=darkolivegreen2,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,324",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'hammermill_body', 'description': 'hammermillilng of car body', 'WS': 'ELV', 'transformation_level': 'material', 'tags': '\
+mechanical', 'inputs': ['dismantling_ICE_to_hammermill_body:0kg'], 'outputs': ['hammermill_body_to_smelter_ferrous:0kg', 'hammermill_\
+body_to_smelter_nonferrous:0kg', 'hammermill_body_to_market_waste:0kg'], 'parameters': {}, 'consumption_energy': '5', 'consumption_\
+water': '2', 'cost_operation': '1', 'cost_capital': None, 'transfer_coefficients': ['ELV_ICE_engtrans--1.0-->ELV_ICE_fe', 'ELV_ICE_\
+engtrans--1.0-->ELV_ICE_nfe', 'ELV_ICE_engtrans--1.0-->ELV_ICE_waste_shredder']}",
+			width=1.7361];
+	}
+	subgraph smelter {
+		graph [fontname=Cabin,
+			fontsize=16,
+			label=Smelter,
+			labelloc=t,
+			margin=25,
+			rank=4,
+			rankdir=LR,
+			style="rounded,filled"
+		];
+		smelter_cc	[fillcolor=mediumturquoise,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="703,174",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'smelter_cc', 'description': 'smelting of catalytic converters', 'WS': 'ELV', 'transformation_level': 'element', 'tags': '\
+smelter', 'inputs': ['dismantling_ICE_to_smelter_cc:0kg'], 'outputs': ['smelter_cc_to_market_waste_slag:0kg', 'smelter_cc_to_market_\
+ree:0kg'], 'parameters': {}, 'consumption_energy': '50', 'consumption_water': '20', 'cost_operation': '10', 'cost_capital': None, '\
+transfer_coefficients': ['ELV_ICE_catconv--1.0-->ELV_ICE_fe', 'ELV_ICE_catconv--1.0-->ELV_ICE_ree', 'ELV_ICE_catconv--1.0-->ALL_\
+slag_ree']}",
+			width=1.1389];
+		smelter_nonferrous	[fillcolor=mediumturquoise,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,267",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'smelter_nonferrous', 'description': 'smelting of nonferrous fractions', 'WS': 'ELV', 'transformation_level': 'element', '\
+tags': 'smelter', 'inputs': ['hammermill_body_to_smelter_nonferrous:0kg', 'shredding_elec_to_smelter_nonferrous:0kg', 'shredding_\
+engtrans_to_smelter_nonferrous:0kg'], 'outputs': ['smelter_nonferrous_to_market_nonferrous:0kg', 'smelter_nonferrous_to_market_waste_\
+slag:0kg'], 'parameters': {}, 'consumption_energy': '45', 'consumption_water': '42', 'cost_operation': '18.9', 'cost_capital': None, '\
+transfer_coefficients': ['ELV_ICE_nfe--1.0-->ELV_ICE_nfe', 'ELV_ICE_nfe--1.0-->ELV_ICE_slag_nfe']}",
+			width=1.8611];
+		smelter_ferrous	[fillcolor=mediumturquoise,
+			fontname=Cabin,
+			fontsize=14,
+			height=0.5,
+			pos="1147.8,413",
+			shape=box,
+			style=filled,
+			tooltip="{'name': 'smelter_ferrous', 'description': 'smelting of ferrous fractions', 'WS': 'ELV', 'transformation_level': 'element', 'tags': '\
+smelter', 'inputs': ['hammermill_body_to_smelter_ferrous:0kg', 'shredding_engtrans_to_smelter_ferrous:0kg', 'shredding_tyre_to_smelter_\
+ferrous:0kg'], 'outputs': ['smelter_ferrous_to_market_ferrous:0kg', 'smelter_ferrous_to_market_waste_slag:0kg'], 'parameters': {}, '\
+consumption_energy': '60', 'consumption_water': '33', 'cost_operation': '19.8', 'cost_capital': None, 'transfer_coefficients': ['\
+ELV_ICE_fe--1.0-->ELV_ICE_fe', 'ELV_ICE_fe--1.0-->ELV_ICE_slag_fe']}",
+			width=1.5556];
+	}
+	collection_ICE -> dismantling_ICE	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE
+Amount: 0.00e+00  kg",
+		lp="344.5,373",
+		pos="e,385.93,366 303.13,366 327.27,366 356.55,366 381.9,366",
+		tooltip="{'Name': 'collection_ICE_to_dismantling_ICE', 'Tags': [], 'To': 'dismantling_ICE', 'From': 'collection_ICE', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE', 'Parameters': {}}"];
+	dismantling_ICE -> market_reuse_ELVcomponents	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_parts
+Amount: 0.00e+00  kg",
+		lp="550,582",
+		pos="e,639.81,591.96 450.19,384.19 467.29,427.47 509,533 509,533 509,533 602,581 602,581 602,581 617.1,585.38 635.56,590.73",
+		tooltip="{'Name': 'dismantling_ICE_to_market_reuse_ELVcomponents', 'Tags': [], 'To': 'market_reuse_ELVcomponents', 'From': 'dismantling_ICE', '\
+Amount': 0, 'Unit': 'kg', 'Composition': 'ELV_ICE_parts', 'Parameters': {}}"];
+	dismantling_ICE -> market_waste_oil	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_liquids
+Amount: 0.00e+00  kg",
+		lp="550,523",
+		pos="e,647.32,537.96 456.04,384.37 475.27,411.48 509,459 509,459 509,459 602,523 602,523 602,523 621.64,529.48 643.5,536.7",
+		tooltip="{'Name': 'dismantling_ICE_to_market_waste_oil', 'Tags': [], 'To': 'market_waste_oil', 'From': 'dismantling_ICE', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_liquids', 'Parameters': {}}"];
+	dismantling_ICE -> shredding_engtrans	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_engtrans
+Amount: 0.00e+00  kg",
+		lp="550,392",
+		pos="e,635.83,390.57 498.24,373.04 537.25,378.01 589.82,384.71 631.8,390.06",
+		tooltip="{'Name': 'dismantling_ICE_to_shredding_engtrans', 'Tags': [], 'To': 'shredding_engtrans', 'From': 'dismantling_ICE', 'Amount': 0, '\
+Unit': 'kg', 'Composition': 'ELV_ICE_engtrans', 'Parameters': {}}"];
+	dismantling_ICE -> shredding_tyre	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_tyres
+Amount: 0.00e+00  kg",
+		lp="550,449",
+		pos="e,665.7,479.94 476.39,384.21 492.76,393.14 509,402 509,402 509,402 605.51,450 662.03,478.12",
+		tooltip="{'Name': 'dismantling_ICE_to_shredding_tyre', 'Tags': [], 'To': 'shredding_tyre', 'From': 'dismantling_ICE', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_tyres', 'Parameters': {}}"];
+	dismantling_ICE -> shredding_elec	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_elec
+Amount: 0.00e+00  kg",
+		lp="550,333",
+		pos="e,663.87,252.18 472.91,347.87 490.37,337.29 509,326 509,326 509,326 603.43,280.99 660.19,253.93",
+		tooltip="{'Name': 'dismantling_ICE_to_shredding_elec', 'Tags': [], 'To': 'shredding_elec', 'From': 'dismantling_ICE', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_elec', 'Parameters': {}}"];
+	dismantling_ICE -> shredding_batt	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_batt
+Amount: 0.00e+00  kg",
+		lp="550,207",
+		pos="e,670.13,108.16 450.19,347.92 467.29,304.9 509,200 509,200 509,200 610.79,141.98 666.53,110.22",
+		tooltip="{'Name': 'dismantling_ICE_to_shredding_batt', 'Tags': [], 'To': 'shredding_batt', 'From': 'dismantling_ICE', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_batt', 'Parameters': {}}"];
+	dismantling_ICE -> hammermill_body	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_body
+Amount: 0.00e+00  kg",
+		lp="550,362",
+		pos="e,640.49,333.97 498.24,357.04 538.69,350.48 593.72,341.56 636.4,334.64",
+		tooltip="{'Name': 'dismantling_ICE_to_hammermill_body', 'Tags': [], 'To': 'hammermill_body', 'From': 'dismantling_ICE', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_body', 'Parameters': {}}"];
+	dismantling_ICE -> smelter_cc	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_catconv
+Amount: 0.00e+00  kg",
+		lp="550,279",
+		pos="e,661.9,188.03 455.73,347.88 474.9,320.56 509,272 509,272 509,272 602,209 602,209 602,209 631.14,198.8 657.97,189.41",
+		tooltip="{'Name': 'dismantling_ICE_to_smelter_cc', 'Tags': [], 'To': 'smelter_cc', 'From': 'dismantling_ICE', 'Amount': 0, 'Unit': 'kg', '\
+Composition': 'ELV_ICE_catconv', 'Parameters': {}}"];
+	market_reuse_ELVcomponents_output	[height=0.5,
+		pos="1147.8,614",
+		style=invis,
+		width=5.2176];
+	market_reuse_ELVcomponents -> market_reuse_ELVcomponents_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="882,616.5",
+		pos="e,960.74,612.32 804.21,610.91 847.62,611.3 900.02,611.77 950.64,612.23",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_waste_rubber_output	[height=0.5,
+		pos="1638.6,514",
+		style=invis,
+		width=4.0802];
+	market_waste_rubber -> market_waste_rubber_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,518.5",
+		pos="e,1491.5,514 1222,514 1290.3,514 1394.3,514 1481.3,514",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_ree_output	[height=0.5,
+		pos="1638.6,118",
+		style=invis,
+		width=2.7442];
+	market_ree -> market_ree_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,122.5",
+		pos="e,1539.7,118 1190.9,118 1265.5,118 1423,118 1529.6,118",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_lead_output	[height=0.5,
+		pos="1638.6,68",
+		style=invis,
+		width=2.8525];
+	market_lead -> market_lead_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,72.5",
+		pos="e,1535.7,68 1193.5,68 1268.1,68 1420.4,68 1525.7,68",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_H2SO4_output	[height=0.5,
+		pos="1638.6,18",
+		style=invis,
+		width=3.2317];
+	market_H2SO4 -> market_H2SO4_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,22.5",
+		pos="e,1522,18 1203,18 1277,18 1411.9,18 1511.9,18",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_nonferrous_output	[height=0.5,
+		pos="2075.3,235",
+		style=invis,
+		width=3.7191];
+	market_nonferrous -> market_nonferrous_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1863.4,239.5",
+		pos="e,1941.4,235 1704.2,235 1763.8,235 1854.5,235 1931.2,235",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_ferrous_output	[height=0.5,
+		pos="2075.3,413",
+		style=invis,
+		width=3.2497];
+	market_ferrous -> market_ferrous_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1863.4,417.5",
+		pos="e,1958,413 1692.9,413 1755.9,413 1863.1,413 1947.8,413",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_waste_output	[height=0.5,
+		pos="1638.6,349",
+		style=invis,
+		width=3.0692];
+	market_waste -> market_waste_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,353.5",
+		pos="e,1528,349 1198.4,349 1272.7,349 1415.3,349 1517.8,349",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_waste_glass_output	[height=0.5,
+		pos="1638.6,464",
+		style=invis,
+		width=3.8635];
+	market_waste_glass -> market_waste_glass_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,468.5",
+		pos="e,1499.3,464 1216.5,464 1286.6,464 1398.4,464 1489.1,464",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_waste_plastic_output	[height=0.5,
+		pos="1638.6,168",
+		style=invis,
+		width=4.0441];
+	market_waste_plastic -> market_waste_plastic_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1413.7,172.5",
+		pos="e,1492.9,168 1220.9,168 1289.6,168 1395.1,168 1482.8,168",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_waste_slag_output	[height=0.5,
+		pos="2075.3,285",
+		style=invis,
+		width=3.7191];
+	market_waste_slag -> market_waste_slag_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="1863.4,289.5",
+		pos="e,1941.4,285 1704.2,285 1763.8,285 1854.5,285 1931.2,285",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	market_waste_oil_output	[height=0.5,
+		pos="1147.8,564",
+		style=invis,
+		width=3.5025];
+	market_waste_oil -> market_waste_oil_output	[arrowhead=rbox,
+		color=darkred,
+		fontcolor=darkred,
+		fontname=Cabin,
+		fontsize=8,
+		label="Leaving system boundary: 0.00e+00 kg",
+		len=0.25,
+		lp="882,565.5",
+		pos="e,1022.7,561.76 764.18,557.09 827.63,558.23 929.67,560.08 1012.4,561.57",
+		style=dashed,
+		tooltip="This is the amount of material leaving the system boundary."];
+	PutOnMarket_ICE -> collection_ICE	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE
+Amount: 1.00e+06  kg",
+		lp="163,373",
+		pos="e,202.98,366 123.24,366 147.6,366 175.41,366 198.94,366",
+		tooltip="{'Name': 'PutOnMarket_ICE_to_collection_ICE', 'Tags': [], 'To': 'collection_ICE', 'From': 'PutOnMarket_ICE', 'Amount': 1000000, '\
+Unit': 'kg', 'Composition': 'ELV_ICE', 'Parameters': {}}"];
+	shredding_engtrans -> market_waste	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_waste_shredder
+Amount: 0.00e+00  kg",
+		lp="882,398",
+		pos="e,1097.2,357.03 770.3,394.13 842.86,388.8 949,381 949,381 949,381 1034.4,367.18 1093,357.71",
+		tooltip="{'Name': 'shredding_engtrans_to_market_waste', 'Tags': [], 'To': 'market_waste', 'From': 'shredding_engtrans', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_waste_shredder', 'Parameters': {}}"];
+	shredding_engtrans -> market_waste_glass	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_glass
+Amount: 0.00e+00  kg",
+		lp="882,451",
+		pos="e,1079.3,457.28 766.64,417.06 791.81,424.32 815,431 815,431 815,431 977.72,447.18 1075.3,456.88",
+		tooltip="{'Name': 'shredding_engtrans_to_market_waste_glass', 'Tags': [], 'To': 'market_waste_glass', 'From': 'shredding_engtrans', 'Amount': \
+0, 'Unit': 'kg', 'Composition': 'ALL_glass', 'Parameters': {}}"];
+	shredding_engtrans -> smelter_nonferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00  kg",
+		lp="882,338",
+		pos="e,1080.7,283.05 740.1,380.95 768.75,366.63 804,349 804,349 804,349 815,331 815,331 815,331 949,315 949,315 949,315 1019.7,297.84 \
+1076.6,284.04",
+		tooltip="{'Name': 'shredding_engtrans_to_smelter_nonferrous', 'Tags': [], 'To': 'smelter_nonferrous', 'From': 'shredding_engtrans', 'Amount': \
+0, 'Unit': 'kg', 'Composition': 'ELV_ICE_nfe', 'Parameters': {}}"];
+	shredding_engtrans -> smelter_ferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00  kg",
+		lp="882,421",
+		pos="e,1091.7,413.28 770.17,407.94 793.94,411.15 815,414 815,414 815,414 949,414 949,414 949,414 1029.3,413.59 1087.6,413.3",
+		tooltip="{'Name': 'shredding_engtrans_to_smelter_ferrous', 'Tags': [], 'To': 'smelter_ferrous', 'From': 'shredding_engtrans', 'Amount': 0, '\
+Unit': 'kg', 'Composition': 'ELV_ICE_fe', 'Parameters': {}}"];
+	shredding_tyre -> market_waste_rubber	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_rubber
+Amount: 0.00e+00  kg",
+		lp="882,521",
+		pos="e,1073.6,513.78 756.25,505.06 785.04,508.95 815,513 815,513 815,513 971.51,513.47 1069.6,513.77",
+		tooltip="{'Name': 'shredding_tyre_to_market_waste_rubber', 'Tags': [], 'To': 'market_waste_rubber', 'From': 'shredding_tyre', 'Amount': 0, '\
+Unit': 'kg', 'Composition': 'ALL_rubber', 'Parameters': {}}"];
+	shredding_tyre -> smelter_ferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00  kg",
+		lp="882,488",
+		pos="e,1091.8,420.66 756.26,490.11 828.21,479.24 949,461 949,461 949,461 960,439 960,439 960,439 1032.8,428.86 1087.5,421.25",
+		tooltip="{'Name': 'shredding_tyre_to_smelter_ferrous', 'Tags': [], 'To': 'smelter_ferrous', 'From': 'shredding_tyre', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_fe', 'Parameters': {}}"];
+	shredding_elec -> market_waste_plastic	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.00e+00  kg",
+		lp="882,224",
+		pos="e,1074.6,178.77 756.54,226.17 834.42,214.56 980.94,192.72 1070.6,179.36",
+		tooltip="{'Name': 'shredding_elec_to_market_waste_plastic', 'Tags': [], 'To': 'market_waste_plastic', 'From': 'shredding_elec', 'Amount': \
+0, 'Unit': 'kg', 'Composition': 'ALL_plastic', 'Parameters': {}}"];
+	shredding_elec -> smelter_nonferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00  kg",
+		lp="882,243",
+		pos="e,1080.7,256.63 756.56,234.43 828.55,235.02 949,236 949,236 949,236 1019.7,247.08 1076.6,256",
+		tooltip="{'Name': 'shredding_elec_to_smelter_nonferrous', 'Tags': [], 'To': 'smelter_nonferrous', 'From': 'shredding_elec', 'Amount': 0, '\
+Unit': 'kg', 'Composition': 'ELV_ICE_nfe', 'Parameters': {}}"];
+	shredding_batt -> market_lead	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: Pb
+Amount: 0.00e+00  kg",
+		lp="882,85",
+		pos="e,1102.1,69.349 756.25,84.351 785.04,81.239 815,78 815,78 815,78 1005.8,72.25 1098,69.471",
+		tooltip="{'Name': 'shredding_batt_to_market_lead', 'Tags': [], 'To': 'market_lead', 'From': 'shredding_batt', 'Amount': 0, 'Unit': 'kg', '\
+Composition': 'Pb', 'Parameters': {}}"];
+	shredding_batt -> market_H2SO4	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: H2SO4
+Amount: 0.00e+00  kg",
+		lp="882,65",
+		pos="e,1092.8,24.516 756.25,74.937 785.04,66.637 815,58 815,58 815,58 993.41,36.494 1088.6,25.021",
+		tooltip="{'Name': 'shredding_batt_to_market_H2SO4', 'Tags': [], 'To': 'market_H2SO4', 'From': 'shredding_batt', 'Amount': 0, 'Unit': 'kg', '\
+Composition': 'H2SO4', 'Parameters': {}}"];
+	shredding_batt -> market_waste_plastic	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.00e+00  kg",
+		lp="882,128",
+		pos="e,1074.6,158.33 756.26,96.612 828.21,105.72 949,121 949,121 949,121 960,143 960,143 960,143 1018.9,150.88 1070.6,157.8",
+		tooltip="{'Name': 'shredding_batt_to_market_waste_plastic', 'Tags': [], 'To': 'market_waste_plastic', 'From': 'shredding_batt', 'Amount': \
+0, 'Unit': 'kg', 'Composition': 'ALL_plastic', 'Parameters': {}}"];
+	hammermill_body -> market_waste	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_waste_shredder
+Amount: 0.00e+00  kg",
+		lp="882,309",
+		pos="e,1097.2,337.2 765.67,311.78 791.22,306.71 815,302 815,302 815,302 949,302 949,302 949,302 1034.4,322.29 1093,336.21",
+		tooltip="{'Name': 'hammermill_body_to_market_waste', 'Tags': [], 'To': 'market_waste', 'From': 'hammermill_body', 'Amount': 0, 'Unit': 'kg', '\
+Composition': 'ELV_ICE_waste_shredder', 'Parameters': {}}"];
+	hammermill_body -> smelter_nonferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00  kg",
+		lp="882,292",
+		pos="e,1080.5,270.6 755.28,305.98 784.36,295.77 815,285 815,285 815,285 979.06,276.1 1076.5,270.82",
+		tooltip="{'Name': 'hammermill_body_to_smelter_nonferrous', 'Tags': [], 'To': 'smelter_nonferrous', 'From': 'hammermill_body', 'Amount': 0, '\
+Unit': 'kg', 'Composition': 'ELV_ICE_nfe', 'Parameters': {}}"];
+	hammermill_body -> smelter_ferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00  kg",
+		lp="882,371",
+		pos="e,1091.8,401.51 765.67,337.33 791.22,342.86 815,348 815,348 815,348 949,364 949,364 949,364 960,374 960,374 960,374 1032.8,389.2 \
+1087.5,400.62",
+		tooltip="{'Name': 'hammermill_body_to_smelter_ferrous', 'Tags': [], 'To': 'smelter_ferrous', 'From': 'hammermill_body', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_fe', 'Parameters': {}}"];
+	smelter_cc -> market_ree	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_ree
+Amount: 0.00e+00  kg",
+		lp="882,156",
+		pos="e,1104.8,121.93 744.07,164.97 775.87,157.81 815,149 815,149 815,149 1009.7,130.81 1100.8,122.3",
+		tooltip="{'Name': 'smelter_cc_to_market_ree', 'Tags': [], 'To': 'market_ree', 'From': 'smelter_cc', 'Amount': 0, 'Unit': 'kg', 'Composition': '\
+ELV_ICE_ree', 'Parameters': {}}"];
+	smelter_cc -> market_waste_slag	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_slag_ree
+Amount: 0.00e+00  kg",
+		lp="1147.8,235",
+		pos="e,1572.7,273.89 744.47,177.46 883.89,189.38 1335.7,228 1335.7,228 1335.7,228 1480.7,243 1480.7,243 1480.7,243 1491.7,260 1491.7,\
+260 1491.7,260 1530.8,266.71 1568.6,273.18",
+		tooltip="{'Name': 'smelter_cc_to_market_waste_slag', 'Tags': [], 'To': 'market_waste_slag', 'From': 'smelter_cc', 'Amount': 0, 'Unit': 'kg', '\
+Composition': 'ALL_slag_ree', 'Parameters': {}}"];
+	smelter_nonferrous -> market_nonferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00  kg",
+		lp="1413.7,261",
+		pos="e,1572.8,239.24 1215,262.67 1307.5,256.61 1474.7,245.67 1568.6,239.51",
+		tooltip="{'Name': 'smelter_nonferrous_to_market_nonferrous', 'Tags': [], 'To': 'market_nonferrous', 'From': 'smelter_nonferrous', 'Amount': \
+0, 'Unit': 'kg', 'Composition': 'ELV_ICE_nfe', 'Parameters': {}}"];
+	smelter_nonferrous -> market_waste_slag	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_slag_nfe
+Amount: 0.00e+00  kg",
+		lp="1413.7,287",
+		pos="e,1572.8,282.61 1215,269.44 1307.5,272.84 1474.7,279 1568.6,282.46",
+		tooltip="{'Name': 'smelter_nonferrous_to_market_waste_slag', 'Tags': [], 'To': 'market_waste_slag', 'From': 'smelter_nonferrous', 'Amount': \
+0, 'Unit': 'kg', 'Composition': 'ELV_ICE_slag_nfe', 'Parameters': {}}"];
+	smelter_ferrous -> market_ferrous	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00  kg",
+		lp="1413.7,420",
+		pos="e,1584.5,413 1203.9,413 1297.3,413 1485.6,413 1580.3,413",
+		tooltip="{'Name': 'smelter_ferrous_to_market_ferrous', 'Tags': [], 'To': 'market_ferrous', 'From': 'smelter_ferrous', 'Amount': 0, 'Unit': '\
+kg', 'Composition': 'ELV_ICE_fe', 'Parameters': {}}"];
+	smelter_ferrous -> market_waste_slag	[arrowhead=vee,
+		arrowsize=0.4,
+		color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_slag_fe
+Amount: 0.00e+00  kg",
+		lp="1413.7,388",
+		pos="e,1572.7,302.33 1204,404.35 1298.4,389.57 1480.7,361 1480.7,361 1480.7,361 1491.7,324 1491.7,324 1491.7,324 1530.8,313.53 1568.6,\
+303.43",
+		tooltip="{'Name': 'smelter_ferrous_to_market_waste_slag', 'Tags': [], 'To': 'market_waste_slag', 'From': 'smelter_ferrous', 'Amount': 0, '\
+Unit': 'kg', 'Composition': 'ELV_ICE_slag_fe', 'Parameters': {}}"];
+}

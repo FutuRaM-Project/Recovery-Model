@@ -1,0 +1,25 @@
+digraph {
+	fontname=Cabin fontsize=20 label="Flowchart (isolated) for: shredding_batt
+-----------" labeljust=c labelloc=tc nodesep=0.6 rankdir=LR ranksep=0.6
+	shredding_batt [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	dismantling_ICE [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	dismantling_ICE -> shredding_batt [label="Composition: ELV_ICE_batt
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_waste_plastic [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_batt -> market_waste_plastic [label="Composition: ALL_plastic
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_H2SO4 [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_batt -> market_H2SO4 [label="Composition: H2SO4
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	market_lead [fillcolor=lightsalmon1 fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=darkturquoise fontname=Cabin fontsize=10 shape=box style=filled]
+	shredding_batt [fillcolor=mediumorchid1 fontname=Cabin fontsize=14 shape=box style=filled]
+	shredding_batt -> market_lead [label="Composition: Pb
+Amount: 0.00e+00 kg" color=black fontname=Cabin fontsize=6]
+	font=Cabin
+}

@@ -1,0 +1,71 @@
+digraph {
+	graph [bb="0,0,527,167",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: shredding_elec
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="263.5,141",
+		lwidth=4.61,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	shredding_elec	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="252.5,57",
+		shape=box,
+		style=filled,
+		width=1.4861];
+	market_waste_plastic	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="472.5,97",
+		shape=box,
+		style=filled,
+		width=1.5139];
+	shredding_elec -> market_waste_plastic	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.00e+00 kg",
+		lp="362,89",
+		pos="e,417.7,87.128 306.27,66.683 336.74,72.274 375.29,79.347 407.49,85.255"];
+	smelter_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="472.5,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_elec -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg",
+		lp="362,37",
+		pos="e,422.21,18.912 297.45,38.904 307.35,35.438 317.92,32.207 328,30 355.27,24.028 386.06,20.983 412.1,19.447"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,57",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> shredding_elec	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_elec
+Amount: 0.00e+00 kg",
+		lp="142,64",
+		pos="e,198.88,57 85.092,57 114.75,57 155.14,57 188.7,57"];
+}

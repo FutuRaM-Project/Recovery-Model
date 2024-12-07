@@ -1,0 +1,6 @@
+fraction,matter,mass,mass_fraction,uncertainty
+Fe,element,90.44,0.1,0.1
+Ni,element,9.044,0.01,0.1
+Mn,element,9.044,0.01,0.1
+ELV_ICE_rest,material,795.872,0.88,3.1
+,,,

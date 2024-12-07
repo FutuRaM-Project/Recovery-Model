@@ -1,0 +1,41 @@
+digraph {
+	graph [bb="0,0,371,88",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_waste_oil
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="185.5,62",
+		lwidth=4.93,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_waste_oil	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="288,18",
+		shape=box,
+		style=filled,
+		width=1.6944];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="64.5,18",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> market_waste_oil	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_liquids
+Amount: 0.00e+00 kg",
+		lp="167,25",
+		pos="e,226.71,18 107.16,18 137.84,18 180.31,18 216.26,18"];
+}

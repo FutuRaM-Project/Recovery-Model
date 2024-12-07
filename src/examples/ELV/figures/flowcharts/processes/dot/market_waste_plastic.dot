@@ -1,0 +1,56 @@
+digraph {
+	graph [bb="0,0,404,167",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_waste_plastic
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="202,141",
+		lwidth=5.39,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_waste_plastic	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="297,57",
+		shape=box,
+		style=filled,
+		width=2.0278];
+	shredding_batt	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="74.5,97",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	shredding_batt -> market_waste_plastic	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.00e+00 kg",
+		lp="169.5,92",
+		pos="e,223.78,70.101 114.67,89.895 142.15,84.909 179.91,78.06 213.86,71.902"];
+	shredding_elec	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="74.5,18",
+		shape=box,
+		style=filled,
+		width=1.125];
+	shredding_elec -> market_waste_plastic	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_plastic
+Amount: 0.00e+00 kg",
+		lp="169.5,37",
+		pos="e,239.49,38.939 115.08,19.868 140.15,21.515 173.17,24.541 202,30 211,31.705 220.39,33.892 229.6,36.28"];
+}

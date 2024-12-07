@@ -1,0 +1,5 @@
+fraction,matter,mass,mass_fraction,uncertainty
+ELV_ICE_ree,material,21.7,0.31,0.1
+ELV_ICE_fe,material,41.3,0.59,0.1
+ELV_ICE_rest,material,7,0.1,0.1
+,,,

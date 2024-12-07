@@ -1,0 +1,71 @@
+digraph {
+	graph [bb="0,0,383,246",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_waste_slag
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="191.5,220",
+		lwidth=5.10,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_waste_slag	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="304.5,97",
+		shape=box,
+		style=filled,
+		width=1.8194];
+	smelter_cc	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="63,176",
+		shape=box,
+		style=filled,
+		width=0.88889];
+	smelter_cc -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_slag_ree
+Amount: 0.00e+00 kg",
+		lp="176,157",
+		pos="e,248.82,115.04 95.31,165.67 131.65,153.68 192.55,133.6 239.12,118.24"];
+	smelter_ferrous	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="63,97",
+		shape=box,
+		style=filled,
+		width=1.1667];
+	smelter_ferrous -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_slag_fe
+Amount: 0.00e+00 kg",
+		lp="176,104",
+		pos="e,239,97 105.17,97 139.08,97 188.03,97 228.82,97"];
+	smelter_nonferrous	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="63,18",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	smelter_nonferrous -> market_waste_slag	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_slag_nfe
+Amount: 0.00e+00 kg",
+		lp="176,73",
+		pos="e,248.67,78.913 113.04,34.177 149.46,46.188 199.46,62.68 239.09,75.753"];
+}

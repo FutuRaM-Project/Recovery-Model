@@ -1,0 +1,101 @@
+digraph {
+	graph [bb="0,0,593,325",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: shredding_engtrans
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="296.5,299",
+		lwidth=5.15,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	shredding_engtrans	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="278,136",
+		shape=box,
+		style=filled,
+		width=1.8611];
+	market_waste_glass	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="541,255",
+		shape=box,
+		style=filled,
+		width=1.4444];
+	shredding_engtrans -> market_waste_glass	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_glass
+Amount: 0.00e+00 kg",
+		lp="417,235",
+		pos="e,488.73,237.65 306.88,154.07 323.87,164.68 346.24,177.93 367,188 403.27,205.59 445.42,221.99 479.03,234.17"];
+	smelter_ferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="541,176",
+		shape=box,
+		style=filled,
+		width=1.1667];
+	shredding_engtrans -> smelter_ferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_fe
+Amount: 0.00e+00 kg",
+		lp="417,171",
+		pos="e,498.75,169.68 345.2,146.15 389.75,152.97 447.63,161.84 488.69,168.14"];
+	smelter_nonferrous	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="541,97",
+		shape=box,
+		style=filled,
+		width=1.3889];
+	shredding_engtrans -> smelter_nonferrous	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_nfe
+Amount: 0.00e+00 kg",
+		lp="417,116",
+		pos="e,490.78,97.433 331.09,117.87 342.78,114.41 355.22,111.19 367,109 404.42,102.06 447.07,99.044 480.66,97.773"];
+	market_waste	[fillcolor=lightsalmon1,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="541,18",
+		shape=box,
+		style=filled,
+		width=1.0694];
+	shredding_engtrans -> market_waste	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_waste_shredder
+Amount: 0.00e+00 kg",
+		lp="417,82",
+		pos="e,502.33,27.047 301.39,117.77 318.54,104.5 343.21,86.854 367,75 407.45,54.85 456.64,39.435 492.22,29.748"];
+	dismantling_ICE	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="42.5,136",
+		shape=box,
+		style=filled,
+		width=1.1806];
+	dismantling_ICE -> shredding_engtrans	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ELV_ICE_engtrans
+Amount: 0.00e+00 kg",
+		lp="148,143",
+		pos="e,210.9,136 85.245,136 117.28,136 162.37,136 200.78,136"];
+}

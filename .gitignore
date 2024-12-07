@@ -1,7 +1,16 @@
-.
 ~
-.*
+*.archive*
+*.secret*
 ~*
+<<<<<<< HEAD
 __*
 thesis/
 *test_size_*
+=======
+*~
+__pycache__*
+#futuram.egg-info/
+.vscode/
+.*
+
+>>>>>>> main

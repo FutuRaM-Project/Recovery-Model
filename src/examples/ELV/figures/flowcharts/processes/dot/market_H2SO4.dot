@@ -1,0 +1,41 @@
+digraph {
+	graph [bb="0,0,353,88",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_H2SO4
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="176.5,62",
+		lwidth=4.68,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_H2SO4	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="268.5,18",
+		shape=box,
+		style=filled,
+		width=1.5278];
+	shredding_batt	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="69.5,18",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	shredding_batt -> market_H2SO4	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: H2SO4
+Amount: 0.00e+00 kg",
+		lp="161.5,25",
+		pos="e,213.25,18 109.89,18 136.52,18 172.31,18 203.04,18"];
+}

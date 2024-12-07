@@ -1,0 +1,41 @@
+digraph {
+	graph [bb="0,0,407,88",
+		font=Cabin,
+		fontname=Cabin,
+		fontsize=20,
+		label="Flowchart (isolated) for: market_waste_rubber
+-----------",
+		labeljust=c,
+		labelloc=tc,
+		lheight=0.61,
+		lp="203.5,62",
+		lwidth=5.43,
+		nodesep=0.6,
+		rankdir=LR,
+		ranksep=0.6
+	];
+	node [label="\N"];
+	market_waste_rubber	[fillcolor=mediumorchid1,
+		fontname=Cabin,
+		fontsize=14,
+		height=0.5,
+		pos="298,18",
+		shape=box,
+		style=filled,
+		width=2.0556];
+	shredding_tyre	[fillcolor=darkturquoise,
+		fontname=Cabin,
+		fontsize=10,
+		height=0.5,
+		pos="75,18",
+		shape=box,
+		style=filled,
+		width=1.1111];
+	shredding_tyre -> market_waste_rubber	[color=black,
+		fontname=Cabin,
+		fontsize=6,
+		label="Composition: ALL_rubber
+Amount: 0.00e+00 kg",
+		lp="169.5,25",
+		pos="e,223.56,18 115,18 142.18,18 179.47,18 213.22,18"];
+}
