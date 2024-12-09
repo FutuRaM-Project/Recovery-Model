@@ -409,22 +409,22 @@ class HelperFunctions:
         return coo_arr.tocsc()
     
     @staticmethod
-    def is_year_match(y, year):
+    def is_year_match(year_data, year_target):
         """
         Helper function to subset a dataframe if the year is an exact match or within a range
         Args:
-            y: Year values that are filled in column. 
-            year: the instance to be matched
+            year_data: Year values that are filled in column. 
+            year_target: the instance to be matched
 
         Returns:
             the matched instances if they exist
         """
-        if isinstance(y, int):
-            return y == year
-        if isinstance(y, str):
-            if str(year) in y:
+        if isinstance(year_data, int):
+            return year_data == year_target
+        if isinstance(year_data, str):
+            if str(year_target) in year_data:
                 return True
-            if '-' in y:
-                start, end = map(int, y.split('-'))
-                return start <= int(year) <= end
+            if '-' in year_data:
+                start, end = map(int, year_data.split('-'))
+                return start <= int(year_target) <= end
         return False
