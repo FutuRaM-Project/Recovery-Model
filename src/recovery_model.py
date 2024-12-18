@@ -151,9 +151,9 @@ class RecoveryModel:
         composition_location_specified = 'Location' in composition_df.columns and composition_df['Location'].dropna().astype(bool).any()
 
         # If relevant, select the correct year, scenario and location
-        composition_df = composition_df[composition_df['Year']==year] if year and composition_year_specified else composition_df
-        composition_df = composition_df[composition_df['Scenario']==scenario] if scenario and composition_scenario_specified else composition_df
-        composition_df = composition_df[composition_df['Location']==location] if location and composition_location_specified else composition_df
+        composition_df = composition_df[composition_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and composition_year_specified else composition_df
+        composition_df = composition_df[composition_df['Scenario'].str.contains(scenario, na=False)] if scenario and composition_scenario_specified else composition_df
+        composition_df = composition_df[composition_df['Location'].str.contains(location, na=False)] if location and composition_location_specified else composition_df
 
         composition_df = composition_df[InputDataFormat.composition_columns]
         composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']] = composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']].fillna('empty')
@@ -188,9 +188,9 @@ class RecoveryModel:
         tcs_location_specified = 'Location' in tcs_df.columns and tcs_df['Location'].dropna().astype(bool).any()
 
         # If relevant, select the correct year, scenario and location
-        tcs_df = tcs_df[tcs_df['Year']==year] if year and tcs_year_specified else tcs_df
-        tcs_df = tcs_df[tcs_df['Scenario']==scenario] if scenario and tcs_scenario_specified else tcs_df
-        tcs_df = tcs_df[tcs_df['Location']==location] if location and tcs_location_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and tcs_year_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['Scenario'].str.contains(scenario, na=False)] if scenario and tcs_scenario_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['Location'].str.contains(location, na=False)] if location and tcs_location_specified else tcs_df
 
         tcs_df = tcs_df[InputDataFormat.TCs_columns]
 
@@ -407,3 +407,24 @@ class HelperFunctions:
         cols = np.zeros_like(rows)
         coo_arr = coo_array((values, (rows, cols)), shape=(size, 1))
         return coo_arr.tocsc()
+    
+    @staticmethod
+    def is_year_match(year_data, year_target):
+        """
+        Helper function to subset a dataframe if the year is an exact match or within a range
+        Args:
+            year_data: Year values that are filled in column. 
+            year_target: the instance to be matched
+
+        Returns:
+            the matched instances if they exist
+        """
+        if isinstance(year_data, int):
+            return year_data == year_target
+        if isinstance(year_data, str):
+            if str(year_target) in year_data:
+                return True
+            if '-' in year_data:
+                start, end = map(int, year_data.split('-'))
+                return start <= int(year_target) <= end
+        return False
