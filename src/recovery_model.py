@@ -33,6 +33,27 @@ class InputDataFormat:
 
     optional_columns = ['Location','Year','Scenario']
 
+    dtypes = {
+            'Stock/Flow ID': str,
+            'Substance_main_parent': 'string',
+            'Value': float,
+            'Input_FlowID': 'str',
+            'Input_layer': str,
+            'Input_layer_key': str,
+            'Output_FlowID': str,
+            'TC_target_layer': str,
+            'TC_target_key': str,
+            'value': float,
+            'Stock/ID': str,
+            'Layer 1': str,
+            'Layer 2': str,
+            'Layer 3': str,
+            'Layer 4': str,
+            'Location': str,
+            'Year': str,
+            'Scenario': str
+        }
+
 
 class RecoveryModel:
     """Class representing the recovery model"""
@@ -61,9 +82,24 @@ class RecoveryModel:
             A dictionary with the input inflows, compositions and TCs for each year, scenario and location.
         """
         # Load the input files
-        inflows_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, INPUTS_FILENAME))
-        composition_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, COMPOSITION_FILENAME))
-        tcs_df = pd.read_csv(os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, TCS_FILENAME))
+        inflows_df = pd.read_csv(
+            os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, INPUTS_FILENAME),
+            dtype=InputDataFormat.dtypes,
+            keep_default_na=False,
+            na_values=[]
+        )
+        composition_df = pd.read_csv(
+            os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, COMPOSITION_FILENAME),
+            dtype=InputDataFormat.dtypes,
+            keep_default_na=False,
+            na_values=[]
+        )
+        tcs_df = pd.read_csv(
+            os.path.join(self.data_folder, INPUT_DATA_FOLDER_NAME, TCS_FILENAME),     
+            dtype=InputDataFormat.dtypes,
+            keep_default_na=False,
+            na_values=[]
+        )
 
         # Define the years, locations and scenarios, with the inflows file as the defining basis
         years = inflows_df['Year'].unique() if 'Year' in inflows_df.columns else [None]
@@ -200,7 +236,7 @@ class RecoveryModel:
                 return list(self.encoding_dict[row[column_layer]].keys())
             return row[column_key]
         tcs_df['Input_layer_key'] = tcs_df.apply(lambda row: fill_star_values(row, 'Input_layer_key', 'Input_layer'), axis=1)
-        tcs_df['TC_target_key '] = tcs_df.apply(lambda row: fill_star_values(row, 'TC_target_key', 'TC_target_layer'), axis=1)
+        tcs_df['TC_target_key'] = tcs_df.apply(lambda row: fill_star_values(row, 'TC_target_key', 'TC_target_layer'), axis=1)
         tcs_df = tcs_df.explode('Input_layer_key')
         tcs_df = tcs_df.explode('TC_target_key')
 
