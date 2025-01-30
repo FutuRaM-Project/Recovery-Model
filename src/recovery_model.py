@@ -192,7 +192,7 @@ class RecoveryModel:
         composition_df = composition_df[composition_df['Location'].str.contains(location, na=False)] if location and composition_location_specified else composition_df
 
         composition_df = composition_df[InputDataFormat.composition_columns]
-        composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']] = composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']].fillna('empty')
+        composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']] = composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']].replace('','empty')
         composition_df.columns = ['Stock/Flow ID'] + self.layer_names + ['Value']
 
         # Encode all columns that have an encoding. 
