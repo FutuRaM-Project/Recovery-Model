@@ -35,9 +35,9 @@ class InputDataFormat:
 
     dtypes = {
             'Stock/Flow ID': str,
-            'Substance_main_parent': 'string',
+            'Substance_main_parent': str,
             'Value': float,
-            'Input_FlowID': 'str',
+            'Input_FlowID': str,
             'Input_layer': str,
             'Input_layer_key': str,
             'Output_FlowID': str,
@@ -51,7 +51,9 @@ class InputDataFormat:
             'Layer 4': str,
             'Location': str,
             'Year': str,
-            'Scenario': str
+            'Scenario': str,
+            'DQS': float,
+            'CV': float,
         }
 
 
