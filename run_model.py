@@ -10,7 +10,7 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 
 
-data_folder = "data_folder/basic_test"
+data_folder = "data_folder/test_weee"
 layer_names = ['product','component','material','element']
 
 model = RecoveryModel(

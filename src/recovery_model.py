@@ -428,10 +428,16 @@ class RecoveryModel:
 
         process_sequence = self.get_process_sequence_from_tcs(tcs_df)
         for _, row in process_sequence.iterrows():
-            solved_process = self.solve_process(tcs_df=tcs_df, flows_result=flows_result, inflow=row["Input_FlowID"], outflow=row["Output_FlowID"])
+            process_outflow = self.solve_process(tcs_df=tcs_df, flows_result=flows_result, inflow=row["Input_FlowID"], outflow=row["Output_FlowID"])
+            process_outflow["Stock/Flow ID"] = row["Output_FlowID"]
+            flows_result = pd.concat([flows_result, process_outflow], ignore_index=True)
 
-        solution.columns = ['Stock/Flow ID', 'Layer 1', 'Layer 2','Layer 3', 'Layer 4', 'Value']
-        return
+        # add together the flows
+        result = flows_result.groupby(["Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4"],as_index=False).agg({"Value":"sum"})
+
+        return result.replace('empty','')
+
+
     
     def create_initial_flows(self, inflows_df: pd.DataFrame, composition_df: pd.DataFrame) -> pd.DataFrame:
         product_flows = inflows_df[['Stock/Flow ID', 'Substance_main_parent', 'Value']].copy()
@@ -466,22 +472,29 @@ class RecoveryModel:
         return pd.concat([product_flows, layer_2_flows, layer_3_flows, layer_4_flows], ignore_index=True)
 
     def solve_process(self, tcs_df: pd.DataFrame, flows_result: pd.DataFrame, inflow: str, outflow: str) -> pd.DataFrame:
-        process_inflow = flows_result[flows_result["Stock/Flow ID"]==inflow]
+        process_inflow = flows_result[flows_result["Stock/Flow ID"]==inflow].drop(columns=["Stock/Flow ID"])
         tcs = tcs_df[(tcs_df["Input_FlowID"]==inflow)&(tcs_df["Output_FlowID"]==outflow)]
 
-        tcs_layer_1_2 = tcs[(tcs["Input_layer"]=="Layer 1")&(tcs["TC_target_layer"]=="Layer 2")][["Input_layer_key","TC_target_key","value"]]
-        tcs_layer_1_2.rename(columns={"Input_layer_key": "Layer 1", "TC_target_key": "Layer 2", "value": "TC"}, inplace=True)
+        def process_outflow(process_inflow, tcs, input_layer, target_layer):
+            if input_layer==target_layer:
+                tcs_layer = tcs[(tcs["Input_layer"]==input_layer)&(tcs["TC_target_layer"]==target_layer)][["TC_target_key","value"]]
+                tcs_layer.rename(columns={ "TC_target_key": target_layer, "value": "TC"}, inplace=True)
+                process_outflow = process_inflow.merge(tcs_layer, on=[target_layer], how='left')
+            else:
+                tcs_layer = tcs[(tcs["Input_layer"]==input_layer)&(tcs["TC_target_layer"]==target_layer)][["Input_layer_key","TC_target_key","value"]]
+                tcs_layer.rename(columns={"Input_layer_key": input_layer, "TC_target_key": target_layer, "value": "TC"}, inplace=True)
+                process_outflow = process_inflow.merge(tcs_layer, on=[input_layer, target_layer], how='left')
+            process_outflow["TC"].fillna(0, inplace=True)
+            process_outflow["Value"] *= process_outflow["TC"]
+            return process_outflow[process_outflow["Value"]!=0.0].drop(columns=["TC"])
 
-        process_outflow = process_inflow.merge(tcs_layer_1_2, on=["Layer 1","Layer 2"],how='left')
-        # Apply TC where applicable, default to 1 if no TC exists
-        process_outflow["TC"].fillna(0, inplace=True)
-        process_outflow["Value"] *= process_outflow["TC"]
+        process_outflows = []
+        for in_layer in ["Layer 1","Layer 2","Layer 3","Layer 4"]:
+            for out_layer in ["Layer 1","Layer 2","Layer 3","Layer 4"]:
+                process_outflow_iter = process_outflow(process_inflow, tcs, in_layer, out_layer)
+                process_outflows.append(process_outflow_iter)
 
-        # Drop TC column as it's no longer needed
-        process_outflow.drop(columns=["TC"], inplace=True)
-
-
-        return
+        return pd.concat(process_outflows, ignore_index=True)
 
     def get_process_sequence_from_tcs(self, tcs_df: pd.DataFrame):
         unique_flow_combinations = tcs_df[['Input_FlowID', 'Output_FlowID']].drop_duplicates()
