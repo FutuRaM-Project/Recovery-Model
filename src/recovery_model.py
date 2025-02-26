@@ -11,6 +11,7 @@ import os
 from scipy.sparse import coo_array, coo_matrix, eye_array, linalg, csr_array
 from typing import Tuple, List
 from dataclasses import dataclass
+import networkx as nx
 
 # Definition of file/folder names within the overarching data directory
 OUTPUT_DATA_FOLDER_NAME = "output_data"
@@ -69,6 +70,7 @@ class RecoveryModel:
         """
         # Set data folder and create structure if needed
         self.layer_names = layer_names
+        self.layer_names_dict = {"product":"Layer 1","component":"Layer 2","material": "Layer 3","element":"Layer 4"}
         self.data_folder = data_folder
         if not os.path.exists(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME)):
             os.makedirs(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME))
@@ -102,12 +104,34 @@ class RecoveryModel:
             keep_default_na=False,
             na_values=[]
         )
+        tcs_df["Input_layer"] = tcs_df["Input_layer"].replace(self.layer_names_dict)
+        tcs_df["TC_target_layer"] = tcs_df["TC_target_layer"].replace(self.layer_names_dict)
 
         # Define the years, locations and scenarios, with the inflows file as the defining basis
         years = inflows_df['Year'].unique() if 'Year' in inflows_df.columns else [None]
         scenarios = inflows_df['Scenario'].unique() if 'Scenario' in inflows_df.columns else [None]
         locations = inflows_df['Location'].unique() if 'Location' in inflows_df.columns else [None]
 
+        input_dfs = []
+        for year in years:
+            for scenario in scenarios:
+                for location in locations:
+                    inflows_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=inflows_df, year=year, scenario=scenario, location=location)
+                    tcs_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=tcs_df, year=year, scenario=scenario, location=location)
+                    composition_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=composition_df, year=year, scenario=scenario, location=location)
+
+                    input_dfs.append({
+                        "Year":year,
+                        "Scenario": scenario,
+                        "Location": location,
+                        "inflows_df": inflows_df_selection,
+                        "composition_df":composition_df_selection,
+                        "tcs_df": tcs_df_selection
+                    })
+        return input_dfs
+
+
+        # !! not necessary? /  rewrite
         # Create required variables for decoding and encoding the data into sparse matrices.
         # - encoding_dict maps each flow or resource to a unique integer
         # - decoding_dict maps the integer back to the flow or resource
@@ -124,24 +148,7 @@ class RecoveryModel:
         self.dims = self.get_dims() 
         self.size = np.prod(self.dims, dtype=int)
 
-        input_matrices = []
-        for year in years:
-            for scenario in scenarios:
-                for location in locations:
-                    inflows_vector = self.create_inflows_vector(inflows_df=inflows_df, year=year,scenario=scenario, location=location)
-                    composition_matrix = self.create_composition_matrix(composition_df=composition_df, year=year, scenario=scenario, location=location)
-                    tcs_matrix = self.create_tcs_matrix(tcs_df=tcs_df, year=year, scenario=scenario, location=location)
 
-                    input_matrices.append({
-                        "Year":year,
-                        "Scenario": scenario,
-                        "Location": location,
-                        "inflows_vector": inflows_vector,
-                        "composition_matrix": composition_matrix,
-                        "tcs_matrix": tcs_matrix
-                    })
-        return input_matrices
-                    
     def create_inflows_vector(self, inflows_df: pd.DataFrame, year:str, scenario: str, location:str) -> csr_array:
         """
         Create the 1XN composition input vector for a specific year, scenario and location
@@ -290,6 +297,84 @@ class RecoveryModel:
         tc_matrix = HelperFunctions.create_sparse_matrix(values=tcs_values, cols=tc_cols, rows=tc_rows, size=self.size)
         return tc_matrix
 
+    def create_tcs_matrix_2(self, tcs_df: pd.DataFrame) -> csr_array:
+        """
+        Read the input TCs and converts it to a NxN matrix that can be used for the model computation. 
+        See the written documentation for explanation of how these matrices are created.
+
+        Returns:
+            A CSR matrix containing the TC values at appropriate indices
+        """
+        # Booleans that indicate whether or not the TCs input has year, scenario or location specification
+        tcs_year_specified = 'Year' in tcs_df.columns and tcs_df['Year'].dropna().astype(bool).any()
+        tcs_scenario_specified = 'Scenario' in tcs_df.columns and tcs_df['Scenario'].dropna().astype(bool).any()
+        tcs_location_specified = 'Location' in tcs_df.columns and tcs_df['Location'].dropna().astype(bool).any()
+
+        # If relevant, select the correct year, scenario and location
+        tcs_df = tcs_df[tcs_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and tcs_year_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['Scenario'].str.contains(scenario, na=False)] if scenario and tcs_scenario_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['Location'].str.contains(location, na=False)] if location and tcs_location_specified else tcs_df
+
+        tcs_df = tcs_df[InputDataFormat.TCs_columns]
+
+        # This snippet explodes all values with a *, e.g P* will be exploded to make an entry for every product.
+        def fill_star_values(row, column_key, column_layer):
+            if '*' in row[column_key]:
+                return list(self.encoding_dict[row[column_layer]].keys())
+            return row[column_key]
+        tcs_df['Input_layer_key'] = tcs_df.apply(lambda row: fill_star_values(row, 'Input_layer_key', 'Input_layer'), axis=1)
+        tcs_df['TC_target_key'] = tcs_df.apply(lambda row: fill_star_values(row, 'TC_target_key', 'TC_target_layer'), axis=1)
+        tcs_df = tcs_df.explode('Input_layer_key')
+        tcs_df = tcs_df.explode('TC_target_key')
+
+        # We create a sorted version of the tcs_df, where the TCs that are more important are sorted towards
+        # the bottom, so that they are processed last and overwrite previous TCs. This sort puts the highest level (product) on top
+        # and the lowest level (element) to the bottom of the DF.
+        layer_order = {name: i for i, name in enumerate(self.layer_names)}
+        tcs_df['input_layer_sort'] = tcs_df['Input_layer'].map(layer_order)
+        tcs_df = tcs_df.sort_values(by='input_layer_sort',ascending=True)
+        
+        # Now we create a new dataframe that has the same shape as the final matrix. We fill it row by row and use it to create the final matrix.
+        new_tcs_df = pd.DataFrame(columns=['Input_FlowID'] + ['Input_'+layer_name for layer_name in self.layer_names]+['Output_FlowID'] +['Output_'+layer_name for layer_name in self.layer_names]+['value'])
+        for _, row in tcs_df.iterrows():
+            # For each TC entry, fill the values one-by-one.
+            new_row = {}
+            new_row['Input_FlowID'] = row['Input_FlowID']
+            new_row['Output_FlowID'] = row['Output_FlowID']
+            new_row['value'] = row['value']
+            for layer in self.layer_names:
+                if row['Input_layer']==layer:
+                    new_row['Input_'+layer] = row['Input_layer_key']
+                    new_row['Output_'+layer] = row['Input_layer_key']
+                elif row['TC_target_layer']==layer:
+                    new_row['Input_'+layer] = row['TC_target_key']
+                    new_row['Output_'+layer] = row['TC_target_key']
+                else:
+                    new_row['Input_'+layer] = list(self.decoding_dict[layer].values())
+                    new_row['Output_'+layer] = list(self.decoding_dict[layer].values())
+            new_tcs_df = new_tcs_df._append(new_row,ignore_index=True)
+                
+        for layer in self.layer_names:
+            new_tcs_df = new_tcs_df.explode(['Input_'+layer, 'Output_'+layer])
+
+        # Only keep the highest priority entry for each combination of layers, remove the rest.
+        new_tcs_df = new_tcs_df.groupby([col for col in new_tcs_df.columns if col != 'value'], as_index=False).last()
+
+        new_tcs_df['Input_FlowID'] = new_tcs_df['Input_FlowID'].replace(self.encoding_dict['Stock/Flow ID'])
+        new_tcs_df['Output_FlowID'] = new_tcs_df['Output_FlowID'].replace(self.encoding_dict['Stock/Flow ID'])
+        for layer in self.layer_names:
+            encoding = self.encoding_dict[layer]
+            new_tcs_df['Input_'+layer] = new_tcs_df['Input_'+layer].replace(encoding)
+            new_tcs_df['Output_'+layer] = new_tcs_df['Output_'+layer].replace(encoding)
+
+        tcs_values = new_tcs_df["value"].values
+        tcs_cols = new_tcs_df[['Input_FlowID']+['Input_'+layer for layer in self.layer_names]].values
+        tcs_rows = new_tcs_df[['Output_FlowID']+['Output_'+layer for layer in self.layer_names]].values
+        tc_rows = HelperFunctions.ravel_multi_index(multi_index=tcs_rows, dimensions=self.dims)
+        tc_cols = HelperFunctions.ravel_multi_index(multi_index=tcs_cols, dimensions=self.dims)
+        tc_matrix = HelperFunctions.create_sparse_matrix(values=tcs_values, cols=tc_cols, rows=tc_rows, size=self.size)
+        return tc_matrix
+
     def solve_models_and_write_to_output(self) -> pd.DataFrame:
         """
         Solve all entries in the variable self.input_matrices, which contains the model matrices
@@ -297,10 +382,10 @@ class RecoveryModel:
         """
         full_solution = pd.DataFrame(columns=["Year","Scenario","Location","Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4","Value"])
         for entry in self.input_matrices:
-            solution = self.solve_model(
-                inflows_vector=entry["inflows_vector"],
-                composition_matrix=entry["composition_matrix"],
-                tcs_matrix=entry["tcs_matrix"]
+            solution = self.solve_model_2(
+                inflows_df=entry["inflows_df"],
+                composition_df=entry["composition_df"],
+                tcs_df=entry["tcs_df"]
             )
             solution['Year'] = entry['Year']
             solution['Scenario'] = entry['Scenario']
@@ -337,6 +422,85 @@ class RecoveryModel:
         solution.columns = ['Stock/Flow ID', 'Layer 1', 'Layer 2','Layer 3', 'Layer 4', 'Value']
 
         return solution
+
+    def solve_model_2(self, inflows_df: pd.DataFrame, composition_df: pd.DataFrame, tcs_df: pd.DataFrame) -> pd.DataFrame:
+        flows_result = self.create_initial_flows(inflows_df=inflows_df, composition_df=composition_df)
+
+        process_sequence = self.get_process_sequence_from_tcs(tcs_df)
+        for _, row in process_sequence.iterrows():
+            solved_process = self.solve_process(tcs_df=tcs_df, flows_result=flows_result, inflow=row["Input_FlowID"], outflow=row["Output_FlowID"])
+
+        solution.columns = ['Stock/Flow ID', 'Layer 1', 'Layer 2','Layer 3', 'Layer 4', 'Value']
+        return
+    
+    def create_initial_flows(self, inflows_df: pd.DataFrame, composition_df: pd.DataFrame) -> pd.DataFrame:
+        product_flows = inflows_df[['Stock/Flow ID', 'Substance_main_parent', 'Value']].copy()
+        product_flows.rename(columns={'Substance_main_parent': 'Layer 1'}, inplace=True)
+        product_flows['Layer 2'] = 'empty'
+        product_flows['Layer 3'] = 'empty'
+        product_flows['Layer 4'] = 'empty'
+        column_order = ['Stock/Flow ID', 'Layer 1', 'Layer 2', 'Layer 3', 'Layer 4', 'Value']
+        product_flows = product_flows[column_order]
+
+        composition_df = composition_df[["Stock/ID", "Layer 1","Layer 2","Layer 3","Layer 4", "Value"]].rename(columns={"Stock/ID":"Stock/Flow ID"})
+        composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']] = composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']].replace('','empty')
+        
+        # Apply composition p-c layer
+        layer_2_composition = composition_df[(composition_df['Layer 3']=="empty") & (composition_df['Layer 4']=='empty')].copy()
+        df_merged = layer_2_composition.merge(product_flows, on=["Stock/Flow ID", "Layer 1"], suffixes=("", "_inflow"))
+        df_merged["Value"] = df_merged["Value_inflow"]*df_merged["Value"]
+        layer_2_flows = df_merged[["Stock/Flow ID","Layer 1","Layer 2", "Layer 3","Layer 4","Value"]]
+        
+        # Apply composition c-m layer
+        layer_3_composition = composition_df[(composition_df['Layer 3']!="empty") & (composition_df['Layer 4']=='empty')].copy()
+        df_merged = layer_3_composition.merge(layer_2_flows, on=["Stock/Flow ID", "Layer 1", "Layer 2"], suffixes=("","_inflow"))
+        df_merged["Value"] = df_merged["Value_inflow"]*df_merged["Value"]
+        layer_3_flows = df_merged[["Stock/Flow ID","Layer 1","Layer 2", "Layer 3","Layer 4","Value"]]
+
+        # Apply composition m-e layer
+        layer_4_composition = composition_df[(composition_df['Layer 3']!="empty") & (composition_df['Layer 4']!='empty')].copy()
+        df_merged = layer_4_composition.merge(layer_3_flows, on=["Stock/Flow ID", "Layer 1", "Layer 2", "Layer 3"], suffixes=("","_inflow"))
+        df_merged["Value"] = df_merged["Value_inflow"]*df_merged["Value"]
+        layer_4_flows = df_merged[["Stock/Flow ID","Layer 1","Layer 2", "Layer 3","Layer 4","Value"]]
+
+        return pd.concat([product_flows, layer_2_flows, layer_3_flows, layer_4_flows], ignore_index=True)
+
+    def solve_process(self, tcs_df: pd.DataFrame, flows_result: pd.DataFrame, inflow: str, outflow: str) -> pd.DataFrame:
+        process_inflow = flows_result[flows_result["Stock/Flow ID"]==inflow]
+        tcs = tcs_df[(tcs_df["Input_FlowID"]==inflow)&(tcs_df["Output_FlowID"]==outflow)]
+
+        tcs_layer_1_2 = tcs[(tcs["Input_layer"]=="Layer 1")&(tcs["TC_target_layer"]=="Layer 2")][["Input_layer_key","TC_target_key","value"]]
+        tcs_layer_1_2.rename(columns={"Input_layer_key": "Layer 1", "TC_target_key": "Layer 2", "value": "TC"}, inplace=True)
+
+        process_outflow = process_inflow.merge(tcs_layer_1_2, on=["Layer 1","Layer 2"],how='left')
+        # Apply TC where applicable, default to 1 if no TC exists
+        process_outflow["TC"].fillna(0, inplace=True)
+        process_outflow["Value"] *= process_outflow["TC"]
+
+        # Drop TC column as it's no longer needed
+        process_outflow.drop(columns=["TC"], inplace=True)
+
+
+        return
+
+    def get_process_sequence_from_tcs(self, tcs_df: pd.DataFrame):
+        unique_flow_combinations = tcs_df[['Input_FlowID', 'Output_FlowID']].drop_duplicates()
+        
+        edges = unique_flow_combinations.apply(lambda row: (row["Input_FlowID"], row["Output_FlowID"]), axis=1).tolist()
+        Graph = nx.DiGraph()
+        Graph.add_edges_from(edges)
+        try:
+            node_order = list(nx.topological_sort(Graph))
+            node_position = {node: index for index, node in enumerate(node_order)}
+            sorted_edges = sorted(edges, key=lambda edge: node_position[edge[0]])
+        except nx.NetworkXUnfeasible:
+            raise ValueError("The flows in this system cannot be solved as a sequential system: it contains cycles.")
+
+        # Create DataFrame
+        process_sequence_df = pd.DataFrame(sorted_edges, columns=['Input_FlowID', 'Output_FlowID'])
+        return process_sequence_df
+    
+    
 
     def decode_label(self, df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -466,3 +630,13 @@ class HelperFunctions:
                 start, end = map(int, year_data.split('-'))
                 return start <= int(year_target) <= end
         return False
+    
+    @staticmethod
+    def select_df_by_year_scenario_location(df: pd.DataFrame, year: str | None, location: str | None, scenario:  str | None) -> pd.DataFrame:
+        check_year = 'Year' in df.columns and df['Year'].dropna().astype(bool).any()
+        check_scenario = 'Scenario' in df.columns and df['Scenario'].dropna().astype(bool).any()
+        check_location = 'Location' in df.columns and df['Location'].dropna().astype(bool).any()
+        
+        return df.loc[(df['Year'] == year if check_year else pd.Series(True, index=df.index)) & 
+                            (df['Scenario'] == scenario if check_scenario else pd.Series(True, index=df.index)) & 
+                            (df['Location'] == location if check_location else pd.Series(True, index=df.index))].drop(columns=['Year','Scenario','Location'], errors='ignore')
