@@ -57,8 +57,8 @@ class InputDataFormat:
         }
 
 
-class RecoveryModel:
-    """Class representing the recovery model"""
+class RecoveryModelOptimized:
+    """Class representing the optimized recovery model, which processes TCs one-by one using dataframe operations"""
     def __init__(self, data_folder: str, layer_names: List[str]):
         """
         Initialize the System class.
