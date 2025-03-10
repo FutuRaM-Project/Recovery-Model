@@ -1,7 +1,7 @@
 import warnings
 import pandas as pd
-from recovery_model_LA import RecoveryModelLA
-from recovery_model_optimized import RecoveryModelOptimized
+from src.recovery_model_LA import RecoveryModelLA
+from src.recovery_model_optimized import RecoveryModelOptimized
 from pandas.errors import SettingWithCopyWarning
 
 pd.set_option('future.no_silent_downcasting',True)
@@ -11,9 +11,9 @@ pd.set_option("display.float_format", "{:.2f}".format)
 
 
 
-data_folder = "data_folder/test_weee"
+data_folder = "data_folder/basic_test"
 layer_names = ['product','component','material','element']
-recovery_model = RecoveryModelOptimized
+recovery_model = RecoveryModelLA
 
 model = recovery_model(
     data_folder=data_folder,

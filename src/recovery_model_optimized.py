@@ -31,7 +31,7 @@ class InputDataFormat:
     TCs_columns = ['Input_FlowID','Input_layer','Input_layer_key','Output_FlowID','TC_target_layer','TC_target_key','value']
     composition_columns = ['Stock/ID','Layer 1','Layer 2','Layer 3','Layer 4', 'Value']
 
-    optional_columns = ['Location','Year','Scenario']
+    optional_columns = ['Location','Year','Scenario','additionalSpecification']
 
     dtypes = {
             'Stock/Flow ID': str,
@@ -52,6 +52,7 @@ class InputDataFormat:
             'Location': str,
             'Year': str,
             'Scenario': str,
+            'additionalSpecification':str,
             'DQS': float,
             'CV': float,
         }
@@ -63,7 +64,8 @@ class RecoveryModelOptimized:
         """
         Initialize the System class.
          - Defines and creates folder structure
-         - Reads input data into a set of inflows, compositions and TCs dataframes for every year, scenario and location.
+         - Reads input data into a set of inflows, compositions and TCs dataframes for every year, scenario, location and 
+         additionalSpecification
         Args:
             data_folder: directory containing input and output data for this model
         """
@@ -81,7 +83,8 @@ class RecoveryModelOptimized:
         Read inflows, composition and TCs files for every year and stores them in the correct dataframe format
 
         Returns:
-            A dictionary with the input inflows, compositions and TCs dataframes for each year, scenario and location.
+            A dictionary with the input inflows, compositions and TCs dataframes for each year, scenario, location and 
+            additionalSpecification
         """
         # Load the input files
         inflows_df = pd.read_csv(
@@ -106,26 +109,37 @@ class RecoveryModelOptimized:
         layer_names_replace = {item: f"Layer {i+1}" for i, item in enumerate(self.layer_names)}
         tcs_df["Input_layer"] = tcs_df["Input_layer"].replace(layer_names_replace)
         tcs_df["TC_target_layer"] = tcs_df["TC_target_layer"].replace(layer_names_replace)
+        
 
-        # Define the years, locations and scenarios, with the inflows file as the defining basis
+        # Define the years, locations, scenarios and additionalSpecifications with the inflows file as the defining basis
         years = inflows_df['Year'].unique() if 'Year' in inflows_df.columns else [None]
         scenarios = inflows_df['Scenario'].unique() if 'Scenario' in inflows_df.columns else [None]
         locations = inflows_df['Location'].unique() if 'Location' in inflows_df.columns else [None]
+        additional_specifications = inflows_df['additionalSpecification'].unique() if 'additionalSpecification' in inflows_df.columns else [None]
 
         input_dfs = []
-        for year, scenario, location in product(years, scenarios, locations):
-            inflows_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=inflows_df, year=year, scenario=scenario, location=location)
-            tcs_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=tcs_df, year=year, scenario=scenario, location=location)
-            composition_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=composition_df, year=year, scenario=scenario, location=location)
+        for year, scenario, location, additional_specification in product(years, scenarios, locations, additional_specifications):
+            # Select the inflows, TCs and composition for this year, scenario, location and additionalSpecification
+            inflows_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=inflows_df, year=year, scenario=scenario, location=location, additional_specification=additional_specification)
+            if len(inflows_df_selection)==0:
+                # If there are no inflows provided for this combination of year, scenario ..., skip it.
+                continue
+
+            composition_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=composition_df, year=year, scenario=scenario, location=location, additional_specification=additional_specification)
+
+            tcs_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=tcs_df, year=year, scenario=scenario, location=location, additional_specification=additional_specification)
 
             inflows_df_selection = inflows_df_selection[InputDataFormat.input_columns]
-            tcs_df_selection = tcs_df_selection[InputDataFormat.TCs_columns]
             composition_df_selection = composition_df_selection[InputDataFormat.composition_columns]
+            tcs_df_selection = tcs_df_selection[InputDataFormat.TCs_columns]
+            tcs_df_selection = HelperFunctions.explode_empty_input_rows(tcs_df=tcs_df_selection)
+
 
             input_dfs.append({
                 "Year":year,
                 "Scenario": scenario,
                 "Location": location,
+                "additionalSpecification": additional_specification,
                 "inflows_df": inflows_df_selection,
                 "composition_df":composition_df_selection,
                 "tcs_df": tcs_df_selection
@@ -137,9 +151,9 @@ class RecoveryModelOptimized:
         """
         Solve all entries in the variable self.input_data. Creates an output file where the solution is stored.
         """
-        full_solution = pd.DataFrame(columns=["Year","Scenario","Location","Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4","Value"])
+        full_solution = pd.DataFrame(columns=["Year","Scenario","Location","additionalSpecification","Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4","Value"])
         for entry in self.input_data:
-            # Solve the system for a specific year, location and scenario
+            # Solve the system for a specific year, location, scenario and additionalSpecification
             solution = self.solve_model(
                 inflows_df=entry["inflows_df"],
                 composition_df=entry["composition_df"],
@@ -148,11 +162,16 @@ class RecoveryModelOptimized:
             solution['Year'] = entry['Year']
             solution['Scenario'] = entry['Scenario']
             solution['Location'] = entry['Location']
+            solution['additionalSpecification'] = entry['additionalSpecification']
 
             # Add the solution to the full output file
             full_solution = pd.concat([full_solution, solution],ignore_index=True)
 
-        full_solution = full_solution.sort_values(by=['Year','Scenario', 'Location','Stock/Flow ID', 'Layer 1','Layer 2','Layer 3','Layer 4'])
+        # Sort the result, and select only the relevant columns.
+        full_solution = full_solution.sort_values(by=['Year','Scenario', 'Location','additionalSpecification', 'Stock/Flow ID', 'Layer 1','Layer 2','Layer 3','Layer 4'])
+        empty_cols = [col for col in ["Scenario", "Location", "additionalSpecification", "Year"] if full_solution[col].isna().all()]
+        full_solution = full_solution.drop(columns=empty_cols)
+        
         full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"),index=False)
         return full_solution
 
@@ -176,8 +195,8 @@ class RecoveryModelOptimized:
 
         return flows_result.groupby(["Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4"],as_index=False).agg({"Value":"sum"})
 
-
-    def create_initial_flows(self, inflows_df: pd.DataFrame, composition_df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def create_initial_flows(inflows_df: pd.DataFrame, composition_df: pd.DataFrame) -> pd.DataFrame:
         """
         Use the provided inflows and composition to determine the initial inflow (with composition)
         into the system. 
@@ -214,7 +233,8 @@ class RecoveryModelOptimized:
         # Add them all together in a big dataframe that now contains the inflow at the level of every layer
         return pd.concat([product_flows, layer_2_flows, layer_3_flows, layer_4_flows], ignore_index=True)
 
-    def get_process_sequence_from_tcs(self, tcs_df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def get_process_sequence_from_tcs(tcs_df: pd.DataFrame) -> pd.DataFrame:
         """
         Assuming a system with no feedback loops, order all the combinations of flows (processes) that are in the TCs in a way
         that they can be solved one by one. Returns a dataframe with all flow combination, in such an order
@@ -233,7 +253,8 @@ class RecoveryModelOptimized:
 
         return pd.DataFrame(sorted_edges, columns=['Input_FlowID', 'Output_FlowID'])
 
-    def solve_process(self, process_tcs: pd.DataFrame, process_inflow: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def solve_process(process_tcs: pd.DataFrame, process_inflow: pd.DataFrame) -> pd.DataFrame:
         """
         Use the flows into a specific process together with the TCs for that process to determine the outflows of that process.
         """
@@ -266,31 +287,97 @@ class HelperFunctions:
     @staticmethod
     def is_year_match(year_data, year_target):
         """
-        Helper function to subset a dataframe if the year is an exact match or within a range
+        Helper function to check if a year is an exact match or within a range.
+
         Args:
-            year_data: Year values that are filled in column. 
-            year_target: the instance to be matched
+            year_data: The year value(s) in the column (can be int or str).
+            year_target: The year instance to be matched (can be int or str).
 
         Returns:
-            the matched instances if they exist
+            True if there is a match, otherwise False.
         """
-        if isinstance(year_data, int):
-            return year_data == year_target
-        if isinstance(year_data, str):
-            if str(year_target) in year_data:
+        year_target = str(year_target)
+        year_data = str(year_data)
+        if year_data == year_target:
+            return True
+
+        # Handle ranges in year_data
+        if '-' in year_data:
+            start, end = map(int, year_data.split('-'))
+            if start <= int(year_target) <= end:
                 return True
-            if '-' in year_data:
-                start, end = map(int, year_data.split('-'))
-                return start <= int(year_target) <= end
+
+        # Handle ranges in year_target
+        if '-' in year_target:
+            start, end = map(int, year_target.split('-'))
+            if start <= int(year_data) <= end:
+                return True
+
         return False
     
     @staticmethod
-    def select_df_by_year_scenario_location(df: pd.DataFrame, year: str | None, location: str | None, scenario:  str | None) -> pd.DataFrame:
-
+    def select_df_by_year_scenario_location(df: pd.DataFrame, year: str | None, location: str | None, scenario:  str | None, additional_specification: str | None) -> pd.DataFrame:
         check_year = 'Year' in df.columns and df['Year'].dropna().astype(bool).any()
         check_scenario = 'Scenario' in df.columns and df['Scenario'].dropna().astype(bool).any()
         check_location = 'Location' in df.columns and df['Location'].dropna().astype(bool).any()
+        check_additional_specification= 'additionalSpecification' in df.columns and df['additionalSpecification'].dropna().astype(bool).any()
+
         
-        return df.loc[(df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year)) if check_year else pd.Series(True, index=df.index)) & 
-                            (df['Scenario'] == scenario if check_scenario else pd.Series(True, index=df.index)) & 
-                            (df['Location'] == location if check_location else pd.Series(True, index=df.index))].drop(columns=['Year','Scenario','Location'], errors='ignore')
+        return df.loc[
+            (df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year)) if check_year else pd.Series(True, index=df.index)) & 
+            (df['Scenario'] == scenario if check_scenario else pd.Series(True, index=df.index)) & 
+            (df['Location'] == location if check_location else pd.Series(True, index=df.index)) & 
+            (df['additionalSpecification'] == additional_specification if check_additional_specification else pd.Series(True, index=df.index))
+            ].drop(columns=['Year','Scenario','Location', 'additionalSpecification'], errors='ignore')
+    
+    @staticmethod
+    def explode_empty_input_rows(tcs_df) -> pd.DataFrame:
+        """
+        Check the 'input_layer_key' for empty values: if there are empty values, fill them with every possible input key for that layer
+        except if a key already exists for that layer.
+        Example:
+        F1 <empty>  C1 M1 E1 .5
+        F1 P3       C1 M1 E1 .25
+        Is exploded to:
+        F1 P1       C1 M1 E1 .5
+        F1 P2       C1 M1 E1 .5
+        F1 P3       C1 M1 E1 .25
+        """
+        # Step 1: Identify rows with empty input layer key
+        empty_rows = tcs_df[tcs_df["Input_layer_key"] == ""].copy()
+        
+        # Step 2: Identify non-empty rows for lookup
+        non_empty_rows = tcs_df[tcs_df["Input_layer_key"] != ""]
+
+        # Step 3: Initialize a list for new rows
+        new_rows = []
+
+        # Step 4: Process each empty row
+        for _, empty_row in empty_rows.iterrows():
+            input_layer = empty_row["Input_layer"]
+            tc_target_key = empty_row["TC_target_key"]
+
+            # Find all existing keys for this Input_layer
+            possible_keys = non_empty_rows[non_empty_rows["Input_layer"] == input_layer]["Input_layer_key"].unique()
+
+            # Exclude keys that already have a row with the same tc_target_key
+            existing_keys = non_empty_rows[
+                (non_empty_rows["Input_layer"] == input_layer) & 
+                (non_empty_rows["TC_target_key"] == tc_target_key)
+            ]["Input_layer_key"].unique()
+
+            keys_to_expand = set(possible_keys) - set(existing_keys)
+
+            # Generate new rows for expansion
+            for key in keys_to_expand:
+                new_row = empty_row.copy()
+                new_row["Input_layer_key"] = key  # Replace * with actual key
+                new_rows.append(new_row)
+
+        # Step 5: Create DataFrame of new rows
+        expanded_df = pd.DataFrame(new_rows)
+
+        # Step 6: Append expanded rows and drop original empty ones
+        result_df = pd.concat([non_empty_rows, expanded_df], ignore_index=True)
+
+        return result_df

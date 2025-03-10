@@ -11,6 +11,8 @@ import os
 from scipy.sparse import coo_array, coo_matrix, eye_array, linalg, csr_array
 from typing import Tuple, List
 from dataclasses import dataclass
+from itertools import product
+
 
 # Definition of file/folder names within the overarching data directory
 OUTPUT_DATA_FOLDER_NAME = "output_data"
@@ -31,7 +33,7 @@ class InputDataFormat:
     TCs_columns = ['Input_FlowID','Input_layer','Input_layer_key','Output_FlowID','TC_target_layer','TC_target_key','value']
     composition_columns = ['Stock/ID','Layer 1','Layer 2','Layer 3','Layer 4', 'Value']
 
-    optional_columns = ['Location','Year','Scenario']
+    optional_columns = ['Location','Year','Scenario', 'additionalSpecification']
 
     dtypes = {
             'Stock/Flow ID': str,
@@ -52,6 +54,7 @@ class InputDataFormat:
             'Location': str,
             'Year': str,
             'Scenario': str,
+            'additionalSpecification': str,
             'DQS': float,
             'CV': float,
         }
@@ -81,7 +84,7 @@ class RecoveryModelLA:
         Read inflows, composition and TCs files and creates the matrices to be used in the model.
 
         Returns:
-            A dictionary with the input inflows, compositions and TCs for each year, scenario and location.
+            A dictionary with the input inflows, compositions and TCs for each year, scenario, location and additionalSpecification
         """
         # Load the input files
         inflows_df = pd.read_csv(
@@ -103,10 +106,12 @@ class RecoveryModelLA:
             na_values=[]
         )
 
-        # Define the years, locations and scenarios, with the inflows file as the defining basis
+        # Define the years, locations, scenarios and additionalSpecifications with the inflows file as the defining basis
         years = inflows_df['Year'].unique() if 'Year' in inflows_df.columns else [None]
         scenarios = inflows_df['Scenario'].unique() if 'Scenario' in inflows_df.columns else [None]
         locations = inflows_df['Location'].unique() if 'Location' in inflows_df.columns else [None]
+        additional_specifications = inflows_df['additionalSpecification'].unique() if 'additionalSpecification' in inflows_df.columns else [None]
+
 
         # Create required variables for decoding and encoding the data into sparse matrices.
         # - encoding_dict maps each flow or resource to a unique integer
@@ -125,35 +130,41 @@ class RecoveryModelLA:
         self.size = np.prod(self.dims, dtype=int)
 
         input_matrices = []
-        for year in years:
-            for scenario in scenarios:
-                for location in locations:
-                    inflows_vector = self.create_inflows_vector(inflows_df=inflows_df, year=year,scenario=scenario, location=location)
-                    composition_matrix = self.create_composition_matrix(composition_df=composition_df, year=year, scenario=scenario, location=location)
-                    tcs_matrix = self.create_tcs_matrix(tcs_df=tcs_df, year=year, scenario=scenario, location=location)
+        for year, scenario, location, additional_specification in product(years, scenarios, locations, additional_specifications):
+            try:
+                inflows_vector = self.create_inflows_vector(inflows_df=inflows_df, year=year,scenario=scenario, location=location, additional_specification=additional_specification)
+            except AssertionError:
+                # If there is no inflows for this year, location, scenario and additionalSpecification combination, this error is raised and we skip the combination
+                continue
+            composition_matrix = self.create_composition_matrix(composition_df=composition_df, year=year, scenario=scenario, location=location,additional_specification=additional_specification)
+            tcs_matrix = self.create_tcs_matrix(tcs_df=tcs_df, year=year, scenario=scenario, location=location,additional_specification=additional_specification)
 
-                    input_matrices.append({
+            input_matrices.append({
                         "Year":year,
                         "Scenario": scenario,
                         "Location": location,
+                        "additionalSpecification": additional_specification,
                         "inflows_vector": inflows_vector,
                         "composition_matrix": composition_matrix,
                         "tcs_matrix": tcs_matrix
                     })
         return input_matrices
                     
-    def create_inflows_vector(self, inflows_df: pd.DataFrame, year:str, scenario: str, location:str) -> csr_array:
+    def create_inflows_vector(self, inflows_df: pd.DataFrame, year:str, scenario: str, location:str, additional_specification: str) -> csr_array:
         """
-        Create the 1XN composition input vector for a specific year, scenario and location
+        Create the 1XN composition input vector for a specific year, scenario, location and additionalSpecification
 
         :returns:
             An CSR matrix containing the inflows values at appropriate indices
         """
-        # Filter the selected year, scenario and location
+        # Filter the selected year, scenario, location and additionalSpecification
         inflows_df = inflows_df[inflows_df['Year']==year] if year else inflows_df
         inflows_df = inflows_df[inflows_df['Scenario']==scenario] if scenario else inflows_df
         inflows_df = inflows_df[inflows_df['Location']==location] if location else inflows_df
+        inflows_df = inflows_df[inflows_df['additionalSpecification']==additional_specification] if additional_specification else inflows_df
         inflows_df = inflows_df[InputDataFormat.input_columns]
+        if len(inflows_df)==0:
+            raise AssertionError("This combination of year, scenario, location and additionalSpecification does not exist.")
 
         # Create a new dataframe that expresses the flows/resources in encodable form
         encoding_df = pd.DataFrame(columns=['Stock/Flow ID'] + self.layer_names)
@@ -174,24 +185,27 @@ class RecoveryModelLA:
         input_rows = HelperFunctions.ravel_multi_index(multi_index=inflows_rows, dimensions=self.dims)
         return HelperFunctions.create_vector(values=inflows_values, rows=input_rows, size=self.size)
 
-    def create_composition_matrix(self, composition_df: pd.DataFrame, year:str, scenario: str, location:str) -> csr_array:
+    def create_composition_matrix(self, composition_df: pd.DataFrame, year:str, scenario: str, location:str, additional_specification: str) -> csr_array:
         """
-        Reads composition input dataframe for a year, scenario and location and creates a 
+        Reads composition input dataframe for a year, scenario, location and additionalSpecification and creates a 
         NxN matrix that can be used for the model computation.
         See the written documentation for explanation of how these matrices are created.
 
         :returns:
             A CSR matrix containing the composition values at appropriate indices
         """
-        # Booleans that indicate whether or not the composition input has year, scenario or location specification
+        # Booleans that indicate whether or not the composition input has year, scenario, location or additionalSpecification
         composition_year_specified = 'Year' in composition_df.columns and composition_df['Year'].dropna().astype(bool).any()
         composition_scenario_specified = 'Scenario' in composition_df.columns and composition_df['Scenario'].dropna().astype(bool).any()
         composition_location_specified = 'Location' in composition_df.columns and composition_df['Location'].dropna().astype(bool).any()
+        composition_additional_specification_specified = 'additionalSpecification' in composition_df.columns and composition_df['additionalSpecification'].dropna().astype(bool).any()
 
-        # If relevant, select the correct year, scenario and location
+        # If relevant, select the correct year, scenario, location and additionalSpecification
         composition_df = composition_df[composition_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and composition_year_specified else composition_df
         composition_df = composition_df[composition_df['Scenario'].str.contains(scenario, na=False)] if scenario and composition_scenario_specified else composition_df
         composition_df = composition_df[composition_df['Location'].str.contains(location, na=False)] if location and composition_location_specified else composition_df
+        composition_df = composition_df[composition_df['additionalSpecification'].str.contains(additional_specification, na=False)] if additional_specification and composition_additional_specification_specified else composition_df
+
 
         composition_df = composition_df[InputDataFormat.composition_columns]
         composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']] = composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']].replace('','empty')
@@ -212,7 +226,7 @@ class RecoveryModelLA:
         comp_matrix = HelperFunctions.create_sparse_matrix(values=composition_values, rows=composition_rows, cols=composition_cols, size=self.size)
         return comp_matrix
 
-    def create_tcs_matrix(self, tcs_df: pd.DataFrame, year: str, location: str, scenario: str) -> csr_array:
+    def create_tcs_matrix(self, tcs_df: pd.DataFrame, year: str, location: str, scenario: str, additional_specification: str) -> csr_array:
         """
         Read the input TCs and converts it to a NxN matrix that can be used for the model computation. 
         See the written documentation for explanation of how these matrices are created.
@@ -220,15 +234,18 @@ class RecoveryModelLA:
         Returns:
             A CSR matrix containing the TC values at appropriate indices
         """
-        # Booleans that indicate whether or not the TCs input has year, scenario or location specification
+        # Booleans that indicate whether or not the TCs input has year, scenario, location or additionalSpecification
         tcs_year_specified = 'Year' in tcs_df.columns and tcs_df['Year'].dropna().astype(bool).any()
         tcs_scenario_specified = 'Scenario' in tcs_df.columns and tcs_df['Scenario'].dropna().astype(bool).any()
         tcs_location_specified = 'Location' in tcs_df.columns and tcs_df['Location'].dropna().astype(bool).any()
+        tcs_additional_specification_specified = 'additionalSpecification' in tcs_df.columns and tcs_df['additionalSpecification'].dropna().astype(bool).any()
 
-        # If relevant, select the correct year, scenario and location
+        # If relevant, select the correct year, scenario, location and additionalSpecification
         tcs_df = tcs_df[tcs_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and tcs_year_specified else tcs_df
         tcs_df = tcs_df[tcs_df['Scenario'].str.contains(scenario, na=False)] if scenario and tcs_scenario_specified else tcs_df
         tcs_df = tcs_df[tcs_df['Location'].str.contains(location, na=False)] if location and tcs_location_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['additionalSpecification'].str.contains(additional_specification, na=False)] if additional_specification and tcs_additional_specification_specified else tcs_df
+
 
         tcs_df = tcs_df[InputDataFormat.TCs_columns]
 
@@ -293,9 +310,9 @@ class RecoveryModelLA:
     def solve_models_and_write_to_output(self) -> pd.DataFrame:
         """
         Solve all entries in the variable self.input_matrices, which contains the model matrices
-        for every year, location and scenario. Creates an ouput CSV where the solutions are stored.
+        for every year, location, scenario and additionalSpecification Creates an ouput CSV where the solutions are stored.
         """
-        full_solution = pd.DataFrame(columns=["Year","Scenario","Location","Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4","Value"])
+        full_solution = pd.DataFrame(columns=["Year","Scenario","Location","additionalSpecification","Stock/Flow ID","Layer 1","Layer 2","Layer 3","Layer 4","Value"])
         for entry in self.input_matrices:
             solution = self.solve_model(
                 inflows_vector=entry["inflows_vector"],
@@ -305,9 +322,14 @@ class RecoveryModelLA:
             solution['Year'] = entry['Year']
             solution['Scenario'] = entry['Scenario']
             solution['Location'] = entry['Location']
+            solution['additionalSpecification'] = entry['additionalSpecification']
             full_solution = pd.concat([full_solution, solution],ignore_index=True)
 
-        full_solution = full_solution.sort_values(by=['Year','Scenario', 'Location','Stock/Flow ID', 'Layer 1','Layer 2','Layer 3','Layer 4'])
+        # Sort the result, and select only the relevant columns.
+        full_solution = full_solution.sort_values(by=['Year','Scenario', 'Location','additionalSpecification','Stock/Flow ID', 'Layer 1','Layer 2','Layer 3','Layer 4'])
+        empty_cols = [col for col in ["Scenario", "Location", "additionalSpecification", "Year"] if full_solution[col].isna().all()]
+        full_solution = full_solution.drop(columns=empty_cols)
+
         full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"),index=False)
         return full_solution
 
