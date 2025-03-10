@@ -6,14 +6,15 @@ from pandas.errors import SettingWithCopyWarning
 
 pd.set_option('future.no_silent_downcasting',True)
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
+warnings.simplefilter(action="ignore", category=FutureWarning)
 pd.set_option("multi_sparse", False)
 pd.set_option("display.float_format", "{:.2f}".format)
 
 
 
-data_folder = "data_folder/basic_test"
+data_folder = "data_folder/test_weee_full"
 layer_names = ['product','component','material','element']
-recovery_model = RecoveryModelLA
+recovery_model = RecoveryModelOptimized
 
 model = recovery_model(
     data_folder=data_folder,

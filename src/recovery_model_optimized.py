@@ -132,8 +132,6 @@ class RecoveryModelOptimized:
             inflows_df_selection = inflows_df_selection[InputDataFormat.input_columns]
             composition_df_selection = composition_df_selection[InputDataFormat.composition_columns]
             tcs_df_selection = tcs_df_selection[InputDataFormat.TCs_columns]
-            tcs_df_selection = HelperFunctions.explode_empty_input_rows(tcs_df=tcs_df_selection)
-
 
             input_dfs.append({
                 "Year":year,
@@ -167,11 +165,11 @@ class RecoveryModelOptimized:
             # Add the solution to the full output file
             full_solution = pd.concat([full_solution, solution],ignore_index=True)
 
-        # Sort the result, and select only the relevant columns.
+        # Sort the result, and select only the relevant columns and rows.
         full_solution = full_solution.sort_values(by=['Year','Scenario', 'Location','additionalSpecification', 'Stock/Flow ID', 'Layer 1','Layer 2','Layer 3','Layer 4'])
         empty_cols = [col for col in ["Scenario", "Location", "additionalSpecification", "Year"] if full_solution[col].isna().all()]
         full_solution = full_solution.drop(columns=empty_cols)
-        
+        full_solution = full_solution[full_solution.Value!=0]
         full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"),index=False)
         return full_solution
 
@@ -268,6 +266,15 @@ class RecoveryModelOptimized:
                 process_outflow = process_inflow.merge(tcs_layer, on=[target_layer], how='left')
             else:
                 tcs_layer = tcs[(tcs["Input_layer"]==input_layer)&(tcs["TC_target_layer"]==target_layer)][["Input_layer_key","TC_target_key","value"]]
+                
+                # This snippet of code fills the data gaps when the Input_layer_key is left empty.
+                if int(target_layer[-1])-int(input_layer[-1])==1: # if the layers follow each other, e.g Layer 1->Layer 2
+                    unique_list = process_inflow[input_layer].unique().tolist()
+                    tcs_layer['Input_layer_key'] = tcs_layer['Input_layer_key'].apply(lambda x: unique_list if x == '' else x)
+                    tcs_layer = tcs_layer.explode('Input_layer_key')
+                    tcs_layer = tcs_layer.drop_duplicates(subset=['TC_target_key', 'Input_layer_key'])
+                
+                
                 tcs_layer.rename(columns={"Input_layer_key": input_layer, "TC_target_key": target_layer, "value": "TC"}, inplace=True)
                 process_outflow = process_inflow.merge(tcs_layer, on=[input_layer, target_layer], how='left')
             process_outflow["TC"].fillna(0, inplace=True)
@@ -329,55 +336,3 @@ class HelperFunctions:
             (df['Location'] == location if check_location else pd.Series(True, index=df.index)) & 
             (df['additionalSpecification'] == additional_specification if check_additional_specification else pd.Series(True, index=df.index))
             ].drop(columns=['Year','Scenario','Location', 'additionalSpecification'], errors='ignore')
-    
-    @staticmethod
-    def explode_empty_input_rows(tcs_df) -> pd.DataFrame:
-        """
-        Check the 'input_layer_key' for empty values: if there are empty values, fill them with every possible input key for that layer
-        except if a key already exists for that layer.
-        Example:
-        F1 <empty>  C1 M1 E1 .5
-        F1 P3       C1 M1 E1 .25
-        Is exploded to:
-        F1 P1       C1 M1 E1 .5
-        F1 P2       C1 M1 E1 .5
-        F1 P3       C1 M1 E1 .25
-        """
-        # Step 1: Identify rows with empty input layer key
-        empty_rows = tcs_df[tcs_df["Input_layer_key"] == ""].copy()
-        
-        # Step 2: Identify non-empty rows for lookup
-        non_empty_rows = tcs_df[tcs_df["Input_layer_key"] != ""]
-
-        # Step 3: Initialize a list for new rows
-        new_rows = []
-
-        # Step 4: Process each empty row
-        for _, empty_row in empty_rows.iterrows():
-            input_layer = empty_row["Input_layer"]
-            tc_target_key = empty_row["TC_target_key"]
-
-            # Find all existing keys for this Input_layer
-            possible_keys = non_empty_rows[non_empty_rows["Input_layer"] == input_layer]["Input_layer_key"].unique()
-
-            # Exclude keys that already have a row with the same tc_target_key
-            existing_keys = non_empty_rows[
-                (non_empty_rows["Input_layer"] == input_layer) & 
-                (non_empty_rows["TC_target_key"] == tc_target_key)
-            ]["Input_layer_key"].unique()
-
-            keys_to_expand = set(possible_keys) - set(existing_keys)
-
-            # Generate new rows for expansion
-            for key in keys_to_expand:
-                new_row = empty_row.copy()
-                new_row["Input_layer_key"] = key  # Replace * with actual key
-                new_rows.append(new_row)
-
-        # Step 5: Create DataFrame of new rows
-        expanded_df = pd.DataFrame(new_rows)
-
-        # Step 6: Append expanded rows and drop original empty ones
-        result_df = pd.concat([non_empty_rows, expanded_df], ignore_index=True)
-
-        return result_df
