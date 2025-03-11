@@ -19,7 +19,7 @@ INPUT_DATA_FOLDER_NAME = "input_data"
 TCS_FILENAME = "TCs.csv"
 INPUTS_FILENAME = "inputs.csv"
 COMPOSITION_FILENAME = "composition.csv"
-SOLUTION_FILENAME = "solution.csv"
+SOLUTION_FILENAME = "solution_OPT.csv"
 
 
 @dataclass
@@ -170,7 +170,7 @@ class RecoveryModelOptimized:
         empty_cols = [col for col in ["Scenario", "Location", "additionalSpecification", "Year"] if full_solution[col].isna().all()]
         full_solution = full_solution.drop(columns=empty_cols)
         full_solution = full_solution[full_solution.Value!=0]
-        full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"),index=False)
+        full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, SOLUTION_FILENAME),index=False)
         return full_solution
 
     def solve_model(self, inflows_df: pd.DataFrame, composition_df: pd.DataFrame, tcs_df: pd.DataFrame) -> pd.DataFrame:

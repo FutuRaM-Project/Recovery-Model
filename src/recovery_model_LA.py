@@ -21,7 +21,7 @@ INPUT_DATA_FOLDER_NAME = "input_data"
 TCS_FILENAME = "TCs.csv"
 INPUTS_FILENAME = "inputs.csv"
 COMPOSITION_FILENAME = "composition.csv"
-SOLUTION_FILENAME = "solution.csv"
+SOLUTION_FILENAME = "solution_LA.csv"
 
 
 @dataclass
@@ -203,7 +203,7 @@ class RecoveryModelLA:
         # If relevant, select the correct year, scenario, location and additionalSpecification
         composition_df = composition_df[composition_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and composition_year_specified else composition_df
         composition_df = composition_df[composition_df['Scenario'].str.contains(scenario, na=False)] if scenario and composition_scenario_specified else composition_df
-        composition_df = composition_df[composition_df['Location'].str.contains(location, na=False)] if location and composition_location_specified else composition_df
+        composition_df = composition_df[composition_df['Location'].str.contains(location, na=False, regex=False)] if location and composition_location_specified else composition_df
         composition_df = composition_df[composition_df['additionalSpecification'].str.contains(additional_specification, na=False)] if additional_specification and composition_additional_specification_specified else composition_df
 
 
@@ -243,7 +243,7 @@ class RecoveryModelLA:
         # If relevant, select the correct year, scenario, location and additionalSpecification
         tcs_df = tcs_df[tcs_df['Year'].apply(lambda y: HelperFunctions.is_year_match(y, year))] if year and tcs_year_specified else tcs_df
         tcs_df = tcs_df[tcs_df['Scenario'].str.contains(scenario, na=False)] if scenario and tcs_scenario_specified else tcs_df
-        tcs_df = tcs_df[tcs_df['Location'].str.contains(location, na=False)] if location and tcs_location_specified else tcs_df
+        tcs_df = tcs_df[tcs_df['Location'].str.contains(location, na=False, regex=False)] if location and tcs_location_specified else tcs_df
         tcs_df = tcs_df[tcs_df['additionalSpecification'].str.contains(additional_specification, na=False)] if additional_specification and tcs_additional_specification_specified else tcs_df
 
 
@@ -330,7 +330,7 @@ class RecoveryModelLA:
         empty_cols = [col for col in ["Scenario", "Location", "additionalSpecification", "Year"] if full_solution[col].isna().all()]
         full_solution = full_solution.drop(columns=empty_cols)
 
-        full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, f"solution.csv"),index=False)
+        full_solution.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME, SOLUTION_FILENAME),index=False)
         return full_solution
 
 
