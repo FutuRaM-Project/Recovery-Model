@@ -784,7 +784,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,mainboardInclCPUgpu,plastics,A
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,mainboardInclCPUgpu,plastics,,m-c,0.016218529,%,1,0.135394828
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,1,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.133332655,%,3,0.049297325
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,,,,c-p,0.000412438,%,3,0.200674273
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.090107635,%,1,0.12697796
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,non-electricCoil,AlAndAlAlloys,As,e-m,0.011050457,%,1,0.025794258
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat1,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.086442569,%,1,0.276090809
@@ -1929,7 +1928,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,mainboardInclCPUgpu,plastics,A
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,mainboardInclCPUgpu,plastics,,m-c,0.07185415,%,1,0.265635715
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,2,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.155547541,%,3,0.127978191
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,,,,c-p,0.188374866,%,2,0.053221784
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.235873873,%,2,0.232228051
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,non-electricCoil,AlAndAlAlloys,As,e-m,0.04307656,%,2,0.058788176
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat2,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.04733101,%,3,0.067002529
@@ -3074,7 +3072,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,mainboardInclCPUgpu,plastics,A
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,mainboardInclCPUgpu,plastics,,m-c,0.238797464,%,2,0.083153946
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,3,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.407805289,%,2,0.198077429
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,,,,c-p,0.085202382,%,2,0.10041449
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.095416592,%,3,0.3060716
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,non-electricCoil,AlAndAlAlloys,As,e-m,0.399460188,%,2,0.117554301
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat3,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.135172087,%,2,0.106259425
@@ -4219,7 +4216,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,mainboardInclCPUgpu,plastics,
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,mainboardInclCPUgpu,plastics,,m-c,0.052307664,%,1,0.19431289
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,1,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.331805181,%,2,0.300863694
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,,,,c-p,0.243392831,%,1,0.310508786
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.205122703,%,2,0.132104977
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,non-electricCoil,AlAndAlAlloys,As,e-m,0.258287557,%,1,0.089114105
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4a,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.060514277,%,2,0.054680678
@@ -5364,7 +5360,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,mainboardInclCPUgpu,plastics,
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,mainboardInclCPUgpu,plastics,,m-c,0.063034929,%,3,0.082858415
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,2,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.322399525,%,1,0.300263948
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,,,,c-p,0.060418488,%,2,0.045078626
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.247523806,%,3,0.527963039
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,non-electricCoil,AlAndAlAlloys,As,e-m,0.159243331,%,2,0.113168271
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat4b,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.11406534,%,2,0.030649675
@@ -6509,7 +6504,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,mainboardInclCPUgpu,plastics,A
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,mainboardInclCPUgpu,plastics,,m-c,0.337635283,%,3,0.330745294
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,1,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.145976337,%,1,0.032282677
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,,,,c-p,0.388662647,%,3,0.25640067
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.055844942,%,1,0.012058845
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,non-electricCoil,AlAndAlAlloys,As,e-m,0.082715392,%,2,0.170003526
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat5,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.306976393,%,2,0.010233835
@@ -7654,7 +7648,6 @@ OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,mainboardInclCPUgpu,plastics,A
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,mainboardInclCPUgpu,plastics,,m-c,0.264178451,%,3,0.128305936
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,mainboardInclCPUgpu,undefinedAndMixedMaterials,Ag,e-m,1,%,2,1
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,mainboardInclCPUgpu,undefinedAndMixedMaterials,,m-c,0.498338515,%,1,0.020449309
-OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,,,,c-p,0.033536348,%,2,0.033701371
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,non-electricCoil,AlAndAlAlloys,Ag,e-m,0.177831103,%,2,0.344918381
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,non-electricCoil,AlAndAlAlloys,As,e-m,0.119883198,%,2,0.089149188
 OBS,2020,EU27+4,WEEE_generatedDedicated,WEEE_Cat6,non-electricCoil,AlAndAlAlloys,Cu,e-m,0.263816976,%,2,0.4263001
