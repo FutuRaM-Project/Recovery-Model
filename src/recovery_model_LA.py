@@ -106,6 +106,9 @@ class RecoveryModelLA:
             na_values=[]
         )
 
+
+        tcs_df.loc[tcs_df['Input_layer_key'] == '', 'Input_layer'] = ''
+
         # Define the years, locations, scenarios and additionalSpecifications with the inflows file as the defining basis
         years = inflows_df['Year'].unique() if 'Year' in inflows_df.columns else [None]
         scenarios = inflows_df['Scenario'].unique() if 'Scenario' in inflows_df.columns else [None]
