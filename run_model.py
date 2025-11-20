@@ -22,3 +22,8 @@ model = recovery_model(
 )
 
 print(model.solve_models_and_write_to_output())
+
+monte_carlo_runner = RecoveryMonteCarloOptimized(
+    base_model=model,
+    num_simulations=1000
+)
