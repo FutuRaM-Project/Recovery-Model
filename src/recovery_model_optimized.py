@@ -336,3 +336,72 @@ class HelperFunctions:
             (df['Location'] == location if check_location else pd.Series(True, index=df.index)) & 
             (df['additionalSpecification'] == additional_specification if check_additional_specification else pd.Series(True, index=df.index))
             ].drop(columns=['Year','Scenario','Location', 'additionalSpecification'], errors='ignore')
+
+class RecoveryMonteCarloOptimized:
+    def __init__(self, base_model: RecoveryModelOptimized, num_simulations: int = 1000):
+        self.base_model = base_model
+        self.num_simulations = num_simulations
+        self.data_folder = base_model.data_folder
+
+    def run_simulations(self) -> pd.DataFrame:
+        all_simulations = []
+    
+        for i in range(self.num_simulations):
+            print(f"Running simulation {i + 1}/{self.num_simulations}")
+            randomized_inputs = self.randomize_all_inputs()
+    
+            temp_model = RecoveryModelOptimized(
+                data_folder=self.data_folder,
+                layer_names=self.base_model.layer_names
+            )
+            temp_model.input_data = randomized_inputs
+    
+            sim_result = temp_model.solve_models_and_write_to_output()
+            sim_result.insert(0, "Simulation", i + 1)  # ✅ add simulation number as first column
+            all_simulations.append(sim_result)
+    
+        combined_results = pd.concat(all_simulations, ignore_index=True)
+    
+        # Save combined results with Simulation column at the front
+        combined_results.to_csv(os.path.join(self.data_folder, OUTPUT_DATA_FOLDER_NAME,"monte_carlo_results.csv"), index=False)
+
+        return combined_results
+
+
+    def randomize_all_inputs(self) -> List[dict]:
+        randomized_inputs = []
+
+        for entry in self.base_model.input_data:
+            inflows = self.randomize_df(entry["inflows_df"], value_col="Value")
+            composition = self.randomize_df(entry["composition_df"], value_col="Value")
+            tcs = self.randomize_df(entry["tcs_df"], value_col="value")
+
+            randomized_inputs.append({
+                "Year": entry["Year"],
+                "Scenario": entry["Scenario"],
+                "Location": entry["Location"],
+                "additionalSpecification": entry["additionalSpecification"],
+                "inflows_df": inflows,
+                "composition_df": composition,
+                "tcs_df": tcs
+            })
+        return randomized_inputs
+
+    @staticmethod
+    def randomize_df(df: pd.DataFrame, value_col: str = "Value") -> pd.DataFrame:
+        df = df.copy()
+        has_dqs = 'DQS' in df.columns
+        has_cv = 'CV' in df.columns
+
+        if not has_dqs and not has_cv:
+            return df
+
+        df[value_col] = df.apply(
+            lambda row: HelperFunctions.apply_random_error(
+                row[value_col],
+                dqs=row['DQS'] if has_dqs else None,
+                cv=row['CV'] if has_cv else None
+            ),
+            axis=1
+        )
+        return df
