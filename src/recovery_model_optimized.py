@@ -129,9 +129,9 @@ class RecoveryModelOptimized:
 
             tcs_df_selection = HelperFunctions.select_df_by_year_scenario_location(df=tcs_df, year=year, scenario=scenario, location=location, additional_specification=additional_specification)
 
-            inflows_df_selection = inflows_df_selection[InputDataFormat.input_columns]
-            composition_df_selection = composition_df_selection[InputDataFormat.composition_columns]
-            tcs_df_selection = tcs_df_selection[InputDataFormat.TCs_columns]
+            inflows_df_selection = inflows_df_selection[InputDataFormat.input_columns].replace('n/a','')
+            composition_df_selection = composition_df_selection[InputDataFormat.composition_columns].replace('n/a','')
+            tcs_df_selection = tcs_df_selection[InputDataFormat.TCs_columns].replace('n/a','')
 
             input_dfs.append({
                 "Year":year,
@@ -207,24 +207,24 @@ class RecoveryModelOptimized:
         column_order = ['Stock/Flow ID', 'Layer 1', 'Layer 2', 'Layer 3', 'Layer 4', 'Value']
         product_flows = product_flows[column_order]
 
-        composition_df = composition_df[["Stock/ID", "Layer 1","Layer 2","Layer 3","Layer 4", "Value"]].rename(columns={"Stock/ID":"Stock/Flow ID"})
+        composition_df = composition_df[["Layer 1","Layer 2","Layer 3","Layer 4", "Value"]]
         composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']] = composition_df[['Layer 1','Layer 2','Layer 3','Layer 4']]
         
         # Apply composition p-c layer
         layer_2_composition = composition_df[(composition_df['Layer 3']=="") & (composition_df['Layer 4']=='')].copy()
-        df_merged = layer_2_composition.merge(product_flows, on=["Stock/Flow ID", "Layer 1"], suffixes=("", "_inflow"))
+        df_merged = layer_2_composition.merge(product_flows, on=["Layer 1"], suffixes=("", "_inflow"))
         df_merged["Value"] = df_merged["Value_inflow"]*df_merged["Value"]
         layer_2_flows = df_merged[["Stock/Flow ID","Layer 1","Layer 2", "Layer 3","Layer 4","Value"]]
         
         # Apply composition c-m layer
         layer_3_composition = composition_df[(composition_df['Layer 3']!="") & (composition_df['Layer 4']=='')].copy()
-        df_merged = layer_3_composition.merge(layer_2_flows, on=["Stock/Flow ID", "Layer 1", "Layer 2"], suffixes=("","_inflow"))
+        df_merged = layer_3_composition.merge(layer_2_flows, on=["Layer 1", "Layer 2"], suffixes=("","_inflow"))
         df_merged["Value"] = df_merged["Value_inflow"]*df_merged["Value"]
         layer_3_flows = df_merged[["Stock/Flow ID","Layer 1","Layer 2", "Layer 3","Layer 4","Value"]]
 
         # Apply composition m-e layer
         layer_4_composition = composition_df[(composition_df['Layer 3']!="") & (composition_df['Layer 4']!='')].copy()
-        df_merged = layer_4_composition.merge(layer_3_flows, on=["Stock/Flow ID", "Layer 1", "Layer 2", "Layer 3"], suffixes=("","_inflow"))
+        df_merged = layer_4_composition.merge(layer_3_flows, on=["Layer 1", "Layer 2", "Layer 3"], suffixes=("","_inflow"))
         df_merged["Value"] = df_merged["Value_inflow"]*df_merged["Value"]
         layer_4_flows = df_merged[["Stock/Flow ID","Layer 1","Layer 2", "Layer 3","Layer 4","Value"]]
 
@@ -273,6 +273,22 @@ class RecoveryModelOptimized:
                     tcs_layer['Input_layer_key'] = tcs_layer['Input_layer_key'].apply(lambda x: unique_list if x == '' else x)
                     tcs_layer = tcs_layer.explode('Input_layer_key')
                     tcs_layer = tcs_layer.drop_duplicates(subset=['TC_target_key', 'Input_layer_key'])
+
+                # This snippet is taken from chatgpt, i have no idea but it works
+                if tcs_layer['Input_layer_key'].eq('').any():
+                    # Apply the TC to **all rows** of that input layer
+                    keys_to_expand = process_inflow[input_layer].dropna().unique().tolist()
+                    tcs_layer = tcs_layer.copy()
+                    tcs_layer['Input_layer_key'] = tcs_layer['Input_layer_key'].replace('', None)
+                    tcs_layer = tcs_layer.explode('Input_layer_key')
+                    tcs_layer = pd.concat([
+                        tcs_layer[tcs_layer['Input_layer_key'].notna()],
+                        pd.DataFrame([
+                            {'Input_layer_key': key, 'TC_target_key': row['TC_target_key'], 'value': row['value']}
+                            for _, row in tcs_layer[tcs_layer['Input_layer_key'].isna()].iterrows()
+                            for key in keys_to_expand
+                        ])
+                    ], ignore_index=True)
                 
                 
                 tcs_layer.rename(columns={"Input_layer_key": input_layer, "TC_target_key": target_layer, "value": "TC"}, inplace=True)
