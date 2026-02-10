@@ -7,3 +7,6 @@ thesis/
 *test_size_*
 data_folder/
 /data_folder/
+personal_data_folder/
+**/data*/
+**/*data*/
