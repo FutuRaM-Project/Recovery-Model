@@ -3,12 +3,11 @@
 .*
 ~*
 __*
-thesis/
 *test_size_*
-personal_data_folder/
 **/data*/
 **/*data*/
 !data_folder/
 data_folder/*
 !data_folder/basic_test/
 !data_folder/basic_test/**
+environment.yml
